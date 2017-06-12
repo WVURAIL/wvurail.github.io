@@ -10,6 +10,13 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<div class="topnav" id="myTopnav">
+  			<a href="#home">Home</a>
+  			<a href="#news">News</a>
+  			<a href="#contact">Contact</a>
+  			<a href="#about">About</a>
+  			<a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+		</div>
 	</head>
 	<body>
 
@@ -390,6 +397,15 @@
 			<script src="assets/js/skel.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-
+			<script>
+				function myFunction() {
+					var x = document.getElementById("myTopnav");
+					if (x.className === "topnav") {
+						x.className += " responsive";
+					} else {
+						x.className = "topnav";
+   					 }
+				}
+			</script>
 	</body>
 </html>
