@@ -14,7 +14,7 @@
 			body {margin:0;}
 			.navbar {
   			overflow: hidden;
-  			background-color: #fff;
+  			background-color: #f5f5f5;
   			position: fixed;
   			bottom: 0;
   			width: 100%;
@@ -42,9 +42,49 @@
 			z-index: 10;
 
 			}
-			
+			 
+
 			ul.nav a:hover { color: #111 !important; }
 
+			/* Three columns side by side */
+            .column {
+                float: left;
+                width: 50%;
+                margin-bottom: 16px;
+                padding: 0 8px;
+            }
+
+			.container{
+      		    max-width:850px;
+      		    margin:0 auto;/*make it centered*/
+      		}
+
+            /* Display the columns below each other instead of side by side on small screens */
+            @media (max-width: 650px) {
+                .column {
+                    width: 100%;
+                    display: block;
+                }
+            }
+
+			/* Add some shadows to create a card effect */
+            .card {
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            }
+            
+            /* Some left and right padding inside the container */
+            .container {
+                padding: 0 16px;
+            }
+            
+            /* Clear floats */
+            .container::after, .row::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
+
+            
 			.main {
   			padding: 16px;
   			margin-bottom: 30px;
@@ -56,21 +96,20 @@
 			}
 
 		</style>
-
 </head>
 	
 	<body>
 		<div class="navbar">
-  			<div><a href="#Home">Home</a></div>
-  			<div><a href="#Projects">Projects</a></div>
- 			<div><a href="#People">People</a></div>
-  			<div><a href="#Blog">Blog</a></div>
+  			<div><a href="#s1">Home</a></div>
+  			<div><a href="#s2">Projects</a></div>
+ 			<div><a href="#s3">People</a></div>
+  			<div><a href="#s4">Blog</a></div>
 		</div>
 		<!-- Wrapper -->
 			<div id="wrapper" class="divided">
 
 				<!-- Landing Page -->
-					<section class="banner style5 orient-center content-align-center image-position-center fullscreen onload-image-fade-in onload-content-fade-down invert" id="Home">
+					<section class="banner style5 orient-center content-align-center image-position-center fullscreen onload-image-fade-in onload-content-fade-down invert" id="s1">
 						<div class="content">
 							<h1>WVU RAIL</h1>
 							<p class="major">West Virgnia University ⏦ Radio Astronomy Instrumentation Laboritory</p>
@@ -83,7 +122,7 @@
 					</section>
 
 				<!-- Projects -->
-<section class="wrapper style1 align-center" id="Projects">
+<section class="wrapper style1 align-center" id="s2">
 		<div class="inner">
 			<h2>Projects</h2>
 			<p>RAIL is involved in various Astrophysics and Instrumentation projects and collaborations as listed below</p>
@@ -155,17 +194,17 @@
 		</div>
 	</section>
 </section>
-				<!-- People -->
-<section class="wrapper style1 align-center" id="People">
-		<div class="inner">
-        <header>
-			<h2>People</h2>
-			<p>~~~</p>
-        </header>
-		</div>	
+				<!-- People css styles in head.html-->
+<section class="wrapper style1 align-center" id="s3">
+    <div class="inner">
+            <header>
+    			<h2>Faculty</h2>
+    			<p>~~~</p>
+            </header>
+    </div>
 
-	<!-- Dr. K -->
-	<section class="spotlight style1 orient-right content-align-left image-position-center">
+    	<!-- Dr. K -->
+    	<section class="spotlight style1 orient-right content-align-left image-position-center">
 		<div class="content">
 			<h2>Dr. Kevin Bandura</h2>
 			<p class="major">Assistant Professor in the Department of Computer Science and Electrical Engineering</br>
@@ -184,29 +223,66 @@
 		<div class="image">
 			<img src="/images/people/kbandura.jpg" alt="" />
 		</div>
-    </section>
-
-    <section class="wrapper style1">
-	<!-- Brittany -->
-		<div class="inner" style="float: left; width: 50%;">
-			<h3>Brittany Johnstone</h2>
-            <span class="image left"><img src="/images/spotlight04.jpg" alt=""></span>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id ante sed ex pharetra lacinia sit amet vel massa. Donec facilisis laoreet nulla eu bibendum. Donec ut ex risus. Fusce lorem lectus, pharetra pretium massa et, hendrerit vestibulum odio lorem ipsum dolor sit amet.
-
-</p>
-		</div>
-	<!-- Pranav -->
-		<div class="inner" style="float: left; width: 50%;">
-			<h3>Pranav Sanghavi</h2>
-			<span class="image left"><img src="/images/spotlight04.jpg" alt=""></span>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id ante sed ex pharetra lacinia sit amet vel massa. Donec facilisis laoreet nulla eu bibendum. Donec ut ex risus. Fusce lorem lectus, pharetra pretium massa et, hendrerit vestibulum odio lorem ipsum dolor sit amet.
-
-</p>
-        </div>
-    </section>
-
+        </section>
+    	
 </section>
+<section class="wrapper style1 align-center" id="People">
+    <div class="inner">
+            <header>
+    			<h2>Graduate Students</h2>
+    			<p>~~~</p>
+            </header>
+    </div>
+</section>
+<div class="container">
+    <div class="inner">
+        <!-- Brittany -->
+        <div class="column">
+        <div class="card">
+          <img src="/images/spotlight05.jpg" alt="Brittany" style="width:100%">
+            <div class="container">
+                <h2>Brittany Johnstone</h2>
+                <p class="title">Awesome Person #1</p>
+                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                <p>example@example.com</p>
+                <p><button class="button">Contact</button></p>
+            </div>
+            </div>
+        </div>
+        </div>
 
+        <!-- Pranav -->
+        <div class="column">
+        <div class="card">
+          <img src="/images/spotlight05.jpg" alt="Pranav" style="width:100%">
+            <div class="container">
+                <h2>Pranav Sanghavi</h2>
+                <p class="title">Awesome Person #2</p>
+                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                <p>example@example.com</p>
+                <p><button class="button">Contact</button></p>
+            </div>
+            </div>
+        </div>
+        </div>
+    
+    </div>
+</div>
+
+
+				<!-- Blog -->
+				<<section class="banner onload-image-fade-in onload-content-fade-right style3 fullscreen orient-right content-align-left image-position-center" id="s4">
+						<div class="content">
+							<h1>RAIL Journal</h1>
+							<p class="major"> Check out our lab blog</p>
+							<ul class="actions vertical">
+								<li><a href="/blog/" class="button big wide smooth-scroll-middle">Blog</a></li>
+							</ul>
+						</div>
+						<div class="image">
+							<img src="images/banner.jpg" alt="">
+						</div>
+				</section>
 				<!-- Footer -->
 				<footer class="wrapper style1">
 	<div class="inner" style="float: left; width: 67%;">
@@ -236,7 +312,6 @@
 <script src="assets/js/smoothscroll.js"></script>
  -->
 </footer>
-
 			</div>
 
 		<!-- Scripts -->
@@ -246,7 +321,7 @@
 			<script src="/assets/js/skel.min.js"></script>
 			<script src="/assets/js/util.js"></script>
 			<script src="/assets/js/main.js"></script>
-			<script src="/assets/js/smoothscroll.js"></script>
+			<script src="/assets/js/scrolling.js"></script>
 			
 	</body>
 </html>

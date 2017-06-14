@@ -14,7 +14,7 @@
 			body {margin:0;}
 			.navbar {
   			overflow: hidden;
-  			background-color: #fff;
+  			background-color: #f5f5f5;
   			position: fixed;
   			bottom: 0;
   			width: 100%;
@@ -42,9 +42,49 @@
 			z-index: 10;
 
 			}
-			
+			 
+
 			ul.nav a:hover { color: #111 !important; }
 
+			/* Three columns side by side */
+            .column {
+                float: left;
+                width: 50%;
+                margin-bottom: 16px;
+                padding: 0 8px;
+            }
+
+			.container{
+      		    max-width:850px;
+      		    margin:0 auto;/*make it centered*/
+      		}
+
+            /* Display the columns below each other instead of side by side on small screens */
+            @media (max-width: 650px) {
+                .column {
+                    width: 100%;
+                    display: block;
+                }
+            }
+
+			/* Add some shadows to create a card effect */
+            .card {
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            }
+            
+            /* Some left and right padding inside the container */
+            .container {
+                padding: 0 16px;
+            }
+            
+            /* Clear floats */
+            .container::after, .row::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
+
+            
 			.main {
   			padding: 16px;
   			margin-bottom: 30px;
@@ -56,7 +96,6 @@
 			}
 
 		</style>
-
 </head>
 	
 	<body>
@@ -74,19 +113,19 @@
 				<section class="wrapper style1">
 						<div class="inner">
 						
-							<h2></h2>
+							<h2>People</h2>
 
-<!-- People -->
-<section class="wrapper style1 align-center" id="People">
-		<div class="inner">
-        <header>
-			<h2>People</h2>
-			<p>~~~</p>
-        </header>
-		</div>	
+<!-- People css styles in head.html-->
+<section class="wrapper style1 align-center" id="s3">
+    <div class="inner">
+            <header>
+    			<h2>Faculty</h2>
+    			<p>~~~</p>
+            </header>
+    </div>
 
-	<!-- Dr. K -->
-	<section class="spotlight style1 orient-right content-align-left image-position-center">
+    	<!-- Dr. K -->
+    	<section class="spotlight style1 orient-right content-align-left image-position-center">
 		<div class="content">
 			<h2>Dr. Kevin Bandura</h2>
 			<p class="major">Assistant Professor in the Department of Computer Science and Electrical Engineering</br>
@@ -105,28 +144,52 @@
 		<div class="image">
 			<img src="/images/people/kbandura.jpg" alt="" />
 		</div>
-    </section>
-
-    <section class="wrapper style1">
-	<!-- Brittany -->
-		<div class="inner" style="float: left; width: 50%;">
-			<h3>Brittany Johnstone</h2>
-            <span class="image left"><img src="/images/spotlight04.jpg" alt=""></span>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id ante sed ex pharetra lacinia sit amet vel massa. Donec facilisis laoreet nulla eu bibendum. Donec ut ex risus. Fusce lorem lectus, pharetra pretium massa et, hendrerit vestibulum odio lorem ipsum dolor sit amet.
-
-</p>
-		</div>
-	<!-- Pranav -->
-		<div class="inner" style="float: left; width: 50%;">
-			<h3>Pranav Sanghavi</h2>
-			<span class="image left"><img src="/images/spotlight04.jpg" alt=""></span>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id ante sed ex pharetra lacinia sit amet vel massa. Donec facilisis laoreet nulla eu bibendum. Donec ut ex risus. Fusce lorem lectus, pharetra pretium massa et, hendrerit vestibulum odio lorem ipsum dolor sit amet.
-
-</p>
-        </div>
-    </section>
-
+        </section>
+    	
 </section>
+<section class="wrapper style1 align-center" id="People">
+    <div class="inner">
+            <header>
+    			<h2>Graduate Students</h2>
+    			<p>~~~</p>
+            </header>
+    </div>
+</section>
+<div class="container">
+    <div class="inner">
+        <!-- Brittany -->
+        <div class="column">
+        <div class="card">
+          <img src="/images/spotlight05.jpg" alt="Brittany" style="width:100%">
+            <div class="container">
+                <h2>Brittany Johnstone</h2>
+                <p class="title">Awesome Person #1</p>
+                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                <p>example@example.com</p>
+                <p><button class="button">Contact</button></p>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- Pranav -->
+        <div class="column">
+        <div class="card">
+          <img src="/images/spotlight05.jpg" alt="Pranav" style="width:100%">
+            <div class="container">
+                <h2>Pranav Sanghavi</h2>
+                <p class="title">Awesome Person #2</p>
+                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                <p>example@example.com</p>
+                <p><button class="button">Contact</button></p>
+            </div>
+            </div>
+        </div>
+        </div>
+    
+    </div>
+</div>
+
 					
 						</div>						
 				</section>
