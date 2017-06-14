@@ -13,12 +13,11 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: WVU.RAIL
 email: wvurail@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   RAIL is a multidisciplinary group within the Lane Department of Computer Science and Electrical Engineering at West Virgnia University that focuses on Engineering and Science solutions in Radio Astronomy.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://localhost:4000" # the base hostname & protocol for your site, e.g. http://example.com
+url: "http://wvurail.org/" # the base hostname & protocol for your site, e.g. http://example.com
 
 #twitter_username: jekyllrb
 #github_username:  jekyll
@@ -29,6 +28,7 @@ markdown: kramdown
 #theme: minima
 gems:
   - jekyll-feed
+  - jekyll-sitemap
 exclude:
   - Gemfile
   - Gemfile.lock
