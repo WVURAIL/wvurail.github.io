@@ -14,20 +14,20 @@
 ### Image Credits
 
 |-------------------|-------------------|-----------------|
-| #### Landing page |Cover - GBT	| Pranav 	  |
-|	       	    | CHIME		| Chime pathfinder|
-|	       	    | ICE - System	| 		  |
-|	       	    | HIRAX		|		  |
-|	       	    | Radio Transient	| FRB		  |
-|	       	    | DSPiRA   		| Pranav	  |
+| #### Landing page |Cover - GBT		| Pranav 	  	  |
+|	       	    	| CHIME				| Chime pathfinder|
+|	       	    	| ICE - System		| 				  |
+|	       	  	 	| HIRAX				|				  |
+|	       		    | Radio Transient	| FRB			  |
+|	       		    | DSPiRA   			| Pranav		  |
 |-------------------|-------------------|-----------------|
 
 |--------------|----------------|-----------------|
-| CHIME Page   |		|		  | 
-|	       |		|		  |
+| CHIME Page   |				|				  | 
+|			   |				|		   		  |
 |--------------|----------------|-----------------|
 
 |--------------|----------------|-----------------|
-| FRB Page     |		|		  |
-|	       |		|		  |
+| FRB Page     |				|				  |
+|	  		     |			|					  |
 |--------------|----------------|-----------------|
