@@ -18,8 +18,10 @@
 |	       | CHIME		| Chime pathfinder|
 |	       | ICE - System	| 		  |
 |	       | HIRAX		|		  |
-|	       | Radio Transient| FRB|
+|	       | Radio Transient| FRB		  |
 |	       | DSPiRA 	| Pranav	  |
+|--------------|----------------|-----------------|
+
 |--------------|----------------|-----------------|
 | CHIME Page   |		|		  | 
 |--------------|----------------|-----------------|
