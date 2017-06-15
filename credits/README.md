@@ -12,10 +12,10 @@
 	-	Skel (skel.io)
 
 ### Image Credits
-
-
-| 	*Landing page*|Cover - GBT		| Pranav 	  	  |
 |-------------------|-------------------|-----------------|
+|                    |				|				  |
+|-------------------|-------------------|-----------------|
+| 	*Landing page*|Cover - GBT		| Pranav 	  	  |
 |	       	    	| CHIME				| Chime pathfinder|
 |	      	    	| ICE - System		| 				  |
 |	      	  	 	| HIRAX				|				  |
