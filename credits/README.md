@@ -1,5 +1,3 @@
-### CREDITS 
-
 This website was created with bits and pieces of the following libraries and packages. 
 
 #### Template
