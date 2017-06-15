@@ -12,7 +12,8 @@
 	-	Skel (skel.io)
 
 ### Image Credits
-|                    |				|				  |
+|-------------------|-------------------|-----------------|
+| POSITION			| IMAGE				| CREDIT		  |
 |-------------------|-------------------|-----------------|
 | 	*Landing page*|Cover - GBT		| Pranav 	  	  |
 |	       	    	| CHIME				| Chime pathfinder|
