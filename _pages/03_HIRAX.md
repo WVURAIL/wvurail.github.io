@@ -3,7 +3,7 @@ layout: default
 permalink: /hirax/
 ---
 
-<section class="spotlight style1 orient-right content-align-left image-position-center">
+<section class="spotlight style2 orient-right content-align-left image-position-center">
 		<div class="content">
 			<h2>HIRAX</h2>
 			<p>The Hydrogen Intensity and Real-time Analysis eXperiment (HIRAX) is a new 400–800 MHz radio interferometer under development for deployment in South Africa. HIRAX will comprise 1024 six meter parabolic dishes on a compact grid and will map most of the southern sky over the course of four years. HIRAX has two primary science goals: to constrain Dark Energy and measure structure at high redshift, and to study radio transients and pulsars. HIRAX will observe unresolved sources of neutral hydrogen via their redshifted 21-cm emission line (‘hydrogen intensity mapping’).</p>
