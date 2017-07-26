@@ -29,6 +29,9 @@
 <loc>http://localhost:4000/contact/</loc>
 </url>
 <url>
+<loc>http://localhost:4000/apps/lst/</loc>
+</url>
+<url>
 <loc>http://localhost:4000/blog/</loc>
 </url>
 <url>

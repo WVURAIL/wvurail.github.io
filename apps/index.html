@@ -16,89 +16,98 @@ Local Sidereal Time
 <div id="js_clock">
 
 <script type="text/javascript">
-function calculate() {
+var day = 0;
+var month = 0;
+var year = 0;
+var hr = 0;
+var lst = 0;
+var olong = 0.0;
+    function calculate() {
+        var longit = -79.8318;
+        var longmgt = -79.9559;
+        var tDate = new Date();
+        var utSeconds    = tDate.getUTCSeconds();
+        var utMinutes    = tDate.getUTCMinutes();
+        var utHours      = tDate.getUTCHours();
+        var utDay        = tDate.getUTCDate();
+        var utMonth      = tDate.getUTCMonth() + 1;
+        var utYear       = tDate.getUTCFullYear();
+        var UT        = utHours + utMinutes/60 + utSeconds/3600;
+        var LMST      = LM_Sidereal_Time(JulDay (utDay, utMonth, utYear, UT),longit);
+        var MLST      = LM_Sidereal_Time(JulDay (utDay, utMonth, utYear, UT),longmgt);
+        var GMST      = LM_Sidereal_Time(JulDay (utDay, utMonth, utYear, UT),0.0);
+        
+        var JulD      = JulDay (utDay, utMonth, utYear, UT)
+        var MJulD     = JulD - 2400000.5;
 
-    var longit = -79.8318;
-    var longmgt = -79.9559;
-    var tDate = new Date();
-    var utSeconds    = tDate.getUTCSeconds();
-    var utMinutes    = tDate.getUTCMinutes();
-    var utHours      = tDate.getUTCHours();
-    var utDay        = tDate.getUTCDate();
-    var utMonth      = tDate.getUTCMonth() + 1;
-    var utYear       = tDate.getUTCFullYear();
-    var UT        = utHours + utMinutes/60 + utSeconds/3600;
-    var LMST      = LM_Sidereal_Time(JulDay (utDay, utMonth, utYear, UT),longit);
-    var MLST      = LM_Sidereal_Time(JulDay (utDay, utMonth, utYear, UT),longmgt);
-    var GMST      = LM_Sidereal_Time(JulDay (utDay, utMonth, utYear, UT),0.0);
-     
-    var JulD      = JulDay (utDay, utMonth, utYear, UT)
-    var MJulD     = JulD - 2400000.5;
+        var cuth = utHours.toString();
+        if ( utHours < 10 ) var cuth = "0" + utHours.toString(); 
+        var cutm = utMinutes.toString()
+        if ( utMinutes < 10 ) var cutm = "0" + utMinutes.toString(); 
+        cuts = utSeconds.toString();
+        if ( utSeconds < 10 ) var  cuts = "0" + utSeconds.toString(); 
 
-    var cuth = utHours.toString();
-    if ( utHours < 10 ) var cuth = "0" + utHours.toString(); 
-    var cutm = utMinutes.toString()
-    if ( utMinutes < 10 ) var cutm = "0" + utMinutes.toString(); 
-    cuts = utSeconds.toString();
-    if ( utSeconds < 10 ) var  cuts = "0" + utSeconds.toString(); 
+        var h = Math.floor(LMST);
+        var min = Math.floor(60.0*frac(LMST));
+        var secs = Math.round(60.0*(60.0*frac(LMST)-min));
 
-    var h = Math.floor(LMST);
-    var min = Math.floor(60.0*frac(LMST));
-    var secs = Math.round(60.0*(60.0*frac(LMST)-min));
+        if (secs == 60) {
+        secs = 0;
+        min = min + 1;
+        }
+        
+        ch = h.toString();
+        if ( h < 10 ) var ch = "0" + h.toString(); 
+        cmin = min.toString()
+        if ( min < 10 ) var cmin = "0" + min.toString(); 
+        csecs = secs.toString();
+        if ( secs < 10 ) var csecs = "0" + secs.toString(); 
 
-    if (secs == 60) {
-     secs = 0;
-     min = min + 1;
+        var h = Math.floor(MLST);
+        var min = Math.floor(60.0*frac(MLST));
+        var secs = Math.round(60.0*(60.0*frac(MLST)-min));
+
+        if (secs == 60) {
+        secs = 0;
+        min = min + 1;
+        }
+        
+        mh = h.toString();
+        if ( h < 10 ) var mh = "0" + h.toString(); 
+        mmin = min.toString()
+        if ( min < 10 ) var mmin = "0" + min.toString(); 
+        msecs = secs.toString();
+        if ( secs < 10 ) var msecs = "0" + secs.toString(); 
+
+        h = Math.floor(GMST);
+        min = Math.floor(60.0*frac(GMST));
+        secs = Math.round(60.0*(60.0*frac(GMST)-min));
+        if (secs == 60) {
+        secs = 0;
+        min = min + 1;
+        }
+
+        gmt_ch = h.toString();
+        if ( h < 10 ) var gmt_ch = "0" + h.toString(); 
+        gmt_cmin = min.toString()
+        if ( min < 10 ) var gmt_cmin = "0" + min.toString(); 
+        gmt_csecs = secs.toString();
+        if ( secs < 10 ) var gmt_csecs = "0" + secs.toString(); 
+
+
+        var clock_div = document.getElementById('js_clock');
+        clock_div.innerHTML = "<font face=Courier color=#000000> Coordinated Universal Time (UTC): &nbsp;" +cuth + ":"  +cutm+":"+cuts+"<br>Greenwich Local Sidereal Time: &nbsp;&nbsp;&nbsp;&nbsp;" +gmt_ch + ":"  + gmt_cmin  + ":" +gmt_csecs+"<hr><br>Green Bank LST: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;" +ch + ":"  + cmin  + ":" +csecs+ "<br> Morgantown  LST: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +mh + ":"  + mmin  + ":" +msecs+ " <br><hr> Julian Day: &nbsp;&nbsp;" +JulD+ " <br> Modified Julian Day: &nbsp;&nbsp;" +MJulD+ " </font>";
+        setTimeout("calculate()",5);
+
+        var clock_lstnow = document.getElementById('lst_now');
+        clock_lstnow.innerHTML = "<p>hello</p>";
+        setTimeout("calculate()",5);
     }
-    
-    ch = h.toString();
-    if ( h < 10 ) var ch = "0" + h.toString(); 
-    cmin = min.toString()
-    if ( min < 10 ) var cmin = "0" + min.toString(); 
-    csecs = secs.toString();
-    if ( secs < 10 ) var csecs = "0" + secs.toString(); 
 
-    var h = Math.floor(MLST);
-    var min = Math.floor(60.0*frac(MLST));
-    var secs = Math.round(60.0*(60.0*frac(MLST)-min));
-
-    if (secs == 60) {
-     secs = 0;
-     min = min + 1;
-    }
-    
-    mh = h.toString();
-    if ( h < 10 ) var ch = "0" + h.toString(); 
-    mmin = min.toString()
-    if ( min < 10 ) var cmin = "0" + min.toString(); 
-    msecs = secs.toString();
-    if ( secs < 10 ) var csecs = "0" + secs.toString(); 
-
-    h = Math.floor(GMST);
-    min = Math.floor(60.0*frac(GMST));
-    secs = Math.round(60.0*(60.0*frac(GMST)-min));
-    if (secs == 60) {
-     secs = 0;
-     min = min + 1;
-    }
-
-    gmt_ch = h.toString();
-    if ( h < 10 ) var gmt_ch = "0" + h.toString(); 
-    gmt_cmin = min.toString()
-    if ( min < 10 ) var gmt_cmin = "0" + min.toString(); 
-    gmt_csecs = secs.toString();
-    if ( secs < 10 ) var gmt_csecs = "0" + secs.toString(); 
-
-
-    var clock_div = document.getElementById('js_clock');
-    clock_div.innerHTML = "<font face=Courier color=#000000> Coordinated Universal Time (UTC): &nbsp;" +cuth + ":"  +cutm+":"+cuts+"<br>Greenwich Local Sidereal Time: &nbsp;&nbsp;&nbsp;&nbsp;" +gmt_ch + ":"  + gmt_cmin  + ":" +gmt_csecs+"<hr><br>Green Bank LST: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;" +ch + ":"  + cmin  + ":" +csecs+ "<br> Morgantown  LST: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +mh + ":"  + mmin  + ":" +msecs+ " <br><hr> Julian Day: &nbsp;&nbsp;" +JulD+ " <br> Modified Julian Day: &nbsp;&nbsp;" +MJulD+ " </font>";
-    setTimeout("calculate()",5);
-}
-
-  function LM_Sidereal_Time (jd, longitude) {
-    var GMST = GM_Sidereal_Time(jd);		
-    var LMST =  24.0*frac((GMST + longitude/15.0)/24.0);
-    return LMST;
+    function LM_Sidereal_Time (jd, longitude) {
+        var GMST = GM_Sidereal_Time(jd);		
+        var LMST =  24.0*frac((GMST + longitude/15.0)/24.0);
+        return LMST;
    }
 
   function GM_Sidereal_Time (jd) {	
@@ -124,9 +133,58 @@ function calculate() {
     if (X<0) X = X + 1.0;
     return X;		
    }
-
-calculate();
+    calculate();
 
 </script>
 </div>
+<hr>
+<div id="lst_now"></div>
+<div>
+<script src="lst.js" type="text/javascript"></script>
+<div class="inner" style="float: left; width: 25%;">
+<b>Day</b><input id="day" name="day" size="2" value="1" onchange="calcLST();" /></div>
+
+<div class="inner" style="float: left; width: 25%;">
+<select id="month" name="month" onchange="calcLST();">
+    <option value="1">January</option>
+    <option value="2">February</option>
+    <option value="3">March</option>
+    <option value="4">April</option>
+    <option value="5">May</option>
+    <option value="6">June</option>
+    <option value="7">July</option>
+    <option value="8">August</option>
+    <option value="9">September</option>
+    <option value="10">October</option>
+    <option value="11">November</option>
+    <option value="12">December</option>
+</select></div>
+
+<div class="inner" style="float: left; width: 25%;">
+<input id="year" name="year" size="4" value="2017" onchange="calcLST();" />
+</div>
+
+<div class="inner" style="float: left; width: 25%; margin: 5px 0px;"><strong>Long.</strong>(deg.)
+<input id="olong" name="olong" size="4" value="-79.8318" onchange="calcLST();"/>
+&nbsp;
+</div>
+
+<div class="inner" style="float: right; width: 50%;">
+
+<div style="border: #444 1px solid; margin: 5px 0px;
+            padding: 5px 5px; text-align: center; white-space: nowrap">
+<strong><a href="http://en.wikipedia.org/wiki/Sidereal_time">LST</a></strong>
+	<input id="lst" name="lst" size="10" value="0" />&nbsp;Hrs
+</div>
+
+<div style="border: #444 1px solid; margin: 5px 0px;
+            padding: 5px 5px; text-align: center; white-space: nowrap">
+<strong><a href="http://en.wikipedia.org/wiki/Sidereal_time">MJD</a></strong>
+	<input id="lst" name="jday" size="10" value="0" />&nbsp;Hrs
+</div>
+
+</div>
+
+</div>
+
 <hr>
