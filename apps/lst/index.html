@@ -1,0 +1,123 @@
+---
+layout: default
+---
+
+<style> 
+.flex-container {
+    display: -webkit-flex;
+    display: flex;  
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    text-align: center;
+}
+
+.flex-container > * {
+    padding: 15px;
+    -webkit-flex: 1 100%;
+    flex: 1 100%;
+}
+
+.article {
+    text-align: left;
+}
+
+header {background: #fff;color:white;}
+footer {background: #aaa;color:white;}
+.nav {background:#eee;}
+
+.nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+.nav ul a {
+    text-decoration: none;
+}
+
+@media all and (min-width: 768px) {
+    .nav {text-align:left;-webkit-flex: 1 auto;flex:1 auto;-webkit-order:1;order:1;}
+    .article {-webkit-flex:5 0px;flex:5 0px;-webkit-order:2;order:2;}
+    footer {-webkit-order:3;order:3;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="flex-container">
+<header>
+  <h1>LST NOW</h1>
+</header>
+
+<nav class="nav">
+<form id="frm1" action="..">
+  First name: <input type="text" name="fname" value="Donald"><br>
+  Last name: <input type="text" name="lname" value="Duck"><br><br>
+  <input type="submit" value="Submit">
+</form> 
+
+<p>Click "Try it" to display the value of each element in the form.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+</nav>
+
+<article class="article">
+
+<form>
+Select Day:<input type="text" name="fname" value="Donald"><br>
+Select Month:
+<select id="month" name="month">
+  <option value="1">January</option>
+    <option value="2">February</option>
+    <option value="3">March</option>
+    <option value="4">April</option>
+    <option value="5">May</option>
+    <option value="6">June</option>
+    <option value="7">July</option>
+    <option value="8">August</option>
+    <option value="9">September</option>
+    <option value="10">October</option>
+    <option value="11">November</option>
+    <option value="12">December</option>
+</select>
+<br><br>
+<input type="button" onclick="getOption()" value="Click Me!">
+</form>
+
+<p id="dd"></p>
+<br>
+<p id="mm"></p>
+
+</article>
+
+<footer>Copyright &copy; W3Schools.com</footer>
+</div>
+</div>
+
+<script>
+function myFunction() {
+    var x = document.getElementById("frm1");
+    var text = "";
+    var i;
+    for (i = 0; i < x.length ;i++) {
+        text += x.elements[i].value + "<br>";
+    }
+    document.getElementById("demo").innerHTML = text;
+}
+function getOption() {
+    //get day
+    var day = document.getElementById("fname");
+    var month = document.getElementById("month");
+
+    //print answer
+    document.getElementById("dd").innerHTML = 
+    day.options[day.selectedIndex].text;
+
+    document.getElementById("mm").innerHTML = 
+    month.options[month.selectedIndex].text;
+}
+
+</script>
+
+</body>
