@@ -133,7 +133,6 @@
 }
 
 header {background: #fff;color:white;}
-footer {background: #aaa;color:white;}
 .nav {background:#eee;}
 
 .nav ul {
@@ -176,10 +175,10 @@ footer {background: #aaa;color:white;}
 <article class="article">
 
 <form>
-Select Day:<input type="text" name="fname" value="Donald"><br>
+Enter Day:<input type="text" id="day" value="1" maxlength="10">
 Select Month:
 <select id="month" name="month">
-  <option value="1">January</option>
+    <option value="1">January</option>
     <option value="2">February</option>
     <option value="3">March</option>
     <option value="4">April</option>
@@ -192,13 +191,22 @@ Select Month:
     <option value="11">November</option>
     <option value="12">December</option>
 </select>
-<br><br>
+Enter Year:<input type="text" id="year" value="1997" maxlength="4">
+Enter Hour:<input type="text" id="hour" value="00" maxlength="2">
+Enter Minute:<input type="text" id="min" value="00" maxlength="2">
+Enter Second:<input type="text" id="sec" value="00" maxlength="2">
+Enter Longitude:<input type="text" id="long" value="0.0">
+<br>
 <input type="button" onclick="getOption()" value="Click Me!">
 </form>
 
-<p id="dd"></p>
-<br>
-<p id="mm"></p>
+<input id="dd" name="day" type="text" value="0" />
+<input id="mm" name="month" type="text" value="0" />
+<input id="yy" name="year" type="text" value="0" />
+<input id="hh" name="hour" type="text" value="0" />
+<input id="m" name="minute" type="text" value="0" />
+<input id="ss" name="second" type="text" value="0" />
+<input id="ll" name="longitude" type="text" value="0" />
 
 </article>
 
@@ -218,15 +226,26 @@ function myFunction() {
 }
 function getOption() {
     //get day
-    var day = document.getElementById("fname");
+    var day = document.getElementById("day").value;
     var month = document.getElementById("month");
+    var year = document.getElementById("year").value;
+    var hour = document.getElementById("hour").value;
+    var min = document.getElementById("min").value;
+    var sec = document.getElementById("sec").value;
+    var long = document.getElementById("long").value;
+
 
     //print answer
-    document.getElementById("dd").innerHTML = 
-    day.options[day.selectedIndex].text;
 
+    document.getElementById('dd').value = day;
     document.getElementById("mm").innerHTML = 
     month.options[month.selectedIndex].text;
+    document.getElementById('yy').value = year;
+    document.getElementById('hh').value = hour;
+    document.getElementById('m').value = min;
+    document.getElementById('ss').value = sec;
+    document.getElementById('ll').value = long;
+
 }
 
 </script>
