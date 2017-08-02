@@ -4,7 +4,7 @@ layout: default
 
 
 <h2>
-Local Sidereal Time
+Web Apps for general Astronomy 
 </h2>
 <hr>
 <center>
@@ -91,7 +91,7 @@ Local Sidereal Time
 
 
         var clock_div = document.getElementById('js_clock');
-        clock_div.innerHTML = "<font face=Courier color=#000000> Coordinated Universal Time (UTC): &nbsp;" +cuth + ":"  +cutm+":"+cuts+"<br>Greenwich Local Sidereal Time: &nbsp;&nbsp;&nbsp;&nbsp;" +gmt_ch + ":"  + gmt_cmin  + ":" +gmt_csecs+"<hr><br>Green Bank LST: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;" +ch + ":"  + cmin  + ":" +csecs+ "<br> Morgantown  LST: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +mh + ":"  + mmin  + ":" +msecs+ " <br><hr> Julian Day: &nbsp;&nbsp;" +JulD+ " <br> Modified Julian Day: &nbsp;&nbsp;" +MJulD+ " </font>";
+        clock_div.innerHTML = "<font face=Courier color=#000000> Coordinated Universal Time (UTC): &nbsp;" +cuth + ":"  +cutm+":"+cuts+"<br>Greenwich Local Sidereal Time: &nbsp;&nbsp;&nbsp;&nbsp;" +gmt_ch + ":"  + gmt_cmin  + ":" +gmt_csecs+"<br>Green Bank LST: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;" +ch + ":"  + cmin  + ":" +csecs+ "<br> Morgantown  LST: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +mh + ":"  + mmin  + ":" +msecs+ " <br> </font>";
         setTimeout("calculate()",5);
 
         var clock_lstnow = document.getElementById('lst_now');
@@ -132,54 +132,12 @@ Local Sidereal Time
 
 </script>
 </div>
+
 <hr>
-<div id="lst_now"></div>
+
 <div>
-<script src="lst.js" type="text/javascript"></script>
-<div class="inner" style="float: left; width: 25%;">
-<b>Day</b><input id="day" name="day" size="2" value="1" onchange="calcLST();" /></div>
-
-<div class="inner" style="float: left; width: 25%;">
-<select id="month" name="month" onchange="calcLST();">
-    <option value="1">January</option>
-    <option value="2">February</option>
-    <option value="3">March</option>
-    <option value="4">April</option>
-    <option value="5">May</option>
-    <option value="6">June</option>
-    <option value="7">July</option>
-    <option value="8">August</option>
-    <option value="9">September</option>
-    <option value="10">October</option>
-    <option value="11">November</option>
-    <option value="12">December</option>
-</select></div>
-
-<div class="inner" style="float: left; width: 25%;">
-<input id="year" name="year" size="4" value="2017" onchange="calcLST();" />
+    <ul class="actions vertical">
+		<li><a href="/apps/lst" class="button">Get Current LST in your Location</a></li>
+    </ul>
 </div>
 
-<div class="inner" style="float: left; width: 25%; margin: 5px 0px;"><strong>Long.</strong>(deg.)
-<input id="olong" name="olong" size="4" value="-79.8318" onchange="calcLST();"/>
-&nbsp;
-</div>
-
-<div class="inner" style="float: right; width: 50%;">
-
-<div style="border: #444 1px solid; margin: 5px 0px;
-            padding: 5px 5px; text-align: center; white-space: nowrap">
-<strong><a href="http://en.wikipedia.org/wiki/Sidereal_time">LST</a></strong>
-	<input id="lst" name="lst" size="10" value="0" />&nbsp;Hrs
-</div>
-
-<div style="border: #444 1px solid; margin: 5px 0px;
-            padding: 5px 5px; text-align: center; white-space: nowrap">
-<strong><a href="http://en.wikipedia.org/wiki/Sidereal_time">MJD</a></strong>
-	<input id="lst" name="jday" size="10" value="0" />&nbsp;Hrs
-</div>
-
-</div>
-
-</div>
-
-<hr>

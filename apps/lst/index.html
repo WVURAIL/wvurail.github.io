@@ -44,99 +44,125 @@ header {background: #fff;color:white;}
 
 <div class="flex-container">
 <header>
-  <h1>LST NOW</h1>
+  <h1>Local Sidereal Time</h1>
 </header>
 
 <nav class="nav">
-<form id="frm1" action="..">
-  First name: <input type="text" name="fname" value="Donald"><br>
-  Last name: <input type="text" name="lname" value="Duck"><br><br>
-  <input type="submit" value="Submit">
-</form> 
 
-<p>Click "Try it" to display the value of each element in the form.</p>
+<h3> LST <em>now</em> </h3>
+<form>
 
-<button onclick="myFunction()">Try it</button>
+Enter Longitude:<input type="text" id="long" value="0.0">
+<select id="hemi" name="hemi">
+    <option value="E">E</option>
+    <option value="W">W</option>
+</select>
 
-<p id="demo"></p>
+<br>
+<input type="button" onclick="getLST()" value="Click Me to get the LST!">
+
+</form>
+
+<div> LST <br>
+Hour<input id="hh" name="hour" type="text" value="0" />
+Min<input id="m" name="minute" type="text" value="0" />
+Sec<input id="ss" name="second" type="text" value="0" />
+
 </nav>
 
 <article class="article">
-
-<form>
-Enter Day:<input type="text" id="day" value="1" maxlength="10">
-Select Month:
-<select id="month" name="month">
-    <option value="1">January</option>
-    <option value="2">February</option>
-    <option value="3">March</option>
-    <option value="4">April</option>
-    <option value="5">May</option>
-    <option value="6">June</option>
-    <option value="7">July</option>
-    <option value="8">August</option>
-    <option value="9">September</option>
-    <option value="10">October</option>
-    <option value="11">November</option>
-    <option value="12">December</option>
-</select>
-Enter Year:<input type="text" id="year" value="1997" maxlength="4">
-Enter Hour:<input type="text" id="hour" value="00" maxlength="2">
-Enter Minute:<input type="text" id="min" value="00" maxlength="2">
-Enter Second:<input type="text" id="sec" value="00" maxlength="2">
-Enter Longitude:<input type="text" id="long" value="0.0">
-<br>
-<input type="button" onclick="getOption()" value="Click Me!">
-</form>
-
-<input id="dd" name="day" type="text" value="0" />
-<input id="mm" name="month" type="text" value="0" />
-<input id="yy" name="year" type="text" value="0" />
-<input id="hh" name="hour" type="text" value="0" />
-<input id="m" name="minute" type="text" value="0" />
-<input id="ss" name="second" type="text" value="0" />
-<input id="ll" name="longitude" type="text" value="0" />
-
+    <hr>
+    <div id="js_clock" style="text-align: center;"></div>
+    <hr>
 </article>
 
-<footer>Copyright &copy; W3Schools.com</footer>
-</div>
-</div>
+<footer>
 
-<script>
-function myFunction() {
-    var x = document.getElementById("frm1");
-    var text = "";
-    var i;
-    for (i = 0; i < x.length ;i++) {
-        text += x.elements[i].value + "<br>";
+    <script>
+
+function getLST() {
+    var olong = document.getElementById("long").value;
+    hemi  = document.getElementById('hemi').value;
+    if (olong > 180) {alert("Enter a longitude value between 0 and 180. Then Click Button"); reset()}
+    olong = Math.abs(olong);
+    if (hemi == "W") lsign = -1;
+    if (hemi == "E") lsign = 1;
+    long = lsign*olong;
+
+    var tDate = new Date();
+    var utSeconds    = tDate.getUTCSeconds();
+    var utMinutes    = tDate.getUTCMinutes();
+    var utHours      = tDate.getUTCHours();
+    var utDay        = tDate.getUTCDate();
+    var utMonth      = tDate.getUTCMonth() + 1;
+    var utYear       = tDate.getUTCFullYear();
+    var UT        = utHours + utMinutes/60 + utSeconds/3600;
+    var LMST      = LM_Sidereal_Time(JulDay (utDay, utMonth, utYear, UT),long);
+
+    var h = Math.floor(LMST);
+    var min = Math.floor(60.0*frac(LMST));
+    var secs = Math.round(60.0*(60.0*frac(LMST)-min));
+
+    if (secs == 60) {
+    secs = 0;
+    min = min + 1;
     }
-    document.getElementById("demo").innerHTML = text;
-}
-function getOption() {
-    //get day
-    var day = document.getElementById("day").value;
-    var month = document.getElementById("month");
-    var year = document.getElementById("year").value;
-    var hour = document.getElementById("hour").value;
-    var min = document.getElementById("min").value;
-    var sec = document.getElementById("sec").value;
-    var long = document.getElementById("long").value;
+        
+    ch = h.toString();
+    if ( h < 10 ) var ch = "0" + h.toString(); 
+    cmin = min.toString()
+    if ( min < 10 ) var cmin = "0" + min.toString(); 
+    csecs = secs.toString();
+    if ( secs < 10 ) var csecs = "0" + secs.toString(); 
+
 
 
     //print answer
 
-    document.getElementById('dd').value = day;
-    document.getElementById("mm").innerHTML = 
-    month.options[month.selectedIndex].text;
-    document.getElementById('yy').value = year;
-    document.getElementById('hh').value = hour;
-    document.getElementById('m').value = min;
-    document.getElementById('ss').value = sec;
-    document.getElementById('ll').value = long;
+    document.getElementById('hh').value = ch;
+    document.getElementById('m').value = cmin;
+    document.getElementById('ss').value = csecs;
+
+    var clock_div = document.getElementById('js_clock');
+    clock_div.innerHTML = "<font face=Courier color=#000000 size=9>" +ch + ":"  + cmin  + ":" +csecs+ "</font><em><font face=Courier color=#000000><hr> for Longitude: " +long+"</em></font>";
+    setTimeout("getLST()",996);
 
 }
 
+function LM_Sidereal_Time (jd, longitude) {
+        var GMST = GM_Sidereal_Time(jd);		
+        var LMST =  24.0*frac((GMST + longitude/15.0)/24.0);
+        return LMST;
+   }
+
+function GM_Sidereal_Time (jd) {	
+    var t_eph, ut, MJD0, MJD;		
+    MJD = jd - 2400000.5;		
+    MJD0 = Math.floor(MJD);
+    ut = (MJD - MJD0)*24.0;		
+    t_eph  = (MJD0-51544.5)/36525.0;			
+    return  6.697374558 + 1.0027379093*ut + (8640184.812866 + (0.093104 - 0.0000062*t_eph)*t_eph)*t_eph/3600.0;		
+   }
+
+function JulDay (date, month, year, UT) {
+    if (year<1900) year=year+1900
+    if (month<=2) { month=month+12; year=year-1 }
+    A = Math.floor(year/100);
+    B = -13;
+    JD =  Math.floor(365.25*(year+4716)) + Math.floor(30.6001*(month+1)) + date + B -1524.5 + UT/24.0;
+    return JD
+   }
+
+function frac(X) {
+    X = X - Math.floor(X);
+    if (X<0) X = X + 1.0;
+    return X;		
+   }
+    calculate();
+
 </script>
 
+</footer>
+</div>
+</div>
 </body>
