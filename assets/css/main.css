@@ -8045,7 +8045,7 @@
 			}
 
 				#wrapper > .invert a:hover {
-					color: #002855;
+					color: #ffd700;
 				}
 
 			#wrapper > .invert strong, #wrapper > .invert b {
@@ -8088,8 +8088,8 @@
 				#wrapper > .invert input[type="button"]:hover,
 				#wrapper > .invert button:hover,
 				#wrapper > .invert .button:hover {
-					box-shadow: inset 0 0 0 1px #002855;
-					color: #002855 !important;
+					box-shadow: inset 0 0 0 1px #ffd200;
+					color: #ffd200 !important;
 				}
 
 				#wrapper > .invert input[type="submit"]:active,
