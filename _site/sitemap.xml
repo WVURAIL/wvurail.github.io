@@ -29,6 +29,9 @@
 <loc>http://localhost:4000/dspira-2017/</loc>
 </url>
 <url>
+<loc>http://localhost:4000/dspira-2018/</loc>
+</url>
+<url>
 <loc>http://localhost:4000/contact/</loc>
 </url>
 <url>
@@ -42,5 +45,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/pdf/RET_Flyerv2.1.pdf</loc>
+<lastmod>2018-01-10T13:50:50-05:00</lastmod>
 </url>
 </urlset>
