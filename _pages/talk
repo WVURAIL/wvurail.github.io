@@ -1,0 +1,96 @@
+--- 
+tite: Digital Signal Processing in Radio Astronomy 
+layout: default 
+permalink: /dspira-2019/
+---
+
+<div style="float: left; width: 33.33%;">   
+         <img src="/images/Picture1.png" alt="" />
+</div>
+<div style="float: left; width: 33.33%;">   
+        <img src="/images/Picture2.png" alt="" />
+</div>
+<div style="float: left; width: 33.33%;">   
+        <img src="/images/Picture3.png" alt="" />
+</div>
+
+
+<h1>Calling High School Teachers to Participate</h1>
+
+<h2>Research Experience for Teachers (RET) - "Digital Signal Processing in Radio Astronomy”</h2>
+<h3>Summer Program weeks: June 24 – August 3, 2019</h3>
+
+<p>The Department of Computer Science and Electrical Engineering at WVU, the WVU Center for Gravitational Waves and Cosmology and the Green Bank Observatory in Green Bank cordially invite you to join our newly developed Research Experience for Teachers program.  
+The program—Digital Signal Processing in Radio Astronomy—will provide high school teachers with hands-on experience using high-quality, open source software development tools, in both research engineering and educational settings. </p>
+
+<h4>RET Summary</h4>
+
+<p> a six-week summer program, and academic year follow-up, the teachers will 
+
+        <ul>
+
+    <li> be exposed to the basics of audio, video and radio signals and the operations that computers perform on them </li>
+    <li> use existing and develop new tools that allow to visualize and interpret the computer operations on radio signals </li>
+    <li> apply the developed tools to radio signals in radio astronomy </li>
+    <li> using these tools to conduct research at Green Bank, home to the world’s largest fully steerable radio telescope, is a special feature of this RET program   </li>
+    <li> practice newly gained skills on high school students who will be residents at Green Bank at the same time. </li>
+        </ul>
+
+
+Teachers will work in small groups to complete a research project developing a spectrometer and small radio telescope.  These groups will then break out to advance parts of the system.  
+Participants will continue with interested students when they return to their classrooms in the fall. Teachers will also collaborate with project staff to develop digital signal processing classroom projects that involve an entire classroom of students in DSP activities.
+RET Project Information 
+ 
+Up to 10 teacher applicants will be selected to participate.
+
+<ul>
+<li> may be science/math teachers teaching grades 9-12. </li>
+<li> Multiple teachers from the same school are encouraged to apply. </li>   
+<li> Repeat applications are encouraged.</li>
+</ul>
+</p>
+
+<h4>Application </h4>
+
+<p>
+Astronomy knowledge is not a prerequisite for participation.  But a desire to involve yourself in research is.  
+Go here to complete an online application:
+</p>
+
+<ul class="actions">
+        <li><a href="http://goo.gl/msz9A1" class="button special big">Online Application</a></li>
+    </ul>
+
+</br>
+
+
+<h4>RET Project Descriptions</h4>
+
+<p>
+Each project is designed to immerse the participants in a true research experience which can be brought back to the classroom.  
+
+For the first project, teachers will develop a neutral hydrogen spectrometer for radio telescopes. This will then be used on the telescopes at Green Bank to observe hydrogen from the Milky Way. Participants will then devise the rotation properties and inferred mass of the Milky Way and compare that to the known mass of gas and stars, in order to illustrate the presence of a “dark matter” component that dominates the dynamics of galaxies.
+See <a href=http://wvurail.org/dspira/>DSPIRA Webpage</a>, <a href=http://wvurail.org/dspira-2017/>DSPIRA 2017</a> and <a href="http://wvurail.org/dspira-2018/">DSPIRA 2018</a>for more details from the previous programs.  
+
+        
+<h5>Teacher Responsibilities and Benefits </h4>
+<ul>
+<li> This is a hands-on program where teachers must be committed to being onsite, both at WVU in Morgantown and in Green Bank, WV for a total of 6 weeks. Accommodation is available on-site in Green Bank.  This is a significant time commitment. </li>
+<li> Teachers will receive a total of $10,000, which will cover their living costs and equipment over the six-week period. </li>
+</ul>
+
+</p>
+
+<h4>Questions, Information and Contact </h4>
+
+<p>
+<ul>
+<li> Kevin Bandura (WVU)  kevin.bandura@mail.wvu.edu </li> 
+<li> Sue Ann Heatherly (at Green Bank Observatory) sheather@nrao.edu </li> 
+</ul>
+</p>
+<!---
+<ul class="actions">
+        <li><a href="/pdf/RET_Flyerv2.1.pdf" class="button special big">Download Flyer</a></li>
+ </ul> 
+ -->
