@@ -3,7 +3,7 @@ layout: default
 permalink: /frb/
 ---
 
-# Radio Transients
+# Fast Radio Bursts
 
 *   [A second source of repeating fast radio bursts](http://adsabs.harvard.edu/abs/2019arXiv190104525T)
 *   [Observations of fast radio bursts at frequencies down to 400 megahertz](http://adsabs.harvard.edu/abs/2019arXiv190104524C)
