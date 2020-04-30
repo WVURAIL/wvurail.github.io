@@ -8,9 +8,9 @@ permalink: /frb/
 <meta charset="UTF-8">
 <title>ADS query importer widget</title>
 
-<link rel="stylesheet" href="ads_query_importer_widget.css" type="text/css" />
+<link rel="stylesheet" href="/ads-widget/ads_query_importer_widget.css" type="text/css" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-<script type="text/javascript">
+<script type="text/javascript" src="/ads-widget/ads_query_importer_widget">
 //mandatory parameters 
 var ads_query_url = 'https://ui.adsabs.harvard.edu/search/q=author%3A(%22Kevin%20Bandura%22)%20full%3A%22FRB%22%20full%3A%22Fast%20Radio%20Burst%22%20full%3A%22Fast%20Radio%20Bursts%22&sort=date%20desc%2C%20bibcode%20desc&p_=0';
 //List of optional parameters for the query 
