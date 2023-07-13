@@ -65,6 +65,10 @@ Enter Latitude:<input type="text" id="lat" value="0.0">
 </select>
 
 
+Enter Azimuth:<input type="text" id="az" value="0.0">
+Enter Altitude:<input type="text" id="el" value="0.0">
+    
+
 <br>
 <input type="button" onclick="getLST()" value="Click Me to get the LST!">
 
@@ -82,6 +86,9 @@ Sec<input id="ss" name="second" type="text" value="0" />
     <div id="js_clock" style="text-align: center;"></div>
     <hr>
 </article>
+
+<table id="coords"></table>
+
 
 <footer>
 
@@ -103,7 +110,10 @@ function getLST() {
     if (latel == "S") lsign = -1;
     if (latel == "N") lsign = 1;
     lat = lsign*olat;
+    var az = document.getElementById("az").value;
+    var el = document.getElementById("el").value;
 
+    
     var tDate = new Date();
     var utSeconds    = tDate.getUTCSeconds();
     var utMinutes    = tDate.getUTCMinutes();
@@ -114,6 +124,41 @@ function getLST() {
     var UT        = utHours + utMinutes/60 + utSeconds/3600;
     var LMST      = LM_Sidereal_Time(JulDay (utDay, utMonth, utYear, UT),long);
 
+
+    az = az * Math.PI / 180
+    el = el * Math.PI / 180
+    
+    dec = Math.asin(sin(el)*Math.sin(olat) + Math.cos(el)*Math.cos(olat)*Math.cos(az))
+    H = Math.asin(-Math.sin(az)*Math.cos(el) / Math.cos(dec)) 
+    RA = LMST – H*24/360
+
+    var rah = Math.floor(RA);
+    var ramin = Math.floor(60.0*frac(RA));
+    var rasecs = Math.round(60.0*(60.0*frac(RA)-ramin));
+
+    crah = rah.toString();
+    cramin = ramin.toString()
+    crasecs = rasecs.toString();
+
+
+    var fragment = document.createDocumentFragment(),
+    table = document.getElementById("coords");
+
+    var tr = document.createElement("tr");
+    var td = newNode(document.createElement("td"), "<font face=Courier color=#000000 size=9>" +ch + ":"  + cmin  + ":" +csecs+ ", "cell");
+    tr.appendChild(td);
+    fragment.appendChild(tr);
+    var td = newNode(document.createElement("td"), dec, "cell");
+    tr.appendChild(td);
+    fragment.appendChild(tr);
+
+    
+    clock_div.innerHTML = "<font face=Courier color=#000000 size=9>" +crah + ":"  + caramin  + ":" +crasecs+ "</font><em><font face=Courier color=#000000><hr> for Longitude: " +long+" for Latitude: " +lat+"</em></font>";
+
+
+
+
+    
     var h = Math.floor(LMST);
     var min = Math.floor(60.0*frac(LMST));
     var secs = Math.round(60.0*(60.0*frac(LMST)-min));
