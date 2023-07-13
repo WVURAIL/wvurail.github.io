@@ -59,7 +59,7 @@ Enter Longitude:<input type="text" id="long" value="0.0">
 </select>
 
 Enter Latitude:<input type="text" id="lat" value="0.0">
-<select id="hemi" name="hemi">
+<select id="lat" name="lat">
     <option value="N">N</option>
     <option value="S">S</option>
 </select>
@@ -95,6 +95,14 @@ function getLST() {
     if (hemi == "W") lsign = -1;
     if (hemi == "E") lsign = 1;
     long = lsign*olong;
+
+    var olat = document.getElementById("lat").value;
+    latel  = document.getElementById('lat').value;
+    if (olat > 90) {alert("Enter a longitude value between 0 and 90. Then Click Button"); reset()}
+    olat = Math.abs(olat);
+    if (latel == "S") lsign = -1;
+    if (latel == "N") lsign = 1;
+    lat = lsign*olat;
 
     var tDate = new Date();
     var utSeconds    = tDate.getUTCSeconds();
