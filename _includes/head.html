@@ -2,8 +2,6 @@
 		<title>WVU RAIL</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-       		<meta name="description" content="">
-		<meta name="author" content="Pranav Sanghavi">
 		<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 		<!--Navbar style-->
@@ -29,7 +27,7 @@
 			width: 25%;
   			padding: 14px 16px;
   			text-decoration: none;
-  			font-size: 17px;
+  			font-size: 16px;
 			z-index: 10;
 			}
 
@@ -40,60 +38,33 @@
 			 
 			ul.nav a:hover { color: #111 !important; }
 
-			/* Three columns side by side */
+
+			/* Vertical spacing between cards */
 			.column {
-			float: center;
-			width: 100%;
-			margin-bottom: 10px;
-			padding: 10px auto;
+			margin-bottom: 16px;
 			}
 			
+			/* card width */
 			.container{
-      			max-width:1000px;
-      			margin:10px 10px;/*make it centered*/
+      			max-width:1024px;
       			}			
-
 			
-			/* Display the columns below each other instead of side by side on small screens */
-		
-			@media (max-width: auto) {
-			    .column {
-			    width: 100px;
-			    display: block;
-			    margin: 100px 100px
-			    }
-			}
-		       
-
-			/* Add some shadows to create a card effect */
+			/* Add shadow effect to cards */
 			.card {
 			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 			}
             
-			/* Some left and right padding inside the container */
+			/* Center cards */
 			.container {
-			padding: 0px 0px;
 			margin: 0px auto;
-			display: block;
-			width: 100%;
 			}
             
-			/* Clear floats */
+			/* Clear floats */			
 			.container::after, .row::after {
 			content: "";
 			clear: both;
 			display: table;
 			}
-            
-			.main {
-  			padding: 16px;
-  			margin-bottom: 30px;
-  			height: 1500px; /* Used in this example to enable scrolling */
-			}
-			@media (max-width: 600px ) {
-			    #bg { padding: 10px; }
-  			    #navbar-bg { background-position: center -10px; }
-			}
-
+		       
 		</style>
 </head>
