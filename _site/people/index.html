@@ -4,9 +4,9 @@
 		<title>WVU RAIL</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-       	<meta name="description" content="">
-        <meta name="author" content="Pranav Sanghavi">
-		<link rel="stylesheet" href="/assets/css/main.css?v=" />
+       		<meta name="description" content="">
+		<meta name="author" content="Pranav Sanghavi">
+		<link rel="stylesheet" href="/assets/css/main.css" />
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 		<!--Navbar style-->
 		<style>
@@ -16,14 +16,13 @@
   			overflow: hidden;
   			background-color: #f5f5f5;
   			position: fixed;
-  			bottom: 0;
+  			bottom: 0px;
   			width: 100%;
 			opacity: 0.85;
-    		filter: alpha(opacity=50); /* For IE8 and earlier */
+    			filter: alpha(opacity=50); /* For IE8 and earlier */
 			z-index: 10;
 			}
 			
-
 			.navbar a {
   			float: left;
   			display: block;
@@ -34,56 +33,59 @@
   			text-decoration: none;
   			font-size: 17px;
 			z-index: 10;
-
 			}
 
 			.navbar a:hover{
 			background-color: #d2d2d2;
 			z-index: 10;
-
 			}
 			 
-
 			ul.nav a:hover { color: #111 !important; }
 
 			/* Three columns side by side */
-            .column {
-                float: left;
-                width: 50%;
-                margin-bottom: 16px;
-                padding: 0 8px;
-            }
-
+			.column {
+			float: center;
+			width: 100%;
+			margin-bottom: 10px;
+			padding: 10px auto;
+			}
+			
 			.container{
-      		    max-width:850px;
-      		    margin:0 auto;/*make it centered*/
-      		}
+      			max-width:1000px;
+      			margin:10px 10px;/*make it centered*/
+      			}			
 
-            /* Display the columns below each other instead of side by side on small screens */
-            @media (max-width: 650px) {
-                .column {
-                    width: 100%;
-                    display: block;
-                }
-            }
+			
+			/* Display the columns below each other instead of side by side on small screens */
+		
+			@media (max-width: auto) {
+			    .column {
+			    width: 100px;
+			    display: block;
+			    margin: 100px 100px
+			    }
+			}
+		       
 
 			/* Add some shadows to create a card effect */
-            .card {
-                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            }
+			.card {
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+			}
             
-            /* Some left and right padding inside the container */
-            .container {
-                padding: 0 16px;
-            }
+			/* Some left and right padding inside the container */
+			.container {
+			padding: 0px 0px;
+			margin: 0px auto;
+			display: block;
+			width: 100%;
+			}
             
-            /* Clear floats */
-            .container::after, .row::after {
-                content: "";
-                clear: both;
-                display: table;
-            }
-
+			/* Clear floats */
+			.container::after, .row::after {
+			content: "";
+			clear: both;
+			display: table;
+			}
             
 			.main {
   			padding: 16px;
@@ -91,12 +93,13 @@
   			height: 1500px; /* Used in this example to enable scrolling */
 			}
 			@media (max-width: 600px ) {
-				  #bg { padding: 10px; }
-  				  #navbar-bg { background-position: center -10px; }
+			    #bg { padding: 10px; }
+  			    #navbar-bg { background-position: center -10px; }
 			}
 
 		</style>
 </head>
+
 	
 	<body>
 		<div class="navbar">
@@ -118,75 +121,178 @@
 <!-- People css styles in head.html-->
 <section class="wrapper style1 align-center" id="people">
     <div class="inner">
-            <header>
-    			<h2>Faculty</h2>
-    			<p>~~~</p>
-            </header>
+        <header>
+            <h2>Faculty</h2>
+            <p>~~~</p>
+        </header>
     </div>
 
-    	<!-- Dr. K -->
-    	<section class="spotlight style1 orient-right content-align-left image-position-center">
-		<div class="content">
-			<h2>Dr. Kevin Bandura</h2>
-			<p class="major">Assistant Professor in the Department of Computer Science and Electrical Engineering</br>
-            Adjunct Assistant Professor in the Department of Physics and Astronomy</p>
+    <!-- Dr. K -->
+    <section class="spotlight style1 orient-right content-align-left image-position-center">
+        <div class="content">
+            <h2>Dr. Kevin Bandura</h2>
+            <p class="major">Associate Professor in the Department of Computer Science and Electrical Engineering</br>
+                Adjunct Assistant Professor in the Department of Physics and Astronomy</p>
             <p>
                 Website:</br><i> <a href="http://community.wvu.edu/%7Ekmbandura/"> Click here </a></i></p>
-                <p> 
-                Email:     </br> <i>kevin [dot] bandura [at] mail [dot] wvu [dot] edu</i></br>
-                Address:  </br> <i> LCSEE</br>
-                            109 Research Way</br>
-                            AERB 237</br>
-                            West Virginia University</br>
-                            Morgantown WV, 26506</br></i>
+            <p>
+                Email: </br> <i>kevin [dot] bandura [at] mail [dot] wvu [dot] edu</i></br>
+                Address: </br> <i> LCSEE</br>
+                    109 Research Way</br>
+                    AERB 237</br>
+                    West Virginia University</br>
+                    Morgantown WV, 26506</br></i>
             </p>
-		</div>
-		<div class="image">
-			<img src="/images/people/kbandura.jpg" alt="" />
-		</div>
-        </section>
-    	
+        </div>
+        <div class="image">
+            <img src="/images/people/kbandura.jpg" alt="Kevin Bandura" style="width:100%" />
+        </div>
+    </section>
+
 </section>
 <section class="wrapper style1 align-center" id="People">
     <div class="inner">
-            <header>
-    			<h2>Graduate Students</h2>
-    			<p>~~~</p>
-            </header>
+        <header>
+            <h2>Graduate Students</h2>
+            <p>~~~</p>
+        </header>
     </div>
 </section>
 <div class="container">
     <div class="inner">
-        <!-- Brittany -->
+        <!-- Kalyani Bhopi -->
         <div class="column">
-        <div class="card">
-          <img src="/images/spotlight05.jpg" alt="Brittany" style="width:100%">
-            <div class="container">
-                <h2>Brittany Johnstone</h2>
-                <p class="title">Graduate Research Assistant (Graduated)</p>
-                <p>LNA Design, Fabrication and Assembly</p>
-              <!--  <p><button class="button">Contact</button></p> -->
+            <div class="card">
+                <img src="/images/people/kalyani.jpg" alt="Kalyani Bhopi" style="width:25%;float:left">
+                <div class="container">
+                    <h2>Kalyani Bhopi</h2>
+                    <p class="title">Ph.D. Research Assistant</p>
+                    <p>Radio astronomy instrumentation, fast radio bursts, 21-cm cosmology, noise calibration, & beam characterization.</p>
+                </div>
             </div>
-            </div>
-        </div>
         </div>
 
-        <!-- Pranav -->
+        <!-- Dylan Gormley -->
         <div class="column">
-        <div class="card">
-          <img src="/images/spotlight05.jpg" alt="Pranav" style="width:100%">
-            <div class="container">
-                <h2>Pranav Sanghavi</h2>
-                <p class="title">Graduate Research Assistant</p>
-                <p>Radio Transients, RET-DSPIRA</p>
-                <p>prs0010 [at] mix [dot] wvu [dot] edu</p>
-                <p><a href="http://pranavsanghavi.github.io/" class="button">Website</a></p>
-            </div>
+            <div class="card">
+                <img src="/images/people/dylan.jpg" alt="Dylan Gormley" style="width:25%;float:left">
+                <div class="container">
+                    <h2>Dylan Gormley</h2>
+                    <p class="title">Ph.D. Research Assistant</p>
+                    <p>Radio astronomy instrumentation, fast radio bursts, 21-cm cosmology, cyclostationary signal processing, & RFI mitigation.</p>
+                </div>
             </div>
         </div>
+
+	<!-- Kholoud Khairy -->
+        <div class="column">
+            <div class="card">
+                <img src="/images/people/kholoud.jpg" alt="Kholoud Khairy"  style="width:25%;float:left">
+                <div class="container">
+                    <h2>Kholoud Khairy</h2>
+		    <p class="title"> M.S. Research Assistant </p>
+                    <p>Radio astronomy instrumentation, LNA Design, CHIME/FRB Outrigger Analog</p>
+                </div>
+            </div>
         </div>
-    
+
     </div>
+
+</div>
+
+<section class="wrapper style1 align-center" id="People">
+    <div class="inner">
+        <header>
+            <h2>Undergraduate Students</h2>
+            <p>~~~</p>
+        </header>
+    </div>
+</section>
+<div class="container">
+    <div class="inner">
+        <!-- Will -->
+        <div class="column">
+            <div class="card">
+                <div class="container">
+                    <h2>Will Brion</h2>
+                    <p>CHIME/FRB Outrigger</p>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ifenna -->
+        <div class="column">
+            <div class="card">
+                <div class="container">
+                    <h2>Ifenna Ekwenem</h2>
+                    <p>CHIME/FRB Outrigger</p>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Hans -->
+        <div class="column">
+            <div class="card">
+                <div class="container">
+                    <h2>Hans Ingvoldstad</h2>
+                    <p>CHIME/FRB Outrigger</p>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Malcom -->
+        <div class="column">
+            <div class="card">
+                <div class="container">
+                    <h2>Malcom Milligan</h2>
+                    <p>CHIME Outrigger, LNA Testing</p>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+        
+<section class="wrapper style1 align-center" id="People">
+    <div class="inner">
+        <header>
+            <h2>Alumni</h2>
+            <p>~~~</p>
+        </header>
+    </div>
+</section>
+
+<div class="container">
+    <div class="inner">
+        <!-- Pranav Sanghavi -->
+        <div class="column">
+            <div class="card">
+                <div class="container">
+                    <h2>Pranav Sanghavi</h2>
+                    Dissertation:<i> <a href="https://www.doi.org/10.33915/etd.11352"> "Pathfinding Fast Radio Bursts Localizations using Very Long Baseline Interferometry"</a></i></p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Joseph Kania -->
+        <div class="column">
+            <div class="card">
+                <div class="container">
+                    <h2>Joseph Kania</h2>
+                    Dissertation:<i> <a href="https://researchrepository.wvu.edu/"> "Applications of Digital Filters in Radio Astronomy"</a></i></p>
+                </div>
+            </div>
+        </div>
+
+</div>
 </div>
 
 					
@@ -198,7 +304,8 @@
 	<div class="inner" style="float: left; width: 67%;">
 		<h4>Get Involved</h4>
 		<p class="major">If you are a student (graduate or undergraduate) interested in doing some awesome science and ache to get your hands dirty. Shoot an email to <strong> kmbandura [at] mail [dot] wvu [dot] edu </strong></p>
-		</div>
+		<p class="major">Our Lab is located at the Advanced Engineering Research Building (AERB) in Room 304 on the WVU Evansdale Campus</p>
+	</div>
 		<div class="inner" style="float: right; width: 33%;">
 		<ul class="icons">
 			<li><a href="https://github.com/WVURAIL" class="icon style2 fa-github"><span class="label">GitHub</span></a></li>					

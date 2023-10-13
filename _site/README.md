@@ -2,7 +2,6 @@
 
 This is the webpage for the WVU Astronomy Instrumemtation Lab
 
-
 ### Adding New Projects
 
 Edit projects.html in ``_includes`` directory. Follow the style as previous entry except flip alignment

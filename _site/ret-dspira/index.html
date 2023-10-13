@@ -4,9 +4,9 @@
 		<title>WVU RAIL</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-       	<meta name="description" content="">
-        <meta name="author" content="Pranav Sanghavi">
-		<link rel="stylesheet" href="/assets/css/main.css?v=" />
+       		<meta name="description" content="">
+		<meta name="author" content="Pranav Sanghavi">
+		<link rel="stylesheet" href="/assets/css/main.css" />
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 		<!--Navbar style-->
 		<style>
@@ -16,14 +16,13 @@
   			overflow: hidden;
   			background-color: #f5f5f5;
   			position: fixed;
-  			bottom: 0;
+  			bottom: 0px;
   			width: 100%;
 			opacity: 0.85;
-    		filter: alpha(opacity=50); /* For IE8 and earlier */
+    			filter: alpha(opacity=50); /* For IE8 and earlier */
 			z-index: 10;
 			}
 			
-
 			.navbar a {
   			float: left;
   			display: block;
@@ -34,56 +33,59 @@
   			text-decoration: none;
   			font-size: 17px;
 			z-index: 10;
-
 			}
 
 			.navbar a:hover{
 			background-color: #d2d2d2;
 			z-index: 10;
-
 			}
 			 
-
 			ul.nav a:hover { color: #111 !important; }
 
 			/* Three columns side by side */
-            .column {
-                float: left;
-                width: 50%;
-                margin-bottom: 16px;
-                padding: 0 8px;
-            }
-
+			.column {
+			float: center;
+			width: 100%;
+			margin-bottom: 10px;
+			padding: 10px auto;
+			}
+			
 			.container{
-      		    max-width:850px;
-      		    margin:0 auto;/*make it centered*/
-      		}
+      			max-width:1000px;
+      			margin:10px 10px;/*make it centered*/
+      			}			
 
-            /* Display the columns below each other instead of side by side on small screens */
-            @media (max-width: 650px) {
-                .column {
-                    width: 100%;
-                    display: block;
-                }
-            }
+			
+			/* Display the columns below each other instead of side by side on small screens */
+		
+			@media (max-width: auto) {
+			    .column {
+			    width: 100px;
+			    display: block;
+			    margin: 100px 100px
+			    }
+			}
+		       
 
 			/* Add some shadows to create a card effect */
-            .card {
-                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            }
+			.card {
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+			}
             
-            /* Some left and right padding inside the container */
-            .container {
-                padding: 0 16px;
-            }
+			/* Some left and right padding inside the container */
+			.container {
+			padding: 0px 0px;
+			margin: 0px auto;
+			display: block;
+			width: 100%;
+			}
             
-            /* Clear floats */
-            .container::after, .row::after {
-                content: "";
-                clear: both;
-                display: table;
-            }
-
+			/* Clear floats */
+			.container::after, .row::after {
+			content: "";
+			clear: both;
+			display: table;
+			}
             
 			.main {
   			padding: 16px;
@@ -91,12 +93,13 @@
   			height: 1500px; /* Used in this example to enable scrolling */
 			}
 			@media (max-width: 600px ) {
-				  #bg { padding: 10px; }
-  				  #navbar-bg { background-position: center -10px; }
+			    #bg { padding: 10px; }
+  			    #navbar-bg { background-position: center -10px; }
 			}
 
 		</style>
 </head>
+
 	
 	<body>
 		<div class="navbar">
@@ -143,11 +146,15 @@
 <div class="content">
 
     <ul class="actions">
-        <li><a href="http://wvurail.org/dspira-2018/" class="button special big">RET - DSPiRA: Summer 2018</a></li>
-        <li><a href="http://wvurail.org/dspira-2017/" class="button">RET - DSPiRA: Summer 2017</a></li>
+        <li><a href="http://wvurail.org/cra/" class="button special big">Classroom Radio Astronomy</a></li> 
         <li><a href="http://wvurail.org/dspira/" class="button special">DSPiRA Webpage</a></li>
+        <li><a href="http://wvurail.org/dspira-2019/" class="button">RET - DSPiRA: Summer 2019</a></li>
+        <li><a href="http://wvurail.org/dspira-2018/" class="button">RET - DSPiRA: Summer 2018</a></li>
+        <li><a href="http://wvurail.org/dspira-2017/" class="button">RET - DSPiRA: Summer 2017</a></li>
+       
     </ul>
 </div>
+
 					
 						</div>						
 				</section>
@@ -157,7 +164,8 @@
 	<div class="inner" style="float: left; width: 67%;">
 		<h4>Get Involved</h4>
 		<p class="major">If you are a student (graduate or undergraduate) interested in doing some awesome science and ache to get your hands dirty. Shoot an email to <strong> kmbandura [at] mail [dot] wvu [dot] edu </strong></p>
-		</div>
+		<p class="major">Our Lab is located at the Advanced Engineering Research Building (AERB) in Room 304 on the WVU Evansdale Campus</p>
+	</div>
 		<div class="inner" style="float: right; width: 33%;">
 		<ul class="icons">
 			<li><a href="https://github.com/WVURAIL" class="icon style2 fa-github"><span class="label">GitHub</span></a></li>					

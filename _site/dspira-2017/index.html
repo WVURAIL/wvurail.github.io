@@ -4,9 +4,9 @@
 		<title>WVU RAIL</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-       	<meta name="description" content="">
-        <meta name="author" content="Pranav Sanghavi">
-		<link rel="stylesheet" href="/assets/css/main.css?v=" />
+       		<meta name="description" content="">
+		<meta name="author" content="Pranav Sanghavi">
+		<link rel="stylesheet" href="/assets/css/main.css" />
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 		<!--Navbar style-->
 		<style>
@@ -16,14 +16,13 @@
   			overflow: hidden;
   			background-color: #f5f5f5;
   			position: fixed;
-  			bottom: 0;
+  			bottom: 0px;
   			width: 100%;
 			opacity: 0.85;
-    		filter: alpha(opacity=50); /* For IE8 and earlier */
+    			filter: alpha(opacity=50); /* For IE8 and earlier */
 			z-index: 10;
 			}
 			
-
 			.navbar a {
   			float: left;
   			display: block;
@@ -34,56 +33,59 @@
   			text-decoration: none;
   			font-size: 17px;
 			z-index: 10;
-
 			}
 
 			.navbar a:hover{
 			background-color: #d2d2d2;
 			z-index: 10;
-
 			}
 			 
-
 			ul.nav a:hover { color: #111 !important; }
 
 			/* Three columns side by side */
-            .column {
-                float: left;
-                width: 50%;
-                margin-bottom: 16px;
-                padding: 0 8px;
-            }
-
+			.column {
+			float: center;
+			width: 100%;
+			margin-bottom: 10px;
+			padding: 10px auto;
+			}
+			
 			.container{
-      		    max-width:850px;
-      		    margin:0 auto;/*make it centered*/
-      		}
+      			max-width:1000px;
+      			margin:10px 10px;/*make it centered*/
+      			}			
 
-            /* Display the columns below each other instead of side by side on small screens */
-            @media (max-width: 650px) {
-                .column {
-                    width: 100%;
-                    display: block;
-                }
-            }
+			
+			/* Display the columns below each other instead of side by side on small screens */
+		
+			@media (max-width: auto) {
+			    .column {
+			    width: 100px;
+			    display: block;
+			    margin: 100px 100px
+			    }
+			}
+		       
 
 			/* Add some shadows to create a card effect */
-            .card {
-                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            }
+			.card {
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+			}
             
-            /* Some left and right padding inside the container */
-            .container {
-                padding: 0 16px;
-            }
+			/* Some left and right padding inside the container */
+			.container {
+			padding: 0px 0px;
+			margin: 0px auto;
+			display: block;
+			width: 100%;
+			}
             
-            /* Clear floats */
-            .container::after, .row::after {
-                content: "";
-                clear: both;
-                display: table;
-            }
-
+			/* Clear floats */
+			.container::after, .row::after {
+			content: "";
+			clear: both;
+			display: table;
+			}
             
 			.main {
   			padding: 16px;
@@ -91,12 +93,13 @@
   			height: 1500px; /* Used in this example to enable scrolling */
 			}
 			@media (max-width: 600px ) {
-				  #bg { padding: 10px; }
-  				  #navbar-bg { background-position: center -10px; }
+			    #bg { padding: 10px; }
+  			    #navbar-bg { background-position: center -10px; }
 			}
 
 		</style>
 </head>
+
 
 <body>
     <div class="navbar">
@@ -178,8 +181,7 @@
             <h4>At WVU</h4>
             <p>
             <span class="image left"><img src="/images/dspira/wvurf.jpg" alt="" /><em>Testing the LNAs in the RF testing room at WVU</em></span>
-                To ensure proper functioning of the telscopes several tests were performed at WVU. The performance of the LNAs were tested in our lab at WVU. The noise figure was testing inside the faraday cage in the RF lab. A trial run observing run using one the horn antenna was conducted on the roof of the Engineering Sciences building at WVU. 
-                <br>
+		To ensure proper functioning of the telescopes several tests were performed at WVU. The performance of the LNAs was tested in our lab at WVU. The noise figure was testing inside the Faraday cage in the RF lab. A trial run observing run using one the horn antenna was conducted on the roof of the Engineering Sciences building at WVU.                 <br>
                 <br>
             <span class="image fit"><img src="/images/dspira/wvu.jpg" alt="" /><em>Initial Observing with the horn on the roof of the Engineering Sciences Building at WVU</em>
                 </span>
@@ -189,17 +191,15 @@
                 <span class="image right"><img src="/images/dspira/nightobs.jpg" alt="" />
                 <img src="/images/dspira/mornobs.jpg" alt="" /><em>Mapping the Galaxy. <a href="http://greenbankobservatory.org/telescopes/reber-telelescope/">Reber Telescope</a> in the background</em></span>
                 <span class="image left"><img src="/images/dspira/40foot.jpg" alt="" /><em>The 40foot Dish</em><img src="/images/dspira/timelapse.gif" alt="" /><em>Getting measurements to determine the system temperature of the horn</em></span>
-
-                The next two weeks of the the program were spent at the Green Bank Observatory. The teachers went through a full suite of outreach activities planned by the the Green Bank Observatory. This included training on using the 40 Foot outreach telescope. They even tapped into the signal from the 40 foot. The signal from the 40 foot was routed through the SDR dongle and the GNU Radio spectrometer they designed at WVU. The teacher even had the opportunity to use the intermediate frequency signal from the Green Bank Telescope and use the spectrometer comparing the data to that from the VEGAS back end. 
+		    The next two weeks of the program were spent at the Green Bank Observatory. The teachers went through a full suite of outreach activities planned by the the Green Bank Observatory. This included training on using the 40 Foot outreach telescope. They even tapped into the signal from the 40 foot. The signal from the 40 foot was routed through the SDR dongle and the GNU Radio spectrometer they designed at WVU. The teacher even had the opportunity to use the intermediate frequency signal from the Green Bank Telescope and use the spectrometer comparing the data to that from the VEGAS back end. 
                 <br>
                 <br>
-                Primarily, time was spent planning and executing observations using the horn antenna. The teachers deviced their own observing plan to map the whole sky. Moreover, we used the state of facilities avalable on site to further test and improve the horn antenna. Accurate hot-cold measurements (left) were taken to determine the gains and system temperature of the horn antenna system. Attempts were made to improve the antenna probe and the LNA in the electronics lab at GBO. Furthermore, workshops were conducted to help reduce the data collected using the spectrometer.  
-
+		    Primarily, time was spent planning and executing observations using the horn antenna. The teachers devised their own observing plan to map the whole sky. Moreover, we used the state of facilities available on site to further test and improve the horn antenna. Accurate hot-cold measurements (left) were taken to determine the gains and the system temperature of the horn antenna system. Attempts were made to improve the antenna probe and the LNA in the electronics lab at GBO. Furthermore, workshops were conducted to help reduce the data collected using the spectrometer.
             </p>
 
             <h3>4. Students and Lessons</h3>
             <p>
-                The DSPiRA trip conincided with the <a href="https://info.nrao.edu/do/odi/broader-impact-programs/ping">PING</a> <a href="https://info.nrao.edu/do/odi/broader-impact-programs/PingSummer">summer camp</a>. This allowed the teachers utilize their research experience to develop and execute lesson plans. Digital signal processing activities targeted towards school children. 
+                The DSPiRA trip coincided with the <a href="https://info.nrao.edu/do/odi/broader-impact-programs/ping">PING</a> <a href="https://info.nrao.edu/do/odi/broader-impact-programs/PingSummer">summer camp</a>. This allowed the teachers utilize their research experience to develop and execute lesson plans. Digital signal processing activities targeted towards school children were conducted. 
 
                 <!--
                 <ul class="actions">
@@ -240,7 +240,7 @@
                 </article>
                 <article>
                     <a href="/images/dspira/ping3.JPG" class="image">
-				<img src="/images/dspira/ping3.jpg" alt="" />
+				<img src="/images/dspira/ping3.JPG" alt="" />
 			</a>
                 </article>
                 <article>
@@ -267,10 +267,10 @@
 
             <h3>5. Prospects </h3>
             <p>
-              This project no only provides for teachers with cutting edge research experience in engineering and radio astronomy but also opens a lot of avenues for the future of ameteur radio astronomy. With cheap technology and design using only easily accessible materials like home insulation, paint thinner cans, anybody with enough inclination can explore the wonderful field of radio astronomy. Moreover, this would allow teachers build more telescopes at their home institutions with minimal logitical burderns. 
+		    This project not only provides for teachers with cutting-edge research experience in engineering and radio astronomy but also opens a lot of avenues for the future of amateur radio astronomy. With cheap technology and design using only easily accessible materials like home insulation, paint thinner cans, anybody with enough inclination can explore the wonderful field of radio astronomy. Moreover, this would allow teachers build more telescopes at their home institutions with minimal logistical burdens. 
               <br>
               <br>
-              Sophisticated versions with these simple systems like an apperture array(below) could be experimented with to explore possible time domain radio astronomy applications. 
+		    Sophisticated experiments can be performed with these simple systems like an aperture array(below) could be experimented with to explore possible time domain radio astronomy applications.
             </p>
         </div>
         <span class="image fit"><img src="/images/dspira/smallarr.jpg" alt="" /></span>
@@ -285,12 +285,14 @@
     <hr>
 </section>
 
+
         <!-- Footer -->
         <footer class="wrapper style1">
 	<div class="inner" style="float: left; width: 67%;">
 		<h4>Get Involved</h4>
 		<p class="major">If you are a student (graduate or undergraduate) interested in doing some awesome science and ache to get your hands dirty. Shoot an email to <strong> kmbandura [at] mail [dot] wvu [dot] edu </strong></p>
-		</div>
+		<p class="major">Our Lab is located at the Advanced Engineering Research Building (AERB) in Room 304 on the WVU Evansdale Campus</p>
+	</div>
 		<div class="inner" style="float: right; width: 33%;">
 		<ul class="icons">
 			<li><a href="https://github.com/WVURAIL" class="icon style2 fa-github"><span class="label">GitHub</span></a></li>					
