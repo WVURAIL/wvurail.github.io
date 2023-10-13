@@ -1,37 +1,30 @@
 <!DOCTYPE HTML>
 <html>
-    {% include head.html %}
-	
-	<body>
-		<div class="navbar">
-  			<div><a href="/">WVU⏦RAIL</a></div>
-  			<div><a href="/projects">Projects</a></div>
- 			<div><a href="/people">People</a></div>
-  			<div><a href="/blog">Blog</a></div>
-		</div>
-
-		<!-- Wrapper -->
-		
-			<div id="wrapper" class="divided">
-
-				<section class="wrapper style1">
-						<div class="inner">
-						
-							{{ content }}
-					
-						</div>						
-				</section>
-
-				<!-- Footer -->
-				{% include footer.html %}
-			</div>
-		<!-- Scripts -->
-			<script src="/assets/js/jquery.min.js"></script>
-			<script src="/assets/js/jquery.scrollex.min.js"></script>
-			<script src="/assets/js/jquery.scrolly.min.js"></script>
-			<script src="/assets/js/skel.min.js"></script>
-			<script src="/assets/js/util.js"></script>
-			<script src="/assets/js/main.js"></script>
-			<script src="/assets/js/smoothscroll.js"></script>
-	</body>
+   {% include head.html %}
+   <body>
+      <div class="navbar">
+         <div><a href="/">WVU⏦RAIL</a></div>
+         <div><a href="/projects">Projects</a></div>
+         <div><a href="/people">People</a></div>
+         <div><a href="/blog">Blog</a></div>
+      </div>
+      <!-- Wrapper -->
+      <div id="wrapper" class="divided">
+         <section class="wrapper style1">
+            <div class="inner">
+               {{ content }}
+            </div>
+         </section>
+         <!-- Footer -->
+         {% include footer.html %}
+      </div>
+      <!-- Scripts -->
+      <script src="/assets/js/jquery.min.js"></script>
+      <script src="/assets/js/jquery.scrollex.min.js"></script>
+      <script src="/assets/js/jquery.scrolly.min.js"></script>
+      <script src="/assets/js/skel.min.js"></script>
+      <script src="/assets/js/util.js"></script>
+      <script src="/assets/js/main.js"></script>
+      <script src="/assets/js/smoothscroll.js"></script>
+   </body>
 </html>

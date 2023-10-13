@@ -5,8 +5,8 @@ layout: default
 {% assign author = site.data.people[page.author] %}
 <time>{{ page.date | date: "%b %-d, %Y" }} • {% if page.meta %} • {{ page.meta }}{% endif %}</time>
 <a rel="author"
-  href="https://twitter.com/{{ author.twitter }}"
-  title="{{ author.name }}">
-    {{ author.name }}
+   href="https://twitter.com/{{ author.twitter }}"
+   title="{{ author.name }}">
+{{ author.name }}
 </a>
 {{ content }}

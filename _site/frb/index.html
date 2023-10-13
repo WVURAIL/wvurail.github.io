@@ -1,152 +1,134 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-		<title>WVU RAIL</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="/assets/css/main.css" />
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-		<!--Navbar style-->
-		<style>
-
-			body {margin:0;}
-			.navbar {
-  			overflow: hidden;
-  			background-color: #f5f5f5;
-  			position: fixed;
-  			bottom: 0px;
-  			width: 100%;
-			opacity: 0.85;
-    			filter: alpha(opacity=50); /* For IE8 and earlier */
-			z-index: 10;
-			}
-			
-			.navbar a {
-  			float: left;
-  			display: block;
-  			color: #333;
-  			text-align: center;
-			width: 25%;
-  			padding: 14px 16px;
-  			text-decoration: none;
-  			font-size: 16px;
-			z-index: 10;
-			}
-
-			.navbar a:hover{
-			background-color: #d2d2d2;
-			z-index: 10;
-			}
-			 
-			ul.nav a:hover { color: #111 !important; }
-
-
-			/* Vertical spacing between cards */
-			.column {
-			margin-bottom: 16px;
-			}
-			
-			/* card width */
-			.container{
-      			max-width:1024px;
-      			}			
-			
-			/* Add shadow effect to cards */
-			.card {
-			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-			}
-            
-			/* Center cards */
-			.container {
-			margin: 0px auto;
-			}
-            
-			/* Clear floats */			
-			.container::after, .row::after {
-			content: "";
-			clear: both;
-			display: table;
-			}
-		       
-		</style>
+   <head>
+   <title>WVU RAIL</title>
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <link rel="stylesheet" href="/assets/css/main.css" />
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+   <!--Navbar style-->
+   <style>
+      body {margin:0;}
+      .navbar {
+      overflow: hidden;
+      background-color: #f5f5f5;
+      position: fixed;
+      bottom: 0px;
+      width: 100%;
+      opacity: 0.85;
+      filter: alpha(opacity=50); /* For IE8 and earlier */
+      z-index: 10;
+      }
+      .navbar a {
+      float: left;
+      display: block;
+      color: #333;
+      text-align: center;
+      width: 25%;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 16px;
+      z-index: 10;
+      }
+      .navbar a:hover{
+      background-color: #d2d2d2;
+      z-index: 10;
+      }
+      ul.nav a:hover { color: #111 !important; }
+      /* Vertical spacing between cards */
+      .column {
+      margin-bottom: 16px;
+      }
+      /* card width */
+      .container{
+      max-width:1200px;
+      }			
+      /* Add shadow effect to cards */
+      .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      }
+      /* Center cards */
+      .container {
+      margin: 0px auto;
+      }
+      /* Clear floats */			
+      .container::after, .row::after {
+      content: "";
+      clear: both;
+      display: table;
+      }
+   </style>
 </head>
 
-	
-	<body>
-		<div class="navbar">
-  			<div><a href="/">WVU⏦RAIL</a></div>
-  			<div><a href="/projects">Projects</a></div>
- 			<div><a href="/people">People</a></div>
-  			<div><a href="/blog">Blog</a></div>
-		</div>
-
-		<!-- Wrapper -->
-		
-			<div id="wrapper" class="divided">
-
-				<section class="wrapper style1">
-						<div class="inner">
-						
-							<link rel="stylesheet" href="/ads-widget/ads_query_importer_widget.css" type="text/css" />
+   <body>
+      <div class="navbar">
+         <div><a href="/">WVU⏦RAIL</a></div>
+         <div><a href="/projects">Projects</a></div>
+         <div><a href="/people">People</a></div>
+         <div><a href="/blog">Blog</a></div>
+      </div>
+      <!-- Wrapper -->
+      <div id="wrapper" class="divided">
+         <section class="wrapper style1">
+            <div class="inner">
+               <link rel="stylesheet" href="/ads-widget/ads_query_importer_widget.css" type="text/css" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
 <script type="text/javascript">
-  //mandatory parameters 
-var ads_query_url = 'https://ui.adsabs.harvard.edu/search/q=author%3A(%22Kevin%20Bandura%22)%20full%3A%22FRB%22%20full%3A%22Fast%20Radio%20Burst%22%20full%3A%22Fast%20Radio%20Bursts%22&sort=date%20desc%2C%20bibcode%20desc&p_=0';
-//List of optional parameters for the query 
-var ads_query_back_base_url = 'http://adsabs.harvard.edu/';
-var ads_query_title = "FRB Papers";
-var ads_query_highlight_author = 'Bandura';
-var ads_query_max_num_authors = 10;
-var ads_query_max_records_to_print = 100;
-var ads_query_omit_bibcode = false;
-var ads_query_omit_link_to_ads = false;
-var ads_query_link_on_field = 'title';
-var ads_query_print_order = 'title|authors|journal|date|bibcode';
+   //mandatory parameters 
+   var ads_query_url = 'https://ui.adsabs.harvard.edu/search/q=author%3A(%22Kevin%20Bandura%22)%20full%3A%22FRB%22%20full%3A%22Fast%20Radio%20Burst%22%20full%3A%22Fast%20Radio%20Bursts%22&sort=date%20desc%2C%20bibcode%20desc&p_=0';
+   //List of optional parameters for the query 
+   var ads_query_back_base_url = 'http://adsabs.harvard.edu/';
+   var ads_query_title = "FRB Papers";
+   var ads_query_highlight_author = 'Bandura';
+   var ads_query_max_num_authors = 10;
+   var ads_query_max_records_to_print = 100;
+   var ads_query_omit_bibcode = false;
+   var ads_query_omit_link_to_ads = false;
+   var ads_query_link_on_field = 'title';
+   var ads_query_print_order = 'title|authors|journal|date|bibcode';
 </script>
 <script type="text/javascript" src="/ads-widget/ads_query_importer_widget.js"></script>
 <body>
-<div id="ads_query_importer_widget" style="width:800px;border:1px solid black;"></div>
+   <div id="ads_query_importer_widget" style="width:800px;border:1px solid black;"></div>
 </body>
 </html>
 
-					
-						</div>						
-				</section>
+            </div>
+         </section>
+         <!-- Footer -->
+         <footer class="wrapper style1">
+	<hr>
+      <h1>⏦Contact Us⏦</h1>
+      <p class="major">If you're an enthusiastic student, whether graduate or undergraduate, eager to dive into exciting scientific endeavors, don't hesitate to reach out. Send an email to us and let's explore some hands-on science together!
+	<hr>
+      <p class="major">Our Lab is located at the Advanced Engineering Research Building (AERB) in Room 304 on the WVU Evansdale Campus.</p>
 
-				<!-- Footer -->
-				<footer class="wrapper style1">
-	<div class="inner" style="float: left; width: 67%;">
-		<h4>Get Involved</h4>
-		<p class="major">If you are a student (graduate or undergraduate) interested in doing some awesome science and ache to get your hands dirty. Shoot an email to <strong> kevin [dot] bandura [at] mail [dot] wvu [dot] edu </strong></p>
-		<p class="major">Our Lab is located at the Advanced Engineering Research Building (AERB) in Room 304 on the WVU Evansdale Campus</p>
-	</div>
-		<div class="inner" style="float: right; width: 33%;">
-		<ul class="icons">
-			<li><a href="https://github.com/WVURAIL" class="icon style2 fa-github"><span class="label">GitHub</span></a></li>					
-			<li><a href="mailto:wvurail@gmail.com?Subject=RAIL" class="icon style2 fa-envelope"><span class="label">Email</span></a></li>
-		</ul>
-		<p>&copy; WVU.RAIL</p>
-		<p>Credits: <a href="http://wvurail.org/credits/">click here</a>.</p>
-	</div>
-    <!-- Scripts 
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/jquery.scrollex.min.js"></script>
-<script src="assets/js/jquery.scrolly.min.js"></script>
-<script src="assets/js/skel.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
-<script src="assets/js/smoothscroll.js"></script>
- -->
+      <ul class="icons">
+         <li><a href="https://github.com/WVURAIL" class="icon style2 fa-github"><span class="label">GitHub</span></a></li>
+         <li><a href="mailto:wvurail@gmail.com?Subject=RAIL" class="icon style2 fa-envelope"><span class="label">Email</span></a></li>
+      </ul>
+      <p>&copy; WVU.RAIL</p>
+   <!-- 
+        <p>Credits: <a href="http://wvurail.org/credits/">click here</a>.</p>
+   	Scripts 
+      <script src="assets/js/jquery.min.js"></script>
+      <script src="assets/js/jquery.scrollex.min.js"></script>
+      <script src="assets/js/jquery.scrolly.min.js"></script>
+      <script src="assets/js/skel.min.js"></script>
+      <script src="assets/js/util.js"></script>
+      <script src="assets/js/main.js"></script>
+      <script src="assets/js/smoothscroll.js"></script>
+       -->
 </footer>
 
-			</div>
-		<!-- Scripts -->
-			<script src="/assets/js/jquery.min.js"></script>
-			<script src="/assets/js/jquery.scrollex.min.js"></script>
-			<script src="/assets/js/jquery.scrolly.min.js"></script>
-			<script src="/assets/js/skel.min.js"></script>
-			<script src="/assets/js/util.js"></script>
-			<script src="/assets/js/main.js"></script>
-			<script src="/assets/js/smoothscroll.js"></script>
-	</body>
+      </div>
+      <!-- Scripts -->
+      <script src="/assets/js/jquery.min.js"></script>
+      <script src="/assets/js/jquery.scrollex.min.js"></script>
+      <script src="/assets/js/jquery.scrolly.min.js"></script>
+      <script src="/assets/js/skel.min.js"></script>
+      <script src="/assets/js/util.js"></script>
+      <script src="/assets/js/main.js"></script>
+      <script src="/assets/js/smoothscroll.js"></script>
+   </body>
 </html>
