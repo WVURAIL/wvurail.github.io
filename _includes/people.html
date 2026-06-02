@@ -1,111 +1,27 @@
-<!-- People css styles in head.html-->
+<!-- People. Content comes from _data/people.yml; cards render via _includes/person-card.html -->
 <section class="wrapper style1 align-center" id="people">
-<h1>⏦People⏦</h1>
-<h2>Principal Investigator</h2>
-<div class="container">
-<div class="inner">
-<!-- Kevin M. Bandura -->
-<div class="column">
-   <div class="card">
-      <img src="/images/people/kbandura.png" alt="Kevin Bandura" style="width:55%;float:left;padding:10px 10px">
-      <div class="container">
-         <h3 align="justify">Kevin M. Bandura, Ph.D.</h3>
-         <p align="justify">Associate Professor in the Department of Computer Science and Electrical Engineering,</br>Adjunct Assistant Professor in the Department of Physics and Astronomy</p>
-         <p><i> <a href="http://community.wvu.edu/~kmbandura/">Faculty Webpage</a></i></p>
-         <p align="justify">Dr. Bandura's research interests lie in uncovering the mysteries of the universe, with a particular focus on gaining a deeper understanding of Dark Energy, which is the term used to describe the force behind the accelerated expansion of our cosmos. This pursuit has driven him to concentrate on constructing wide-field survey Radio Astronomy instruments, like CHIME, to enhance our comprehension of the universe.</p>
-      </div>
+   <h1>&#9190; People &#9190;</h1>
+
+   <h2>Principal Investigator</h2>
+   <div class="people-grid">
+      {% for person in site.data.people.pi %}{% include person-card.html person=person %}{% endfor %}
    </div>
-</div>
-<hr>
-<h2>Graduate Research Assistants</h2>
-<div class="container">
-   <div class="inner">
-      <!-- Dylan J. Gormley -->
-      <div class="column">
-         <div class="card">
-            <img src="/images/people/dgormley.png" alt="Dylan J. Gormley" style="width:30%;float:left;padding:10px 10px">
-            <div class="container">
-               <h3 align="justify">Dylan J. Gormley</h3>
-               <p align="justify">Ph.D. Candidate</p>
-               <p align="justify">Research focus on RFI mitigation.</p>
-            </div>
-         </div>
-      </div> 
+   <hr>
+
+   <h2>Graduate Research Assistants</h2>
+   <div class="people-grid">
+      {% for person in site.data.people.grad %}{% include person-card.html person=person %}{% endfor %}
    </div>
-</div>
-<hr>
-<h2>Student Workers</h2>
-<div class="container">
-   <div class="inner">
-      <!-- Ad -->
-      <div class="column">
-         <div class="card">
-            <div class="container">
-               <h3 align="justify">This could be you!</h3>
-               <p align="justify">Message Prof. Kevin Bandura to apply.</p>
-               </p>
-            </div>
-         </div>
-      </div>
+   <hr>
+
+   <h2>Student Workers</h2>
+   <div class="people-grid">
+      {% for person in site.data.people.students %}{% include person-card.html person=person %}{% endfor %}
    </div>
-</div>
-<hr>
-<h2>Alumni</h2>
-<div class="container">
-   <div class="inner">
-      <!-- Kalyani B. Bhopi -->
-      <div class="column">
-         <div class="card">
-            <div class="container">
-               <h3 align="justify">Kalyani B. Bhopi</h3>
-               <p  align="justify">Ph.D. Dissertation:<i> <a href="https://researchrepository.wvu.edu/etd/"> "PEACC-Precision Emitter for 21 cm Array Coherent Calibration"</a></i></p>
-            </div>
-         </div>
-      </div>
-      <!-- Morgan R. Dameron -->
-      <div class="column">
-         <div class="card">
-            <div class="container">
-               <h3 align="justify">Morgan R. Dameron</h3>
-               <p  align="justify">M.S. Thesis:<i> <a href="https://doi.org/10.33915/etd.11205"> "Inferential Statistics and Information Theoretical Measures: An Approach to Interference Detection in Radio Astronomy"</a></i></p>
-            </div>
-         </div>
-      </div>
-      <!-- Joseph W. Kania -->
-      <div class="column">
-         <div class="card">
-            <div class="container">
-               <h3 align="justify">Joseph W. Kania</h3>
-               <p  align="justify">Ph.D. Dissertation:<i> <a href="http://doi.org/10.33915/etd.12243"> "Applications of Digital Filters in Radio Astronomy"</a></i></p>
-            </div>
-         </div>
-      </div>
-      <!-- Kholoud S. T. A. Khairy -->
-      <div class="column">
-         <div class="card">
-            <div class="container">
-               <h3 align="justify">Kholoud S. T. A. Khairy</h3>
-               <p  align="justify">M.S. Thesis:<i> <a href="https://doi.org/10.33915/etd.13158"> "Green Bank CHIME/FRB Outriggers Commissioning and Analog System Development"</a></i></p>
-            </div>
-         </div>
-      </div>
-      <!-- John W. C. Metzger -->
-      <div class="column">
-         <div class="card">
-            <div class="container">
-               <h3 align="justify">John W. C. Metzger</h3>
-               <p  align="justify">M.S. Thesis:<i> <a href="https://researchrepository.wvu.edu/etd/"> "Enhancing CHIME Data Integrity: Utilizing an Ancillary Antenna to Detect and Mask Radio Frequency Interference"</a></i></p>
-            </div>
-         </div>
-      </div>
-      <!-- Pranav R. Sanghavi -->
-      <div class="column">
-         <div class="card">
-            <div class="container">
-               <h3 align="justify">Pranav R. Sanghavi</h3>
-               <p  align="justify">Ph.D. Dissertation:<i> <a href="https://www.doi.org/10.33915/etd.11352"> "Pathfinding Fast Radio Bursts Localizations using Very Long Baseline Interferometry"</a></i></p>
-            </div>
-         </div>
-      </div>
+   <hr>
+
+   <h2>Alumni</h2>
+   <div class="people-grid">
+      {% for person in site.data.people.alumni %}{% include person-card.html person=person %}{% endfor %}
    </div>
-</div>
+</section>

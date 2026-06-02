@@ -1,3 +1,61 @@
-kevin:
-  name: Kevin Bandura
-  github: kbandura
+# All lab members. Add/remove people here — the People section renders automatically.
+# Fields: name (required), photo, roles[], link{text,url}, bio, publication{label,title,url}.
+
+pi:
+  - name: "Kevin M. Bandura, Ph.D."
+    photo: /images/people/kbandura.png
+    roles:
+      - "Associate Professor, Department of Computer Science and Electrical Engineering"
+      - "Adjunct Assistant Professor, Department of Physics and Astronomy"
+    link:
+      text: "Faculty Webpage"
+      url: "http://community.wvu.edu/~kmbandura/"
+    bio: >
+      Dr. Bandura's research interests lie in uncovering the mysteries of the universe,
+      with a particular focus on gaining a deeper understanding of Dark Energy — the term
+      used to describe the force behind the accelerated expansion of our cosmos. This pursuit
+      has driven him to concentrate on constructing wide-field survey radio astronomy
+      instruments, like CHIME, to enhance our comprehension of the universe.
+
+grad:
+  - name: "Dylan J. Gormley"
+    photo: /images/people/dgormley.jpg
+    roles:
+      - "Ph.D. Candidate"
+    bio: "Research focus on RFI mitigation."
+
+students:
+  - name: "This could be you!"
+    bio: "Message Prof. Kevin Bandura to apply."
+
+alumni:
+  - name: "Kalyani B. Bhopi"
+    publication:
+      label: "Ph.D. Dissertation"
+      title: "PEACC — Precision Emitter for 21 cm Array Coherent Calibration"
+      url: "https://researchrepository.wvu.edu/etd/"
+  - name: "Morgan R. Dameron"
+    publication:
+      label: "M.S. Thesis"
+      title: "Inferential Statistics and Information Theoretical Measures: An Approach to Interference Detection in Radio Astronomy"
+      url: "https://doi.org/10.33915/etd.11205"
+  - name: "Joseph W. Kania"
+    publication:
+      label: "Ph.D. Dissertation"
+      title: "Applications of Digital Filters in Radio Astronomy"
+      url: "http://doi.org/10.33915/etd.12243"
+  - name: "Kholoud S. T. A. Khairy"
+    publication:
+      label: "M.S. Thesis"
+      title: "Green Bank CHIME/FRB Outriggers Commissioning and Analog System Development"
+      url: "https://doi.org/10.33915/etd.13158"
+  - name: "John W. C. Metzger"
+    publication:
+      label: "M.S. Thesis"
+      title: "Enhancing CHIME Data Integrity: Utilizing an Ancillary Antenna to Detect and Mask Radio Frequency Interference"
+      url: "https://researchrepository.wvu.edu/etd/"
+  - name: "Pranav R. Sanghavi"
+    publication:
+      label: "Ph.D. Dissertation"
+      title: "Pathfinding Fast Radio Bursts Localizations using Very Long Baseline Interferometry"
+      url: "https://www.doi.org/10.33915/etd.11352"

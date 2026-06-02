@@ -1,0 +1,55 @@
+# Projects shown on the home page and /projects/. They alternate left/right automatically.
+# Fields: name, image, url, blurb.
+
+- name: CHIME
+  image: /images/projects/chime.jpeg
+  url: "https://chime-experiment.ca/en"
+  blurb: >
+    The Canadian Hydrogen Intensity Mapping Experiment (CHIME) is a groundbreaking addition
+    to the Dominion Astrophysical Radio Observatory (DRAO) in Penticton, British Columbia.
+    This innovative radio telescope is designed to chart the expansive landscape of neutral
+    hydrogen through a technique known as "hydrogen intensity mapping," allowing us to delve
+    into the mysteries of Baryon Acoustic Oscillations (BAO) and, in turn, gain insight into
+    the enigmatic realm of Dark Energy.
+
+- name: ICE
+  image: /images/projects/ice.jpg
+  url: "https://arxiv.org/pdf/1608.06262.pdf"
+  blurb: >
+    The "ICE" framework seamlessly integrates extensive arrays of FPGA-based data acquisition,
+    signal processing, and networking nodes, providing a cost-effective solution in both
+    hardware and software.
+
+- name: HIRAX
+  image: /images/projects/hirax.jpg
+  url: "https://hirax.ukzn.ac.za/"
+  blurb: >
+    HIRAX, the Hydrogen Intensity and Real-time Analysis eXperiment, is a cutting-edge radio
+    interferometer in development for deployment in South Africa. It will comprise an array of
+    1024 six-meter parabolic dishes in a compact grid, with the goal of mapping a significant
+    portion of the southern sky over four years. HIRAX has two primary scientific objectives:
+    to unveil the mysteries of Dark Energy by measuring structure at high redshifts, and to
+    study radio transients and pulsars. Its principal method is the observation of unresolved
+    sources of neutral hydrogen through their redshifted 21-cm emission line — "hydrogen
+    intensity mapping."
+
+- name: DSPiRA
+  image: /images/projects/dspira.jpg
+  url: "http://www.wvurail.org/dspira-lessons/"
+  blurb: >
+    DSPiRA, the NSF Research Experiences for Teachers (RET) initiative for radio astronomy,
+    is designed to equip educators with training and resources in radio astronomy. Serving as
+    a gateway to science and engineering in the celestial arena, DSPiRA culminates in a
+    collection of lessons and exercises curated by the program's participating teachers.
+
+- name: CHORD
+  image: /images/projects/chord.jpg
+  url: "https://arxiv.org/pdf/1911.01777.pdf"
+  blurb: >
+    The Canadian Hydrogen Observatory and Radio-transient Detector (CHORD) is a next-generation
+    radio telescope and a pan-Canadian initiative built on the success of its predecessor, CHIME.
+    Featuring an ultra-wideband, "large-N, small-D" design, it pairs a central array of 512
+    six-meter dishes with two distant outrigger stations, each with CHIME-like cylinders and a
+    64-dish array. CHORD aims to chart the distribution of matter across a vast expanse of the
+    cosmos, pinpoint tens of thousands of Fast Radio Bursts (FRBs), and conduct fundamental
+    physics experiments.

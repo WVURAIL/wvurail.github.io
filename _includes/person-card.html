@@ -1,0 +1,13 @@
+{% assign p = include.person %}
+<div class="column">
+   <div class="card">
+      {% if p.photo %}<img class="card-portrait" src="{{ p.photo | relative_url }}" alt="{{ p.name }}" />{% endif %}
+      <div class="card-body">
+         <h3>{{ p.name }}</h3>
+         {% for role in p.roles %}<p class="role">{{ role }}</p>{% endfor %}
+         {% if p.link %}<p><em><a href="{{ p.link.url }}">{{ p.link.text }}</a></em></p>{% endif %}
+         {% if p.bio %}<p class="justify">{{ p.bio }}</p>{% endif %}
+         {% if p.publication %}<p class="justify">{{ p.publication.label }}: <em><a href="{{ p.publication.url }}">"{{ p.publication.title }}"</a></em></p>{% endif %}
+      </div>
+   </div>
+</div>

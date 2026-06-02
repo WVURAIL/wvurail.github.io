@@ -1,228 +1,52 @@
 ---
 layout: default
+title: Coordinate Converter
+permalink: /apps/coord/
+description: Convert horizontal (azimuth/altitude) coordinates to equatorial (RA/Dec) for your location and the current time.
 ---
+<h2>Horizontal &rarr; Equatorial Converter</h2>
+<p>
+   Enter your observing location and a direction (azimuth/altitude) to get the current
+   equatorial coordinates. Azimuth is measured from North, increasing toward the East.
+   Because Right Ascension depends on time, the result updates every second.
+</p>
 
-<style> 
-.flex-container {
-    display: -webkit-flex;
-    display: flex;  
-    -webkit-flex-flow: row wrap;
-    flex-flow: row wrap;
-    text-align: center;
+<div class="coord-form">
+   <p><label>Longitude (&deg;): <input type="text" id="long" value="0.0" size="8" /></label>
+      <select id="lonHemi"><option value="E">E</option><option value="W">W</option></select></p>
+   <p><label>Latitude (&deg;): <input type="text" id="lat" value="0.0" size="8" /></label>
+      <select id="latHemi"><option value="N">N</option><option value="S">S</option></select></p>
+   <p><label>Azimuth (&deg;): <input type="text" id="az" value="0.0" size="8" /></label></p>
+   <p><label>Altitude (&deg;): <input type="text" id="alt" value="0.0" size="8" /></label></p>
+   <button type="button" onclick="updateCoords()">Convert</button>
+</div>
+
+<div id="result" class="clock" style="margin-top:1rem;"></div>
+
+<script src="{{ '/apps/astro.js' | relative_url }}"></script>
+<script>
+function signedVal(inputId, selId, posCode) {
+   var v = Math.abs(parseFloat(document.getElementById(inputId).value) || 0);
+   var sign = document.getElementById(selId).value === posCode ? 1 : -1;
+   return sign * v;
 }
+function updateCoords() {
+   var lon = signedVal('long', 'lonHemi', 'E');
+   var lat = signedVal('lat',  'latHemi', 'N');
+   var az  = parseFloat(document.getElementById('az').value)  || 0;
+   var alt = parseFloat(document.getElementById('alt').value) || 0;
 
-.flex-container > * {
-    padding: 15px;
-    -webkit-flex: 1 100%;
-    flex: 1 100%;
-}
-
-.article {
-    text-align: left;
-}
-
-header {background: #fff;color:white;}
-.nav {background:#eee;}
-
-.nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-.nav ul a {
-    text-decoration: none;
-}
-
-@media all and (min-width: 768px) {
-    .nav {text-align:left;-webkit-flex: 1 auto;flex:1 auto;-webkit-order:1;order:1;}
-    .article {-webkit-flex:5 0px;flex:5 0px;-webkit-order:2;order:2;}
-    footer {-webkit-order:3;order:3;}
-}
-</style>
-</head>
-
-<body>
-
-<div class="flex-container">
-<header>
-  <h1>Local Sidereal Time</h1>
-</header>
-
-<nav class="nav">
-
-<h3> LST <em>now</em> </h3>
-<form>
-
-Enter Longitude:<input type="text" id="long" value="0.0">
-<select id="hemi" name="hemi">
-    <option value="E">E</option>
-    <option value="W">W</option>
-</select>
-
-Enter Latitude:<input type="text" id="lat" value="0.0">
-<select id="lat" name="lat">
-    <option value="N">N</option>
-    <option value="S">S</option>
-</select>
-
-
-Enter Azimuth:<input type="text" id="az" value="0.0">
-Enter Altitude:<input type="text" id="el" value="0.0">
-    
-
-<br>
-<input type="button" onclick="getLST()" value="Click Me to get the LST!">
-
-</form>
-
-<div> LST <br>
-Hour<input id="hh" name="hour" type="text" value="0" />
-Min<input id="m" name="minute" type="text" value="0" />
-Sec<input id="ss" name="second" type="text" value="0" />
-
-</nav>
-
-<article class="article">
-    <hr>
-    <div id="js_clock" style="text-align: center;"></div>
-    <hr>
-</article>
-
-<table id="coords"></table>
-
-
-<footer>
-
-    <script>
-
-function getLST() {
-    var olong = document.getElementById("long").value;
-    hemi  = document.getElementById('hemi').value;
-    if (olong > 180) {alert("Enter a longitude value between 0 and 180. Then Click Button"); reset()}
-    olong = Math.abs(olong);
-    if (hemi == "W") lsign = -1;
-    if (hemi == "E") lsign = 1;
-    long = lsign*olong;
-
-    var olat = document.getElementById("lat").value;
-    latel  = document.getElementById('lat').value;
-    if (olat > 90) {alert("Enter a longitude value between 0 and 90. Then Click Button"); reset()}
-    olat = Math.abs(olat);
-    if (latel == "S") lsign = -1;
-    if (latel == "N") lsign = 1;
-    lat = lsign*olat;
-    var az = document.getElementById("az").value;
-    var el = document.getElementById("el").value;
-
-    
-    var tDate = new Date();
-    var utSeconds    = tDate.getUTCSeconds();
-    var utMinutes    = tDate.getUTCMinutes();
-    var utHours      = tDate.getUTCHours();
-    var utDay        = tDate.getUTCDate();
-    var utMonth      = tDate.getUTCMonth() + 1;
-    var utYear       = tDate.getUTCFullYear();
-    var UT        = utHours + utMinutes/60 + utSeconds/3600;
-    var LMST      = LM_Sidereal_Time(JulDay (utDay, utMonth, utYear, UT),long);
-
-
-    az = az * Math.PI / 180
-    el = el * Math.PI / 180
-    
-    dec = Math.asin(sin(el)*Math.sin(olat) + Math.cos(el)*Math.cos(olat)*Math.cos(az))
-    H = Math.asin(-Math.sin(az)*Math.cos(el) / Math.cos(dec)) 
-    RA = LMST – H*24/360
-
-    var rah = Math.floor(RA);
-    var ramin = Math.floor(60.0*frac(RA));
-    var rasecs = Math.round(60.0*(60.0*frac(RA)-ramin));
-
-    crah = rah.toString();
-    cramin = ramin.toString()
-    crasecs = rasecs.toString();
-
-
-    var fragment = document.createDocumentFragment(),
-    table = document.getElementById("coords");
-
-    var tr = document.createElement("tr");
-    var td = newNode(document.createElement("td"), "<font face=Courier color=#000000 size=9>" +ch + ":"  + cmin  + ":" +csecs+ ", "cell");
-    tr.appendChild(td);
-    fragment.appendChild(tr);
-    var td = newNode(document.createElement("td"), dec, "cell");
-    tr.appendChild(td);
-    fragment.appendChild(tr);
-
-    
-    clock_div.innerHTML = "<font face=Courier color=#000000 size=9>" +crah + ":"  + caramin  + ":" +crasecs+ "</font><em><font face=Courier color=#000000><hr> for Longitude: " +long+" for Latitude: " +lat+"</em></font>";
-
-
-
-
-    
-    var h = Math.floor(LMST);
-    var min = Math.floor(60.0*frac(LMST));
-    var secs = Math.round(60.0*(60.0*frac(LMST)-min));
-
-    if (secs == 60) {
-    secs = 0;
-    min = min + 1;
-    }
-        
-    ch = h.toString();
-    if ( h < 10 ) var ch = "0" + h.toString(); 
-    cmin = min.toString()
-    if ( min < 10 ) var cmin = "0" + min.toString(); 
-    csecs = secs.toString();
-    if ( secs < 10 ) var csecs = "0" + secs.toString(); 
-
-
-
-    //print answer
-
-    document.getElementById('hh').value = ch;
-    document.getElementById('m').value = cmin;
-    document.getElementById('ss').value = csecs;
-
-    var clock_div = document.getElementById('js_clock');
-    clock_div.innerHTML = "<font face=Courier color=#000000 size=9>" +ch + ":"  + cmin  + ":" +csecs+ "</font><em><font face=Courier color=#000000><hr> for Longitude: " +long+" for Latitude: " +lat+"</em></font>";
-    setTimeout("getLST()",996);
-
-}
-
-function LM_Sidereal_Time (jd, longitude) {
-        var GMST = GM_Sidereal_Time(jd);		
-        var LMST =  24.0*frac((GMST + longitude/15.0)/24.0);
-        return LMST;
+   if (Math.abs(lon) > 180 || Math.abs(lat) > 90) {
+      document.getElementById('result').textContent = "Longitude must be 0–180 and latitude 0–90.";
+      return;
    }
-
-function GM_Sidereal_Time (jd) {	
-    var t_eph, ut, MJD0, MJD;		
-    MJD = jd - 2400000.5;		
-    MJD0 = Math.floor(MJD);
-    ut = (MJD - MJD0)*24.0;		
-    t_eph  = (MJD0-51544.5)/36525.0;			
-    return  6.697374558 + 1.0027379093*ut + (8640184.812866 + (0.093104 - 0.0000062*t_eph)*t_eph)*t_eph/3600.0;		
-   }
-
-function JulDay (date, month, year, UT) {
-    if (year<1900) year=year+1900
-    if (month<=2) { month=month+12; year=year-1 }
-    A = Math.floor(year/100);
-    B = -13;
-    JD =  Math.floor(365.25*(year+4716)) + Math.floor(30.6001*(month+1)) + date + B -1524.5 + UT/24.0;
-    return JD
-   }
-
-function frac(X) {
-    X = X - Math.floor(X);
-    if (X<0) X = X + 1.0;
-    return X;		
-   }
-    calculate();
-
+   var lst = lstNow(new Date(), lon);
+   var eq  = horizontalToEquatorial(az, alt, lat, lst);
+   document.getElementById('result').innerHTML =
+      "Local Sidereal Time: " + hmsFromHours(lst) + "<br>" +
+      "Right Ascension: " + hmsFromHours(eq.raHours) + "<br>" +
+      "Declination: " + dmsFromDeg(eq.decDeg);
+}
+updateCoords();
+setInterval(updateCoords, 1000);
 </script>
-
-</footer>
-</div>
-</div>
-</body>

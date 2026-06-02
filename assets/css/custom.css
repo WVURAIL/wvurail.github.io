@@ -1,0 +1,77 @@
+/* ==========================================================================
+   WVU RAIL — lab-specific styles (loaded after the theme's main.css)
+   Keep custom tweaks here so theme updates don't clobber them.
+   ========================================================================== */
+
+body { margin: 0; }
+
+/* --- Fixed bottom navigation bar ------------------------------------------ */
+.navbar {
+   position: fixed;
+   bottom: 0;
+   left: 0;
+   width: 100%;
+   display: flex;
+   background-color: #f5f5f5;
+   opacity: 0.95;
+   z-index: 10;
+}
+.navbar a {
+   flex: 1 1 0;
+   text-align: center;
+   color: #333;
+   padding: 14px 16px;
+   font-size: 16px;
+   text-decoration: none;
+}
+.navbar a:hover { background-color: #d2d2d2; }
+
+/* Keep page content clear of the fixed bar */
+#wrapper { padding-bottom: 56px; }
+
+/* --- People / member cards ------------------------------------------------ */
+.people-grid {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   gap: 1.5rem;
+   margin: 1.5rem auto 0;
+   max-width: 1200px;
+   text-align: left;
+}
+.people-grid .column {
+   flex: 1 1 340px;
+   max-width: 520px;
+}
+.card {
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+   border-radius: 6px;
+   padding: 1.25rem 1.5rem;
+   height: 100%;
+   overflow: hidden;          /* contains the floated portrait */
+}
+.card-portrait {
+   float: left;
+   width: 38%;
+   max-width: 170px;
+   margin: 0 1.25rem 0.5rem 0;
+   border-radius: 6px;
+}
+.card-body h3 { margin: 0 0 0.4rem; }
+.card-body .role {
+   margin: 0.1rem 0;
+   font-style: italic;
+   opacity: 0.85;
+}
+.card-body p { margin: 0.4rem 0; }
+
+/* --- Helpers -------------------------------------------------------------- */
+.justify { text-align: justify; }
+
+/* Monospace readout used by the sidereal-time / coordinate apps */
+.clock {
+   font-family: "Courier New", Courier, monospace;
+   font-size: 1.1rem;
+   line-height: 1.6;
+}
+.clock .big { font-size: 2rem; }

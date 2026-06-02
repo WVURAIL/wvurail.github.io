@@ -1,83 +1,21 @@
-<!-- Projects -->
+<!-- Projects. Content comes from _data/projects.yml; orientation alternates automatically -->
 <section class="wrapper style1 align-center" id="projects">
-<hr>
-
-      <h1>⏦Projects⏦</h1>
-	<hr>
-   <!-- Project 1 -->
-   <section class="spotlight style2 orient-right content-align-left image-position-center">
+   <hr>
+   <h1>&#9190; Projects &#9190;</h1>
+   <hr>
+   {% for project in site.data.projects %}
+   <section class="spotlight style2 content-align-left image-position-center {% cycle 'orient-right', 'orient-left' %}">
       <div class="content">
-         <h2>CHIME</h2>
-         <p align="justify">The Canadian Hydrogen Intensity Mapping Experiment (CHIME) marks a groundbreaking addition to the Dominion Astrophysical Radio Observatory (DRAO) in Penticton, British Columbia. This innovative radio telescope is designed to chart the expansive landscape of neutral hydrogen through a technique known as "hydrogen intensity mapping," allowing us to delve into the mysteries of Baryon Acoustic Oscillations (BAO) and, consequently, gain insights into the enigmatic realm of Dark Energy.</p>
+         <h2>{{ project.name }}</h2>
+         <p class="justify">{{ project.blurb }}</p>
          <ul class="actions vertical">
-            <li><a href="https://chime-experiment.ca/en" class="button">Learn More</a></li>
+            <li><a href="{{ project.url }}" class="button">Learn More</a></li>
          </ul>
       </div>
       <div class="image">
-         <img src="/images/projects/chime.jpeg" alt="chime" />
+         <img src="{{ project.image | relative_url }}" alt="{{ project.name }}" />
       </div>
    </section>
    <hr>
-   <!-- Project 2 -->
-   <section class="spotlight style2 orient-left content-align-left image-position-center">
-      <div class="content">
-         <h2>ICE</h2>
-         <p align="justify">The 'ICE' framework seamlessly integrates extensive arrays of FPGA-based data acquisition, signal processing, and networking nodes, providing a cost-effective solution in both hardware and software.</p>
-         <ul class="actions vertical">
-            <li><a href="https://arxiv.org/pdf/1608.06262.pdf" class="button">Learn More</a></li>
-         </ul>
-      </div>
-      <div class="image">
-         <img src="/images/projects/ice.jpg" alt="ice" />
-      </div>
-   </section>
-   <hr>
-   <!-- Project 3 -->
-   <section class="spotlight style2 orient-right content-align-left image-position-center">
-      <div class="content">
-         <h2>HIRAX</h2>
-         <p align="justify">HIRAX, short for the Hydrogen Intensity and Real-time Analysis eXperiment, represents a cutting-edge radio interferometer project currently in the developmental stages for its deployment in South Africa. This visionary endeavor will encompass an array of 1024 six-meter parabolic dishes, strategically arranged in a compact grid formation, with the ambitious objective of mapping a significant portion of the southern celestial expanse throughout a span of four years.
-</br>
-At its core, HIRAX is driven by two paramount scientific objectives. The first is to unveil the mysteries of Dark Energy and meticulously measure the intricate structures existing at high redshifts. Simultaneously, it endeavors to delve into the realm of radio transients and pulsars, seeking to uncover their elusive nature. Notably, HIRAX's primary method of investigation revolves around the observation of unresolved sources of neutral hydrogen through the meticulous analysis of their redshifted 21-cm emission line, a technique commonly referred to as 'hydrogen intensity mapping.'</p>
-         <ul class="actions vertical">
-            <li><a href="https://hirax.ukzn.ac.za/" class="button">Learn More</a></li>
-         </ul>
-      </div>
-      <div class="image">
-         <img src="/images/projects/hirax.jpg" alt="hirax" />
-      </div>
-   </section>
-   <hr>
-   <!-- Project 4 -->
-   <section class="spotlight style2 orient-left content-align-left image-position-center">
-      <div class="content">
-         <h2>DSPiRA</h2>
-         <p align="justify">DSPiRA, the NSF Research Experiences for Teachers (RET) initiative for Radio Astronomy, is crafted to empower educators with comprehensive training and valuable resources in the realm of Radio Astronomy. Serving as an gateway to a captivating voyage across the domains of science and engineering, particularly within the celestial arena, DSPiRA culminates with a treasure trove of lessons and exercises curated by the program's dedicated cohort of participating teachers.
-         </p>
-         <ul class="actions vertical">
-            <li><a href="http://www.wvurail.org/dspira-lessons/" class="button">Learn More</a></li>
-         </ul>
-      </div>
-      <div class="image">
-         <img src="/images/projects/dspira.jpg" alt="dspira" />
-      </div>
-   </section>
-   <hr>
-   <!-- Project 5 -->
-   <section class="spotlight style2 orient-right content-align-left image-position-center">
-      <div class="content">
-         <h2>CHORD</h2>
-         <p align="justify">The Canadian Hydrogen Observatory and Radio-transient Detector (CHORD) stands at the forefront of next-generation radio telescopes, poised to commence construction immediately. CHORD is a collaborative pan-Canadian initiative, conceived to harness the achievements of its predecessor, the Canadian Hydrogen Intensity Mapping Experiment (CHIME). This advanced telescope boasts an ultra-wideband spectrum, characterized by a "large-N, small-D" design, featuring a central array of 512 6-meter dishes, complemented by two distant outrigger stations, each equipped with CHIME-like cylinders and a 64-dish array. With the ambitious aim of charting the distribution of matter across a vast expanse of the cosmos, pinpointing tens of thousands of Fast Radio Bursts (FRBs), and conducting groundbreaking experiments in fundamental physics, CHORD is set to make profound contributions to our understanding of the universe.
-         </p>
-         <ul class="actions vertical">
-            <li><a href="https://arxiv.org/pdf/1911.01777.pdf" class="button">Learn More</a></li>
-         </ul>
-      </div>
-      <div class="image">
-         <img src="/images/projects/chord.jpg" alt="chord" />
-      </div>
-   </section>
-
-   <hr>
-
+   {% endfor %}
 </section>
