@@ -44,26 +44,18 @@ body { margin: 0; }
    max-width: 520px;
 }
 .card {
-   display: flex;
-   align-items: stretch;       /* photo column and text column share one height */
-   gap: 1.25rem;
    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
    border-radius: 6px;
    padding: 1.25rem 1.5rem;
    height: 100%;
-   overflow: hidden;
+   overflow: hidden;          /* contains the floated portrait */
 }
 .card-portrait {
-   flex: 0 0 38%;              /* fixed share of the width ... */
-   max-width: 180px;
-   align-self: stretch;        /* ... and stretch to the text's height */
-   object-fit: cover;          /* fill that box without distorting the photo */
-   object-position: top center;/* favor the head if any cropping is needed */
+   float: left;
+   width: 38%;
+   max-width: 170px;
+   margin: 0 1.25rem 0.5rem 0;
    border-radius: 6px;
-}
-.card-body {
-   flex: 1 1 auto;
-   min-width: 0;               /* allow long titles to wrap instead of overflowing */
 }
 .card-body h3 { margin: 0 0 0.4rem; }
 .card-body .role {
@@ -72,17 +64,6 @@ body { margin: 0; }
    opacity: 0.85;
 }
 .card-body p { margin: 0.4rem 0; }
-
-/* On narrow screens, stack the photo above the text instead of cramming it beside */
-@media (max-width: 480px) {
-   .card { flex-direction: column; }
-   .card-portrait {
-      width: 100%;
-      max-width: none;
-      align-self: auto;
-      height: 220px;
-   }
-}
 
 /* --- Helpers -------------------------------------------------------------- */
 .justify { text-align: justify; }
