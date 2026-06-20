@@ -32,8 +32,8 @@ alumni:
   - name: "Kalyani B. Bhopi"
     publication:
       label: "Ph.D. Dissertation"
-      title: "PEACC — Precision Emitter for 21 cm Array Coherent Calibration"
-      url: "https://researchrepository.wvu.edu/etd/"
+      title: "A Digital Calibration Source for 21 cm Cosmology Telescopes"
+      url: "https://doi.org/10.33915/etd.13349"
   - name: "Morgan R. Dameron"
     publication:
       label: "M.S. Thesis"
@@ -53,7 +53,7 @@ alumni:
     publication:
       label: "M.S. Thesis"
       title: "Enhancing CHIME Data Integrity: Utilizing an Ancillary Antenna to Detect and Mask Radio Frequency Interference"
-      url: "https://researchrepository.wvu.edu/etd/"
+      url: "https://doi.org/10.33915/etd.13326"
   - name: "Pranav R. Sanghavi"
     publication:
       label: "Ph.D. Dissertation"
