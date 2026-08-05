@@ -31,7 +31,7 @@
 
 - name: CHORD
   image: /images/projects/chord.jpg
-  url: "hhttps://www.chord-observatory.ca"
+  url: "https://www.chord-observatory.ca"
   blurb: >
     The Canadian Hydrogen Observatory and Radio-transient Detector (CHORD) is a next-generation
     radio telescope and a pan-Canadian initiative built on the success of its predecessor, CHIME.
