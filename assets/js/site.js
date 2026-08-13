@@ -5,6 +5,10 @@
 
    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+   // Reveal animations only apply under `.js`, so content is never stuck hidden
+   // if this script fails to load or throws.
+   document.documentElement.classList.add("js");
+
    /* --- Sticky header -------------------------------------------------- */
    var header = document.querySelector(".site-header");
    if (header) {
@@ -29,7 +33,11 @@
          a.addEventListener("click", function () { setOpen(false); });
       });
       document.addEventListener("keydown", function (e) {
-         if (e.key === "Escape") setOpen(false);
+         if (e.key === "Escape" && document.documentElement.hasAttribute("data-nav-open")) setOpen(false);
+      });
+      document.addEventListener("click", function (e) {
+         if (!document.documentElement.hasAttribute("data-nav-open")) return;
+         if (!e.target.closest(".site-nav") && !e.target.closest(".nav-toggle")) setOpen(false);
       });
    }
 
@@ -56,7 +64,7 @@
    if (canvas && canvas.getContext) {
       var ctx = canvas.getContext("2d");
       var stars = [];
-      var w = 0, h = 0, dpr = 1, raf = null, t = 0;
+      var w = 0, h = 0, dpr = 1, raf = null, visible = true;
 
       // Small deterministic PRNG so the sky is identical on every load.
       var seed = 20240612;
@@ -138,7 +146,12 @@
 
       var start = function () {
          build();
-         if (reduceMotion) {
+         if (!visible) {
+            // Re-render one static frame but don't restart the loop off-screen.
+            ctx.clearRect(0, 0, w, h);
+            drawStars(0);
+            drawSignal(0);
+         } else if (reduceMotion) {
             ctx.clearRect(0, 0, w, h);
             drawStars(0);
             drawSignal(0);
@@ -159,7 +172,8 @@
       // Stop animating when the hero scrolls out of view.
       if ("IntersectionObserver" in window && !reduceMotion) {
          new IntersectionObserver(function (entries) {
-            var visible = entries[0].isIntersecting;
+            // Entries can be batched; only the last one reflects current state.
+            visible = entries[entries.length - 1].isIntersecting;
             if (visible && raf === null) {
                raf = requestAnimationFrame(frame);
             } else if (!visible && raf !== null) {
@@ -177,6 +191,9 @@
    if (galleries.length) {
       var box = document.createElement("div");
       box.className = "lb";
+      box.setAttribute("role", "dialog");
+      box.setAttribute("aria-modal", "true");
+      box.setAttribute("aria-label", "Image viewer");
       box.innerHTML =
          '<button class="lb-close" type="button" aria-label="Close image">&#10005;</button><img alt="" />';
       document.body.appendChild(box);
@@ -185,6 +202,7 @@
 
       var close = function () {
          box.classList.remove("is-open");
+         document.body.style.overflow = "";
          if (lastFocus) lastFocus.focus();
       };
 
@@ -198,6 +216,7 @@
             var img = link.querySelector("img");
             boxImg.alt = (img && img.getAttribute("alt")) || "";
             box.classList.add("is-open");
+            document.body.style.overflow = "hidden";
             box.querySelector(".lb-close").focus();
          });
       });
@@ -206,7 +225,14 @@
          if (e.target === box || e.target.closest(".lb-close")) close();
       });
       document.addEventListener("keydown", function (e) {
-         if (e.key === "Escape" && box.classList.contains("is-open")) close();
+         if (!box.classList.contains("is-open")) return;
+         if (e.key === "Escape") { close(); return; }
+         // The dialog has exactly one focusable child, so containment is just
+         // "keep Tab here".
+         if (e.key === "Tab") {
+            e.preventDefault();
+            box.querySelector(".lb-close").focus();
+         }
       });
    }
 })();

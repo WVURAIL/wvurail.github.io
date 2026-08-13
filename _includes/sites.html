@@ -1,0 +1,32 @@
+<!-- Where we work. Content comes from _data/sites.yml. -->
+<section class="section section--line" id="sites">
+   <div class="container">
+      <div class="section-head reveal">
+         <div>
+            <p class="eyebrow">Where we work</p>
+            <h2>Four places on three continents</h2>
+         </div>
+         <p>
+            Our instruments live where the sky is quiet. Some we build and run; others we
+            contribute to as part of larger collaborations.
+         </p>
+      </div>
+
+      <div class="sites reveal">
+         {%- for site in site.data.sites %}
+         <div class="site">
+            <p class="site-region">{{ site.region }}</p>
+            <h3 class="site-place">{{ site.place }}</h3>
+            <ul class="site-list">
+               {%- for item in site.instruments %}
+               <li>
+                  <span class="site-name">{{ item.name }}</span>
+                  {%- if item.note %}<span class="site-note">{{ item.note }}</span>{% endif %}
+               </li>
+               {%- endfor %}
+            </ul>
+         </div>
+         {%- endfor %}
+      </div>
+   </div>
+</section>

@@ -1,0 +1,30 @@
+{%- assign pub = include.pub -%}
+<li class="pub">
+   <div class="pub-main">
+      <h3 class="pub-title">
+         {%- if pub.doi -%}
+         <a href="https://doi.org/{{ pub.doi }}">{{ pub.title }}</a>
+         {%- elsif pub.url -%}
+         <a href="{{ pub.url }}">{{ pub.title }}</a>
+         {%- elsif pub.arxiv -%}
+         <a href="https://arxiv.org/abs/{{ pub.arxiv }}">{{ pub.title }}</a>
+         {%- else -%}
+         {{ pub.title }}
+         {%- endif -%}
+      </h3>
+      <p class="pub-authors">{{ pub.authors }}</p>
+      {%- if pub.venue or pub.ref %}
+      <p class="pub-venue">
+         {%- if pub.venue %}<em>{{ pub.venue }}</em>{% endif %}
+         {%- if pub.venue and pub.ref %} &middot; {% endif %}
+         {%- if pub.ref %}{{ pub.ref }}{% endif %}
+      </p>
+      {%- endif %}
+      {%- if pub.note %}<p class="pub-note">{{ pub.note }}</p>{% endif %}
+   </div>
+   <ul class="pub-links">
+      {%- if pub.doi %}<li><a href="https://doi.org/{{ pub.doi }}">DOI</a></li>{% endif %}
+      {%- if pub.arxiv %}<li><a href="https://arxiv.org/abs/{{ pub.arxiv }}">arXiv</a></li>{% endif %}
+      {%- if pub.url and pub.doi == nil %}<li><a href="{{ pub.url }}">Link</a></li>{% endif %}
+   </ul>
+</li>

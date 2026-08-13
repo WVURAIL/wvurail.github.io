@@ -18,6 +18,8 @@ bundle exec jekyll serve --config _config.yml,_config.dev.yml
 | `_data/people.yml` | **All lab members** (PI, grad students, student workers, alumni). |
 | `_data/projects.yml` | **All research projects** shown on the home and Research pages. |
 | `_data/nav.yml` | **The header/footer navigation links.** |
+| `_data/sites.yml` | **Where we work** — the four sites and what's at each. |
+| `_data/publications.yml` | **Papers.** Hand-curated; see the comments at the top of the file. |
 | `_includes/` | Reusable pieces: `head`, `header`, `footer`, `scripts`, `icon`, plus the `hero`-adjacent sections `people`, `projects`, `join`, `person-card`. |
 | `_layouts/` | Page shells: `default` (standard page), `home` (landing page), `page` (alias of default). |
 | `_pages/` | Individual pages (People, Research, Contact, DSPIRA program pages, talks). |
@@ -68,6 +70,31 @@ Edit `_data/projects.yml`:
     A short description. Long blurbs are clamped to six lines on the card so
     rows stay even — put the full story on the project's own site.
 ```
+
+### Add a paper
+
+Edit `_data/publications.yml`. The file's header comment documents every field.
+The minimum is:
+
+```yaml
+- year: 2025
+  title: Title of the paper
+  authors: "A. Author, B. Author, incl. K. Bandura"
+  venue: The Astrophysical Journal
+  doi: "10.3847/..."
+  arxiv: "2501.00000"
+  highlight: true      # optional — pins it to a "Selected" band at the top
+```
+
+The page groups by year automatically, newest first. Dissertations and theses are
+**not** listed here — they come from the `publication:` block on each alumnus in
+`_data/people.yml`, so a graduate is only recorded once and shows up on both
+`/people/` and `/publications/`.
+
+### Change where we work
+
+Edit `_data/sites.yml`. Each site has a `region`, a `place`, and a list of
+`instruments`, each with a `name` and an optional `note`.
 
 ### Change the navigation
 

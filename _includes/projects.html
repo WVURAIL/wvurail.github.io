@@ -17,7 +17,7 @@
 
       <div class="project-grid">
          {%- for project in site.data.projects %}
-         <a class="project reveal" href="{{ project.url }}" style="transition-delay: {{ forloop.index0 | times: 60 }}ms">
+         <a class="project reveal" href="{{ project.url }}" style="--reveal-delay: {{ forloop.index0 | times: 60 }}ms">
             <div class="project-media">
                <img src="{{ project.image | relative_url }}"
                     alt="{{ project.image_alt | default: project.name }}"

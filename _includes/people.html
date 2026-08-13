@@ -16,7 +16,7 @@
 
       {%- if site.data.people.pi and site.data.people.pi.size > 0 %}
       <div class="people-block reveal">
-         <h3 class="people-block-title">Principal Investigator</h3>
+         <h2 class="people-block-title">Principal Investigator</h2>
          {%- for person in site.data.people.pi %}
          {% include person-card.html person=person variant="lead" %}
          {%- endfor %}
@@ -25,9 +25,9 @@
 
       {%- if site.data.people.grad and site.data.people.grad.size > 0 %}
       <div class="people-block reveal">
-         <h3 class="people-block-title">
+         <h2 class="people-block-title">
             Graduate Researchers <span class="count">{{ site.data.people.grad.size }}</span>
-         </h3>
+         </h2>
          <div class="people-grid">
             {%- for person in site.data.people.grad %}{% include person-card.html person=person variant="grid" %}{% endfor %}
          </div>
@@ -36,7 +36,7 @@
 
       {%- if site.data.people.students and site.data.people.students.size > 0 %}
       <div class="people-block reveal">
-         <h3 class="people-block-title">Student Researchers</h3>
+         <h2 class="people-block-title">Student Researchers</h2>
          <div class="people-grid">
             {%- for person in site.data.people.students %}{% include person-card.html person=person variant="grid" %}{% endfor %}
          </div>
@@ -45,9 +45,9 @@
 
       {%- if site.data.people.alumni and site.data.people.alumni.size > 0 %}
       <div class="people-block reveal">
-         <h3 class="people-block-title">
+         <h2 class="people-block-title">
             Alumni <span class="count">{{ site.data.people.alumni.size }}</span>
-         </h3>
+         </h2>
          <div class="alumni-list">
             {%- for person in site.data.people.alumni %}
             <div class="alumni-row">

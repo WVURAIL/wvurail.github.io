@@ -1,0 +1,95 @@
+---
+title: Publications
+layout: default
+permalink: /publications/
+full_width: true
+description: Papers, dissertations, and theses from the WVU Radio Astronomy Instrumentation Lab.
+---
+<div class="page-head">
+   <div class="container">
+      <p class="eyebrow">Publications</p>
+      <h1>Papers &amp; theses</h1>
+      <p class="lead">
+         Work from the lab and the collaborations we're part of. Theses and dissertations
+         are pulled from the people page, so a graduate only has to be recorded once.
+      </p>
+   </div>
+</div>
+
+{%- assign pubs = site.data.publications -%}
+{%- assign selected = pubs | where: "highlight", true -%}
+
+{%- if selected.size > 0 %}
+<section class="section">
+   <div class="container">
+      <h2 class="people-block-title">Selected <span class="count">{{ selected.size }}</span></h2>
+      <ul class="pub-list">
+         {%- for pub in selected %}{% include publication.html pub=pub %}{% endfor %}
+      </ul>
+   </div>
+</section>
+{%- endif %}
+
+<section class="section{% if selected.size > 0 %} section--line{% endif %}">
+   <div class="container">
+      {%- if pubs.size > 0 %}
+      {%- assign years = pubs | map: "year" | uniq | sort | reverse -%}
+      {%- for year in years %}
+      <div class="people-block">
+         <h2 class="people-block-title">
+            {{ year }} <span class="count">{{ pubs | where: "year", year | size }}</span>
+         </h2>
+         <ul class="pub-list">
+            {%- for pub in pubs %}
+            {%- if pub.year == year %}{% include publication.html pub=pub %}{% endif %}
+            {%- endfor %}
+         </ul>
+      </div>
+      {%- endfor %}
+      {%- else %}
+      <div class="empty-note">
+         <p class="eyebrow">Coming soon</p>
+         <p>
+            The paper list is being compiled. In the meantime, our code and instrument
+            documentation are on <a href="https://github.com/WVURAIL">GitHub</a>, and the
+            dissertations and theses below cover much of the lab's published work.
+         </p>
+      </div>
+      {%- endif %}
+   </div>
+</section>
+
+<!-- Theses and dissertations, sourced from _data/people.yml so there's one source of truth -->
+<section class="section section--tint">
+   <div class="container">
+      <div class="section-head">
+         <div>
+            <p class="eyebrow">Graduate work</p>
+            <h2>Dissertations &amp; theses</h2>
+         </div>
+         <p>
+            Every degree completed in the lab. Add a graduate to
+            <code>_data/people.yml</code> with a <code>publication</code> block and they
+            appear here automatically.
+         </p>
+      </div>
+
+      <div class="alumni-list">
+         {%- for person in site.data.people.alumni %}
+         {%- if person.publication %}
+         <div class="alumni-row">
+            <span class="alumni-name">{{ person.name }}</span>
+            <span class="alumni-degree">
+               {{ person.publication.label }}{% if person.publication.year %} · {{ person.publication.year }}{% endif %}
+            </span>
+            <span class="alumni-title">
+               <a href="{{ person.publication.url }}">{{ person.publication.title }}</a>
+            </span>
+         </div>
+         {%- endif %}
+         {%- endfor %}
+      </div>
+   </div>
+</section>
+
+{% include join.html %}

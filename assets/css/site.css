@@ -138,6 +138,14 @@ hr {
    color: #14100a;
 }
 
+/* :focus first so browsers without :focus-visible still show a ring; the
+   :focus-visible pair then narrows it to keyboard users where supported. */
+:focus {
+   outline: 2px solid var(--gold-2);
+   outline-offset: 3px;
+   border-radius: 3px;
+}
+:focus:not(:focus-visible) { outline: none; }
 :focus-visible {
    outline: 2px solid var(--gold-2);
    outline-offset: 3px;
@@ -263,7 +271,7 @@ strong, b { font-weight: 600; color: #fff; }
 }
 .section-head > :last-child { margin-bottom: 0; }
 .section-head h2 { margin-bottom: 0; }
-.section-head p { color: var(--paper-2); margin-bottom: 0; }
+.section-head > p { color: var(--paper-2); margin-bottom: 0; }
 
 /* 06. Buttons -------------------------------------------------------------- */
 
@@ -456,6 +464,7 @@ strong, b { font-weight: 600; color: #fff; }
 
 .hero {
    position: relative;
+   min-height: 100vh;        /* fallback for browsers without svh */
    min-height: 100svh;
    display: flex;
    align-items: center;
@@ -656,6 +665,55 @@ strong, b { font-weight: 600; color: #fff; }
    color: var(--paper-3);
    margin-top: 0.35rem;
    letter-spacing: 0;
+}
+
+/* --- Where we work -------------------------------------------------------- */
+
+.sites {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+   gap: 1px;
+   background: var(--line);
+   border: 1px solid var(--line);
+   border-radius: var(--radius);
+   overflow: hidden;
+}
+.site {
+   background: var(--ink-850);
+   padding: 1.75rem 1.6rem 1.9rem;
+   display: flex;
+   flex-direction: column;
+}
+.site-region {
+   font-family: var(--font-mono);
+   font-size: 0.66rem;
+   letter-spacing: 0.16em;
+   text-transform: uppercase;
+   color: var(--gold);
+   margin: 0 0 0.55rem;
+}
+.site-place {
+   font-size: 1.55rem;
+   line-height: 1.1;
+   margin: 0 0 1.25rem;
+   padding-bottom: 1.25rem;
+   border-bottom: 1px solid var(--line);
+   color: var(--paper);
+}
+.site-list { list-style: none; margin: 0; padding: 0; }
+.site-list li + li { margin-top: 1rem; }
+.site-name {
+   display: block;
+   font-size: 0.95rem;
+   font-weight: 500;
+   color: var(--paper);
+}
+.site-note {
+   display: block;
+   margin-top: 0.15rem;
+   font-size: 0.85rem;
+   line-height: 1.5;
+   color: var(--paper-3);
 }
 
 /* 10. Projects ------------------------------------------------------------- */
@@ -926,6 +984,69 @@ strong, b { font-weight: 600; color: #fff; }
 }
 .alumni-title a:hover { color: var(--gold); background-size: 100% 1px; }
 
+/* --- Publications --------------------------------------------------------- */
+
+.pub-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.pub {
+   display: grid;
+   grid-template-columns: minmax(0, 1fr) auto;
+   gap: 1rem 2rem;
+   align-items: start;
+   padding: 1.5rem 0.25rem;
+   border-bottom: 1px solid var(--line);
+   transition: background 0.2s var(--ease);
+}
+.pub:hover { background: rgba(255, 255, 255, 0.018); }
+.pub-title {
+   font-size: 1.2rem;
+   line-height: 1.25;
+   margin: 0 0 0.5rem;
+   color: var(--paper);
+}
+.pub-title a {
+   color: inherit;
+   text-decoration: none;
+   background-image: linear-gradient(var(--gold), var(--gold));
+   background-size: 0% 1px;
+   background-repeat: no-repeat;
+   background-position: 0 100%;
+   transition: background-size 0.3s var(--ease), color 0.2s var(--ease);
+}
+.pub-title a:hover { color: var(--gold); background-size: 100% 1px; }
+.pub-authors { margin: 0 0 0.3rem; font-size: 0.92rem; color: var(--paper-2); }
+.pub-venue { margin: 0; font-size: 0.88rem; color: var(--paper-3); }
+.pub-venue em { font-style: italic; }
+.pub-note { margin: 0.5rem 0 0; font-size: 0.88rem; color: var(--paper-3); }
+
+.pub-links { display: flex; gap: 0.5rem; list-style: none; margin: 0; padding: 0; }
+.pub-links a {
+   display: inline-block;
+   padding: 0.32rem 0.7rem;
+   border: 1px solid var(--line-2);
+   border-radius: 100px;
+   font-family: var(--font-mono);
+   font-size: 0.66rem;
+   letter-spacing: 0.1em;
+   text-transform: uppercase;
+   color: var(--paper-3);
+   text-decoration: none;
+   transition: color 0.18s var(--ease), border-color 0.18s var(--ease);
+}
+.pub-links a:hover { color: var(--gold); border-color: var(--gold); }
+
+.empty-note {
+   max-width: 58ch;
+   padding: 2rem 2.25rem;
+   border: 1px dashed var(--line-2);
+   border-radius: var(--radius);
+   background: linear-gradient(160deg, var(--gold-dim), transparent 60%), var(--ink-850);
+   color: var(--paper-2);
+}
+
+@media (max-width: 700px) {
+   .pub { grid-template-columns: 1fr; gap: 0.9rem; }
+}
+
 /* 12. Join / contact ------------------------------------------------------- */
 
 .join {
@@ -958,7 +1079,6 @@ strong, b { font-weight: 600; color: #fff; }
    padding: 1rem 0;
    border-bottom: 1px solid var(--line);
 }
-.contact-list dt,
 .contact-list .k {
    font-family: var(--font-mono);
    font-size: 0.68rem;
@@ -991,7 +1111,8 @@ strong, b { font-weight: 600; color: #fff; }
    font-size: 0.9rem;
    line-height: 1.6;
 }
-.footer-col h4 {
+.footer-col h4,
+.footer-heading {
    font-family: var(--font-mono);
    font-size: 0.68rem;
    font-weight: 500;
@@ -999,6 +1120,7 @@ strong, b { font-weight: 600; color: #fff; }
    text-transform: uppercase;
    color: var(--paper-3);
    margin: 0 0 1rem;
+   letter-spacing: 0.16em;
 }
 .footer-col ul { margin: 0; padding: 0; list-style: none; }
 .footer-col li + li { margin-top: 0.55rem; }
@@ -1173,7 +1295,8 @@ ul.actions li { margin: 0; }
    object-fit: cover;
 }
 .banner h3, .banner h4 { margin-bottom: 0.4rem; }
-.banner header h4 { color: var(--gold); font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; }
+.banner .banner-sub { margin: 0 0 1rem; }
+.banner header h4, .banner .banner-sub { color: var(--gold); font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; }
 
 /* Legacy gallery */
 .gallery {
@@ -1211,12 +1334,14 @@ ul.actions li { margin: 0; }
    place-items: center;
    padding: 3vmin;
    background: rgba(4, 7, 14, 0.94);
+   -webkit-backdrop-filter: blur(6px);
    backdrop-filter: blur(6px);
    opacity: 0;
+   visibility: hidden;      /* also removes the close button from the tab order */
    pointer-events: none;
-   transition: opacity 0.25s var(--ease);
+   transition: opacity 0.25s var(--ease), visibility 0.25s;
 }
-.lb.is-open { opacity: 1; pointer-events: auto; }
+.lb.is-open { opacity: 1; visibility: visible; pointer-events: auto; }
 .lb img {
    max-width: 100%;
    max-height: 92vh;
@@ -1302,13 +1427,19 @@ button:not(.btn):not(.button):not(.nav-toggle):not(.lb-close):hover { background
 .coord-form p { margin: 0; }
 .coord-form button { grid-column: 1 / -1; justify-self: start; }
 
-/* Fade-in on scroll (progressive enhancement — visible by default) */
-.reveal {
-   opacity: 0;
-   transform: translateY(18px);
-   transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+/* Fade-in on scroll. Implemented as an animation rather than a transition so it
+   never overwrites a component's own `transition` shorthand (project cards keep
+   their hover timing). `.js` is set by site.js, so with JavaScript off or broken
+   nothing is ever hidden. */
+.js .reveal { opacity: 0; }
+.js .reveal.is-in {
+   animation: reveal 0.7s var(--ease) both;
+   animation-delay: var(--reveal-delay, 0ms);
 }
-.reveal.is-in { opacity: 1; transform: none; }
+@keyframes reveal {
+   from { opacity: 0; transform: translateY(18px); }
+   to   { opacity: 1; transform: none; }
+}
 
 /* 16. Responsive & motion -------------------------------------------------- */
 
@@ -1339,6 +1470,7 @@ button:not(.btn):not(.button):not(.nav-toggle):not(.lb-close):hover { background
       gap: 0;
       padding: 0.75rem var(--gutter) 1.5rem;
       background: rgba(4, 7, 14, 0.97);
+      -webkit-backdrop-filter: blur(14px);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--line);
       transform: translateY(-8px);
@@ -1375,12 +1507,22 @@ button:not(.btn):not(.button):not(.nav-toggle):not(.lb-close):hover { background
       animation-iteration-count: 1 !important;
       transition-duration: 0.001ms !important;
    }
-   .reveal { opacity: 1; transform: none; }
+   .js .reveal, .js .reveal.is-in { opacity: 1; transform: none; animation: none; }
    .scroll-cue .rule::after { display: none; }
 }
 
 @media print {
    body { background: #fff; color: #111; }
-   .site-header, .scroll-cue, #sky, .join { display: none; }
+   .site-header, .scroll-cue, #sky, .hero-bg, .btn-row, .social { display: none; }
+   /* Reveals never fire for content below the fold when printing */
+   .js .reveal, .js .reveal.is-in { opacity: 1 !important; animation: none !important; transform: none !important; }
+   .section, .join, .page-head { background: none !important; padding-block: 1.5rem; }
+   .project, .person, .person-lead, .note, .facts, .fact, .clock, .coord-form {
+      background: none !important; border-color: #bbb !important;
+   }
+   h1, h2, h3, h4, .alumni-name, .contact-list .v { color: #111; }
+   p, li, .lead, .project-blurb, .person-bio, .alumni-title { color: #333; }
+   .project-blurb { -webkit-line-clamp: unset; line-clamp: unset; display: block; }
    a { color: #111; }
+   a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.8em; color: #666; }
 }

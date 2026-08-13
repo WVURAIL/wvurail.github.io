@@ -1,0 +1,40 @@
+# Where the lab has instruments or observing partners.
+# Rendered as the "Where we work" band on the home page and /projects/.
+#
+# Fields:
+#   place        — short place name (the big line)
+#   region       — country/state, shown as the small mono label above it
+#   instruments  — list of what we run or contribute to there. Each entry is
+#                  { name, note }; `note` is optional and shown in grey.
+
+- region: United States
+  place: West Virginia
+  instruments:
+    - name: GBO Outrigger
+      note: CHIME/FRB outrigger station at Green Bank Observatory
+    - name: TONE
+      note: Outrigger pathfinder array
+    - name: GBT and other GBO telescopes
+      note: With the WVU Center for Gravitational Waves and Cosmology
+
+- region: United States
+  place: California
+  instruments:
+    - name: HCO Outrigger
+      note: CHIME/FRB outrigger station at Hat Creek Radio Observatory
+
+- region: Canada
+  place: British Columbia
+  instruments:
+    - name: CHIME
+      note: Dominion Radio Astrophysical Observatory, Penticton
+    - name: CHORD
+      note: Next-generation successor to CHIME
+    - name: KKO Outrigger
+      note: CHIME/FRB outrigger station
+
+- region: South Africa
+  place: Karoo
+  instruments:
+    - name: HIRAX
+      note: 1024-dish 21 cm intensity mapping array, in development

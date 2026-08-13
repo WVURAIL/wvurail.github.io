@@ -1,0 +1,32 @@
+# Papers the lab has been part of.
+#
+# Nothing here is auto-generated — this is a curated list you control. Add newest
+# entries at the top of their year; the page groups and sorts by `year` for you.
+#
+# Fields
+#   year      (required)  Publication year, used for grouping.
+#   title     (required)  Paper title, no trailing period.
+#   authors   (required)  Author string exactly as you want it displayed. For long
+#                         collaboration lists, write it the way you'd cite it, e.g.
+#                         "CHIME/FRB Collaboration, incl. K. Bandura".
+#   venue                 Journal or conference, e.g. "The Astrophysical Journal".
+#   ref                   Volume/pages/article number, e.g. "ApJ 947, 83".
+#   doi                   Bare DOI, e.g. "10.3847/1538-4357/acc721". Linked automatically.
+#   arxiv                 Bare arXiv id, e.g. "2211.02159". Linked automatically.
+#   url                   Any other link, used when there's no DOI or arXiv.
+#   note                  One short line of context, shown in grey. Optional.
+#   highlight  true       Pins the entry to a "Selected" band at the top of the page.
+#
+# Example — delete this block once real entries are in:
+#
+# - year: 2023
+#   title: An example paper about outrigger localization
+#   authors: "A. Author, B. Author, incl. K. Bandura"
+#   venue: The Astrophysical Journal
+#   ref: "ApJ 000, 00"
+#   doi: "10.0000/example"
+#   arxiv: "2301.00000"
+#   note: Describes the Green Bank outrigger commissioning.
+#   highlight: true
+
+[]
