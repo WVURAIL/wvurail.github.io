@@ -33,33 +33,53 @@ students:
       Prof. Kevin Bandura to talk about joining.
 
 alumni:
+  # Verified against the WVU Research Repository (researchrepository.wvu.edu/etd).
+  # Newest first. `year` is the degree year.
   - name: "Kalyani B. Bhopi"
     publication:
       label: "Ph.D. Dissertation"
+      year: 2026
       title: "A Digital Calibration Source for 21 cm Cosmology Telescopes"
-      url: "https://doi.org/10.33915/etd.13349"
-  - name: "Morgan R. Dameron"
+      url: "https://researchrepository.wvu.edu/etd/13349/"
+
+  - name: "John W. Metzger"
     publication:
       label: "M.S. Thesis"
-      title: "Inferential Statistics and Information Theoretical Measures: An Approach to Interference Detection in Radio Astronomy"
-      url: "https://doi.org/10.33915/etd.11205"
-  - name: "Joseph W. Kania"
-    publication:
-      label: "Ph.D. Dissertation"
-      title: "Applications of Digital Filters in Radio Astronomy"
-      url: "http://doi.org/10.33915/etd.12243"
+      year: 2026
+      title: "Enhancing CHIME Data Integrity: Utilizing an Ancillary Antenna to Detect and Mask Radio Frequency Interference"
+      url: "https://researchrepository.wvu.edu/etd/13326/"
+
   - name: "Kholoud S. T. A. Khairy"
     publication:
       label: "M.S. Thesis"
+      year: 2025
       title: "Green Bank CHIME/FRB Outriggers Commissioning and Analog System Development"
-      url: "https://doi.org/10.33915/etd.13158"
-  - name: "John W. C. Metzger"
+      url: "https://researchrepository.wvu.edu/etd/13158/"
+
+  - name: "Joseph W. Kania"
     publication:
-      label: "M.S. Thesis"
-      title: "Enhancing CHIME Data Integrity: Utilizing an Ancillary Antenna to Detect and Mask Radio Frequency Interference"
-      url: "https://doi.org/10.33915/etd.13326"
+      label: "Ph.D. Dissertation"
+      year: 2023
+      title: "Applications of Digital Filters in Radio Astronomy"
+      url: "https://researchrepository.wvu.edu/etd/12243/"
+
   - name: "Pranav R. Sanghavi"
     publication:
       label: "Ph.D. Dissertation"
+      year: 2022
       title: "Pathfinding Fast Radio Bursts Localizations using Very Long Baseline Interferometry"
-      url: "https://www.doi.org/10.33915/etd.11352"
+      url: "https://researchrepository.wvu.edu/etd/11352/"
+
+  - name: "Xiaoqian He"
+    publication:
+      label: "M.S. Thesis"
+      year: 2018
+      title: "Spatial Fourier Transform for Blind Detection of Radio Observations of Rotating Radio Transients"
+      url: "https://researchrepository.wvu.edu/etd/5787/"
+
+  - name: "Akshaya Rane"
+    publication:
+      label: "Ph.D. Dissertation"
+      year: 2017
+      title: "A Study of the Fast Radio Burst Population"
+      url: "https://researchrepository.wvu.edu/etd/7120/"

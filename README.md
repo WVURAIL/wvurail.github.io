@@ -16,13 +16,13 @@ bundle exec jekyll serve --config _config.yml,_config.dev.yml
 | Path | What it is |
 | --- | --- |
 | `_data/people.yml` | **All lab members** (PI, grad students, student workers, alumni). |
-| `_data/projects.yml` | **All research projects** shown on the home and Research pages. |
 | `_data/nav.yml` | **The header/footer navigation links.** |
-| `_data/sites.yml` | **Where we work** — the four sites and what's at each. |
+| `_data/sites.yml` | **Where we work** — the four sites and the instruments at each. |
+| `_data/education.yml` | **Science education** — the DSPIRA section on the home page. |
 | `_data/publications.yml` | **Papers.** Hand-curated; see the comments at the top of the file. |
-| `_includes/` | Reusable pieces: `head`, `header`, `footer`, `scripts`, `icon`, plus the `hero`-adjacent sections `people`, `projects`, `join`, `person-card`. |
+| `_includes/` | Reusable pieces: `head`, `header`, `footer`, `scripts`, `icon`, plus the page sections `sites`, `publications-preview`, `education`, `people`, `join` and the `person-card` / `publication` item templates. |
 | `_layouts/` | Page shells: `default` (standard page), `home` (landing page), `page` (alias of default). |
-| `_pages/` | Individual pages (People, Research, Contact, DSPIRA program pages, talks). |
+| `_pages/` | Individual pages (People, Publications, Contact, DSPIRA program pages, talks). |
 | `apps/` | Small standalone web tools (sidereal-time clock, coordinate converter). |
 | `assets/css/site.css` | **The entire stylesheet.** Organized into numbered sections; start there. |
 | `assets/js/site.js` | Sticky header, mobile nav, hero canvas, scroll reveals, gallery lightbox. |
@@ -56,19 +56,18 @@ grad:
 Cards render automatically — no HTML editing needed. The PI is shown as a wide
 feature card; everyone else gets a grid card; alumni render as a thesis list.
 
-### Add a project
+### Change where we work
 
-Edit `_data/projects.yml`:
+Edit `_data/sites.yml`. Each site has a `region`, a `place`, and a list of
+`instruments`:
 
 ```yaml
-- name: PROJECT NAME
-  meta: Site, partner, or programme        # one short line under the title
-  image: /images/projects/example.jpg      # 16:10 or square both crop fine
-  image_alt: What the photo shows          # for screen readers
-  url: https://project-link
-  blurb: >
-    A short description. Long blurbs are clamped to six lines on the card so
-    rows stay even — put the full story on the project's own site.
+- region: Canada
+  place: British Columbia
+  instruments:
+    - name: CHIME
+      note: Canadian Hydrogen Intensity Mapping Experiment, at DRAO near Penticton
+      url: "https://chime-experiment.ca"      # optional; makes the name a link
 ```
 
 ### Add a paper
@@ -86,15 +85,19 @@ The minimum is:
   highlight: true      # optional — pins it to a "Selected" band at the top
 ```
 
+Extra optional keys: `people` (lab members on the paper, rendered as tags),
+`preprint: true`, `highlight: true` (pins it to the "Selected" band and the home
+page), and `review:` (a reminder to a human — delete it once checked).
+
 The page groups by year automatically, newest first. Dissertations and theses are
 **not** listed here — they come from the `publication:` block on each alumnus in
 `_data/people.yml`, so a graduate is only recorded once and shows up on both
 `/people/` and `/publications/`.
 
-### Change where we work
+### Change the science-education section
 
-Edit `_data/sites.yml`. Each site has a `region`, a `place`, and a list of
-`instruments`, each with a `name` and an optional `note`.
+Edit `_data/education.yml` — the intro paragraph, the three numbered points, the
+buttons, and the per-year archive links.
 
 ### Change the navigation
 

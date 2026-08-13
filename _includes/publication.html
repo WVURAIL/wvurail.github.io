@@ -18,9 +18,15 @@
          {%- if pub.venue %}<em>{{ pub.venue }}</em>{% endif %}
          {%- if pub.venue and pub.ref %} &middot; {% endif %}
          {%- if pub.ref %}{{ pub.ref }}{% endif %}
+         {%- if pub.preprint %} <span class="pub-tag pub-tag--preprint">Preprint</span>{% endif %}
       </p>
       {%- endif %}
       {%- if pub.note %}<p class="pub-note">{{ pub.note }}</p>{% endif %}
+      {%- if pub.people and pub.people.size > 0 %}
+      <p class="pub-people">
+         {%- for person in pub.people %}<span class="pub-tag">{{ person }}</span>{% endfor %}
+      </p>
+      {%- endif %}
    </div>
    <ul class="pub-links">
       {%- if pub.doi %}<li><a href="https://doi.org/{{ pub.doi }}">DOI</a></li>{% endif %}

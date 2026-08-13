@@ -703,11 +703,17 @@ strong, b { font-weight: 600; color: #fff; }
 .site-list { list-style: none; margin: 0; padding: 0; }
 .site-list li + li { margin-top: 1rem; }
 .site-name {
-   display: block;
+   display: inline-flex;
+   align-items: center;
+   gap: 0.4rem;
    font-size: 0.95rem;
    font-weight: 500;
    color: var(--paper);
+   text-decoration: none;
 }
+a.site-name svg { opacity: 0; transition: opacity 0.18s var(--ease); }
+a.site-name:hover { color: var(--gold); }
+a.site-name:hover svg { opacity: 1; }
 .site-note {
    display: block;
    margin-top: 0.15rem;
@@ -716,111 +722,70 @@ strong, b { font-weight: 600; color: #fff; }
    color: var(--paper-3);
 }
 
-/* 10. Projects ------------------------------------------------------------- */
+/* 10. Science education --------------------------------------------------- */
 
-/* Fixed-width tracks so a short last row keeps the same card size as the rest
-   rather than stretching — works for any number of projects. */
-.project-grid {
+.ed-grid {
    display: grid;
-   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-   gap: clamp(1.25rem, 2.4vw, 1.75rem);
+   grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+   gap: clamp(2rem, 5vw, 4rem);
+   align-items: start;
 }
-
-.project {
+.ed-media {
    position: relative;
-   display: flex;
-   flex-direction: column;
-   background: var(--ink-800);
-   border: 1px solid var(--line);
    border-radius: var(--radius);
    overflow: hidden;
-   text-decoration: none;
-   color: inherit;
-   transition: transform 0.28s var(--ease), border-color 0.28s var(--ease),
-      background 0.28s var(--ease), box-shadow 0.28s var(--ease);
-}
-.project:hover {
-   transform: translateY(-4px);
-   border-color: var(--line-2);
+   border: 1px solid var(--line);
    background: var(--ink-700);
-   box-shadow: var(--shadow-lift);
-   color: inherit;
 }
-
-.project-media {
-   position: relative;
-   aspect-ratio: 16 / 10;
-   overflow: hidden;
-   background: var(--ink-600);
-}
-.project-media img {
+.ed-media img {
    width: 100%;
-   height: 100%;
+   aspect-ratio: 4 / 5;
    object-fit: cover;
-   transition: transform 0.6s var(--ease), filter 0.4s var(--ease);
-   filter: saturate(0.85) brightness(0.92);
-}
-.project:hover .project-media img {
-   transform: scale(1.045);
-   filter: saturate(1) brightness(1);
-}
-.project-media::after {
-   content: "";
-   position: absolute;
-   inset: 0;
-   background: linear-gradient(to top, rgba(10, 16, 29, 0.85), rgba(10, 16, 29, 0) 55%);
+   filter: saturate(0.92) brightness(0.95);
 }
 
-.project-body {
-   display: flex;
-   flex-direction: column;
-   flex: 1;
-   padding: 1.5rem 1.5rem 1.6rem;
+.ed-points {
+   counter-reset: ed;
+   list-style: none;
+   margin: 0 0 2rem;
+   padding: 0;
+   border-top: 1px solid var(--line);
 }
-.project-name {
-   font-family: var(--font-display);
-   font-size: 1.75rem;
-   line-height: 1;
-   letter-spacing: -0.01em;
-   margin: 0 0 0.45rem;
-   color: var(--paper);
+.ed-points li {
+   counter-increment: ed;
+   position: relative;
+   padding: 1.4rem 0 1.4rem 3rem;
+   border-bottom: 1px solid var(--line);
 }
-.project-meta {
-   font-family: var(--font-mono);
-   font-size: 0.68rem;
-   letter-spacing: 0.14em;
-   text-transform: uppercase;
-   color: var(--gold);
-   margin: 0 0 1rem;
-}
-/* Clamped so cards in a row stay visually even regardless of blurb length */
-.project-blurb {
-   color: var(--paper-2);
-   font-size: 0.945rem;
-   line-height: 1.62;
-   margin: 0 0 1.5rem;
-   display: -webkit-box;
-   -webkit-box-orient: vertical;
-   -webkit-line-clamp: 6;
-   line-clamp: 6;
-   overflow: hidden;
-}
-.project-cta {
-   margin-top: auto;
-   display: inline-flex;
-   align-items: center;
-   gap: 0.45rem;
+.ed-points li::before {
+   content: counter(ed, decimal-leading-zero);
+   position: absolute;
+   left: 0;
+   top: 1.55rem;
    font-family: var(--font-mono);
    font-size: 0.72rem;
-   font-weight: 500;
+   letter-spacing: 0.1em;
+   color: var(--gold);
+}
+.ed-points h3 { font-size: 1.25rem; margin: 0 0 0.35rem; }
+.ed-points p { margin: 0; font-size: 0.94rem; line-height: 1.6; color: var(--paper-2); }
+
+.ed-archive {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   gap: 0.5rem 0.9rem;
+   margin: 1.75rem 0 0;
+   padding-top: 1.5rem;
+   border-top: 1px solid var(--line);
+   font-family: var(--font-mono);
+   font-size: 0.72rem;
    letter-spacing: 0.12em;
    text-transform: uppercase;
-   color: var(--paper-3);
-   transition: color 0.2s var(--ease);
 }
-.project:hover .project-cta { color: var(--gold); }
-.project:hover .project-cta svg { transform: translateX(3px); }
-.project-cta svg { transition: transform 0.2s var(--ease); }
+.ed-archive span { color: var(--paper-3); }
+.ed-archive a { color: var(--paper-2); text-decoration: none; }
+.ed-archive a:hover { color: var(--gold); }
 
 /* 11. People --------------------------------------------------------------- */
 
@@ -1017,6 +982,25 @@ strong, b { font-weight: 600; color: #fff; }
 .pub-venue { margin: 0; font-size: 0.88rem; color: var(--paper-3); }
 .pub-venue em { font-style: italic; }
 .pub-note { margin: 0.5rem 0 0; font-size: 0.88rem; color: var(--paper-3); }
+
+.pub-people { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.75rem 0 0; }
+.pub-tag {
+   display: inline-block;
+   padding: 0.2rem 0.55rem;
+   border: 1px solid var(--line);
+   border-radius: 100px;
+   background: var(--ink-800);
+   font-family: var(--font-mono);
+   font-size: 0.66rem;
+   letter-spacing: 0.05em;
+   color: var(--paper-3);
+}
+.pub-tag--preprint {
+   border-color: rgba(234, 170, 0, 0.4);
+   color: var(--gold);
+   background: var(--gold-dim);
+   margin-left: 0.4rem;
+}
 
 .pub-links { display: flex; gap: 0.5rem; list-style: none; margin: 0; padding: 0; }
 .pub-links a {
@@ -1445,6 +1429,8 @@ button:not(.btn):not(.button):not(.nav-toggle):not(.lb-close):hover { background
 
 @media (max-width: 900px) {
    .section-head { grid-template-columns: 1fr; align-items: start; gap: 1.25rem; }
+   .ed-grid { grid-template-columns: 1fr; }
+   .ed-media img { aspect-ratio: 16 / 9; }
    .statement,
    .join-grid { grid-template-columns: 1fr; }
    .person-lead { grid-template-columns: 1fr; }

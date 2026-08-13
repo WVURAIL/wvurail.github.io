@@ -1,21 +1,21 @@
 ---
-title: Research
-layout: default
+# The old /projects/ page is gone: the telescopes now live under "Where we work"
+# on the home page, and the research output has its own /publications/ page.
+# This stub keeps any existing bookmarks and inbound links working.
 permalink: /projects/
-full_width: true
-description: Research projects and instruments built by the WVU Radio Astronomy Instrumentation Lab, including CHIME, CHORD, HIRAX, ICE, and DSPIRA.
+sitemap: false
+layout: null
 ---
-<div class="page-head">
-   <div class="container">
-      <p class="eyebrow">Research</p>
-      <h1>Telescopes and the systems that run them</h1>
-      <p class="lead">
-         Wide-field surveys need instruments that don't exist yet. We design the analog front
-         ends, the FPGA correlators, and the data pipelines — and then we go build them, in
-         West Virginia, California, Canada, and South Africa.
-      </p>
-   </div>
-</div>
-
-{% include projects.html bare=true %}
-{% include join.html %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8" />
+   <title>Redirecting &middot; {{ site.title }}</title>
+   <link rel="canonical" href="{{ '/publications/' | absolute_url }}" />
+   <meta http-equiv="refresh" content="0; url={{ '/publications/' | relative_url }}" />
+   <meta name="robots" content="noindex" />
+</head>
+<body>
+   <p>This page has moved to <a href="{{ '/publications/' | relative_url }}">Publications</a>.</p>
+</body>
+</html>

@@ -1,6 +1,7 @@
 <!-- Where we work. Content comes from _data/sites.yml. -->
-<section class="section section--line" id="sites">
+<section class="section{% unless include.bare %} section--line{% endunless %}" id="sites">
    <div class="container">
+      {%- unless include.bare %}
       <div class="section-head reveal">
          <div>
             <p class="eyebrow">Where we work</p>
@@ -11,6 +12,7 @@
             contribute to as part of larger collaborations.
          </p>
       </div>
+      {%- endunless %}
 
       <div class="sites reveal">
          {%- for site in site.data.sites %}
@@ -20,7 +22,13 @@
             <ul class="site-list">
                {%- for item in site.instruments %}
                <li>
+                  {%- if item.url %}
+                  <a class="site-name" href="{{ item.url }}">
+                     {{ item.name }} {% include icon.html name="external" %}
+                  </a>
+                  {%- else %}
                   <span class="site-name">{{ item.name }}</span>
+                  {%- endif %}
                   {%- if item.note %}<span class="site-note">{{ item.note }}</span>{% endif %}
                </li>
                {%- endfor %}

@@ -1,8 +1,8 @@
 # Main navigation. Order here is the order shown in the header.
 # The "Join the lab" button is added automatically after these links.
 
-- title: Research
-  url: /projects/
+- title: Where We Work
+  url: /#sites
 
 - title: People
   url: /people/
@@ -10,7 +10,7 @@
 - title: Publications
   url: /publications/
 
-- title: Outreach
+- title: Education
   url: /ret-dspira/
 
 - title: Tools

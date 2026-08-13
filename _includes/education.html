@@ -1,0 +1,49 @@
+<!-- Science education / outreach. Content comes from _data/education.yml. -->
+{%- assign ed = site.data.education -%}
+<section class="section section--tint" id="education">
+   <div class="container">
+      <div class="section-head reveal">
+         <div>
+            <p class="eyebrow">Science education</p>
+            <h2>Teachers build radio telescopes too</h2>
+         </div>
+         <p>{{ ed.intro | strip_newlines | strip }}</p>
+      </div>
+
+      <div class="ed-grid reveal">
+         <div class="ed-media">
+            <img src="{{ '/images/projects/dspira.jpg' | relative_url }}"
+                 alt="Two DSPIRA teachers operating a small horn radio telescope in a field at dusk"
+                 loading="lazy" decoding="async" width="900" height="600" />
+         </div>
+
+         <div class="ed-body">
+            <ol class="ed-points">
+               {%- for point in ed.points %}
+               <li>
+                  <h3>{{ point.title }}</h3>
+                  <p>{{ point.body | strip_newlines | strip }}</p>
+               </li>
+               {%- endfor %}
+            </ol>
+
+            <div class="btn-row">
+               {%- for link in ed.links %}
+               <a class="btn{% if forloop.first %} btn--primary{% endif %}" href="{{ link.url | relative_url }}">
+                  {{ link.text }}{% if forloop.first %} {% include icon.html name="arrow" %}{% endif %}
+               </a>
+               {%- endfor %}
+            </div>
+
+            {%- if ed.archive and ed.archive.size > 0 %}
+            <p class="ed-archive">
+               <span>Past cohorts</span>
+               {%- for item in ed.archive %}
+               <a href="{{ item.url | relative_url }}">{{ item.year }}</a>
+               {%- endfor %}
+            </p>
+            {%- endif %}
+         </div>
+      </div>
+   </div>
+</section>

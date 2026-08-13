@@ -1,0 +1,28 @@
+<!-- Selected papers on the home page. Full list lives at /publications/. -->
+{%- assign pubs = site.data.publications -%}
+{%- assign selected = pubs | where: "highlight", true -%}
+{%- if selected.size == 0 %}{% assign selected = pubs %}{% endif -%}
+<section class="section" id="publications">
+   <div class="container">
+      <div class="section-head reveal">
+         <div>
+            <p class="eyebrow">Publications</p>
+            <h2>What the instruments found</h2>
+         </div>
+         <p>
+            Members of the lab are authors on {{ pubs.size }} papers from their time at WVU,
+            across CHIME, CHIME/FRB, HIRAX, and the outrigger stations.
+         </p>
+      </div>
+
+      <ul class="pub-list reveal">
+         {%- for pub in selected limit: 5 %}{% include publication.html pub=pub %}{% endfor %}
+      </ul>
+
+      <div class="btn-row">
+         <a class="btn" href="{{ '/publications/' | relative_url }}">
+            All {{ pubs.size }} papers and theses {% include icon.html name="arrow" %}
+         </a>
+      </div>
+   </div>
+</section>

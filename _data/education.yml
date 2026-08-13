@@ -1,0 +1,42 @@
+# The lab's science-education and outreach work.
+#
+# `intro` is the paragraph shown under the section heading. `links` become
+# buttons; the first one is styled as the primary action. `archive` is the
+# per-year program pages.
+
+intro: >
+  DSPIRA — Digital Signal Processing in Radio Astronomy — is an NSF Research
+  Experiences for Teachers site run with the WVU Center for Gravitational Waves
+  and Cosmology and the Green Bank Observatory. High school teachers spend a
+  summer building horn radio telescopes and writing GNU Radio signal-processing
+  flowgraphs, then take the work back to their own classrooms.
+
+points:
+  - title: Build a telescope
+    body: >
+      Teachers assemble a working horn antenna and low-noise amplifier, then use
+      it to map neutral hydrogen in the Milky Way.
+  - title: Learn the tools
+    body: >
+      The same open-source stack the lab uses for real instruments — GNU Radio,
+      Python, and software-defined radio hardware.
+  - title: Take it back to class
+    body: >
+      Each cohort writes classroom lessons and exercises, published openly for
+      any teacher to pick up.
+
+links:
+  - text: Classroom Radio Astronomy
+    url: "https://wvurail.org/cra/"
+  - text: DSPIRA lessons
+    url: "https://wvurail.org/dspira-lessons/"
+  - text: Program overview
+    url: /ret-dspira/
+
+archive:
+  - year: 2019
+    url: /dspira-2019/
+  - year: 2018
+    url: /dspira-2018/
+  - year: 2017
+    url: /dspira-2017/
