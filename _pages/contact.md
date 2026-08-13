@@ -1,15 +1,19 @@
 ---
-layout: page
 title: Contact
+layout: default
 permalink: /contact/
-description: How to reach the WVU Radio Astronomy Instrumentation Lab.
+full_width: true
+description: How to reach the WVU Radio Astronomy Instrumentation Lab, and how students can join.
 ---
+<div class="page-head">
+   <div class="container">
+      <p class="eyebrow">Contact</p>
+      <h1>Get in touch</h1>
+      <p class="lead">
+         We're always glad to hear from students, collaborators, and anyone curious about
+         what we're building.
+      </p>
+   </div>
+</div>
 
-If you're a student — graduate or undergraduate — interested in hands-on radio astronomy
-and instrumentation, we'd love to hear from you.
-
-Our lab is located in the Advanced Engineering Research Building (AERB), Room 304, on the
-WVU Evansdale Campus.
-
-- **Email:** [wvurail@gmail.com](mailto:wvurail@gmail.com?Subject=RAIL)
-- **GitHub:** [github.com/WVURAIL](https://github.com/WVURAIL)
+{% include join.html %}

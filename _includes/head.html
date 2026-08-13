@@ -1,20 +1,60 @@
 <head>
    <meta charset="utf-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="theme-color" content="#04070e" />
 
-   <title>{% if page.title %}{{ page.title }} &middot; {% endif %}{{ site.title }}</title>
-   <meta name="description" content="{{ page.description | default: site.description | strip_newlines | strip }}" />
+   {%- assign full_title = site.title | append: " — " | append: site.tagline -%}
+   {%- if page.title -%}
+   {%- assign full_title = page.title | append: " · " | append: site.title -%}
+   {%- endif -%}
+   {%- assign desc = page.description | default: site.description | strip_newlines | strip -%}
+   {%- assign share = page.image | default: "/images/social-card.png" -%}
 
-   <!-- Open Graph (nicer link previews when shared) -->
-   <meta property="og:title" content="{% if page.title %}{{ page.title }} &middot; {% endif %}{{ site.title }}" />
-   <meta property="og:description" content="{{ page.description | default: site.description | strip_newlines | strip }}" />
+   <title>{{ full_title }}</title>
+   <meta name="description" content="{{ desc }}" />
+   <link rel="canonical" href="{{ page.url | absolute_url }}" />
+
+   <!-- Open Graph / Twitter -->
+   <meta property="og:site_name" content="{{ site.title }}" />
+   <meta property="og:title" content="{{ full_title }}" />
+   <meta property="og:description" content="{{ desc }}" />
    <meta property="og:type" content="website" />
    <meta property="og:url" content="{{ page.url | absolute_url }}" />
-   <meta property="og:image" content="{{ '/images/banner.jpg' | absolute_url }}" />
+   <meta property="og:image" content="{{ share | absolute_url }}" />
+   <meta name="twitter:card" content="summary_large_image" />
+   <meta name="twitter:title" content="{{ full_title }}" />
+   <meta name="twitter:description" content="{{ desc }}" />
+   <meta name="twitter:image" content="{{ share | absolute_url }}" />
 
-   <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" />
+   <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" sizes="any" />
    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}" />
 
-   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
-   <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}" />
+   <!-- Self-hosted fonts: no third-party requests, no render-blocking CDN -->
+   <link rel="preload" as="font" type="font/woff2" href="{{ '/assets/fonts/inter-var.woff2' | relative_url }}" crossorigin />
+   <link rel="preload" as="font" type="font/woff2" href="{{ '/assets/fonts/instrument-serif-400.woff2' | relative_url }}" crossorigin />
+   <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}" />
+
+   <script type="application/ld+json">
+   {
+     "@context": "https://schema.org",
+     "@type": "ResearchOrganization",
+     "name": "WVU Radio Astronomy Instrumentation Laboratory",
+     "alternateName": "WVU RAIL",
+     "url": "{{ site.url }}",
+     "email": "{{ site.email }}",
+     "parentOrganization": {
+       "@type": "CollegeOrUniversity",
+       "name": "West Virginia University",
+       "url": "https://www.wvu.edu"
+     },
+     "address": {
+       "@type": "PostalAddress",
+       "streetAddress": "Advanced Engineering Research Building, Room 304",
+       "addressLocality": "Morgantown",
+       "addressRegion": "WV",
+       "addressCountry": "US"
+     },
+     "sameAs": ["https://github.com/WVURAIL"]
+   }
+   </script>
 </head>

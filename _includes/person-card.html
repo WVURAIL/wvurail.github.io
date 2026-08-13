@@ -1,13 +1,33 @@
-{% assign p = include.person %}
-<div class="column">
-   <div class="card">
-      {% if p.photo %}<img class="card-portrait" src="{{ p.photo | relative_url }}" alt="{{ p.name }}" />{% endif %}
-      <div class="card-body">
-         <h3>{{ p.name }}</h3>
-         {% for role in p.roles %}<p class="role">{{ role }}</p>{% endfor %}
-         {% if p.link %}<p><em><a href="{{ p.link.url }}">{{ p.link.text }}</a></em></p>{% endif %}
-         {% if p.bio %}<p class="justify">{{ p.bio }}</p>{% endif %}
-         {% if p.publication %}<p class="justify">{{ p.publication.label }}: <em><a href="{{ p.publication.url }}">"{{ p.publication.title }}"</a></em></p>{% endif %}
-      </div>
+{%- assign p = include.person -%}
+{%- assign variant = include.variant | default: "grid" -%}
+<div class="{% if variant == 'lead' %}person-lead{% else %}person{% if p.open %} person--open{% endif %}{% endif %}">
+   {%- unless p.open %}
+   <div class="portrait{% unless p.photo %} portrait--empty{% endunless %}">
+      {%- if p.photo %}
+      <img src="{{ p.photo | relative_url }}" alt="{{ p.name }}" loading="lazy" decoding="async" width="480" height="480" />
+      {%- else %}
+      {% include icon.html name="person" %}
+      {%- endif %}
+   </div>
+   {%- endunless %}
+
+   <div class="person-info">
+      <h3>{{ p.name }}</h3>
+      {%- if p.roles %}
+      <ul class="person-roles">
+         {%- for role in p.roles %}<li>{{ role }}</li>{% endfor %}
+      </ul>
+      {%- endif %}
+      {%- if p.bio %}<p class="person-bio">{{ p.bio | strip_newlines | strip }}</p>{% endif %}
+      {%- if p.link %}
+      <a class="person-link" href="{{ p.link.url }}">
+         {{ p.link.text }} {% include icon.html name="external" %}
+      </a>
+      {%- endif %}
+      {%- if p.open %}
+      <a class="person-link" href="mailto:{{ site.email }}?Subject=Joining%20RAIL">
+         Get in touch {% include icon.html name="arrow" %}
+      </a>
+      {%- endif %}
    </div>
 </div>

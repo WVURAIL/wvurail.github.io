@@ -1,9 +1,10 @@
 # All lab members. Add/remove people here — the People section renders automatically.
-# Fields: name (required), photo, roles[], link{text,url}, bio, publication{label,title,url}.
+# Fields: name (required), photo, roles[], link{text,url}, bio, open (bool),
+#         publication{label,title,url}.
 
 pi:
   - name: "Kevin M. Bandura, Ph.D."
-    photo: /images/people/kbandura.png
+    photo: /images/people/kbandura.jpg
     roles:
       - "Associate Professor, Department of Computer Science and Electrical Engineering"
       - "Adjunct Assistant Professor, Department of Physics and Astronomy"
@@ -22,11 +23,14 @@ grad:
     photo: /images/people/dgormley.jpg
     roles:
       - "Ph.D. Candidate"
-    bio: "Research focus on RFI mitigation."
+    bio: "Research focus on radio frequency interference (RFI) mitigation."
 
 students:
-  - name: "This could be you!"
-    bio: "Message Prof. Kevin Bandura to apply."
+  - name: "This could be you"
+    open: true          # renders as the open-position card, no portrait
+    bio: >
+      We take on undergraduate and graduate researchers every year. Message
+      Prof. Kevin Bandura to talk about joining.
 
 alumni:
   - name: "Kalyani B. Bhopi"

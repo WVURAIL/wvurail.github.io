@@ -1,27 +1,67 @@
-<!-- People. Content comes from _data/people.yml; cards render via _includes/person-card.html -->
-<section class="wrapper style1 align-center" id="people">
-   <h1>&#9190; People &#9190;</h1>
+<!-- People. Content comes from _data/people.yml; cards render via person-card.html -->
+<section class="section" id="people">
+   <div class="container">
+      {%- unless include.bare %}
+      <div class="section-head reveal">
+         <div>
+            <p class="eyebrow">People</p>
+            <h2>Who's in the lab</h2>
+         </div>
+         <p>
+            A multidisciplinary group in the Lane Department of Computer Science and
+            Electrical Engineering, working across engineering and astronomy.
+         </p>
+      </div>
+      {%- endunless %}
 
-   <h2>Principal Investigator</h2>
-   <div class="people-grid">
-      {% for person in site.data.people.pi %}{% include person-card.html person=person %}{% endfor %}
-   </div>
-   <hr>
+      {%- if site.data.people.pi and site.data.people.pi.size > 0 %}
+      <div class="people-block reveal">
+         <h3 class="people-block-title">Principal Investigator</h3>
+         {%- for person in site.data.people.pi %}
+         {% include person-card.html person=person variant="lead" %}
+         {%- endfor %}
+      </div>
+      {%- endif %}
 
-   <h2>Graduate Research Assistants</h2>
-   <div class="people-grid">
-      {% for person in site.data.people.grad %}{% include person-card.html person=person %}{% endfor %}
-   </div>
-   <hr>
+      {%- if site.data.people.grad and site.data.people.grad.size > 0 %}
+      <div class="people-block reveal">
+         <h3 class="people-block-title">
+            Graduate Researchers <span class="count">{{ site.data.people.grad.size }}</span>
+         </h3>
+         <div class="people-grid">
+            {%- for person in site.data.people.grad %}{% include person-card.html person=person variant="grid" %}{% endfor %}
+         </div>
+      </div>
+      {%- endif %}
 
-   <h2>Student Workers</h2>
-   <div class="people-grid">
-      {% for person in site.data.people.students %}{% include person-card.html person=person %}{% endfor %}
-   </div>
-   <hr>
+      {%- if site.data.people.students and site.data.people.students.size > 0 %}
+      <div class="people-block reveal">
+         <h3 class="people-block-title">Student Researchers</h3>
+         <div class="people-grid">
+            {%- for person in site.data.people.students %}{% include person-card.html person=person variant="grid" %}{% endfor %}
+         </div>
+      </div>
+      {%- endif %}
 
-   <h2>Alumni</h2>
-   <div class="people-grid alumni-grid">
-      {% for person in site.data.people.alumni %}{% include person-card.html person=person %}{% endfor %}
+      {%- if site.data.people.alumni and site.data.people.alumni.size > 0 %}
+      <div class="people-block reveal">
+         <h3 class="people-block-title">
+            Alumni <span class="count">{{ site.data.people.alumni.size }}</span>
+         </h3>
+         <div class="alumni-list">
+            {%- for person in site.data.people.alumni %}
+            <div class="alumni-row">
+               <span class="alumni-name">{{ person.name }}</span>
+               <span class="alumni-degree">{{ person.publication.label | default: "Alumna/us" }}</span>
+               <span class="alumni-title">
+                  {%- if person.publication %}
+                  <a href="{{ person.publication.url }}">{{ person.publication.title }}</a>
+                  {%- endif %}
+               </span>
+            </div>
+            {%- endfor %}
+         </div>
+      </div>
+      {%- endif %}
    </div>
 </section>

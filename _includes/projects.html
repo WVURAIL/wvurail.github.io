@@ -1,21 +1,38 @@
-<!-- Projects. Content comes from _data/projects.yml; orientation alternates automatically -->
-<section class="wrapper style1 align-center" id="projects">
-   <hr>
-   <h1>&#9190; Projects &#9190;</h1>
-   <hr>
-   {% for project in site.data.projects %}
-   <section class="spotlight style2 content-align-left image-position-center {% cycle 'orient-right', 'orient-left' %}">
-      <div class="content">
-         <h2>{{ project.name }}</h2>
-         <p class="justify">{{ project.blurb }}</p>
-         <ul class="actions vertical">
-            <li><a href="{{ project.url }}" class="button">Learn More</a></li>
-         </ul>
+<!-- Research projects. Content comes from _data/projects.yml. -->
+<section class="section{% unless include.bare %} section--tint{% endunless %}" id="projects">
+   <div class="container">
+      {%- unless include.bare %}
+      <div class="section-head reveal">
+         <div>
+            <p class="eyebrow">Research</p>
+            <h2>Telescopes and the systems that run them</h2>
+         </div>
+         <p>
+            Wide-field surveys need instruments that don't exist yet. We design the analog
+            front ends, the FPGA correlators, and the data pipelines — and then we go build
+            them, in West Virginia, California, Canada, and South Africa.
+         </p>
       </div>
-      <div class="image">
-         <img src="{{ project.image | relative_url }}" alt="{{ project.name }}" />
+      {%- endunless %}
+
+      <div class="project-grid">
+         {%- for project in site.data.projects %}
+         <a class="project reveal" href="{{ project.url }}" style="transition-delay: {{ forloop.index0 | times: 60 }}ms">
+            <div class="project-media">
+               <img src="{{ project.image | relative_url }}"
+                    alt="{{ project.image_alt | default: project.name }}"
+                    loading="lazy" decoding="async" width="800" height="500" />
+            </div>
+            <div class="project-body">
+               <h3 class="project-name">{{ project.name }}</h3>
+               {%- if project.meta %}
+               <p class="project-meta">{{ project.meta }}</p>
+               {%- endif %}
+               <p class="project-blurb">{{ project.blurb | strip_newlines | strip }}</p>
+               <span class="project-cta">Learn more {% include icon.html name="external" %}</span>
+            </div>
+         </a>
+         {%- endfor %}
       </div>
-   </section>
-   <hr>
-   {% endfor %}
+   </div>
 </section>

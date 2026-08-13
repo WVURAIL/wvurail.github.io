@@ -1,7 +1,11 @@
-# Projects shown on the home page and /projects/. They alternate left/right automatically.
-# Fields: name, image, url, blurb.
+# Research projects shown on the home page and /projects/.
+# Fields: name (required), image, image_alt, url, blurb, meta.
+#   meta      — one short line under the title (site, partner, or programme)
+#   image_alt — describes the photo for screen readers; falls back to `name`
 
 - name: DSPiRA
+  meta: NSF Research Experience for Teachers
+  image_alt: Two teachers operating a small horn radio telescope in a field at dusk
   image: /images/projects/dspira.jpg
   url: "http://www.wvurail.org/dspira-lessons/"
   blurb: >
@@ -11,6 +15,8 @@
     collection of lessons and exercises curated by the program's participating teachers.
 
 - name: ICE
+  meta: FPGA acquisition & correlator platform
+  image_alt: Close-up of a red ICE FPGA circuit board with SMA connectors
   image: /images/projects/ice.jpg
   url: "https://sites.google.com/a/mcgillcosmology.ca/mcgillcosmology/ice-system"
   blurb: >
@@ -19,6 +25,8 @@
     hardware and software.
 
 - name: CHIME
+  meta: DRAO · Penticton, British Columbia
+  image_alt: The CHIME cylindrical radio telescope under a star-filled night sky
   image: /images/projects/chime.jpeg
   url: "https://chime-experiment.ca"
   blurb: >
@@ -30,6 +38,8 @@
     the enigmatic realm of Dark Energy.
 
 - name: CHORD
+  meta: Pan-Canadian · CHIME successor
+  image_alt: Aerial view of the CHORD dish array site in a mountain valley
   image: /images/projects/chord.jpg
   url: "https://www.chord-observatory.ca"
   blurb: >
@@ -42,6 +52,8 @@
     physics experiments.
 
 - name: HIRAX
+  meta: South Africa · in development
+  image_alt: A field of HIRAX parabolic dishes against a deep blue sky
   image: /images/projects/hirax.jpg
   url: "https://hirax.ukzn.ac.za"
   blurb: >

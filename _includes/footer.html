@@ -1,22 +1,43 @@
-<!-- Footer / contact band (also the #contact anchor target on the home page) -->
-<section class="wrapper style1 align-center" id="contact">
-   <hr>
-   <h1>&#9190; Contact Us &#9190;</h1>
-   <p>
-      If you're an enthusiastic student, graduate or undergraduate, eager to dive into
-      exciting scientific work, don't hesitate to reach out. Send us an email and let's
-      explore some hands-on science together.
-   </p>
-   <hr>
-   <p>
-      Our lab is located in the Advanced Engineering Research Building (AERB), Room 304,
-      on the WVU Evansdale Campus.
-   </p>
+<footer class="site-footer">
+   <div class="container">
+      <div class="footer-grid">
+         <div class="footer-brand">
+            <a class="brand" href="{{ '/' | relative_url }}">
+               <span class="brand-wvu">WVU</span><span class="brand-wave" aria-hidden="true">&#9190;</span><span>RAIL</span>
+            </a>
+            <p>{{ site.description | strip_newlines | strip }}</p>
+         </div>
 
-   <ul class="icons">
-      <li><a href="https://github.com/WVURAIL" class="icon style2 fa-github"><span class="label">GitHub</span></a></li>
-      <li><a href="mailto:wvurail@gmail.com?Subject=RAIL" class="icon style2 fa-envelope"><span class="label">Email</span></a></li>
-   </ul>
+         <div class="footer-col">
+            <h4>Explore</h4>
+            <ul>
+               {%- for item in site.data.nav %}
+               <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
+               {%- endfor %}
+            </ul>
+         </div>
 
-   <p>&copy; {{ 'now' | date: "%Y" }} WVU RAIL</p>
-</section>
+         <div class="footer-col">
+            <h4>Find us</h4>
+            <ul>
+               <li><a href="mailto:{{ site.email }}?Subject=RAIL">{{ site.email }}</a></li>
+               <li><a href="https://github.com/WVURAIL">github.com/WVURAIL</a></li>
+               <li><a href="https://www.statler.wvu.edu/lane-department-of-computer-science-and-electrical-engineering">Lane Dept. of CSEE</a></li>
+               <li><a href="https://www.wvu.edu">West Virginia University</a></li>
+            </ul>
+         </div>
+      </div>
+
+      <div class="footer-bottom">
+         <span>&copy; {{ 'now' | date: "%Y" }} WVU RAIL · Morgantown, West Virginia</span>
+         <ul class="social">
+            <li>
+               <a href="https://github.com/WVURAIL" aria-label="RAIL on GitHub">{% include icon.html name="github" %}</a>
+            </li>
+            <li>
+               <a href="mailto:{{ site.email }}?Subject=RAIL" aria-label="Email the lab">{% include icon.html name="mail" %}</a>
+            </li>
+         </ul>
+      </div>
+   </div>
+</footer>

@@ -2,29 +2,111 @@
 <html lang="en">
 {% include head.html %}
 <body>
-   {% include navbar.html anchors=true %}
+   {% include header.html %}
 
-   <!-- Wrapper -->
-   <div id="wrapper" class="divided">
+   <main id="main">
+      <!-- Hero ------------------------------------------------------------ -->
+      <section class="hero" id="top">
+         <div class="hero-bg" aria-hidden="true">
+            <img src="{{ '/images/banner.jpg' | relative_url }}" alt="" fetchpriority="high" width="3264" height="2448" />
+         </div>
+         <canvas id="sky" aria-hidden="true"></canvas>
 
-      <!-- Landing / hero -->
-      <section class="banner style5 orient-center content-align-center image-position-center fullscreen onload-image-fade-in onload-content-fade-down invert" id="rail">
-         <div class="content">
-               <h1>WVU ⏦ RAIL</h1>
-               <p class="justify">West Virginia University's Radio Astronomy Instrumentation Laboratory specializes in the development of new telescopes and cutting-edge technologies for exploring the cosmos. Our primary goal is to make groundbreaking discoveries related to phenomena such as Cosmology, Fast Radio Bursts, and Pulsars. To achieve this, we design and construct large analog and digital systems that exhibit exceptional sensitivity and can readily adapt to emerging opportunities.</p>
-               <p class="justify">The development of new telescopes, dedicated to surveying extensive sections of the sky, necessitates innovative designs and the implementation of massive computing systems. Currently, we are actively constructing these novel telescopes in locations including West Virginia, California, Canada, and South Africa.</p>
-               <p class="justify">In addition, our center's researchers have been an integral part of the CHIME Fast Radio Burst Team, a team that was recently honored with the  <i><a href="https://aas.org/press/chime-fast-radio-burst-team-receive-2022-berkeley-prize#:~:text=Bestowed%20annually%20since%202011%20by%20the%20American%20Astronomical,meeting,%20often%20called%20the%20%E2%80%9CSuper%20Bowl%20of%20Astronomy.%E2%80%9D"> 2022 Lancelot M. Berkeley − New York Community Trust Prize for Meritorious Work in Astronomy</a></i>.</p>
+         <div class="container hero-inner">
+            <p class="eyebrow">West Virginia University &nbsp;·&nbsp; Lane Department of CSEE</p>
+            <h1>Instruments that<br />listen to the <em>early universe</em>.</h1>
+            <p class="lead">
+               RAIL designs and builds the telescopes, analog front ends, and digital systems
+               that survey the radio sky — chasing cosmology, fast radio bursts, and pulsars.
+            </p>
+            <div class="btn-row">
+               <a class="btn btn--primary" href="#projects">Explore our research {% include icon.html name="arrow" %}</a>
+               <a class="btn" href="#people">Meet the lab</a>
             </div>
-         <div class="image">
-            <img src="{{ '/images/banner.jpg' | relative_url }}" alt="A RAIL radio telescope under the night sky" />
+
+            <p class="hero-meta">
+               <span>Morgantown, WV</span> <span class="dot">/</span>
+               <a href="https://chime-experiment.ca">CHIME</a> <span class="dot">/</span>
+               <a href="https://www.chord-observatory.ca">CHORD</a> <span class="dot">/</span>
+               <a href="https://hirax.ukzn.ac.za">HIRAX</a> <span class="dot">/</span>
+               <a href="{{ '/ret-dspira/' | relative_url }}">DSPIRA</a>
+            </p>
+         </div>
+
+         <a class="scroll-cue" href="#about" aria-label="Scroll to content">
+            <span>Scroll</span>
+            <span class="rule" aria-hidden="true"></span>
+         </a>
+      </section>
+
+      <!-- What we do ------------------------------------------------------ -->
+      <section class="section" id="about">
+         <div class="container">
+            <div class="statement reveal">
+               <div class="statement-side">
+                  <p class="eyebrow">What we do</p>
+                  <p class="statement-lead">
+                     Mapping the sky at radio wavelengths takes instruments with exceptional
+                     sensitivity — and the willingness to <em>build them from scratch</em>.
+                  </p>
+                  <div class="note">
+                     <span class="note-label">Recognition</span>
+                     Researchers in our group are part of the CHIME Fast Radio Burst team, awarded the
+                     <a href="https://aas.org/press/chime-fast-radio-burst-team-receive-2022-berkeley-prize">2022
+                     Lancelot M. Berkeley&thinsp;−&thinsp;New York Community Trust Prize for Meritorious
+                     Work in Astronomy</a>.
+                  </div>
+               </div>
+               <div class="statement-body">
+                  <p>
+                     Our primary goal is to make groundbreaking discoveries in cosmology, fast
+                     radio bursts, and pulsars. Getting there means designing and constructing
+                     large analog and digital systems that are both extremely sensitive and
+                     adaptable enough to chase new opportunities as they appear.
+                  </p>
+                  <p>
+                     Telescopes dedicated to surveying wide swaths of the sky demand novel
+                     designs and massive computing systems. We're actively building them now,
+                     across four sites on three continents.
+                  </p>
+                  <p>
+                     Much of that work is open. Our firmware, control software, and analysis
+                     pipelines live on GitHub alongside the collaborations we build them with.
+                  </p>
+                  <div class="btn-row">
+                     <a class="btn" href="{{ '/projects/' | relative_url }}">All research {% include icon.html name="arrow" %}</a>
+                     <a class="btn" href="https://github.com/WVURAIL">{% include icon.html name="github" %} GitHub</a>
+                  </div>
+               </div>
+            </div>
+
+            <dl class="facts reveal">
+               <div class="fact">
+                  <dt>Where we build</dt>
+                  <dd>4 sites<small>West Virginia · California · Canada · South Africa</small></dd>
+               </div>
+               <div class="fact">
+                  <dt>What we make</dt>
+                  <dd>Analog &amp; digital<small>Front ends, FPGA correlators, pipelines</small></dd>
+               </div>
+               <div class="fact">
+                  <dt>Science drivers</dt>
+                  <dd>21 cm &amp; FRBs<small>Dark energy, transients, pulsars</small></dd>
+               </div>
+               <div class="fact">
+                  <dt>Home</dt>
+                  <dd>AERB 304<small>WVU Evansdale Campus, Morgantown</small></dd>
+               </div>
+            </dl>
          </div>
       </section>
 
       {% include projects.html %}
       {% include people.html %}
-      {% include footer.html %}
-   </div>
+      {% include join.html %}
+   </main>
 
+   {% include footer.html %}
    {% include scripts.html %}
 </body>
 </html>
