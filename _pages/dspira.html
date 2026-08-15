@@ -3,7 +3,11 @@ title: DSPIRA
 layout: default
 permalink: /education/
 full_width: true
-description: DSPIRA — Digital Signal Processing in Radio Astronomy — was an NSF Research Experiences for Teachers site at WVU. Its 44 free lessons on building and using a horn radio telescope are still online.
+# No lesson count in this sentence on purpose. Front matter is not run through
+# Liquid, so a number here cannot read _data/education.yml and has to be kept in
+# step by hand — which is how it came to say 44 while the page said 47 and the
+# lessons site said 48.
+description: DSPIRA — Digital Signal Processing in Radio Astronomy — was an NSF Research Experiences for Teachers site at WVU. Its free lessons on building and using a horn radio telescope are still online.
 ---
 {%- assign ed = site.data.education -%}
 <div class="page-head">

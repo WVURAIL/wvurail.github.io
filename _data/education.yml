@@ -42,21 +42,24 @@ facts:
   - label: Home states
     value: "8"
     note: CA, FL, MD, NC, NY, RI, TX, WV
-  # 47 = the number of lessons on wvurail.org/dspira-lessons. That site's own
-  # front page prints the same figure from site.posts, so check it there before
-  # changing this one — the two drifted apart once already, when the cra and
-  # dspira material was migrated across.
+  # 48 = the number of lessons on wvurail.org/dspira-lessons. That site counts
+  # its own posts and prints the figure on its front page, so read it there
+  # before changing this one. It has drifted twice: once when the cra and dspira
+  # material was migrated across, and again when the correlation and
+  # interferometry lesson was published. It is written down three times in this
+  # file — this value, materials.lesson_count, and the sentence in
+  # materials.intro — and all three have to move together.
   - label: Lessons published
-    value: "47"
+    value: "48"
     note: Free, open, still online
 
 # The part that is still alive. This is the section that should be hardest to
 # miss on the page.
 materials:
   title: The lessons are still here
-  lesson_count: 47
+  lesson_count: 48
   intro: >
-    Everything the program produced is public: 47 lessons across eleven modules,
+    Everything the program produced is public: 48 lessons across eleven modules,
     covering the astronomy, the hardware, the signal processing, and the labs.
     Written for high school teachers, but used by students and hobbyists too.
   url: "https://wvurail.org/dspira-lessons/"
