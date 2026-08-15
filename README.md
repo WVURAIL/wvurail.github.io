@@ -118,7 +118,8 @@ page), and `review:` (a reminder to a human — delete it once checked).
 
 For a journal cover, add `cover: "Nature cover"` plus a `cover_note` with the full
 citation. Cover papers get a gold badge and lead the Selected band. Only set this
-where the issue's own cover blurb names the paper — see `PUBLICATIONS-REVIEW.md`.
+where the issue's own cover blurb names the paper, not merely where a paper appears
+in an issue that has a cover.
 
 The page groups entries by `type`, then by year within each band. Dissertations and
 theses are **not** listed here at all — they come from the `publication:` block on
@@ -166,8 +167,10 @@ Pages get a dark title header and a readable prose column automatically. Set
 
 A Markdown or HTML file **without front matter** is copied verbatim into the
 built site. `NOTES.md` in the repo root becomes `wvurail.org/NOTES.md`, publicly.
-Anything internal should either start with an underscore (Jekyll skips those) or
-be listed under `exclude:` in `_config.yml` — `_PUBLICATIONS-REVIEW.md` does both.
+Anything internal should do both: start with an underscore, which Jekyll skips
+structurally, and appear under `exclude:` in `_config.yml`. Belt and braces, because
+the cost of getting it wrong is that a private working note is served at a public URL
+and nothing warns you.
 
 ## Design notes
 

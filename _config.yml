@@ -33,8 +33,9 @@ exclude:
   - Gemfile.ci.lock
   - README.md
   - vendor
-  # Internal working notes. Markdown without front matter is copied verbatim to
-  # the site root, so anything here would otherwise be public at /<name>.md.
-  # The file is ALSO named with a leading underscore, which Jekyll ignores
-  # structurally — belt and braces, since this one names a retracted paper.
-  - _PUBLICATIONS-REVIEW.md
+  # Add internal working notes to this list. Markdown without front matter is
+  # copied verbatim to the site root, so a working note is otherwise public at
+  # /<name>.md with nothing to warn you. Give it a leading underscore, which
+  # Jekyll ignores structurally, AND list it here — belt and braces.
+  # _PUBLICATIONS-REVIEW.md was the last one. It did its job and was deleted, so
+  # there is nothing to exclude right now.

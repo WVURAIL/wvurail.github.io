@@ -1,12 +1,26 @@
 # Papers the lab has been part of.
 #
 # Compiled from INSPIRE-HEP, Crossref, NSF-PAR, arXiv, the CHIME collaboration's
-# publication page, and author CVs. It is a starting point, not gospel — check
-# anything carrying a `review:` note, then delete that key.
+# publication page, and author CVs. Every entry has been through a human once;
+# the `review:` keys that flagged the unresolved ones are gone.
 #
 # Scope: work published by Kevin Bandura or by a lab graduate DURING their time at
-# WVU. Pre-WVU work is excluded (including the McGill-era ICE papers). One
-# retracted paper is deliberately excluded — see PUBLICATIONS-REVIEW.md.
+# WVU. Pre-WVU work is excluded, including the McGill-era ICE papers. Also out:
+# Astro2020 and LRP2020 white papers, errata, and one-page conference abstracts.
+# Preprints are in, and carry `preprint: true`.
+#
+# One retracted paper is deliberately excluded, and this note is now the only
+# record of that decision:
+#
+#   "Sub-second periodicity in a fast radio burst", Nature 607, 256 (2022),
+#   doi 10.1038/s41586-022-04841-8. Retracted 23 June 2026, retraction note
+#   doi 10.1038/s41586-026-10799-8: an unusual calibration problem left CHIME's
+#   digital beams incorrectly pointed when FRB 20191221A was detected, and the
+#   periodicity was in fact the known Galactic pulsar PSR J0248+6021.
+#
+# Kevin, Pranav and Joseph are all authors, and it is still listed on Google
+# Scholar and ResearchGate, so its absence here reads as an oversight to anyone
+# cross-checking. It is not one. Leave it out.
 #
 # Fields
 #   year      (required)  Used for grouping; the page sorts newest first.
