@@ -66,7 +66,6 @@
   - K. Bandura
   - K. Bhopi
   preprint: true
-  review: Preprint; not yet journal-published as of Aug 2026.
   type: preprint
 - year: 2026
   title: The Second CHIME/FRB Catalog of Fast Radio Bursts
@@ -254,6 +253,10 @@
   people:
   - K. Bandura
   type: journal
+# 2023 is right even though the article number starts "22": World Scientific
+# encodes the online-first year there. Crossref has published-online 2022-10-10
+# and published-print 2023-06, and JAI runs one volume per year — volume 7 is
+# 2018 (see Quantization Bias below), so volume 12 is 2023.
 - year: 2023
   title: A Digital Calibration Source for 21 cm Cosmology Telescopes
   authors: K. Bhopi, W. Tyndall, P. Sanghavi, K. Bandura, L. Newburgh, J. Gallicchio
@@ -266,8 +269,6 @@
   - P. Sanghavi
   - K. Bhopi
   highlight: true
-  review: 'Year/volume disagree across sources: ADS and INSPIRE say JAI 12, 2250016 (2023); Crossref and
-    NSF-PAR date it to 2022. arXiv posting is Jan 2022.'
   type: journal
 - year: 2023
   title: CHIME/FRB Discovery of 25 Repeating Fast Radio Burst Sources
@@ -289,7 +290,6 @@
   - J. Kania
   - K. Khairy
   preprint: true
-  review: Preprint only; no refereed version found as of Aug 2026.
   type: preprint
 - year: 2023
   title: Detection of Cosmological 21 cm Emission with the Canadian Hydrogen Intensity Mapping Experiment
@@ -336,14 +336,13 @@
   type: journal
 - year: 2022
   title: Antenna characterization for the HIRAX experiment
-  authors: E. Kuhn et al., incl. K. Bandura
+  authors: E. R. Kuhn et al., incl. K. Bandura
   venue: Proc. SPIE 12182, Ground-based and Airborne Telescopes IX
   ref: Proc. SPIE 12182, 1218225
   doi: 10.1117/12.2627856
   arxiv: '2207.12461'
   people:
   - K. Bandura
-  review: First author initial taken from ResearchGate, not independently verified.
   type: proceedings
 - year: 2022
   title: Characterization of the John A. Galt telescope for radio holography with CHIME
@@ -550,6 +549,11 @@
   - K. Bandura
   - P. Sanghavi
   type: journal
+# These two SPIE papers are dated by the conference, not the printing. SPIE
+# Astronomical Telescopes + Instrumentation 2020 ran in December 2020 and the
+# proceedings appeared in January 2021, so Crossref says 2021 while NASA ADS
+# says 2020. Astronomers look these up in ADS, so the page follows ADS. Change
+# both together or not at all.
 - year: 2020
   title: Mechanical and optical design of the HIRAX radio telescope
   authors: B. R. B. Saliwanchik et al., incl. K. Bandura
@@ -559,7 +563,6 @@
   arxiv: '2101.06338'
   people:
   - K. Bandura
-  review: 'Year is ambiguous: NASA ADS says 2020, SPIE/Crossref date volume 11445 to January 2021.'
   type: proceedings
 - year: 2020
   title: Nine New Repeating Fast Radio Burst Sources from CHIME/FRB
@@ -573,15 +576,13 @@
   type: journal
 - year: 2020
   title: Noise temperature testing for the Hydrogen Intensity and Real-time Analysis eXperiment (HIRAX)
-  authors: E. Kuhn et al., incl. K. Bandura
+  authors: E. R. Kuhn et al., incl. K. Bandura
   venue: Proc. SPIE 11445, Ground-based and Airborne Telescopes VIII
-  ref: Proc. SPIE 11445
+  ref: Proc. SPIE 11445, 114452Z
   doi: 10.1117/12.2560270
   arxiv: '2101.06337'
   people:
   - K. Bandura
-  review: Same 2020/2021 ambiguity as the companion SPIE 11445 paper; the arXiv version carries a different
-    title.
   type: proceedings
 - year: 2020
   title: Periodic activity from a fast radio burst source
@@ -687,7 +688,6 @@
   arxiv: '1803.04296'
   people:
   - K. Bandura
-  review: Article number inferred from the ADS bibcode, not read off the publisher page.
   type: journal
 - year: 2018
   title: 'The CHIME Fast Radio Burst Project: System Overview'
