@@ -69,23 +69,32 @@ def main():
     # Two independent readings of the same number, so that a change in the
     # lessons site's markup shows up as a disagreement rather than as a
     # confidently wrong answer.
-    cards = len(re.findall(r'class="lesson-card', all_html))
+    #
+    # DISTINCT urls, not cards. /all/ is grouped by module and a lesson with two
+    # categories is listed under both, so there are more cards than lessons —
+    # five of them, at the time of writing. Counting cards made the first run of
+    # this script report 53 against the front page's 48. It did not report a
+    # wrong number, which is the point of taking two readings, but a check that
+    # fails every time is a check nobody reads.
+    cards = re.findall(r'class="lesson-card"[^>]*>.*?<a[^>]*href="([^"]+)"',
+                       all_html, re.S)
+    listed = len(set(cards))
     hero = re.search(r"(\d+)\s+free lessons", home_html)
 
-    if not cards or not hero:
+    if not listed or not hero:
         sys.exit("::error::could not read a lesson count from the lessons site. "
-                 f"/all/ gave {cards} lesson-card matches and the front page "
+                 f"/all/ gave {listed} distinct lesson links and the front page "
                  f"{'matched' if hero else 'did not match'} 'N free lessons'. "
                  "The site's markup has probably changed and this script needs "
                  "updating — it has not established that the count is wrong.")
 
     hero_n = int(hero.group(1))
-    if cards != hero_n:
-        sys.exit(f"::error::the lessons site disagrees with itself: /all/ lists "
-                 f"{cards} lessons, its front page says {hero_n}. Look there, "
-                 f"not here.")
+    if listed != hero_n:
+        sys.exit(f"::error::the lessons site disagrees with itself: /all/ links "
+                 f"{listed} distinct lessons, its front page says {hero_n}. Look "
+                 f"there, not here — this repository is not the problem.")
 
-    live = cards
+    live = listed
 
     if declared != live:
         sys.exit(
