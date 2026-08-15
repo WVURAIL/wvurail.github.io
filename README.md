@@ -48,7 +48,7 @@ code.
 | `apps/` | Small standalone web tools (sidereal-time clock, coordinate converter). |
 | `assets/css/site.css` | **The entire stylesheet.** Organized into numbered sections; start there. |
 | `assets/js/site.js` | Sticky header, mobile nav, hero canvas, scroll reveals, gallery lightbox. |
-| `assets/fonts/` | Self-hosted woff2 (Instrument Serif, Inter, JetBrains Mono). |
+| `assets/fonts/` | Self-hosted woff2 (Instrument Serif, Inter, JetBrains Mono). All three are SIL OFL 1.1; the notices and licence are in `assets/fonts/OFL.txt` and have to stay with the files. |
 | `images/`, `pdf/` | Media. |
 
 ## Common edits
