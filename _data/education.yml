@@ -82,6 +82,10 @@ materials:
       url: "https://wvurail.org/dspira-lessons/all/"
     - text: Request a telescope kit
       url: "https://wvurail.org/dspira-lessons/kits/"
+    # The one part of the lessons site a visitor can talk back through. It runs
+    # on GitHub Discussions, and threads there go back to 2020.
+    - text: Ask a question in the forum
+      url: "https://wvurail.org/dspira-lessons/forum/"
     - text: GNU Radio modules on GitHub
       url: "https://github.com/WVURAIL/gr-radio_astro"
 
