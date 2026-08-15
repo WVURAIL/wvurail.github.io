@@ -42,26 +42,33 @@ facts:
   - label: Home states
     value: "8"
     note: CA, FL, MD, NC, NY, RI, TX, WV
-  # 48 = the number of lessons on wvurail.org/dspira-lessons. That site counts
-  # its own posts and prints the figure on its front page, so read it there
-  # before changing this one. It has drifted twice: once when the cra and dspira
+  # %COUNT% is substituted from materials.lesson_count when the page renders, so
+  # the lesson count is written down in exactly one place in this file. It used
+  # to be written three times and drifted twice — once when the cra and dspira
   # material was migrated across, and again when the correlation and
-  # interferometry lesson was published. It is written down three times in this
-  # file — this value, materials.lesson_count, and the sentence in
-  # materials.intro — and all three have to move together.
+  # interferometry lesson was published.
   - label: Lessons published
-    value: "48"
+    value: "%COUNT%"
     note: Free, open, still online
 
 # The part that is still alive. This is the section that should be hardest to
 # miss on the page.
 materials:
   title: The lessons are still here
+  # THE number. Everywhere else on this site that shows a lesson count reads it
+  # from here, including the %COUNT% above and in intro below.
+  #
+  # It has to be kept in step with wvurail.org/dspira-lessons by hand, because
+  # that site is a different repository and this one cannot count its posts.
+  # .github/workflows/lesson-count.yml checks it against the live site every
+  # Monday and fails if the two disagree, so the drift gets noticed rather than
+  # discovered. To update: change this line, nothing else.
   lesson_count: 48
   intro: >
-    Everything the program produced is public: 48 lessons across eleven modules,
-    covering the astronomy, the hardware, the signal processing, and the labs.
-    Written for high school teachers, but used by students and hobbyists too.
+    Everything the program produced is public: %COUNT% lessons across eleven
+    modules, covering the astronomy, the hardware, the signal processing, and
+    the labs. Written for high school teachers, but used by students and
+    hobbyists too.
   url: "https://wvurail.org/dspira-lessons/"
   # Mirrors _data/modules.yml on the lessons site, in the same order, so a
   # visitor who clicks through sees the same list.

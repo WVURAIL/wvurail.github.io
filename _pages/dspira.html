@@ -27,7 +27,12 @@ description: DSPIRA — Digital Signal Processing in Radio Astronomy — was an 
             <p class="eyebrow">Still available</p>
             <h2>{{ ed.materials.title }}</h2>
          </div>
-         <p>{{ ed.materials.intro | strip_newlines | strip }}</p>
+         {%- comment -%}
+         %COUNT% comes from materials.lesson_count, so the number is written
+         down once. It used to appear three times in education.yml and drifted
+         twice — see the comment over the stat tile there.
+         {%- endcomment -%}
+         <p>{{ ed.materials.intro | strip_newlines | strip | replace: '%COUNT%', ed.materials.lesson_count }}</p>
       </div>
 
       <div class="lessons-panel">
@@ -53,7 +58,7 @@ description: DSPIRA — Digital Signal Processing in Radio Astronomy — was an 
          {%- for f in ed.facts %}
          <div class="fact">
             <dt>{{ f.label }}</dt>
-            <dd>{{ f.value }}<small>{{ f.note }}</small></dd>
+            <dd>{{ f.value | replace: '%COUNT%', ed.materials.lesson_count }}<small>{{ f.note }}</small></dd>
          </div>
          {%- endfor %}
       </dl>

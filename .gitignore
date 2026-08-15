@@ -12,3 +12,7 @@ vendor/
 .DS_Store
 Thumbs.db
 *Zone.Identifier
+
+# Python bytecode, from running the checks in .github/scripts/ locally
+__pycache__/
+*.py[cod]

@@ -1,0 +1,39 @@
+# Is the lesson count on /education/ still true?
+#
+# The number lives in one place, _data/education.yml's materials.lesson_count,
+# and every mention of it on the site renders from there. But it describes a
+# different repository — wvurail.org/dspira-lessons — which counts its own posts
+# and therefore changes on its own the moment somebody publishes a lesson.
+# Nothing links the two, so the number here goes stale in silence.
+#
+# It has gone stale twice. Both times it was found by reading the two sites side
+# by side, which is not a plan. This is the plan: look once a week and say so.
+#
+# The job does not fail when the lessons site is unreachable — see the note in
+# the script. It fails only when the two sites genuinely disagree.
+name: Lesson count
+
+on:
+  schedule:
+    # 13:17 UTC on Mondays. Not on the hour, because GitHub runs everything
+    # scheduled on the hour and the queue is worst there.
+    - cron: "17 13 * * 1"
+  # So it can be run by hand after publishing a lesson, without waiting a week.
+  workflow_dispatch:
+  # And on any push that touches the number or this check itself.
+  push:
+    paths:
+      - "_data/education.yml"
+      - ".github/workflows/lesson-count.yml"
+      - ".github/scripts/check_lesson_count.py"
+
+permissions:
+  contents: read
+
+jobs:
+  compare:
+    name: Compare against wvurail.org/dspira-lessons
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - run: python3 .github/scripts/check_lesson_count.py

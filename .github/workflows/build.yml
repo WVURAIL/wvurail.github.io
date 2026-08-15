@@ -117,6 +117,22 @@ jobs:
           fi
           echo "No unrendered Liquid."
 
+      - name: The lesson count placeholder was substituted
+        run: |
+          set -euo pipefail
+          # The count is written once, as materials.lesson_count, and reaches the
+          # page through a `replace` filter on the %COUNT% placeholder. Drop that
+          # filter and the build still succeeds — the page just reads
+          # "%COUNT% lessons" to every visitor. It is not Liquid, so the check
+          # above does not see it.
+          if grep -rn '%COUNT%' _site --include='*.html'; then
+            echo "::error::%COUNT% reached the built site — a `replace` filter is missing"
+            exit 1
+          fi
+          n=$(grep -c 'Lessons published' _site/education/index.html || true)
+          [ "$n" -ge 1 ] || { echo "::error::the lessons stat tile is gone from /education/"; exit 1; }
+          echo "No %COUNT% left in the output."
+
       - name: Upload the built site
         if: always()
         uses: actions/upload-artifact@v6
