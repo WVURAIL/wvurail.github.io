@@ -1,0 +1,37 @@
+<!-- Selected papers on the home page. Full list lives at /publications/. -->
+{%- assign pubs = site.data.publications -%}
+{%- assign covers = pubs | where_exp: "p", "p.cover" -%}
+{%- assign selected = pubs | where: "highlight", true -%}
+{%- if selected.size == 0 %}{% assign selected = pubs %}{% endif -%}
+{%- assign slots = 5 | minus: covers.size -%}
+<section class="section" id="publications">
+   <div class="container">
+      <div class="section-head reveal">
+         <div>
+            <p class="eyebrow">Publications</p>
+            <h2>What the instruments found</h2>
+         </div>
+         <p>
+            Members of the lab are authors on {{ pubs.size }} publications from their time at WVU,
+            across CHIME, CHIME/FRB, HIRAX, and the outrigger stations — including the pair of
+            companion papers that made the cover of <em>Nature</em> in February 2019.
+         </p>
+      </div>
+
+      <ul class="pub-list reveal">
+         {%- for pub in covers %}{% include publication.html pub=pub %}{% endfor %}
+         {%- assign shown = 0 -%}
+         {%- for pub in selected %}
+         {%- unless pub.cover %}
+         {%- if shown < slots %}{% include publication.html pub=pub %}{% assign shown = shown | plus: 1 %}{% endif %}
+         {%- endunless %}
+         {%- endfor %}
+      </ul>
+
+      <div class="btn-row">
+         <a class="btn" href="{{ '/publications/' | relative_url }}">
+            All {{ pubs.size }} publications {% include icon.html name="arrow" %}
+         </a>
+      </div>
+   </div>
+</section>

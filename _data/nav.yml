@@ -1,0 +1,22 @@
+# Main navigation. Order here is the order shown in the header, and it
+# deliberately matches the order the sections appear on the home page.
+# Every entry must be a real page — no in-page anchors, or one tab behaves
+# differently from the rest. The "Join the lab" button is added automatically.
+
+- title: Where We Work
+  url: /where-we-work/
+
+- title: Publications
+  url: /publications/
+
+- title: Education
+  url: /education/
+
+- title: People
+  url: /people/
+
+- title: Tools
+  url: /tools/
+
+- title: Contact
+  url: /contact/

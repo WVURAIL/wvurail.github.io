@@ -1,0 +1,162 @@
+# DSPIRA — the lab's science-education work.
+#
+# Framing, decided deliberately: DSPIRA was a three-year NSF Research Experiences
+# for Teachers site that ran its cohorts in 2017, 2018 and 2019 and concluded.
+# The curriculum it produced is still maintained and still used. So the program
+# is described in the PAST tense and the materials in the PRESENT tense.
+#
+# Please keep those tenses straight when editing. Before this rewrite the same
+# program was described in future tense on /education/, present tense on the
+# home page, and past tense on the lessons site — because the program page was
+# verbatim grant-proposal prose that nobody revisited after the award.
+
+summary: >
+  DSPIRA — Digital Signal Processing in Radio Astronomy — was an NSF Research
+  Experiences for Teachers site run by the lab with the WVU Center for
+  Gravitational Waves and Cosmology and the Green Bank Observatory. Over three
+  summers, high school teachers built working horn radio telescopes, learned the
+  same open-source signal-processing tools the lab uses on real instruments, and
+  wrote classroom lessons around them.
+
+# One-line answer to "is this still running?" — shown near the top of the page.
+status: >
+  The cohort program ran from 2017 to 2019 and has concluded. The curriculum it
+  produced is still online, still maintained, and free for anyone to use.
+
+principal_investigators:
+  - Natalia Schmid
+  - Kevin Bandura
+observatory_coordinator: Richard Prestage
+partners:
+  - WVU Lane Department of Computer Science and Electrical Engineering
+  - WVU Center for Gravitational Waves and Cosmology
+  - Green Bank Observatory
+
+facts:
+  - label: Summers
+    value: "3"
+    note: 2017, 2018 and 2019
+  - label: Teachers
+    value: "15"
+    note: Across 21 cohort places
+  - label: Home states
+    value: "8"
+    note: CA, FL, MD, NC, NY, RI, TX, WV
+  - label: Lessons published
+    value: "44"
+    note: Free, open, still online
+
+# The part that is still alive. This is the section that should be hardest to
+# miss on the page.
+materials:
+  title: The lessons are still here
+  lesson_count: 44
+  intro: >
+    Everything the program produced is public: 44 lessons across nine modules,
+    covering the astronomy, the hardware, the signal processing, and the labs.
+    Written for high school teachers, but used by students and hobbyists too.
+  url: "https://wvurail.org/dspira-lessons/"
+  modules:
+    - Astronomy
+    - Horn construction
+    - Horn operation
+    - Telescope hardware setup
+    - Telescope software setup
+    - Telescope operation
+    - Digital signal processing
+    - GNU Radio & Raspberry Pi
+    - Labs
+  extras:
+    - text: Browse all lessons
+      url: "https://wvurail.org/dspira-lessons/all/"
+    - text: Request a telescope kit
+      url: "https://wvurail.org/dspira-lessons/"
+    - text: GNU Radio modules on GitHub
+      url: "https://github.com/WVURAIL/gr-radio_astro"
+
+# What a summer actually involved.
+arc:
+  - title: Build the telescope
+    body: >
+      Each teacher assembled a horn antenna and a low-noise amplifier from sheet
+      metal and off-the-shelf parts, then tested it in the RF lab at WVU.
+  - title: Learn the tools
+    body: >
+      GNU Radio, Python and software-defined radio — the same open-source stack
+      the lab uses to commission real instruments, not a teaching substitute.
+  - title: Observe
+    body: >
+      Six weeks ended at Green Bank, mapping neutral hydrogen in the Milky Way
+      with the horn they had built, alongside the observatory's own telescopes.
+  - title: Take it back to class
+    body: >
+      Each cohort wrote lessons and classroom exercises from what they had done,
+      and continued the projects with their own students during the school year.
+
+# Cohorts, newest first. `returning` flags teachers who came back another summer.
+cohorts:
+  - year: 2019
+    url: /dspira-2019/
+    count: 6
+    teachers:
+      - { name: "John Makous", state: NC, returning: true }
+      - { name: "Howard Chun", state: RI, returning: true }
+      - { name: "Tad Herman", state: NY, returning: true }
+      - { name: "John Clarke", state: FL, returning: true }
+      - { name: "Robert Baker", state: CA }
+      - { name: "Michael Stover", state: WV }
+
+  - year: 2018
+    url: /dspira-2018/
+    count: 6
+    note: Joined by two undergraduate researchers, from WVU and Toronto
+    teachers:
+      - { name: "John Makous", state: NC, returning: true }
+      - { name: "Howard Chun", state: RI, returning: true }
+      - { name: "Alexis Emch", state: WV }
+      - { name: "Daniel Bonnette", state: WV }
+      - { name: "Tad Herman", state: NY }
+      - { name: "John Clarke", state: FL }
+
+  - year: 2017
+    url: /dspira-2017/
+    count: 9
+    teachers:
+      - { name: "Jamie Avalos", state: TX }
+      - { name: "Howard Chun", state: RI }
+      - { name: "Denise Gipson", state: WV }
+      - { name: "Eric Goff", state: WV }
+      - { name: "Wendy Lee", state: WV }
+      - { name: "John Makous", state: NC }
+      - { name: "Adam Osborne", state: WV }
+      - { name: "Shane Price", state: WV }
+      - { name: "LaShonda Torbert", state: MD }
+
+# Published work. Note that two of the ISEC paper's authors — Makous and Chun —
+# are DSPIRA teachers, not staff. Worth keeping visible.
+outputs:
+  - title: "Digital Signal Processing in Radio Astronomy: An Interdisciplinary Experience"
+    authors: "P. Sanghavi, K. Bandura, J. Makous, H. Chun"
+    venue: 2019 IEEE Integrated STEM Education Conference (ISEC)
+    doi: "10.1109/ISECon.2019.8882039"
+    note: Two of the four authors are DSPIRA teachers.
+    extra:
+      text: Conference presentation (PDF)
+      url: /pdf/isec.pdf
+
+  - title: Open Source Radio Telescopes
+    authors: "J. Makous"
+    venue: GNU Radio Conference 2018
+    url: "https://www.youtube.com/watch?v=zT0RDYLnX6Y"
+    note: A talk given by a DSPIRA teacher at the GNU Radio Conference.
+    extra:
+      text: Slides (PDF)
+      url: "https://www.gnuradio.org/grcon/grcon18/presentations/open_source_radio_telescopes/2-John_Makous-OSRT.pdf"
+
+# Older sites, kept because they are linked from elsewhere on the web. Both now
+# carry a banner pointing at the lessons site.
+archive_sites:
+  - text: DSPIRA course site (2019 labs)
+    url: "https://wvurail.org/dspira/"
+  - text: Classroom Radio Astronomy
+    url: "https://wvurail.org/cra/"

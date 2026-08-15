@@ -1,35 +1,40 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+# Site settings for WVU RAIL (https://wvurail.org)
+# Values here are available in templates as {{ site.title }}, {{ site.email }}, etc.
+# NOTE: Jekyll does NOT reload this file on `serve` — restart the server after editing.
 
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
+title: WVU RAIL
+tagline: Radio Astronomy Instrumentation Laboratory
 email: wvurail@gmail.com
-description: > # this means to ignore newlines until "baseurl:"
-  RAIL is a multidisciplinary group within the Lane Department of Computer Science and Electrical Engineering at West Virgnia University that focuses on Engineering and Science solutions in Radio Astronomy.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://wvurail.org/" # the base hostname & protocol for your site, e.g. http://example.com
+description: >
+  RAIL is a multidisciplinary group within the Lane Department of Computer Science
+  and Electrical Engineering at West Virginia University, focused on engineering and
+  science solutions in radio astronomy.
 
-#twitter_username: jekyllrb
-#github_username:  jekyll
+baseurl: ""                     # subpath of the site, e.g. /blog (empty for a root domain)
+url: "https://wvurail.org"      # base hostname & protocol, no trailing slash
 
-include: ['_pages']
-# Build settings
+# Content & build
 markdown: kramdown
-#theme: minima
-gems:
+include: ['_pages']
+
+plugins:                        # `plugins:` is the modern key (old `gems:` is deprecated)
   - jekyll-feed
   - jekyll-sitemap
+
 exclude:
+  # Windows writes an NTFS "downloaded from the internet" stream beside any
+  # downloaded file; through WSL it lands as "logo.svg:Zone.Identifier". A
+  # colon is illegal in a GitHub Actions artifact path, so one of these
+  # reaching _site turns the build red at the upload step.
+  - "*:Zone.Identifier"
   - Gemfile
   - Gemfile.lock
-theme: jekyll-theme-minimal
+  - Gemfile.ci          # written by CI only
+  - Gemfile.ci.lock
+  - README.md
+  - vendor
+  # Internal working notes. Markdown without front matter is copied verbatim to
+  # the site root, so anything here would otherwise be public at /<name>.md.
+  # The file is ALSO named with a leading underscore, which Jekyll ignores
+  # structurally — belt and braces, since this one names a retracted paper.
+  - _PUBLICATIONS-REVIEW.md

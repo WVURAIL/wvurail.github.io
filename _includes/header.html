@@ -1,0 +1,20 @@
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+   <div class="container">
+      <a class="brand" href="{{ '/' | relative_url }}">
+         <span class="brand-wvu">WVU</span><span class="brand-wave" aria-hidden="true">&#9190;</span><span>RAIL</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">
+         <span></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+         {%- for item in site.data.nav -%}
+         <a href="{{ item.url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.title }}</a>
+         {%- endfor -%}
+         <a class="btn btn--primary" href="{{ '/contact/' | relative_url }}">Join the lab</a>
+      </nav>
+   </div>
+</header>

@@ -1,0 +1,169 @@
+---
+title: Publications
+layout: default
+permalink: /publications/
+full_width: true
+description: Journal articles, conference proceedings, and preprints from the WVU Radio Astronomy Instrumentation Lab.
+---
+<div class="page-head">
+   <div class="container">
+      <p class="eyebrow">Publications</p>
+      <h1>Papers</h1>
+      <p class="lead">
+         Work by the lab and the collaborations we're part of, from our time at WVU.
+         Dissertations and theses are listed with their authors on the
+         <a href="{{ '/people/' | relative_url }}">people page</a>.
+      </p>
+   </div>
+</div>
+
+{%- assign pubs = site.data.publications -%}
+{%- assign covers = pubs | where_exp: "p", "p.cover" -%}
+{%- assign selected = pubs | where: "highlight", true -%}
+
+{%- assign journals = pubs | where: "type", "journal" -%}
+{%- assign proceedings = pubs | where: "type", "proceedings" -%}
+{%- assign notes = pubs | where: "type", "note" -%}
+{%- assign preprints = pubs | where: "type", "preprint" -%}
+
+<!-- Jump links, so a 69-entry page is navigable without scrolling blind -->
+<div class="pub-toc">
+   <div class="container">
+      <form class="pub-filter" role="search" onsubmit="return false">
+         <label class="visually-hidden" for="pub-search">Filter publications</label>
+         <input type="search" id="pub-search" placeholder="Filter by title, author, or journal…"
+                autocomplete="off" spellcheck="false" />
+         <span class="pub-filter-count" aria-live="polite"></span>
+      </form>
+      <nav aria-label="Publication types">
+         {%- if selected.size > 0 %}<a href="#selected">Selected <span>{{ selected.size }}</span></a>{% endif %}
+         <a href="#journal">Journal articles <span>{{ journals.size }}</span></a>
+         <a href="#proceedings">Conference proceedings <span>{{ proceedings.size }}</span></a>
+         {%- assign unrefereed = notes.size | plus: preprints.size %}
+         {%- if unrefereed > 0 %}<a href="#other">Notes &amp; preprints <span>{{ unrefereed }}</span></a>{% endif %}
+      </nav>
+   </div>
+</div>
+
+{%- if selected.size > 0 %}
+<section class="section" id="selected">
+   <div class="container">
+      <h2 class="people-block-title">Selected <span class="count">{{ selected.size }}</span></h2>
+      <p class="pub-band-note">
+         Highlights only — each of these also appears under its category below.
+      </p>
+      <ul class="pub-list">
+         {%- comment %}Cover stories first, then the remaining highlights.{% endcomment %}
+         {%- for pub in covers %}{% include publication.html pub=pub %}{% endfor %}
+         {%- for pub in selected %}
+         {%- unless pub.cover %}{% include publication.html pub=pub %}{% endunless %}
+         {%- endfor %}
+      </ul>
+
+   </div>
+</section>
+{%- endif %}
+
+<!-- Journal articles -->
+<section class="section section--line" id="journal">
+   <div class="container">
+      <div class="section-head">
+         <div>
+            <p class="eyebrow">Peer reviewed</p>
+            <h2>Journal articles</h2>
+         </div>
+         <p>{{ journals.size }} papers in refereed journals, grouped by year.</p>
+      </div>
+      {%- assign years = journals | map: "year" | uniq | sort | reverse %}
+      {%- for year in years %}
+      <div class="people-block">
+         <h3 class="people-block-title">
+            {{ year }} <span class="count">{{ journals | where: "year", year | size }}</span>
+         </h3>
+         <ul class="pub-list">
+            {%- for pub in journals %}
+            {%- if pub.year == year %}{% include publication.html pub=pub %}{% endif %}
+            {%- endfor %}
+         </ul>
+      </div>
+      {%- endfor %}
+   </div>
+</section>
+
+<!-- Conference proceedings -->
+{%- if proceedings.size > 0 %}
+<section class="section section--tint" id="proceedings">
+   <div class="container">
+      <div class="section-head">
+         <div>
+            <p class="eyebrow">Conference</p>
+            <h2>Proceedings</h2>
+         </div>
+         <p>
+            Instrument and system papers presented at SPIE, IEEE and URSI meetings —
+            where most telescope-building work gets published first.
+         </p>
+      </div>
+      {%- assign years = proceedings | map: "year" | uniq | sort | reverse %}
+      {%- for year in years %}
+      <div class="people-block">
+         <h3 class="people-block-title">
+            {{ year }} <span class="count">{{ proceedings | where: "year", year | size }}</span>
+         </h3>
+         <ul class="pub-list">
+            {%- for pub in proceedings %}
+            {%- if pub.year == year %}{% include publication.html pub=pub %}{% endif %}
+            {%- endfor %}
+         </ul>
+      </div>
+      {%- endfor %}
+   </div>
+</section>
+{%- endif %}
+
+<!-- Notes and preprints — grouped together because neither is peer reviewed -->
+{%- assign unrefereed = notes.size | plus: preprints.size %}
+{%- if unrefereed > 0 %}
+<section class="section section--line" id="other">
+   <div class="container">
+      <div class="section-head">
+         <div>
+            <p class="eyebrow">Not yet refereed</p>
+            <h2>Notes &amp; preprints</h2>
+         </div>
+         <p>
+            Research notes are editorially reviewed rather than peer reviewed; preprints
+            have not been through review at all yet.
+         </p>
+      </div>
+      <ul class="pub-list">
+         {%- for pub in notes %}{% include publication.html pub=pub %}{% endfor %}
+         {%- for pub in preprints %}{% include publication.html pub=pub %}{% endfor %}
+      </ul>
+   </div>
+</section>
+{%- endif %}
+
+<!-- Theses and dissertations deliberately live on /people/ only, so a graduate
+     appears in exactly one place. This is just a pointer. -->
+<section class="section section--tint">
+   <div class="container">
+      <div class="section-head">
+         <div>
+            <p class="eyebrow">Graduate work</p>
+            <h2>Dissertations &amp; theses</h2>
+         </div>
+         <p>
+            Every degree completed in the lab is listed with its author on the people page,
+            with a link to the full text in the WVU Research Repository.
+         </p>
+      </div>
+      <div class="btn-row" style="margin-top:0">
+         <a class="btn" href="{{ '/people/' | relative_url }}">
+            See the alumni {% include icon.html name="arrow" %}
+         </a>
+      </div>
+   </div>
+</section>
+
+{% include join.html %}

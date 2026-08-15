@@ -1,8 +1,90 @@
-pranav:
-    name: Pranav Sanghavi
-    twitter: pranavsanghavi
-    github: PranavSanghavi
+# All lab members. Add/remove people here — the People section renders automatically.
+# Fields: name (required), photo, roles[], bio, open (bool), email, phone,
+#         office, link{text,url}, publication{label,title,url,year}.
 
-kevin:
-  name: Kevin Bandura
-  github: kbandura
+pi:
+  - name: "Kevin M. Bandura, Ph.D."
+    photo: /images/people/kbandura.jpg
+    roles:
+      - "Associate Professor, Department of Computer Science and Electrical Engineering"
+      - "Adjunct Assistant Professor, Department of Physics and Astronomy"
+    email: "kevin.bandura@mail.wvu.edu"
+    phone: "(304) 293-9686"
+    office: "AERB 237"
+    link:
+      text: "Faculty Webpage"
+      url: "https://community.wvu.edu/~kmbandura/"
+    bio: >
+      Dr. Bandura builds the systems behind wide-field radio telescopes — the analog
+      front ends, FPGA correlators, and timing chains that let an instrument like CHIME
+      survey the whole overhead sky at once. The science driving that work is 21 cm
+      intensity mapping, which traces neutral hydrogen to measure how the universe's
+      expansion has accelerated, and the outrigger stations that localize fast radio
+      bursts precisely enough to identify the galaxies they came from.
+
+grad:
+  - name: "Dylan J. Gormley"
+    photo: /images/people/dgormley.jpg
+    roles:
+      - "Ph.D. Candidate"
+    bio: "Research focus on radio frequency interference (RFI) mitigation."
+
+students:
+  - name: "This could be you"
+    open: true          # renders as the open-position card, no portrait
+    bio: >
+      We take on undergraduate and graduate researchers every year. Write to
+      Prof. Kevin Bandura to talk about joining.
+    email: "kevin.bandura@mail.wvu.edu"
+
+alumni:
+  # Verified against the WVU Research Repository (researchrepository.wvu.edu/etd).
+  # Newest first. `year` is the degree year.
+  - name: "Kalyani B. Bhopi"
+    publication:
+      label: "Ph.D. Dissertation"
+      year: 2026
+      title: "A Digital Calibration Source for 21 cm Cosmology Telescopes"
+      url: "https://researchrepository.wvu.edu/etd/13349/"
+
+  - name: "John W. Metzger"
+    publication:
+      label: "M.S. Thesis"
+      year: 2026
+      title: "Enhancing CHIME Data Integrity: Utilizing an Ancillary Antenna to Detect and Mask Radio Frequency Interference"
+      url: "https://researchrepository.wvu.edu/etd/13326/"
+
+  - name: "Kholoud S. T. A. Khairy"
+    publication:
+      label: "M.S. Thesis"
+      year: 2025
+      title: "Green Bank CHIME/FRB Outriggers Commissioning and Analog System Development"
+      url: "https://researchrepository.wvu.edu/etd/13158/"
+
+  - name: "Joseph W. Kania"
+    publication:
+      label: "Ph.D. Dissertation"
+      year: 2023
+      title: "Applications of Digital Filters in Radio Astronomy"
+      url: "https://researchrepository.wvu.edu/etd/12243/"
+
+  - name: "Pranav R. Sanghavi"
+    publication:
+      label: "Ph.D. Dissertation"
+      year: 2022
+      title: "Pathfinding Fast Radio Bursts Localizations using Very Long Baseline Interferometry"
+      url: "https://researchrepository.wvu.edu/etd/11352/"
+
+  - name: "Xiaoqian He"
+    publication:
+      label: "M.S. Thesis"
+      year: 2018
+      title: "Spatial Fourier Transform for Blind Detection of Radio Observations of Rotating Radio Transients"
+      url: "https://researchrepository.wvu.edu/etd/5787/"
+
+  - name: "Akshaya Rane"
+    publication:
+      label: "Ph.D. Dissertation"
+      year: 2017
+      title: "A Study of the Fast Radio Burst Population"
+      url: "https://researchrepository.wvu.edu/etd/7120/"

@@ -1,59 +1,110 @@
-<!DOCTYPE HTML>
-<html>
-    {% include head.html %}
-	
-	<body>
-		<div class="navbar">
-  			<div><a href="#rail">Home</a></div>
-  			<div><a href="#projects">Projects</a></div>
- 			<div><a href="#people">People</a></div>
-  			<div><a href="#blog">Blog</a></div>
-		</div>
-		<!-- Wrapper -->
-			<div id="wrapper" class="divided">
+<!DOCTYPE html>
+<html lang="en">
+{% include head.html %}
+<body>
+   {% include header.html %}
 
-				<!-- Landing Page -->
-					<section class="banner style5 orient-center content-align-center image-position-center fullscreen onload-image-fade-in onload-content-fade-down invert" id="rail">
-						<div class="content">
-							<h1>WVU RAIL</h1>
-							<p class="major">West Virginia University ⏦ Radio Astronomy Instrumentation Laboratory</p>
-							<p>RAIL is a multidisciplinary group within the Lane Department of Computer Science and Electrical Engineering at West Virginia University that focuses on Engineering and Science solutions in Radio Astronomy.</p>
-							<p>Investigations are currently focused on Cosmology, Radio Transient Detectons, Instrumentation and Science Education. RAIL also works in close collaboration with the Center for Gravitational Waves and Cosmology and the Physics and Astronomy Department at WVU</p>
-						</div>
-						<div class="image">
-							<img src="images/banner.jpg" alt="" />
-						</div>
-					</section>
+   <main id="main">
+      <!-- Hero ------------------------------------------------------------ -->
+      <section class="hero" id="top">
+         <div class="hero-bg" aria-hidden="true">
+            <img src="{{ '/images/banner.jpg' | relative_url }}" alt="" fetchpriority="high" width="3264" height="2448" />
+         </div>
+         <canvas id="sky" aria-hidden="true"></canvas>
 
-				{% include projects.html %}
-				{% include people.html %}
+         <div class="container hero-inner">
+            <p class="eyebrow">West Virginia University &nbsp;·&nbsp; Lane Department of CSEE</p>
+            <h1>Instruments that<br />listen to the <em>distant universe</em>.</h1>
+            <p class="lead">
+               RAIL designs and builds the telescopes, analog front ends, and digital systems
+               that survey the radio sky — chasing cosmology, fast radio bursts, and pulsars.
+            </p>
+            <div class="btn-row">
+               <a class="btn btn--primary" href="{{ '/where-we-work/' | relative_url }}">Explore our work {% include icon.html name="arrow" %}</a>
+               <a class="btn" href="{{ '/people/' | relative_url }}">Meet the lab</a>
+            </div>
 
-				<!-- Blog -->
-				<<section class="banner onload-image-fade-in onload-content-fade-right style3 fullscreen orient-right content-align-left image-position-center" id="blog">
-						<div class="content">
-							<h1>RAIL Journal</h1>
-							<p class="major"> Check out our lab blog</p>
-							<ul class="actions vertical">
-								<li><a href="/blog/" class="button big wide smooth-scroll-middle">Blog</a></li>
-							</ul>
-						</div>
-						<div class="image">
-							<img src="images/banner.jpg" alt="">
-						</div>
-				</section>
-				<!-- Footer -->
-				{% include footer.html %}
-			</div>
+            <p class="hero-meta">
+               <span>Morgantown, WV</span> <span class="dot">/</span>
+               <a href="https://chime-experiment.ca">CHIME</a> <span class="dot">/</span>
+               <a href="https://www.chord-observatory.ca">CHORD</a> <span class="dot">/</span>
+               <a href="https://hirax.ukzn.ac.za">HIRAX</a> <span class="dot">/</span>
+               <a href="{{ '/education/' | relative_url }}">DSPIRA</a>
+            </p>
+         </div>
 
-		<!-- Scripts -->
-			<script src="/assets/js/jquery.min.js"></script>
-			<script src="/assets/js/jquery.scrollex.min.js"></script>
-			<script src="/assets/js/jquery.scrolly.min.js"></script>
-			<script src="/assets/js/skel.min.js"></script>
-			<script src="/assets/js/util.js"></script>
-			<script src="/assets/js/main.js"></script>
-			<script src="/assets/js/smoothscroll.js"></script>
+         <a class="scroll-cue" href="#about" aria-label="Scroll to content">
+            <span>Scroll</span>
+            <span class="rule" aria-hidden="true"></span>
+         </a>
+      </section>
 
-			
-	</body>
+      <!-- What we do ------------------------------------------------------ -->
+      <section class="section" id="about">
+         <div class="container">
+            <div class="statement reveal">
+               <div class="statement-side">
+                  <p class="eyebrow">What we do</p>
+                  <p class="statement-lead">
+                     Mapping the sky at radio wavelengths takes instruments with exceptional
+                     sensitivity — and the willingness to <em>build them from scratch</em>.
+                  </p>
+                  <div class="note">
+                     <span class="note-label">Recognition</span>
+                     Researchers in our group are part of the CHIME Fast Radio Burst team, awarded the
+                     <a href="https://aas.org/press/chime-fast-radio-burst-team-receive-2022-berkeley-prize">2022
+                     Lancelot M. Berkeley&thinsp;&ndash;&thinsp;New York Community Trust Prize for Meritorious
+                     Work in Astronomy</a>.
+                  </div>
+               </div>
+               <div class="statement-body">
+                  <p>
+                     Our primary goal is to make groundbreaking discoveries in cosmology, fast
+                     radio bursts, and pulsars. Getting there means designing and constructing
+                     large analog and digital systems that are both extremely sensitive and
+                     adaptable enough to chase new opportunities as they appear.
+                  </p>
+                  <p>
+                     Telescopes dedicated to surveying wide swaths of the sky demand novel
+                     designs and massive computing systems. We're building and commissioning them now,
+                     across North America and southern Africa.
+                  </p>
+                  <p>
+                     Much of that work is open. Our firmware, control software, and analysis
+                     pipelines live on GitHub alongside the collaborations we build them with.
+                  </p>
+               </div>
+            </div>
+
+            <dl class="facts reveal">
+               <div class="fact">
+                  <dt>What we make</dt>
+                  <dd>Analog &amp; digital<small>Front ends, FPGA correlators, pipelines</small></dd>
+               </div>
+               <div class="fact">
+                  <dt>Science drivers</dt>
+                  <dd>21 cm &amp; FRBs<small>Dark energy, transients, pulsars</small></dd>
+               </div>
+               <div class="fact">
+                  <dt>Outrigger stations</dt>
+                  <dd>Three<small>Green Bank · Hat Creek · KKO</small></dd>
+               </div>
+               <div class="fact">
+                  <dt>Home</dt>
+                  <dd>AERB 304<small>WVU Evansdale Campus, Morgantown</small></dd>
+               </div>
+            </dl>
+         </div>
+      </section>
+
+      {% include sites.html %}
+      {% include publications-preview.html %}
+      {% include education.html %}
+      {% include people.html %}
+      {% include join.html %}
+   </main>
+
+   {% include footer.html %}
+   {% include scripts.html %}
+</body>
 </html>

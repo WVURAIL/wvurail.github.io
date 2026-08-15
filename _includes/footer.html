@@ -1,23 +1,46 @@
-<footer class="wrapper style1">
-	<div class="inner" style="float: left; width: 67%;">
-		<h4>Get Involved</h4>
-		<p class="major">If you are a student (graduate or undergraduate) interested in doing some awesome science and ache to get your hands dirty. Shoot an email to <strong> kmbandura [at] mail [dot] wvu [dot] edu </strong></p>
-		</div>
-		<div class="inner" style="float: right; width: 33%;">
-		<ul class="icons">
-			<li><a href="https://github.com/WVURAIL" class="icon style2 fa-github"><span class="label">GitHub</span></a></li>					
-			<li><a href="mailto:wvurail@gmail.com?Subject=RAIL" class="icon style2 fa-envelope"><span class="label">Email</span></a></li>
-		</ul>
-		<p>&copy; WVU.RAIL</p>
-		<p>Credits: <a href="http://wvurail.org/credits/">click here</a>.</p>
-	</div>
-    <!-- Scripts 
-<script src="{{ 'assets/js/jquery.min.js' }}"></script>
-<script src="{{ 'assets/js/jquery.scrollex.min.js'}}"></script>
-<script src="{{ 'assets/js/jquery.scrolly.min.js'}}"></script>
-<script src="{{ 'assets/js/skel.min.js' }}"></script>
-<script src="{{ 'assets/js/util.js' }}"></script>
-<script src="{{ 'assets/js/main.js' }}"></script>
-<script src="{{ 'assets/js/smoothscroll.js' }}"></script>
- -->
+<footer class="site-footer">
+   <div class="container">
+      <div class="footer-grid">
+         <div class="footer-brand">
+            <a class="brand" href="{{ '/' | relative_url }}">
+               <span class="brand-wvu">WVU</span><span class="brand-wave" aria-hidden="true">&#9190;</span><span>RAIL</span>
+            </a>
+            <p>{{ site.description | strip_newlines | strip }}</p>
+         </div>
+
+         <div class="footer-col">
+            <h2 class="footer-heading">Explore</h2>
+            <ul>
+               {%- for item in site.data.nav %}
+               <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
+               {%- endfor %}
+            </ul>
+         </div>
+
+         <div class="footer-col">
+            <h2 class="footer-heading">Contact</h2>
+            <ul>
+               <li><a href="mailto:{{ site.email }}?Subject=RAIL">{{ site.email }}</a></li>
+               <li>AERB 304, WVU Evansdale Campus<br />Morgantown, WV</li>
+            </ul>
+         </div>
+
+         <div class="footer-col">
+            <h2 class="footer-heading">Affiliations</h2>
+            <ul>
+               <li><a href="https://www.statler.wvu.edu/lane-department-of-computer-science-and-electrical-engineering">Lane Dept. of CSEE</a></li>
+               <li><a href="https://www.wvu.edu">West Virginia University</a></li>
+            </ul>
+         </div>
+      </div>
+
+      <div class="footer-bottom">
+         <span>&copy; {{ 'now' | date: "%Y" }} WVU RAIL · Morgantown, West Virginia</span>
+         <ul class="social">
+            <li>
+               <a href="https://github.com/WVURAIL" aria-label="RAIL on GitHub">{% include icon.html name="github" %}</a>
+            </li>
+         </ul>
+      </div>
+   </div>
 </footer>

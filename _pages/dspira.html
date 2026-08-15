@@ -1,0 +1,208 @@
+---
+title: DSPIRA
+layout: default
+permalink: /education/
+full_width: true
+description: DSPIRA — Digital Signal Processing in Radio Astronomy — was an NSF Research Experiences for Teachers site at WVU. Its 44 free lessons on building and using a horn radio telescope are still online.
+---
+{%- assign ed = site.data.education -%}
+<div class="page-head">
+   <div class="container">
+      <p class="eyebrow">Education</p>
+      <h1>Teachers built radio telescopes here</h1>
+      <p class="lead">{{ ed.summary | strip_newlines | strip }}</p>
+      <p class="status-note">{{ ed.status | strip_newlines | strip }}</p>
+   </div>
+</div>
+
+<!-- The materials come first: they are the part still useful to a visitor today. -->
+<section class="section" id="lessons">
+   <div class="container">
+      <div class="section-head">
+         <div>
+            <p class="eyebrow">Still available</p>
+            <h2>{{ ed.materials.title }}</h2>
+         </div>
+         <p>{{ ed.materials.intro | strip_newlines | strip }}</p>
+      </div>
+
+      <div class="lessons-panel">
+         <ul class="module-list">
+            {%- for m in ed.materials.modules %}
+            <li>{{ m }}</li>
+            {%- endfor %}
+         </ul>
+
+         <div class="lessons-cta">
+            <a class="btn btn--primary" href="{{ ed.materials.url }}">
+               Open the lessons site {% include icon.html name="arrow" %}
+            </a>
+            <ul class="plain-links">
+               {%- for x in ed.materials.extras %}
+               <li><a href="{{ x.url }}">{{ x.text }} {% include icon.html name="external" %}</a></li>
+               {%- endfor %}
+            </ul>
+         </div>
+      </div>
+
+      <dl class="facts">
+         {%- for f in ed.facts %}
+         <div class="fact">
+            <dt>{{ f.label }}</dt>
+            <dd>{{ f.value }}<small>{{ f.note }}</small></dd>
+         </div>
+         {%- endfor %}
+      </dl>
+   </div>
+</section>
+
+<!-- How a summer worked -->
+<section class="section section--tint" id="how">
+   <div class="container">
+      <div class="section-head">
+         <div>
+            <p class="eyebrow">How it worked</p>
+            <h2>Six weeks, one telescope each</h2>
+         </div>
+         <p>
+            Teachers spent the summer doing engineering rather than reading about it,
+            finishing at Green Bank with an instrument they had built themselves.
+         </p>
+      </div>
+      <ol class="ed-points">
+         {%- for step in ed.arc %}
+         <li>
+            <h3>{{ step.title }}</h3>
+            <p>{{ step.body | strip_newlines | strip }}</p>
+         </li>
+         {%- endfor %}
+      </ol>
+   </div>
+</section>
+
+<!-- Cohorts -->
+<section class="section section--line" id="cohorts">
+   <div class="container">
+      <div class="section-head">
+         <div>
+            <p class="eyebrow">Who came</p>
+            <h2>Three cohorts</h2>
+         </div>
+         <p>
+            15 teachers from 8 states filled 21 places — four of them came
+            back for a second or third summer.
+         </p>
+      </div>
+
+      <div class="cohort-grid">
+         {%- for c in ed.cohorts %}
+         <div class="cohort">
+            <div class="cohort-head">
+               <h3>{{ c.year }}</h3>
+               <span class="cohort-count">{{ c.count }} teachers</span>
+            </div>
+            <ul class="cohort-list">
+               {%- for t in c.teachers %}
+               <li>
+                  {{ t.name }} <span class="cohort-state">{{ t.state }}</span>
+                  {%- if t.returning %}<span class="cohort-return">returning</span>{% endif %}
+               </li>
+               {%- endfor %}
+            </ul>
+            {%- if c.note %}<p class="cohort-note">{{ c.note }}</p>{% endif %}
+            <a class="arrow-link" href="{{ c.url | relative_url }}">
+               {{ c.year }} summer {% include icon.html name="arrow" %}
+            </a>
+         </div>
+         {%- endfor %}
+      </div>
+   </div>
+</section>
+
+<!-- Published work -->
+{%- if ed.outputs and ed.outputs.size > 0 %}
+<section class="section section--tint" id="outputs">
+   <div class="container">
+      <div class="section-head">
+         <div>
+            <p class="eyebrow">What came out of it</p>
+            <h2>Published &amp; presented</h2>
+         </div>
+         <p>
+            Teachers did not just attend — they co-authored the conference paper and
+            gave the conference talk.
+         </p>
+      </div>
+      <ul class="pub-list">
+         {%- for o in ed.outputs %}
+         <li class="pub">
+            <div class="pub-main">
+               <h3 class="pub-title">
+                  {%- if o.doi -%}
+                  <a href="https://doi.org/{{ o.doi }}">{{ o.title }}</a>
+                  {%- elsif o.url -%}
+                  <a href="{{ o.url }}">{{ o.title }}</a>
+                  {%- else -%}{{ o.title }}{%- endif -%}
+               </h3>
+               <p class="pub-authors">{{ o.authors }}</p>
+               <p class="pub-venue"><em>{{ o.venue }}</em></p>
+               {%- if o.note %}<p class="pub-note">{{ o.note }}</p>{% endif %}
+            </div>
+            <ul class="pub-links">
+               {%- if o.doi %}<li><a href="https://doi.org/{{ o.doi }}">DOI</a></li>{% endif %}
+               {%- if o.extra %}<li><a href="{{ o.extra.url | relative_url }}">{{ o.extra.text }}</a></li>{% endif %}
+            </ul>
+         </li>
+         {%- endfor %}
+      </ul>
+   </div>
+</section>
+{%- endif %}
+
+<!-- Credits and the older sites -->
+<section class="section">
+   <div class="container">
+      <div class="statement">
+         <div class="statement-side">
+            <p class="eyebrow">Who ran it</p>
+            <p class="statement-lead">
+               DSPIRA was a partnership between the university and the
+               <em>observatory next door</em>.
+            </p>
+         </div>
+         <div class="statement-body">
+            <ul class="contact-list">
+               <li>
+                  <span class="k">Investigators</span>
+                  <span class="v">{{ ed.principal_investigators | join: " and " }}</span>
+               </li>
+               <li>
+                  <span class="k">GBO coordinator</span>
+                  <span class="v">{{ ed.observatory_coordinator }}</span>
+               </li>
+               <li>
+                  <span class="k">Partners</span>
+                  <span class="v">
+                     {%- for p in ed.partners %}{{ p }}{% unless forloop.last %}<br />{% endunless %}{% endfor %}
+                  </span>
+               </li>
+               <li>
+                  <span class="k">Funding</span>
+                  <span class="v">National Science Foundation<br />Research Experiences for Teachers</span>
+               </li>
+            </ul>
+
+            {%- if ed.archive_sites %}
+            <p class="archive-pointer">
+               <span>Earlier sites</span>
+               {%- for a in ed.archive_sites %}
+               <a href="{{ a.url }}">{{ a.text }}</a>
+               {%- endfor %}
+            </p>
+            {%- endif %}
+         </div>
+      </div>
+   </div>
+</section>
+
+{% include join.html %}

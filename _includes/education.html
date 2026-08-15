@@ -1,0 +1,48 @@
+<!-- Science education / outreach. Content comes from _data/education.yml. -->
+{%- assign ed = site.data.education -%}
+<section class="section section--tint" id="education">
+   <div class="container">
+      <div class="section-head reveal">
+         <div>
+            <p class="eyebrow">Science education</p>
+            <h2>Teachers built radio telescopes too</h2>
+         </div>
+         <p>{{ ed.summary | strip_newlines | strip }}</p>
+      </div>
+
+      <div class="ed-grid reveal">
+         <div class="ed-media">
+            <img src="{{ '/images/projects/dspira.jpg' | relative_url }}"
+                 alt="Two DSPIRA teachers operating a small horn radio telescope in a field at dusk"
+                 loading="lazy" decoding="async" width="900" height="600" />
+         </div>
+
+         <div class="ed-body">
+            <ol class="ed-points">
+               {%- for step in ed.arc limit: 3 %}
+               <li>
+                  <h3>{{ step.title }}</h3>
+                  <p>{{ step.body | strip_newlines | strip }}</p>
+               </li>
+               {%- endfor %}
+            </ol>
+
+            <div class="btn-row">
+               <a class="btn btn--primary" href="{{ ed.materials.url }}">
+                  {{ ed.materials.lesson_count }} lessons, free to use {% include icon.html name="arrow" %}
+               </a>
+               <a class="btn" href="{{ '/education/' | relative_url }}">About DSPIRA</a>
+            </div>
+
+            {%- if ed.cohorts and ed.cohorts.size > 0 %}
+            <p class="ed-archive">
+               <span>Cohorts</span>
+               {%- for c in ed.cohorts %}
+               <a href="{{ c.url | relative_url }}">{{ c.year }}</a>
+               {%- endfor %}
+            </p>
+            {%- endif %}
+         </div>
+      </div>
+   </div>
+</section>
