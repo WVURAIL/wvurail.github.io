@@ -173,7 +173,7 @@ outputs:
     note: A talk given by a DSPIRA teacher at the GNU Radio Conference.
     extra:
       text: Slides (PDF)
-      url: "https://www.gnuradio.org/grcon/grcon18/presentations/open_source_radio_telescopes/2-John_Makous-OSRT.pdf"
+      url: "https://www.gnuradio.org/grcon/grcon18/presentations/Open_Source_Radio_Telescopes/2-John_Makous-OSRT.pdf"
 
 # The cra and dspira sites were archived in 2026 and their material migrated
 # into the lessons site. Both URLs still resolve, but each is now only a page

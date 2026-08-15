@@ -28,7 +28,12 @@
          <div class="footer-col">
             <h2 class="footer-heading">Affiliations</h2>
             <ul>
-               <li><a href="https://www.statler.wvu.edu/lane-department-of-computer-science-and-electrical-engineering">Lane Dept. of CSEE</a></li>
+               {%- comment -%}
+               lcsee.statler.wvu.edu, not the department page under
+               www.statler.wvu.edu — that one 404s. This link is in the footer,
+               so it was on every page of the site.
+               {%- endcomment -%}
+               <li><a href="https://lcsee.statler.wvu.edu/">Lane Dept. of CSEE</a></li>
                <li><a href="https://www.wvu.edu">West Virginia University</a></li>
             </ul>
          </div>
