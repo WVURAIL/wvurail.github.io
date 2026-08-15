@@ -86,7 +86,6 @@ def main():
                  f"not here.")
 
     live = cards
-    print(f"this repository says {declared}; wvurail.org/dspira-lessons says {live}")
 
     if declared != live:
         sys.exit(
@@ -95,7 +94,14 @@ def main():
             f"the single `lesson_count:` line in {EDUCATION_YML} — every place "
             f"the number appears on the site is rendered from it.")
 
-    print("counts agree.")
+    # A notice rather than a plain print, so the numbers show on the run summary
+    # without opening the log. A green tick on its own does not distinguish
+    # "compared them, they agree" from "could not reach the site, gave up" —
+    # that path warns, but reading the absence of a warning is a poor way to
+    # learn that a check did its job.
+    print(f"::notice title=Lesson count::agreed: {declared}. "
+          f"_data/education.yml and wvurail.org/dspira-lessons both say "
+          f"{declared} lessons.")
     return 0
 
 
