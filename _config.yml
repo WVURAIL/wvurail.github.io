@@ -7,8 +7,9 @@ tagline: Radio Astronomy Instrumentation Laboratory
 email: wvurail@gmail.com
 description: >
   RAIL is a multidisciplinary group within the Lane Department of Computer Science
-  and Electrical Engineering at West Virginia University, focused on engineering and
-  science solutions in radio astronomy.
+  and Electrical Engineering at West Virginia University and part of the WVU Center
+  for Gravitational Waves and Cosmology, focused on engineering and science
+  solutions in radio astronomy.
 
 baseurl: ""                     # subpath of the site, e.g. /blog (empty for a root domain)
 url: "https://wvurail.org"      # base hostname & protocol, no trailing slash

@@ -143,6 +143,11 @@ appointments:
     org: "Department of Physics and Astronomy, West Virginia University"
     years: "2015–present"
     review: confirm the adjunct appointment's start year
+  - role: "Member"
+    org: "Center for Gravitational Waves and Cosmology, West Virginia University"
+    years: ""
+    review: add the membership start year if Kevin wants it shown — his paper
+      affiliations carry the center by 2016–2018
   - role: "Assistant Professor"
     org: "Lane Department of Computer Science and Electrical Engineering, West Virginia University"
     years: "2015–2021"
