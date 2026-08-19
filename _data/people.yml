@@ -40,10 +40,12 @@ students:
 alumni:
   # Verified against the WVU Research Repository (researchrepository.wvu.edu/etd).
   # Newest first. `year` is the degree year. `now:` is the person's current
-  # position, shown on /people/ and on the faculty CV — only Sanghavi's was
-  # known when the field was added (Aug 2026).
-  # review: fill in `now:` for the other alumni as they're confirmed.
+  # position, shown on /people/ and on the faculty CV (filled Aug 2026).
+  # review: John Metzger's `now:` is deliberately absent — his LinkedIn showed
+  # no position since graduating when checked (Aug 2026). Revisit in a few
+  # months; everyone else's is filled.
   - name: "Kalyani B. Bhopi"
+    now: "Postdoctoral Fellow, Academia Sinica (Taiwan)"
     publication:
       label: "Ph.D. Dissertation"
       year: 2026
@@ -58,6 +60,7 @@ alumni:
       url: "https://researchrepository.wvu.edu/etd/13326/"
 
   - name: "Kholoud S. T. A. Khairy"
+    now: "System Engineer III, M.C. Dean"
     publication:
       label: "M.S. Thesis"
       year: 2025
@@ -65,6 +68,7 @@ alumni:
       url: "https://researchrepository.wvu.edu/etd/13158/"
 
   - name: "Joseph W. Kania"
+    now: "Senior Research Platforms Engineer, University of Manchester"
     publication:
       label: "Ph.D. Dissertation"
       year: 2023
@@ -80,6 +84,7 @@ alumni:
       url: "https://researchrepository.wvu.edu/etd/11352/"
 
   - name: "Xiaoqian He"
+    now: "Senior System Design Engineer, AMD"
     publication:
       label: "M.S. Thesis"
       year: 2018
@@ -87,6 +92,7 @@ alumni:
       url: "https://researchrepository.wvu.edu/etd/5787/"
 
   - name: "Akshaya Rane"
+    now: "Senior Data Scientist, lululemon"
     publication:
       label: "Ph.D. Dissertation"
       year: 2017
