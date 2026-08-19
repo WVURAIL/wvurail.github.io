@@ -43,6 +43,11 @@ Everything else comes from _data/cv.yml.
          <a class="person-link" href="https://orcid.org/0000-0003-3772-2798">ORCID {% include icon.html name="external" %}</a>
          <a class="person-link" href="{{ cv.profile.scholar }}">Google Scholar {% include icon.html name="external" %}</a>
       </p>
+      <div class="btn-row">
+         <a class="btn btn--primary" href="{{ '/bandura/cv/' | relative_url }}">
+            Get CV {% include icon.html name="arrow" %}
+         </a>
+      </div>
    </div>
 </div>
 
@@ -246,8 +251,9 @@ Everything else comes from _data/cv.yml.
             {%- endfor %}
          </div>
          <p class="pub-band-note">
-            Syllabus on record:
-            <a href="https://researchrepository.wvu.edu/wvu_syllabi/5918/">EE 221, Fall 2018 — WVU Research Repository</a>.
+            Syllabi on record at the WVU Research Repository:
+            <a href="https://researchrepository.wvu.edu/wvu_syllabi/5918/">EE 221, Fall 2018</a> &middot;
+            <a href="https://researchrepository.wvu.edu/wvu_syllabi/11535/">EE 591B (DSP for Radio Astronomy), Spring 2017</a>.
          </p>
       </div>
    </div>
@@ -296,6 +302,7 @@ Everything else comes from _data/cv.yml.
                   {%- if person.publication %}
                   <a href="{{ person.publication.url }}">{{ person.publication.title }}</a>
                   {%- endif %}
+                  {%- if person.now %}<br /><em>Now: {{ person.now }}</em>{% endif %}
                </span>
             </div>
             {%- endfor %}
@@ -306,8 +313,8 @@ Everything else comes from _data/cv.yml.
       <div class="people-block">
          <h2 class="people-block-title">Committee service <span class="count">{{ cv.committees.size }}</span></h2>
          <p class="pub-band-note">
-            Theses and dissertations served as a committee member, not chair.
-            Verified against the WVU Research Repository — likely incomplete.
+            Theses and dissertations served as a committee member, not chair —
+            from Kevin's records, each linked to the WVU Research Repository.
          </p>
          <div class="alumni-list">
             {%- for c in cv.committees %}

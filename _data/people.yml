@@ -39,7 +39,10 @@ students:
 
 alumni:
   # Verified against the WVU Research Repository (researchrepository.wvu.edu/etd).
-  # Newest first. `year` is the degree year.
+  # Newest first. `year` is the degree year. `now:` is the person's current
+  # position, shown on /people/ and on the faculty CV — only Sanghavi's was
+  # known when the field was added (Aug 2026).
+  # review: fill in `now:` for the other alumni as they're confirmed.
   - name: "Kalyani B. Bhopi"
     publication:
       label: "Ph.D. Dissertation"
@@ -69,6 +72,7 @@ alumni:
       url: "https://researchrepository.wvu.edu/etd/12243/"
 
   - name: "Pranav R. Sanghavi"
+    now: "Postdoctoral Fellow, Center for Astrophysics | Harvard & Smithsonian"
     publication:
       label: "Ph.D. Dissertation"
       year: 2022

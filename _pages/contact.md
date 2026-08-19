@@ -119,5 +119,6 @@ description: How to reach the WVU Radio Astronomy Instrumentation Lab — email,
       </div>
    </div>
 </section>
-
-{% include join.html %}
+{%- comment %}No join.html here on purpose: the header's "Join the lab" button
+lands on this page, so repeating the join band at the bottom made the two look
+like duplicates of each other. Every other page still ends with it.{% endcomment %}

@@ -67,6 +67,7 @@
                   {%- if person.publication %}
                   <a href="{{ person.publication.url }}">{{ person.publication.title }}</a>
                   {%- endif %}
+                  {%- if person.now %}<br /><em>Now: {{ person.now }}</em>{% endif %}
                </span>
             </div>
             {%- endfor %}

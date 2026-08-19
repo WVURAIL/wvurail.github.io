@@ -6,8 +6,9 @@
 # parent institution. Counts and completeness caveats live on the page itself.
 # Prune or add freely — the page renders whatever is here.
 #
-# review: P. Sanghavi's affiliation on the 2026 RNAAS note could not be
-# identified from records; add its institution below if it is new.
+# The 2026 RNAAS note's affiliations are NSF, WVU, and the Center for
+# Astrophysics | Harvard & Smithsonian (P. Sanghavi's postdoc home, confirmed
+# Aug 2026) — all already listed below.
 
 featured:
   - name: "Green Bank Observatory"

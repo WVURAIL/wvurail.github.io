@@ -6,6 +6,9 @@
 - title: Where We Work
   url: /where-we-work/
 
+- title: Who We Work With
+  url: /who-we-work-with/
+
 - title: Publications
   url: /publications/
 
@@ -15,8 +18,11 @@
 - title: People
   url: /people/
 
+- title: Faculty
+  url: /bandura/
+
 - title: Tools
   url: /tools/
 
-- title: Contact
-  url: /contact/
+# No Contact entry on purpose: the header's "Join the lab" button already goes
+# to /contact/, and having both read as two tabs that do the same thing.

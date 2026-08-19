@@ -50,9 +50,8 @@ profiles:
     url: "https://www.coursicle.com/wvu/professors/Kevin+Bandura/"
   - label: "Rate My Professors"
     url: "https://www.ratemyprofessors.com/professor/2308142"
-  - label: "Old WVU faculty page"
-    url: "https://community.wvu.edu/~kmbandura/"
-    review: page is being retired — swap this for a Wayback Machine snapshot once one exists (save attempts were rate-limited when this was compiled)
+  # The old faculty page (community.wvu.edu/~kmbandura) was retired in 2026 and
+  # is deliberately not linked — its content was folded into this page.
   - label: "The lab"
     url: "/people/"
 
@@ -229,20 +228,41 @@ memberships:
 # Earlier invited talks and posters, as listed on the 2016 CV. Recent talks
 # have not been compiled yet — add them above the older ones as they come in.
 # ---------------------------------------------------------------------------
-# Thesis & dissertation committee service — member only; his own students are
-# the Graduated list on the page. ETD pages list committees, but the repository
-# search does not index those fields, so this CANNOT be swept exhaustively from
-# outside. Confirmed by fetching individual ETD pages. Physics pulsar-group
-# committees checked (Aggarwal '21, Agarwal '20, Golpayegani '20, Fiore '24) do
-# not include him.
-# review: ask Kevin for the full committee list — LCSEE ETDs (e.g. Z. Cao, if
-# graduated) and anything else are not findable online.
+# Thesis & dissertation committee service — member only, not chair; his own
+# students are the Graduated list on the page. This set came from Kevin's
+# records (Aug 2026), each verified against its WVU Research Repository page.
+# The repository's search does not index committee fields, so new ones must be
+# added here by hand.
 committees:
   - name: "Evan T. Smith"
     degree: "Ph.D., Physics & Astronomy"
     year: 2022
     title: "Impact of Radio Frequency Interference and Real-Time Spectral Kurtosis Mitigation"
     url: "https://researchrepository.wvu.edu/etd/11467/"
+    chair: "D.J. Pisano"
+  - name: "Morgan R. Dameron"
+    degree: "M.S., Lane Dept. of CSEE"
+    year: 2022
+    title: "Inferential Statistics and Information Theoretical Measures: An Approach to Interference Detection in Radio Astronomy"
+    url: "https://researchrepository.wvu.edu/etd/11205/"
+    chair: "Natalia Schmid"
+  - name: "Brent J. Shapiro-Albert"
+    degree: "Ph.D., Physics & Astronomy"
+    year: 2021
+    title: "Pulsar Noise Processes and Emission Physics"
+    url: "https://researchrepository.wvu.edu/etd/8060/"
+    chair: "Maura McLaughlin"
+  - name: "Marwan M. Alkhweldi"
+    degree: "Ph.D., Lane Dept. of CSEE"
+    year: 2021
+    title: "Transform Based Approaches for the Detection of Astrophysical Signals"
+    url: "https://researchrepository.wvu.edu/etd/8302/"
+    chair: "Natalia A. Schmid"
+  - name: "Nickolas M. Pingel"
+    degree: "Ph.D., Physics & Astronomy"
+    year: 2017
+    title: "Deep Extragalactic Neutral Hydrogen Surveys with the Green Bank Telescope"
+    url: "https://researchrepository.wvu.edu/etd/7228/"
     chair: "D.J. Pisano"
 
 presentations:

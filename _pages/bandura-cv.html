@@ -1,0 +1,252 @@
+---
+title: Kevin M. Bandura — CV
+permalink: /bandura/cv/
+description: >
+  Curriculum vitae of Kevin M. Bandura, generated from the living faculty page
+  at wvurail.org/bandura. Print or save as PDF — always current.
+---
+{%- comment %}
+The printable CV. No layout on purpose: this file is a complete standalone
+document, styled for US-letter print, so "Save as PDF" in any browser produces
+a submittable CV. Every section renders from the same data as /bandura/ —
+_data/cv.yml, _data/publications.yml, _data/people.yml — so it can never fall
+behind the site. Liquid here must stay Jekyll 3.9-safe (single-condition
+where_exp only; GitHub Pages does not run Jekyll 4).
+{%- endcomment -%}
+{%- assign cv = site.data.cv -%}
+{%- assign mine = site.data.publications | where_exp: "p", "p.people contains 'K. Bandura'" -%}
+{%- assign my_journal = mine | where: "type", "journal" -%}
+{%- assign my_proc = mine | where: "type", "proceedings" -%}
+{%- assign my_notes = mine | where: "type", "note" -%}
+{%- assign my_preprints = mine | where: "type", "preprint" -%}
+{%- assign n_unref = my_notes.size | plus: my_preprints.size -%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>{{ page.title }}</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 11pt; line-height: 1.45; color: #111; background: #e8e6e1;
+  }
+  .sheet {
+    max-width: 8.5in; margin: 0 auto; background: #fff;
+    padding: 0.9in 0.85in; min-height: 11in;
+  }
+  header.cv-head { border-bottom: 2px solid #111; padding-bottom: 10px; margin-bottom: 18px; }
+  h1 { font-size: 21pt; margin: 0 0 2px; letter-spacing: 0.01em; }
+  .cv-sub { margin: 0 0 6px; font-size: 11pt; }
+  .cv-contact { margin: 0; font-size: 9.5pt; color: #333; }
+  .cv-contact a { color: inherit; }
+  h2 {
+    font-size: 11pt; text-transform: uppercase; letter-spacing: 0.09em;
+    border-bottom: 1px solid #999; padding-bottom: 2px; margin: 20px 0 8px;
+    page-break-after: avoid;
+  }
+  h3 { font-size: 10.5pt; margin: 12px 0 4px; page-break-after: avoid; }
+  p, li { orphans: 2; widows: 2; }
+  ul.plain, ol.cites { margin: 0 0 6px; padding-left: 22px; }
+  ul.plain { list-style: none; padding-left: 0; }
+  ul.plain li, ol.cites li { margin-bottom: 4px; page-break-inside: avoid; }
+  .row { display: flex; gap: 12px; page-break-inside: avoid; margin-bottom: 4px; }
+  .row .when { flex: 0 0 84px; color: #444; }
+  .row .what { flex: 1; }
+  .muted { color: #555; font-style: italic; }
+  .small { font-size: 9.5pt; }
+  a { color: #114; text-decoration: none; }
+  footer.stamp {
+    margin-top: 26px; padding-top: 8px; border-top: 1px solid #999;
+    font-size: 8.5pt; color: #555;
+  }
+  .toolbar {
+    position: sticky; top: 0; background: #1a1a1a; color: #eee;
+    padding: 10px 16px; display: flex; gap: 14px; align-items: center;
+    font-family: system-ui, sans-serif; font-size: 14px;
+  }
+  .toolbar button {
+    font: inherit; padding: 6px 16px; border: 0; border-radius: 4px;
+    background: #e4b33d; color: #1a1a1a; font-weight: 600; cursor: pointer;
+  }
+  .toolbar a { color: #bbb; }
+  @media print {
+    body { background: #fff; font-size: 10.5pt; }
+    .sheet { max-width: none; margin: 0; padding: 0; min-height: 0; }
+    .toolbar { display: none; }
+    a { color: inherit; }
+    @page { size: letter; margin: 0.7in; }
+  }
+</style>
+</head>
+<body>
+<div class="toolbar">
+   <button onclick="window.print()">Save as PDF</button>
+   <span>Choose &ldquo;Save as PDF&rdquo; as the destination in the print dialog.</span>
+   <a href="{{ '/bandura/' | relative_url }}">&larr; back to the faculty page</a>
+</div>
+<div class="sheet">
+
+<header class="cv-head">
+   <h1>{{ cv.profile.name }}</h1>
+   <p class="cv-sub">
+      Associate Professor, Lane Department of Computer Science and Electrical Engineering,
+      and Adjunct Assistant Professor of Physics and Astronomy, West Virginia University &middot;
+      Member, WVU Center for Gravitational Waves and Cosmology
+   </p>
+   <p class="cv-contact">
+      {{ cv.profile.email }} &middot; {{ cv.profile.phone }} &middot; {{ cv.profile.office }}<br>
+      ORCID: 0000-0003-3772-2798 &middot; wvurail.org/bandura
+   </p>
+</header>
+
+<h2>Education</h2>
+{%- for e in cv.education %}
+<div class="row">
+   <span class="when">{{ e.year }}</span>
+   <span class="what">{{ e.degree }}, {{ e.school }}.
+      {%- if e.thesis %} Thesis: &ldquo;{{ e.thesis }}&rdquo;{% if e.advisor %} (advisor: {{ e.advisor }}){% endif %}.{% endif %}
+   </span>
+</div>
+{%- endfor %}
+
+<h2>Appointments</h2>
+{%- for a in cv.appointments %}
+<div class="row">
+   <span class="when">{{ a.years }}</span>
+   <span class="what">{{ a.role }}, {{ a.org }}</span>
+</div>
+{%- endfor %}
+
+<h2>Honors &amp; Awards</h2>
+{%- for h in cv.honors %}
+<div class="row">
+   <span class="when">{{ h.year }}</span>
+   <span class="what">{{ h.title }} &mdash; {{ h.by }}</span>
+</div>
+{%- endfor %}
+
+<h2>Research Funding</h2>
+{%- for g in cv.funding %}
+<div class="row">
+   <span class="when">{{ g.years }}</span>
+   <span class="what">&ldquo;{{ g.title }}&rdquo; &mdash; {{ g.agency }} {{ g.id }}, {{ g.role }}{% if g.amount %}, {{ g.amount }}{% endif %}.</span>
+</div>
+{%- endfor %}
+
+<h2>Publications</h2>
+<p class="small muted">
+   WVU-era entries are drawn live from the lab publication list at wvurail.org/publications;
+   earlier work and white papers are maintained on the faculty page.
+</p>
+
+<h3>Peer-reviewed journal articles ({{ my_journal.size }})</h3>
+<ol class="cites">
+   {%- for p in my_journal %}
+   <li>{{ p.authors }}, &ldquo;{{ p.title }},&rdquo; <em>{{ p.venue }}</em>{% if p.ref %}, {{ p.ref }}{% endif %} ({{ p.year }}){% if p.doi %}, doi:{{ p.doi }}{% elsif p.arxiv %}, arXiv:{{ p.arxiv }}{% endif %}.
+      {%- if p.note %} <span class="muted small">{{ p.note }}</span>{% endif %}</li>
+   {%- endfor %}
+</ol>
+
+<h3>Conference proceedings ({{ my_proc.size }})</h3>
+<ol class="cites">
+   {%- for p in my_proc %}
+   <li>{{ p.authors }}, &ldquo;{{ p.title }},&rdquo; <em>{{ p.venue }}</em>{% if p.ref %}, {{ p.ref }}{% endif %} ({{ p.year }}){% if p.doi %}, doi:{{ p.doi }}{% elsif p.arxiv %}, arXiv:{{ p.arxiv }}{% endif %}.</li>
+   {%- endfor %}
+</ol>
+
+{%- if n_unref > 0 %}
+<h3>Research notes &amp; preprints ({{ n_unref }})</h3>
+<ol class="cites">
+   {%- for p in my_notes %}
+   <li>{{ p.authors }}, &ldquo;{{ p.title }},&rdquo; <em>{{ p.venue }}</em>{% if p.ref %}, {{ p.ref }}{% endif %} ({{ p.year }}){% if p.doi %}, doi:{{ p.doi }}{% elsif p.arxiv %}, arXiv:{{ p.arxiv }}{% endif %}.</li>
+   {%- endfor %}
+   {%- for p in my_preprints %}
+   <li>{{ p.authors }}, &ldquo;{{ p.title }},&rdquo; <em>{{ p.venue }}</em> ({{ p.year }}){% if p.arxiv %}, arXiv:{{ p.arxiv }}{% endif %}. <span class="muted small">Preprint.</span></li>
+   {%- endfor %}
+</ol>
+{%- endif %}
+
+<h3>Earlier work, before WVU ({{ cv.pre_wvu_publications.size }})</h3>
+<ol class="cites">
+   {%- for p in cv.pre_wvu_publications %}
+   <li>{{ p.authors }}, &ldquo;{{ p.title }},&rdquo; <em>{{ p.venue }}</em>{% if p.ref %}, {{ p.ref }}{% endif %} ({{ p.year }}){% if p.doi %}, doi:{{ p.doi }}{% elsif p.arxiv %}, arXiv:{{ p.arxiv }}{% endif %}.</li>
+   {%- endfor %}
+</ol>
+
+{%- if cv.retracted and cv.retracted.size > 0 %}
+<h3>Retracted ({{ cv.retracted.size }})</h3>
+<ol class="cites">
+   {%- for p in cv.retracted %}
+   <li>{{ p.authors }}, &ldquo;{{ p.title }},&rdquo; <em>{{ p.venue }}</em>{% if p.ref %}, {{ p.ref }}{% endif %} ({{ p.year }}){% if p.doi %}, doi:{{ p.doi }}{% endif %}.
+      {%- if p.note %} <span class="muted small">{{ p.note }}</span>{% endif %}</li>
+   {%- endfor %}
+</ol>
+{%- endif %}
+
+<h3>White papers &amp; community reports ({{ cv.white_papers.size }})</h3>
+<ol class="cites">
+   {%- for p in cv.white_papers %}
+   <li>{{ p.authors }}, &ldquo;{{ p.title }},&rdquo; <em>{{ p.venue }}</em> ({{ p.year }}){% if p.arxiv %}, arXiv:{{ p.arxiv }}{% endif %}.</li>
+   {%- endfor %}
+</ol>
+
+<h2>Teaching</h2>
+<ul class="plain">
+   {%- for course in cv.teaching %}
+   <li>{{ course }} &mdash; West Virginia University</li>
+   {%- endfor %}
+</ul>
+
+<h2>Advising</h2>
+{%- if site.data.people.grad and site.data.people.grad.size > 0 %}
+<h3>Current graduate students</h3>
+<ul class="plain">
+   {%- for person in site.data.people.grad %}
+   <li>{{ person.name }} &mdash; {{ person.roles | first }}</li>
+   {%- endfor %}
+</ul>
+{%- endif %}
+<h3>Graduated ({{ site.data.people.alumni.size }})</h3>
+<ul class="plain">
+   {%- for person in site.data.people.alumni %}
+   <li>{{ person.name }} &mdash; {{ person.publication.label }}, {{ person.publication.year }}:
+       &ldquo;{{ person.publication.title }}&rdquo;{% if person.now %} <span class="muted small">(now: {{ person.now }})</span>{% endif %}</li>
+   {%- endfor %}
+</ul>
+{%- if cv.committees and cv.committees.size > 0 %}
+<h3>Thesis &amp; dissertation committees (member)</h3>
+<ul class="plain">
+   {%- for c in cv.committees %}
+   <li>{{ c.name }} &mdash; {{ c.degree }}, {{ c.year }}: &ldquo;{{ c.title }}&rdquo;{% if c.chair %} (chair: {{ c.chair }}){% endif %}</li>
+   {%- endfor %}
+</ul>
+{%- endif %}
+
+<h2>Professional Memberships</h2>
+<ul class="plain">
+   {%- for m in cv.memberships.items %}
+   <li>{{ m }}</li>
+   {%- endfor %}
+</ul>
+
+<h2>Selected Talks &amp; Posters</h2>
+<ul class="plain">
+   {%- for t in cv.presentations %}
+   <li>{{ t }}</li>
+   {%- endfor %}
+</ul>
+
+<footer class="stamp">
+   Generated from the living faculty page at wvurail.org/bandura &middot;
+   site last built {{ site.time | date: "%B %-d, %Y" }} &middot;
+   the current version of this CV is always at wvurail.org/bandura/cv/
+</footer>
+
+</div>
+</body>
+</html>
