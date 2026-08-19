@@ -160,9 +160,10 @@ Everything else comes from _data/cv.yml.
             <h2>Publications</h2>
          </div>
          <p>
-            {{ n_all }} papers. The WVU-era entries come straight from the
-            <a href="{{ '/publications/' | relative_url }}">lab publication list</a> and
-            update automatically; earlier work and white papers live only here.
+            {{ n_all }} papers with CHIME, its FRB outriggers, and HIRAX, plus
+            earlier work from the Carnegie Mellon and McGill years. The WVU-era
+            entries also appear on the
+            <a href="{{ '/publications/' | relative_url }}">lab publication list</a>.
          </p>
       </div>
 
@@ -195,7 +196,6 @@ Everything else comes from _data/cv.yml.
          <p class="pub-band-note">
             The Carnegie Mellon and McGill years, 2006–2016 — 21&nbsp;cm intensity mapping
             at the GBT and GMRT, the CHIME Pathfinder, and the ICE correlator hardware.
-            The lab publication list is scoped to WVU, so these appear only here.
          </p>
          <ul class="pub-list">
             {%- for pub in cv.pre_wvu_publications %}{% include publication.html pub=pub %}{% endfor %}
@@ -206,7 +206,7 @@ Everything else comes from _data/cv.yml.
       <div class="people-block">
          <h2 class="people-block-title">Retracted <span class="count">{{ cv.retracted.size }}</span></h2>
          <p class="pub-band-note">
-            Listed for completeness and clearly marked; see each entry's note for the
+            One paper was retracted after publication; its entry carries the
             retraction notice.
          </p>
          <ul class="pub-list">
@@ -251,9 +251,9 @@ Everything else comes from _data/cv.yml.
             {%- endfor %}
          </div>
          <p class="pub-band-note">
-            Syllabi on record at the WVU Research Repository:
-            <a href="https://researchrepository.wvu.edu/wvu_syllabi/5918/">EE 221, Fall 2018</a> &middot;
-            <a href="https://researchrepository.wvu.edu/wvu_syllabi/11535/">EE 591B (DSP for Radio Astronomy), Spring 2017</a>.
+            Course syllabi:
+            <a href="https://researchrepository.wvu.edu/wvu_syllabi/5918/">EE 221 (Fall 2018)</a> &middot;
+            <a href="https://researchrepository.wvu.edu/wvu_syllabi/11535/">EE 591B — DSP for Radio Astronomy (Spring 2017)</a>.
          </p>
       </div>
    </div>
@@ -268,9 +268,9 @@ Everything else comes from _data/cv.yml.
             <h2>Graduate students</h2>
          </div>
          <p>
-            Pulled from the <a href="{{ '/people/' | relative_url }}">people page</a>
-            automatically — current researchers, then every graduate of the lab with
-            a link to their thesis or dissertation.
+            Current researchers, then every graduate of the lab with a link to their
+            thesis or dissertation — all also on the
+            <a href="{{ '/people/' | relative_url }}">people page</a>.
          </p>
       </div>
       {%- if site.data.people.grad and site.data.people.grad.size > 0 %}
@@ -313,8 +313,8 @@ Everything else comes from _data/cv.yml.
       <div class="people-block">
          <h2 class="people-block-title">Committee service <span class="count">{{ cv.committees.size }}</span></h2>
          <p class="pub-band-note">
-            Theses and dissertations served as a committee member, not chair —
-            from Kevin's records, each linked to the WVU Research Repository.
+            Graduate committees served on across Physics &amp; Astronomy and the
+            Lane Department, beyond his own students above.
          </p>
          <div class="alumni-list">
             {%- for c in cv.committees %}
@@ -347,9 +347,9 @@ Everything else comes from _data/cv.yml.
       </div>
       <div class="people-block">
          <h2 class="people-block-title">Selected talks &amp; posters</h2>
-         <p class="pub-band-note">
-            From the 2016 CV — recent invited talks are not compiled yet.
-         </p>
+         {%- comment %}The list is sparse between 2016 and 2025 — those talks
+         have not been compiled yet. Add to cv.yml presentations as they turn
+         up; the "Selected" in the heading covers the gap meanwhile.{% endcomment %}
          <div class="alumni-list">
             {%- for t in cv.presentations %}
             <div class="alumni-row">
@@ -420,11 +420,12 @@ Everything else comes from _data/cv.yml.
             <h2>A living CV</h2>
          </div>
          <p>
-            This page replaces the retired WVU faculty page as the CV of record.
-            Publications and students update automatically from the lab's data files;
-            everything else is maintained in <code>_data/cv.yml</code> in the
-            <a href="https://github.com/WVURAIL/wvurail.github.io">site repository</a>.
+            This page is Kevin's CV of record — it grows with the lab's
+            publication list and people pages, and a print-ready copy is always
+            one click away via <a href="{{ '/bandura/cv/' | relative_url }}">Get CV</a>.
          </p>
+         {%- comment %}Maintainers: publications and students render from the
+         lab's data files; everything else lives in _data/cv.yml.{% endcomment %}
       </div>
       <div class="btn-row" style="margin-top:0">
          <a class="btn" href="{{ '/publications/' | relative_url }}">Lab publications {% include icon.html name="arrow" %}</a>
