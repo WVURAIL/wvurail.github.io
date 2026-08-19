@@ -12,8 +12,8 @@ pi:
     phone: "(304) 293-9686"
     office: "AERB 237"
     link:
-      text: "Faculty Webpage"
-      url: "https://community.wvu.edu/~kmbandura/"
+      text: "Faculty page & CV"
+      url: "/bandura/"
     bio: >
       Dr. Bandura builds the systems behind wide-field radio telescopes — the analog
       front ends, FPGA correlators, and timing chains that let an instrument like CHIME

@@ -117,9 +117,9 @@ Extra optional keys: `people` (lab members on the paper, rendered as tags),
 page), and `review:` (a reminder to a human — delete it once checked).
 
 For a journal cover, add `cover: "Nature cover"` plus a `cover_note` with the full
-citation. Cover papers get a gold badge and lead the Selected band. Only set this
-where the issue's own cover blurb names the paper, not merely where a paper appears
-in an issue that has a cover.
+citation. Cover papers get a gold badge, and lead the Selected band when they also
+carry `highlight: true`. Only set this where the issue's own cover blurb names the
+paper, not merely where a paper appears in an issue that has a cover.
 
 The page groups entries by `type`, then by year within each band. Dissertations and
 theses are **not** listed here at all — they come from the `publication:` block on

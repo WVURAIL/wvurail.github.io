@@ -9,8 +9,10 @@
 # Astro2020 and LRP2020 white papers, errata, and one-page conference abstracts.
 # Preprints are in, and carry `preprint: true`.
 #
-# One retracted paper is deliberately excluded, and this note is now the only
-# record of that decision:
+# One retracted paper is deliberately excluded from the LAB lists. (Since
+# Aug 2026 it is listed, clearly marked, in the Retracted band of Kevin's CV
+# page — see `retracted:` in _data/cv.yml — so the complete-record question
+# has an answer without it re-entering the lab lists.) The decision of record:
 #
 #   "Sub-second periodicity in a fast radio burst", Nature 607, 256 (2022),
 #   doi 10.1038/s41586-022-04841-8. Retracted 23 June 2026, retraction note
@@ -42,8 +44,10 @@
 #   preprint  true        Marks it as not yet refereed.
 #   highlight true        Pins it to the "Selected" band at the top of the page.
 #   cover                 Short badge text for a journal cover, e.g. "Nature cover".
-#                         Cover papers lead the Selected band. Only set this where
-#                         the issue's own cover blurb names the paper.
+#                         A cover paper leads the Selected band when it also has
+#                         highlight: true; without highlight it just keeps its badge
+#                         in the category bands. Only set cover where the issue's
+#                         own cover blurb names the paper.
 #   cover_note            The full citation for that cover, shown under the badge.
 #   note                  One short line of context shown in grey. Optional.
 #   review                A question for a human. Shown to editors only in the
@@ -80,6 +84,7 @@
   - K. Bandura
   - K. Bhopi
   preprint: true
+  highlight: true
   type: preprint
 - year: 2026
   title: The Second CHIME/FRB Catalog of Fast Radio Bursts
@@ -154,7 +159,6 @@
   - K. Bandura
   - K. Bhopi
   - K. Khairy
-  highlight: true
   type: journal
 - year: 2025
   title: Demonstration of hybrid foreground removal on CHIME data
@@ -210,6 +214,7 @@
   - K. Bandura
   - P. Sanghavi
   - K. Khairy
+  highlight: true
   type: journal
 - year: 2024
   title: 'CHIME/FRB Outriggers: KKO Station System and Commissioning Results'
@@ -315,7 +320,6 @@
   people:
   - K. Bandura
   - J. Kania
-  highlight: true
   type: journal
 - year: 2022
   title: A Clock Stabilization System for CHIME/FRB Outriggers
@@ -526,7 +530,6 @@
   - K. Bandura
   - P. Sanghavi
   - J. Kania
-  highlight: true
   type: journal
 - year: 2020
   title: A bright millisecond-duration radio burst from a Galactic magnetar
@@ -539,7 +542,6 @@
   - K. Bandura
   - P. Sanghavi
   - J. Kania
-  highlight: true
   type: journal
 - year: 2020
   title: A repeating fast radio burst source localized to a nearby spiral galaxy
@@ -550,7 +552,6 @@
   arxiv: '2001.02222'
   people:
   - K. Bandura
-  highlight: true
   type: journal
 - year: 2020
   title: Detection of Repeating FRB 180916.J0158+65 Down to Frequencies of 300 MHz
@@ -638,7 +639,6 @@
   arxiv: '1901.04524'
   people:
   - K. Bandura
-  highlight: true
   cover: Nature cover
   cover_note: Cover story, Nature, 14 February 2019 — "Space and CHIME"
   type: journal
@@ -671,6 +671,7 @@
   people:
   - K. Bandura
   - P. Sanghavi
+  highlight: true
   type: proceedings
 - year: 2019
   title: A Second Source of Repeating Fast Radio Bursts
@@ -683,7 +684,6 @@
   - K. Bandura
   cover: Nature cover
   cover_note: Cover story, Nature, 14 February 2019 — "Space and CHIME"
-  highlight: true
   type: journal
 - year: 2018
   title: Open Source Radio Telescopes
@@ -722,6 +722,7 @@
   arxiv: '1608.06952'
   people:
   - A. Rane
+  highlight: true
   type: journal
 - year: 2017
   title: 'CHIME FRB: An application of FFT beamforming for a radio telescope'
@@ -740,6 +741,7 @@
   doi: 10.1007/s12036-017-9478-1
   people:
   - A. Rane
+  highlight: true
   type: journal
 - year: 2017
   title: Limits on the ultra-bright Fast Radio Burst population from the CHIME Pathfinder
@@ -771,6 +773,7 @@
   arxiv: '1505.00834'
   people:
   - A. Rane
+  highlight: true
   type: journal
 - year: 2016
   title: 'HIRAX: a probe of dark energy and radio transients'

@@ -1,6 +1,6 @@
 <!-- Selected papers on the home page. Full list lives at /publications/. -->
 {%- assign pubs = site.data.publications -%}
-{%- assign covers = pubs | where_exp: "p", "p.cover" -%}
+{%- assign covers = pubs | where_exp: "p", "p.cover and p.highlight" -%}
 {%- assign selected = pubs | where: "highlight", true -%}
 {%- if selected.size == 0 %}{% assign selected = pubs %}{% endif -%}
 {%- assign slots = 5 | minus: covers.size -%}

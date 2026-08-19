@@ -18,7 +18,7 @@ description: Journal articles, conference proceedings, and preprints from the WV
 </div>
 
 {%- assign pubs = site.data.publications -%}
-{%- assign covers = pubs | where_exp: "p", "p.cover" -%}
+{%- assign covers = pubs | where_exp: "p", "p.cover and p.highlight" -%}
 {%- assign selected = pubs | where: "highlight", true -%}
 
 {%- assign journals = pubs | where: "type", "journal" -%}
