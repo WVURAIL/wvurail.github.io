@@ -64,10 +64,9 @@ media:
     outlet: "Statler College News"
     url: "https://media.statler.wvu.edu/news/2026/04/06/wvu-outstanding-educators-advisers-staff-and-researchers-recognized-by-the-statler-college"
   - year: 2026
-    title: "Instagram post"
-    outlet: "Instagram"
+    title: "WVUniverse public talk on backyard radio astronomy"
+    outlet: "WVU Physics & Astronomy and WVU Planetarium, on Instagram"
     url: "https://www.instagram.com/p/DWgnpmiDUYF/"
-    review: add a one-line description of what this post shows
   - year: 2025
     title: "WVU engineers recalibrate radio telescopes to illuminate dark energy"
     outlet: "WVU, via EurekAlert"
@@ -225,6 +224,7 @@ memberships:
 # Earlier invited talks and posters, as listed on the 2016 CV. Recent talks
 # have not been compiled yet — add them above the older ones as they come in.
 presentations:
+  - "WVUniverse public talk, WVU Planetarium — backyard radio astronomy — 2026"
   - "APS Mid-Atlantic Section Meeting (poster) — 2015"
   - "SPIE Astronomical Telescopes + Instrumentation, Montreal — 2014"
   - "URSI, Boulder, Colorado — 2014"
