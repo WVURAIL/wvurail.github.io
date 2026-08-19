@@ -31,8 +31,11 @@ profile:
 # text (a placeholder), not a link.
 profiles:
   - label: "ORCID"
-    url: ""
-    review: add his ORCID iD — orcid.org blocked automated lookup when this was compiled
+    url: "https://orcid.org/0000-0003-3772-2798"
+  - label: "NASA ADS"
+    url: "https://ui.adsabs.harvard.edu/search/q=author%3A%22Bandura%2C%20K.%22&sort=date%20desc"
+  - label: "INSPIRE-HEP"
+    url: "https://inspirehep.net/authors/1033593"
   - label: "Google Scholar"
     url: "https://scholar.google.com/citations?user=Qi3FG7cAAAAJ&hl=en"
   - label: "LinkedIn"
@@ -74,6 +77,10 @@ media:
     outlet: "WVU Today"
     url: "https://wvutoday.wvu.edu/stories/2023/11/27/wvu-researchers-aim-to-cut-through-radio-interference-that-obscures-signal-detection"
   - year: 2022
+    title: "WVU researchers on team that detected strange cosmic 'heartbeat'"
+    outlet: "Statler College News — coverage of the paper since retracted (see Publications)"
+    url: "https://media.statler.wvu.edu/news/2022/07/19/wvu-researchers-on-team-that-detected-strange-cosmic-heartbeat"
+  - year: 2022
     title: "WVU Center for Gravitational Waves and Cosmology faculty on international team to receive the Honorary 2022 Berkeley Prize"
     outlet: "EurekAlert"
     url: "https://www.eurekalert.org/news-releases/942138"
@@ -94,6 +101,10 @@ media:
     outlet: "WVU Today"
     url: "https://wvutoday.wvu.edu/stories/2020/11/06/unraveling-the-mysteries-of-the-cosmos-new-telescope-at-green-bank-observatory-will-improve-localization-of-fast-radio-bursts"
   - year: 2020
+    title: "New telescope in works at Green Bank to detect, map fast radio bursts"
+    outlet: "Charleston Gazette-Mail"
+    url: "https://www.wvgazettemail.com/news/new-telescope-in-works-at-green-bank-to-detect-map-fast-radio-bursts/article_0922d95a-1cc1-5a23-800d-41fca9e3fe92.html"
+  - year: 2020
     title: "WVU researcher to tackle the mysteries of dark energy and the universe beyond"
     outlet: "WVU Today"
     url: "https://wvutoday.wvu.edu/stories/2020/09/30/wvu-researcher-to-tackle-the-mysteries-of-dark-energy-and-the-universe-beyond"
@@ -109,12 +120,18 @@ media:
     title: "WVU professor plays key role in telescope program that will map the history of the universe"
     outlet: "Newswise"
     url: "https://www.newswise.com/articles/wvu-professor-plays-key-role-in-telescope-program-that-will-map-the-history-of-the-universe"
+  - year: 2016
+    title: "Engineering professors to utilize Green Bank telescope in K-12 teacher research experience"
+    outlet: "Statler College News"
+    url: "https://media.statler.wvu.edu/news/2016/09/08/engineering-professors-to-utilize-green-bank-telescope-in-k-12-teacher-research-experience"
 
 education:
   - degree: "Ph.D., Physics"
     school: "Carnegie Mellon University"
     year: 2011
-    review: add dissertation title and advisor
+    review: add dissertation title and advisor — not findable online (a similarly
+      titled 2017 thesis in library catalogs is Christopher Anderson's, not his);
+      ask Kevin
   - degree: "B.S., Physics and Psychology"
     school: "Carnegie Mellon University"
     year: 2003
@@ -290,8 +307,8 @@ pre_wvu_publications:
     title: "The Performance of the Bolometer Array and Readout System during the 2012/2013 Flight of the E and B Experiment (EBEX)"
     authors: "EBEX Collaboration, incl. K. Bandura"
     venue: "Proc. SPIE 9153, Millimeter, Submillimeter, and Far-Infrared Detectors and Instrumentation for Astronomy VII"
+    doi: 10.1117/12.2056267
     arxiv: '1407.6894'
-    review: confirm SPIE ref and add DOI
   - year: 2014
     title: "Canadian Hydrogen Intensity Mapping Experiment (CHIME) Pathfinder"
     authors: "K. Bandura et al."
@@ -319,8 +336,9 @@ pre_wvu_publications:
     title: "Determination of z ≈ 0.8 Neutral Hydrogen Fluctuations Using the 21 cm Intensity Mapping Autocorrelation"
     authors: "E. R. Switzer, K. W. Masui, K. Bandura, et al."
     venue: "Monthly Notices of the Royal Astronomical Society: Letters"
+    ref: "MNRAS 434, L46"
+    doi: 10.1093/mnrasl/slt074
     arxiv: '1304.3712'
-    review: add volume/pages — the 2016 CV and other sources disagree
   - year: 2013
     title: "Measurement of 21 cm Brightness Fluctuations at z ≈ 0.8 in Cross-correlation"
     authors: "K. W. Masui, E. R. Switzer, N. Banavar, K. Bandura, et al."
@@ -338,7 +356,7 @@ pre_wvu_publications:
     authors: "U.-L. Pen, T.-C. Chang, J. B. Peterson, J. Roy, Y. Gupta, K. Bandura"
     venue: "AIP Conference Proceedings"
     ref: "AIP Conf. Proc. 1035, 75"
-    review: add DOI
+    doi: 10.1063/1.2973618
   - year: 2006
     title: "The Hubble Sphere Hydrogen Survey"
     authors: "J. B. Peterson, K. Bandura, U.-L. Pen"

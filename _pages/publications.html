@@ -18,7 +18,10 @@ description: Journal articles, conference proceedings, and preprints from the WV
 </div>
 
 {%- assign pubs = site.data.publications -%}
-{%- assign covers = pubs | where_exp: "p", "p.cover and p.highlight" -%}
+{%- comment %}Two chained filters, not `where_exp: "p.cover and p.highlight"` —
+compound expressions in where_exp need Jekyll 4, and GitHub Pages builds with
+3.x. That exact mistake took the site down on 2026-08-19.{% endcomment %}
+{%- assign covers = pubs | where_exp: "p", "p.cover" | where: "highlight", true -%}
 {%- assign selected = pubs | where: "highlight", true -%}
 
 {%- assign journals = pubs | where: "type", "journal" -%}

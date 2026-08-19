@@ -59,6 +59,7 @@ jobs:
             index.html \
             people/index.html \
             publications/index.html \
+            bandura/index.html \
             where-we-work/index.html \
             dspiratalk/index.html \
             contact/index.html \
