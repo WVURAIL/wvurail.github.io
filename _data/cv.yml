@@ -128,9 +128,9 @@ education:
   - degree: "Ph.D., Physics"
     school: "Carnegie Mellon University"
     year: 2011
-    review: add dissertation title and advisor — not findable online (a similarly
-      titled 2017 thesis in library catalogs is Christopher Anderson's, not his);
-      ask Kevin
+    thesis: "Pathfinder for a Neutral Hydrogen Dark Energy Survey"
+    thesis_url: "/pdf/kbandura_phd_thesis.pdf"   # hosted here; advised by Jeff Peterson
+    advisor: "Jeff Peterson"
   - degree: "B.S., Physics and Psychology"
     school: "Carnegie Mellon University"
     year: 2003
@@ -141,8 +141,7 @@ appointments:
     years: "2021–present"
   - role: "Adjunct Assistant Professor"
     org: "Department of Physics and Astronomy, West Virginia University"
-    years: "2015–present"
-    review: confirm the adjunct appointment's start year
+    years: "2015–present"   # confirmed by Kevin: adjunct in astro since he started
   - role: "Member"
     org: "Center for Gravitational Waves and Cosmology, West Virginia University"
     years: ""
@@ -220,8 +219,9 @@ teaching:
   - "EE 564 — Digital Signal Processing for Radio Astronomy"
 
 memberships:
-  review: from the 2016 CV — confirm these are current
+  # APS/AAS/ASEE from the 2016 CV; IEEE confirmed by Kevin (Aug 2026).
   items:
+    - "IEEE"
     - "American Physical Society"
     - "American Astronomical Society"
     - "American Society for Engineering Education"

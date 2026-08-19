@@ -75,7 +75,13 @@ Everything else comes from _data/cv.yml.
             <div class="alumni-row">
                <span class="alumni-name">{{ e.degree }}</span>
                <span class="alumni-degree">{{ e.year }}</span>
-               <span class="alumni-title">{{ e.school }}</span>
+               <span class="alumni-title">
+                  {{- e.school -}}
+                  {%- if e.thesis %} &middot;
+                  <a href="{{ e.thesis_url | relative_url }}">{{ e.thesis }}</a>
+                  {%- if e.advisor %} (advisor: {{ e.advisor }}){% endif %}
+                  {%- endif -%}
+               </span>
             </div>
             {%- endfor %}
          </div>
