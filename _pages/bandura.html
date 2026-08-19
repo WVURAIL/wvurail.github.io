@@ -237,6 +237,10 @@ Everything else comes from _data/cv.yml.
             </div>
             {%- endfor %}
          </div>
+         <p class="pub-band-note">
+            Syllabus on record:
+            <a href="https://researchrepository.wvu.edu/wvu_syllabi/5918/">EE 221, Fall 2018 — WVU Research Repository</a>.
+         </p>
       </div>
    </div>
 </section>
@@ -285,6 +289,24 @@ Everything else comes from _data/cv.yml.
                   <a href="{{ person.publication.url }}">{{ person.publication.title }}</a>
                   {%- endif %}
                </span>
+            </div>
+            {%- endfor %}
+         </div>
+      </div>
+      {%- endif %}
+      {%- if cv.committees and cv.committees.size > 0 %}
+      <div class="people-block">
+         <h2 class="people-block-title">Committee service <span class="count">{{ cv.committees.size }}</span></h2>
+         <p class="pub-band-note">
+            Theses and dissertations served as a committee member, not chair.
+            Verified against the WVU Research Repository — likely incomplete.
+         </p>
+         <div class="alumni-list">
+            {%- for c in cv.committees %}
+            <div class="alumni-row">
+               <span class="alumni-name">{{ c.name }}</span>
+               <span class="alumni-degree">{{ c.degree }}{% if c.year %} &middot; {{ c.year }}{% endif %}</span>
+               <span class="alumni-title"><a href="{{ c.url }}">{{ c.title }}</a></span>
             </div>
             {%- endfor %}
          </div>

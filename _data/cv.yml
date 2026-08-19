@@ -223,6 +223,23 @@ memberships:
 
 # Earlier invited talks and posters, as listed on the 2016 CV. Recent talks
 # have not been compiled yet — add them above the older ones as they come in.
+# ---------------------------------------------------------------------------
+# Thesis & dissertation committee service — member only; his own students are
+# the Graduated list on the page. ETD pages list committees, but the repository
+# search does not index those fields, so this CANNOT be swept exhaustively from
+# outside. Confirmed by fetching individual ETD pages. Physics pulsar-group
+# committees checked (Aggarwal '21, Agarwal '20, Golpayegani '20, Fiore '24) do
+# not include him.
+# review: ask Kevin for the full committee list — LCSEE ETDs (e.g. Z. Cao, if
+# graduated) and anything else are not findable online.
+committees:
+  - name: "Evan T. Smith"
+    degree: "Ph.D., Physics & Astronomy"
+    year: 2022
+    title: "Impact of Radio Frequency Interference and Real-Time Spectral Kurtosis Mitigation"
+    url: "https://researchrepository.wvu.edu/etd/11467/"
+    chair: "D.J. Pisano"
+
 presentations:
   - "WVUniverse public talk, WVU Planetarium — backyard radio astronomy — 2026"
   - "APS Mid-Atlantic Section Meeting (poster) — 2015"
