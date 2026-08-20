@@ -1,27 +1,46 @@
 # DSPIRA — the lab's science-education work.
 #
-# Framing, decided deliberately: DSPIRA was a three-year NSF Research Experiences
-# for Teachers site that ran its cohorts in 2017, 2018 and 2019 and concluded.
-# The curriculum it produced is still maintained and still used. So the program
-# is described in the PAST tense and the materials in the PRESENT tense.
+# Keep three related timelines distinct when editing this page:
+#   * NSF award 1611114 ran from January 2017 through December 2021.
+#   * This site's detailed in-person cohort archive covers 2017, 2018 and 2019.
+#   * The online lesson library and educator community continued after the award.
 #
-# Please keep those tenses straight when editing. Before this rewrite the same
-# program was described in future tense on /education/, present tense on the
-# home page, and past tense on the lessons site — because the program page was
-# verbatim grant-proposal prose that nobody revisited after the award.
+# The original abstract proposed three summer cohorts, while NSF's final outcome
+# report describes teacher participation and program development across five
+# summers. It is therefore accurate to call 2017–19 the three documented
+# in-person cohorts, but not to say that DSPIRA itself ended in 2019.
 
 summary: >
-  DSPIRA — Digital Signal Processing in Radio Astronomy — was an NSF Research
-  Experiences for Teachers site run by the lab with the WVU Center for
-  Gravitational Waves and Cosmology and the Green Bank Observatory. Over three
-  summers, high school teachers built working horn radio telescopes, learned the
-  same open-source signal-processing tools the lab uses on real instruments, and
-  wrote classroom lessons around them.
+  DSPIRA — Digital Signal Processing in Radio Astronomy — began as an NSF
+  Research Experiences for Teachers site run by the lab with the WVU Center for
+  Gravitational Waves and Cosmology and the Green Bank Observatory. Three
+  documented in-person cohorts built working horn radio telescopes in 2017–19.
+  Beginning in 2020, participants concentrated on making the curriculum and
+  collaboration available online.
 
 # One-line answer to "is this still running?" — shown near the top of the page.
 status: >
-  The cohort program ran from 2017 to 2019 and has concluded. The curriculum it
-  produced is still online, still maintained, and free for anyone to use.
+  The original NSF RET award ended in 2021, but DSPIRA did not. Its educators
+  and telescope designs remain active; the public lessons and discussion forum
+  remain online, with follow-on activities extending the work to new teachers.
+
+award:
+  number: "1611114"
+  title: "RET Site in Engineering and Computer Science: Digital Signal Processing in Radio Astronomy"
+  start: January 1, 2017
+  end: December 31, 2021
+  amount: "$577,815"
+  url: "https://www.nsf.gov/awardsearch/show-award?AWD_ID=1611114"
+  outcome_url: "https://api.nsf.gov/services/v1/awards/1611114/projectoutcomes.json"
+
+follow_on:
+  stars:
+    number: "2426044"
+    url: "https://www.nsf.gov/awardsearch/show-award?AWD_ID=2426044"
+    program_url: "https://www.concord.edu/stars/"
+  outreach_hardware:
+    number: "2511256"
+    url: "https://www.nsf.gov/awardsearch/show-award?AWD_ID=2511256"
 
 principal_investigators:
   - Natalia Schmid
@@ -33,15 +52,15 @@ partners:
   - Green Bank Observatory
 
 facts:
-  - label: Summers
+  - label: NSF award period
+    value: 2017–21
+    note: "Award 1611114 · $577,815"
+  - label: In-person cohorts
     value: "3"
-    note: 2017, 2018 and 2019
-  - label: Teachers
-    value: "15"
-    note: Across 21 cohort places
-  - label: Home states
-    value: "8"
-    note: CA, FL, MD, NC, NY, RI, TX, WV
+    note: Documented here from 2017–19
+  - label: Teachers hosted
+    value: "15+"
+    note: NSF reports more than 15, many returning
   # %COUNT% is substituted from materials.lesson_count when the page renders, so
   # the lesson count is written down in exactly one place in this file. It used
   # to be written three times and drifted twice — once when the cra and dspira
@@ -49,12 +68,12 @@ facts:
   # interferometry lesson was published.
   - label: Lessons published
     value: "%COUNT%"
-    note: Free, open, still online
+    note: Free, open, and maintained
 
-# The part that is still alive. This is the section that should be hardest to
-# miss on the page.
+# The living curriculum and community. This is the section that should be
+# hardest to miss on the page.
 materials:
-  title: The lessons are still here
+  title: The lessons and community are active
   # THE number. Everywhere else on this site that shows a lesson count reads it
   # from here, including the %COUNT% above and in intro below.
   #
@@ -63,12 +82,12 @@ materials:
   # .github/workflows/lesson-count.yml checks it against the live site every
   # Monday and fails if the two disagree, so the drift gets noticed rather than
   # discovered. To update: change this line, nothing else.
-  lesson_count: 48
+  lesson_count: 44
   intro: >
-    Everything the program produced is public: %COUNT% lessons across eleven
-    modules, covering the astronomy, the hardware, the signal processing, and
-    the labs. Written for high school teachers, but used by students and
-    hobbyists too.
+    Teachers and lab contributors maintain %COUNT% public lessons covering the
+    astronomy, hardware, signal processing, and labs. The discussion forum and
+    group meetings keep the collaboration open to educators, students, and
+    independent telescope builders.
   url: "https://wvurail.org/dspira-lessons/"
   # Mirrors _data/modules.yml on the lessons site, in the same order, so a
   # visitor who clicks through sees the same list.
@@ -87,14 +106,36 @@ materials:
   extras:
     - text: Browse all lessons
       url: "https://wvurail.org/dspira-lessons/all/"
-    - text: Request a telescope kit
-      url: "https://wvurail.org/dspira-lessons/kits/"
+    - text: Contribute a lesson
+      url: "https://wvurail.org/dspira-lessons/newpost/"
     # The one part of the lessons site a visitor can talk back through. It runs
     # on GitHub Discussions, and threads there go back to 2020.
     - text: Ask a question in the forum
       url: "https://wvurail.org/dspira-lessons/forum/"
     - text: GNU Radio modules on GitHub
       url: "https://github.com/WVURAIL/gr-radio_astro"
+
+# The public record does not establish that COVID caused the online shift, so
+# the page describes the observed timing without assigning a cause.
+phases:
+  - label: 2017–2019
+    title: Three in-person cohorts
+    body: >
+      Teachers spent six weeks at WVU and Green Bank building instruments,
+      observing the Milky Way, and carrying projects back to their classrooms.
+      These are the three cohorts documented in detail on this site.
+  - label: 2020–2021
+    title: The work moved online
+    body: >
+      The public lessons repository launched in July 2020. During the award's
+      final two years, teachers and staff consolidated lectures, labs, setup
+      guides, and technical discussion into an online home.
+  - label: After 2021
+    title: The network kept building
+    body: >
+      The original RET award closed, but teachers continued updating lessons while
+      community contributors helped telescope users. A separately funded 2025 STARS
+      workshop introduced another group of educators to DSPIRA group meetings.
 
 # What a summer actually involved.
 arc:
@@ -157,6 +198,18 @@ cohorts:
 # Published work. Note that two of the ISEC paper's authors — Makous and Chun —
 # are DSPIRA teachers, not staff. Worth keeping visible.
 outputs:
+  - title: "Measuring the Speed of Earth Around the Sun Using a Classroom-Built Radio Horn Telescope"
+    authors: "T. Herman"
+    venue: The Physics Teacher 60 (2022), 105–109
+    doi: "10.1119/5.0025845"
+    note: A peer-reviewed classroom activity written by a DSPIRA teacher.
+
+  - title: "Using a Radio Telescope for Developing Models in an Introductory Physics Course"
+    authors: "J. L. Makous, K. Bandura"
+    venue: The Physics Teacher 59 (2021), 38–40
+    doi: "10.1119/10.0003015"
+    note: A DSPIRA teacher and lab investigator report on classroom use of the telescope.
+
   - title: "Digital Signal Processing in Radio Astronomy: An Interdisciplinary Experience"
     authors: "P. Sanghavi, K. Bandura, J. Makous, H. Chun"
     venue: 2019 IEEE Integrated STEM Education Conference (ISEC)

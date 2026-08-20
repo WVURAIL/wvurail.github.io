@@ -5,26 +5,25 @@ permalink: /education/
 full_width: true
 # No lesson count in this sentence on purpose. Front matter is not run through
 # Liquid, so a number here cannot read _data/education.yml and has to be kept in
-# step by hand — which is how it came to say 44 while the page said 47 and the
-# lessons site said 48.
-description: DSPIRA — Digital Signal Processing in Radio Astronomy — was an NSF Research Experiences for Teachers site at WVU. Its free lessons on building and using a horn radio telescope are still online.
+# step by hand—which is why the live count is checked by a scheduled workflow.
+description: DSPIRA grew from NSF Award 1611114, which ran from 2017 through 2021. Its teachers, free radio-telescope lessons, and outreach work remain active.
 ---
 {%- assign ed = site.data.education -%}
 <div class="page-head">
    <div class="container">
       <p class="eyebrow">Education</p>
-      <h1>Teachers built radio telescopes here</h1>
+      <h1>Teachers built radio telescopes—and a community</h1>
       <p class="lead">{{ ed.summary | strip_newlines | strip }}</p>
       <p class="status-note">{{ ed.status | strip_newlines | strip }}</p>
    </div>
 </div>
 
-<!-- The materials come first: they are the part still useful to a visitor today. -->
+<!-- The living materials and community come first. -->
 <section class="section" id="lessons">
    <div class="container">
       <div class="section-head">
          <div>
-            <p class="eyebrow">Still available</p>
+            <p class="eyebrow">Still active</p>
             <h2>{{ ed.materials.title }}</h2>
          </div>
          {%- comment -%}
@@ -65,12 +64,48 @@ description: DSPIRA — Digital Signal Processing in Radio Astronomy — was an 
    </div>
 </section>
 
-<!-- How a summer worked -->
+<!-- Program timeline -->
+<section class="section section--line" id="timeline">
+   <div class="container">
+      <div class="section-head">
+         <div>
+            <p class="eyebrow">Program timeline</p>
+            <h2>A five-year award period—and work beyond it</h2>
+         </div>
+         <p>
+            The original proposal planned three summer cohorts. NSF Award {{ ed.award.number }}
+            ran through 2021, and its <a href="{{ ed.award.outcome_url }}">final report</a>
+            describes teacher participation and program development across five summers. The
+            detailed archive here covers the three known in-person cohorts from 2017–19.
+         </p>
+      </div>
+
+      <div class="focus-grid">
+         {%- for phase in ed.phases %}
+         <article class="focus-card">
+            <p class="focus-label">{{ forloop.index | prepend: '0' }} &middot; {{ phase.label }}</p>
+            <h3>{{ phase.title }}</h3>
+            <p>{{ phase.body | strip_newlines | strip }}</p>
+         </article>
+         {%- endfor %}
+      </div>
+
+      <div class="btn-row">
+         <a class="btn btn--primary" href="{{ ed.award.url }}">
+            NSF Award {{ ed.award.number }} {% include icon.html name="external" %}
+         </a>
+         <a class="btn" href="https://github.com/WVURAIL/dspira-lessons/commits/master/">Lesson project history</a>
+         <a class="btn" href="{{ ed.follow_on.stars.program_url }}">2025 STARS workshop</a>
+      </div>
+   </div>
+</section>
+
+<!-- How an in-person summer worked -->
 <section class="section section--tint" id="how">
    <div class="container">
       <div class="section-head">
          <div>
-            <p class="eyebrow">How it worked</p>
+            <p class="eyebrow">The in-person program</p>
             <h2>Six weeks, one telescope each</h2>
          </div>
          <p>
@@ -95,11 +130,13 @@ description: DSPIRA — Digital Signal Processing in Radio Astronomy — was an 
       <div class="section-head">
          <div>
             <p class="eyebrow">Who came</p>
-            <h2>Three cohorts</h2>
+            <h2>Three archived in-person cohorts</h2>
          </div>
          <p>
-            15 teachers from 8 states filled 21 places — four of them came
-            back for a second or third summer.
+            These rosters contain 15 teachers from 8 states filling 21 places—four
+            returned for a second or third summer. NSF's final report counts more
+            than 15 teachers across five summers, so this is not a complete census
+            of the project's later participation.
          </p>
       </div>
 
@@ -138,8 +175,8 @@ description: DSPIRA — Digital Signal Processing in Radio Astronomy — was an 
             <h2>Published &amp; presented</h2>
          </div>
          <p>
-            Teachers did not just attend — they co-authored the conference paper and
-            gave the conference talk.
+            Teachers did not just attend. They published classroom research, co-authored
+            the program's conference paper, and presented their work to other engineers.
          </p>
       </div>
       <ul class="pub-list">
@@ -168,14 +205,14 @@ description: DSPIRA — Digital Signal Processing in Radio Astronomy — was an 
 </section>
 {%- endif %}
 
-<!-- Credits and the older sites -->
+<!-- Credits and funding -->
 <section class="section">
    <div class="container">
       <div class="statement">
          <div class="statement-side">
-            <p class="eyebrow">Who ran it</p>
+            <p class="eyebrow">The original RET site</p>
             <p class="statement-lead">
-               DSPIRA was a partnership between the university and the
+               DSPIRA began as a partnership between the university and the
                <em>observatory next door</em>.
             </p>
          </div>
@@ -197,7 +234,21 @@ description: DSPIRA — Digital Signal Processing in Radio Astronomy — was an 
                </li>
                <li>
                   <span class="k">Funding</span>
-                  <span class="v">National Science Foundation<br />Research Experiences for Teachers</span>
+                  <span class="v">
+                     <a href="{{ ed.award.url }}">NSF Award {{ ed.award.number }}</a><br />
+                     {{ ed.award.title }}<br />
+                     {{ ed.award.amount }} &middot; {{ ed.award.start }}–{{ ed.award.end }}
+                  </span>
+               </li>
+               <li>
+                  <span class="k">Follow-on work</span>
+                  <span class="v">
+                     The original award is closed. Separate
+                     <a href="{{ ed.follow_on.stars.url }}">NSF Award {{ ed.follow_on.stars.number }}</a>
+                     funded the 2025 STARS teacher workshop, and
+                     <a href="{{ ed.follow_on.outreach_hardware.url }}">NSF Award {{ ed.follow_on.outreach_hardware.number }}</a>
+                     uses DSPIRA receivers in newer outreach hardware work.
+                  </span>
                </li>
             </ul>
 

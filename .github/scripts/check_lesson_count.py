@@ -5,7 +5,7 @@ lessons there are?
 
     python3 .github/scripts/check_lesson_count.py
 
-This site says "48 lessons" in a few places, all of them fed by one value,
+This site shows the lesson count in a few places, all of them fed by one value,
 materials.lesson_count. The lessons site counts its own posts, so its number
 moves on its own the moment somebody publishes. Nothing connects the two — they
 are separate repositories, and Jekyll here cannot see the posts there — so the
@@ -54,44 +54,63 @@ def fetch(url):
         return r.read().decode("utf-8", "replace")
 
 
+def count_listed_lessons(first_page):
+    """Read either the current all-on-one-page list or the legacy pagination."""
+    # The redesigned site lists lessons in cards, grouped by module. A lesson
+    # can belong to more than one module, so count distinct URLs rather than
+    # cards.
+    cards = re.findall(
+        r'class="lesson-card"[^>]*>.*?<a[^>]*href="([^"]+)"',
+        first_page,
+        re.S,
+    )
+    if cards:
+        return len(set(cards)), "the all-lessons page"
+
+    # The older site lists ten posts per page. Follow the rendered page count
+    # instead of assuming there will always be five pages.
+    page_count = re.search(r"Page\s+1\s+of\s+(\d+)", first_page)
+    if not page_count:
+        return 0, "unrecognized all-lessons markup"
+
+    pages = int(page_count.group(1))
+    links = set(re.findall(r'href="([^"]+)"\s+class="post-link"', first_page))
+    for page in range(2, pages + 1):
+        html = fetch(f"{ALL_LESSONS}page{page}/")
+        page_links = re.findall(r'href="([^"]+)"\s+class="post-link"', html)
+        if not page_links:
+            return 0, f"page {page} of the legacy list had no lesson links"
+        links.update(page_links)
+    return len(links), f"all {pages} pages of the legacy lesson list"
+
+
 def main():
     declared = declared_count()
 
     try:
         all_html = fetch(ALL_LESSONS)
         home_html = fetch(LESSONS)
+        listed, source = count_listed_lessons(all_html)
     except (urllib.error.URLError, urllib.error.HTTPError, OSError) as e:
         # Not a failure. See the note at the top.
         print(f"::warning::could not reach {LESSONS} ({e}). "
               f"Not checking the lesson count this time.")
         return 0
 
-    # Two independent readings of the same number, so that a change in the
-    # lessons site's markup shows up as a disagreement rather than as a
-    # confidently wrong answer.
-    #
-    # DISTINCT urls, not cards. /all/ is grouped by module and a lesson with two
-    # categories is listed under both, so there are more cards than lessons —
-    # five of them, at the time of writing. Counting cards made the first run of
-    # this script report 53 against the front page's 48. It did not report a
-    # wrong number, which is the point of taking two readings, but a check that
-    # fails every time is a check nobody reads.
-    cards = re.findall(r'class="lesson-card"[^>]*>.*?<a[^>]*href="([^"]+)"',
-                       all_html, re.S)
-    listed = len(set(cards))
+    # The redesigned home page states the count. The legacy home page does not,
+    # so its paginated list supplies its own structural cross-check: every page
+    # declared in "Page 1 of N" must load and contain lesson links.
     hero = re.search(r"(\d+)\s+free lessons", home_html)
 
-    if not listed or not hero:
+    if not listed:
         sys.exit("::error::could not read a lesson count from the lessons site. "
-                 f"/all/ gave {listed} distinct lesson links and the front page "
-                 f"{'matched' if hero else 'did not match'} 'N free lessons'. "
-                 "The site's markup has probably changed and this script needs "
-                 "updating — it has not established that the count is wrong.")
+                 f"The reader reported: {source}. The site's markup has probably "
+                 "changed and this script needs updating — it has not established "
+                 "that the declared count is wrong.")
 
-    hero_n = int(hero.group(1))
-    if listed != hero_n:
+    if hero and listed != int(hero.group(1)):
         sys.exit(f"::error::the lessons site disagrees with itself: /all/ links "
-                 f"{listed} distinct lessons, its front page says {hero_n}. Look "
+                 f"{listed} distinct lessons, its front page says {hero.group(1)}. Look "
                  f"there, not here — this repository is not the problem.")
 
     live = listed
@@ -109,8 +128,7 @@ def main():
     # that path warns, but reading the absence of a warning is a poor way to
     # learn that a check did its job.
     print(f"::notice title=Lesson count::agreed: {declared}. "
-          f"_data/education.yml and wvurail.org/dspira-lessons both say "
-          f"{declared} lessons.")
+          f"_data/education.yml and {source} both say {declared} lessons.")
     return 0
 
 
