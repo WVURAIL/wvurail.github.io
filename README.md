@@ -38,13 +38,13 @@ code.
 | Path | What it is |
 | --- | --- |
 | `_data/people.yml` | **All lab members** (PI, grad students, student workers, alumni). |
-| `_data/nav.yml` | **The header/footer navigation links.** |
+| `_data/nav.yml` | **The four primary header/footer navigation links.** Secondary destinations live in the footer. |
 | `_data/sites.yml` | **Where we work** — the four sites and the instruments at each. |
 | `_data/education.yml` | **Science education** — the DSPIRA section on the home page. |
 | `_data/publications.yml` | **Papers.** Hand-curated; see the comments at the top of the file. |
 | `_includes/` | Reusable pieces: `head`, `header`, `footer`, `scripts`, `icon`, plus the page sections `sites`, `publications-preview`, `education`, `people`, `join` and the `person-card` / `publication` item templates. |
 | `_layouts/` | Page shells: `default` (standard page), `home` (landing page), `page` (alias of default). |
-| `_pages/` | Individual pages (Where We Work, Publications, People, Contact, DSPIRA program pages, talks). |
+| `_pages/` | Individual pages (Research & Telescopes, Publications, People, Contact, DSPIRA program pages, talks). |
 | `apps/` | Small standalone web tools (sidereal-time clock, coordinate converter). |
 | `assets/css/site.css` | **The entire stylesheet.** Organized into numbered sections; start there. |
 | `assets/js/site.js` | Sticky header, mobile nav, hero canvas, scroll reveals, gallery lightbox. |
@@ -109,17 +109,18 @@ The minimum is:
   venue: The Astrophysical Journal
   doi: "10.3847/..."
   arxiv: "2501.00000"
-  highlight: true      # optional — pins it to a "Selected" band at the top
+  highlight: true      # optional — marks it and makes it eligible for the home preview
 ```
 
 Extra optional keys: `people` (lab members on the paper, rendered as tags),
-`preprint: true`, `highlight: true` (pins it to the "Selected" band and the home
-page), and `review:` (a reminder to a human — delete it once checked).
+`preprint: true`, `highlight: true` (adds a selected marker and makes the paper
+eligible for the home-page preview), and `review:` (a reminder to a human —
+delete it once checked).
 
 For a journal cover, add `cover: "Nature cover"` plus a `cover_note` with the full
-citation. Cover papers get a gold badge, and lead the Selected band when they also
-carry `highlight: true`. Only set this where the issue's own cover blurb names the
-paper, not merely where a paper appears in an issue that has a cover.
+citation. Cover papers get a gold badge and lead the home-page preview when they
+also carry `highlight: true`. Only set this where the issue's own cover blurb names
+the paper, not merely where a paper appears in an issue that has a cover.
 
 The page groups entries by `type`, then by year within each band. Dissertations and
 theses are **not** listed here at all — they come from the `publication:` block on
@@ -133,16 +134,17 @@ buttons, and the per-year archive links.
 
 ### Change the navigation
 
-Edit `_data/nav.yml`. The "Join the lab" button is appended automatically.
+Edit `_data/nav.yml`. The Contact button is appended automatically. Keep
+collaborators, faculty, and tools in the footer/contextual navigation unless one
+becomes a primary destination for most visitors.
 
 Two rules worth keeping:
 
 1. **Every nav entry points at a real page, never an in-page anchor.** Mixing the
    two makes one tab behave differently from the rest — clicking it scrolls
    instead of navigating, and it stays "current" on the wrong page.
-2. **Nav order matches the order the sections appear on the home page.** The home
-   page is a tour; the nav is the index to that tour. If you add a home section,
-   put its tab in the matching position.
+2. **Keep the list short and ordered like the home-page previews.** The header is
+   for the routes most visitors need, not an inventory of every page.
 
 ### Add a new page
 

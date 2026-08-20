@@ -1,6 +1,9 @@
 {%- assign pub = include.pub -%}
-<li class="pub{% if pub.cover %} pub--cover{% endif %}">
+<li class="pub{% if pub.cover %} pub--cover{% elsif pub.highlight %} pub--highlight{% endif %}">
    <div class="pub-main">
+      {%- if pub.highlight %}
+      {%- unless pub.cover %}<p class="pub-highlight-label">Selected work</p>{% endunless %}
+      {%- endif %}
       {%- if pub.cover %}
       <p class="pub-cover">
          <span class="pub-cover-badge">{{ pub.cover }}</span>

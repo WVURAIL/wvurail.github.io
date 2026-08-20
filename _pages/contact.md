@@ -77,7 +77,7 @@ description: How to reach the WVU Radio Astronomy Instrumentation Lab — email,
       <div class="join-grid">
          <div>
             <p class="eyebrow">Find us</p>
-            <h2>Advanced Engineering<br />Research Building</h2>
+            <h2>Advanced Engineering <br />Research Building</h2>
             <p class="lead">
                The lab is on the WVU Evansdale Campus in Morgantown. Visitors are welcome —
                email ahead so someone's there to let you in.
@@ -119,6 +119,5 @@ description: How to reach the WVU Radio Astronomy Instrumentation Lab — email,
       </div>
    </div>
 </section>
-{%- comment %}No join.html here on purpose: the header's "Join the lab" button
-lands on this page, so repeating the join band at the bottom made the two look
-like duplicates of each other. Every other page still ends with it.{% endcomment %}
+{%- comment %}No join.html here on purpose: the header's Contact button lands on
+this page, so repeating the recruiting band would duplicate the page itself.{% endcomment %}

@@ -6,7 +6,7 @@
          <span class="brand-wvu">WVU</span><span class="brand-wave" aria-hidden="true">&#9190;</span><span>RAIL</span>
       </a>
 
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
          <span></span>
       </button>
 
@@ -14,7 +14,7 @@
          {%- for item in site.data.nav -%}
          <a href="{{ item.url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.title }}</a>
          {%- endfor -%}
-         <a class="btn btn--primary" href="{{ '/contact/' | relative_url }}">Join the lab</a>
+         <a class="btn btn--primary" href="{{ '/contact/' | relative_url }}"{% if page.url == '/contact/' %} aria-current="page"{% endif %}>Contact</a>
       </nav>
    </div>
 </header>

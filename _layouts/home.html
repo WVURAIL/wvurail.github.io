@@ -13,8 +13,8 @@
          <canvas id="sky" aria-hidden="true"></canvas>
 
          <div class="container hero-inner">
-            <p class="eyebrow">West Virginia University &nbsp;·&nbsp; Lane Department of CSEE</p>
-            <h1>Instruments that<br />listen to the <em>distant universe</em>.</h1>
+            <p class="eyebrow">West Virginia University &nbsp;·&nbsp; Radio Astronomy Lab</p>
+            <h1>Instruments that <br />listen to the <em>distant universe</em>.</h1>
             <p class="lead">
                RAIL designs and builds the telescopes, analog front ends, and digital systems
                that survey the radio sky — chasing cosmology, fast radio bursts, and pulsars.
@@ -25,11 +25,9 @@
             </div>
 
             <p class="hero-meta">
-               <span>Morgantown, WV</span> <span class="dot">/</span>
-               <a href="https://chime-experiment.ca">CHIME</a> <span class="dot">/</span>
-               <a href="https://www.chord-observatory.ca">CHORD</a> <span class="dot">/</span>
-               <a href="https://hirax.ukzn.ac.za">HIRAX</a> <span class="dot">/</span>
-               <a href="{{ '/education/' | relative_url }}">DSPIRA</a>
+               <span>Analog systems</span> <span class="dot">/</span>
+               <span>Digital signal processing</span> <span class="dot">/</span>
+               <span>Radio astronomy</span>
             </p>
          </div>
 
@@ -39,68 +37,56 @@
          </a>
       </section>
 
-      <!-- What we do ------------------------------------------------------ -->
+      <!-- Research overview: a guide into the site, not a duplicate of it -->
       <section class="section" id="about">
          <div class="container">
-            <div class="statement reveal">
-               <div class="statement-side">
-                  <p class="eyebrow">What we do</p>
-                  <p class="statement-lead">
-                     Mapping the sky at radio wavelengths takes instruments with exceptional
-                     sensitivity — and the willingness to <em>build them from scratch</em>.
-                  </p>
-                  <div class="note">
-                     <span class="note-label">Recognition</span>
-                     Researchers in our group are part of the CHIME Fast Radio Burst team, awarded the
-                     <a href="https://aas.org/press/chime-fast-radio-burst-team-receive-2022-berkeley-prize">2022
-                     Lancelot M. Berkeley&thinsp;&ndash;&thinsp;New York Community Trust Prize for Meritorious
-                     Work in Astronomy</a>.
-                  </div>
+            <div class="section-head reveal">
+               <div>
+                  <p class="eyebrow">Research &amp; engineering</p>
+                  <h2>We build the systems behind wide-field radio telescopes</h2>
                </div>
-               <div class="statement-body">
-                  <p>
-                     Our primary goal is to make groundbreaking discoveries in cosmology, fast
-                     radio bursts, and pulsars. Getting there means designing and constructing
-                     large analog and digital systems that are both extremely sensitive and
-                     adaptable enough to chase new opportunities as they appear.
-                  </p>
-                  <p>
-                     Telescopes dedicated to surveying wide swaths of the sky demand novel
-                     designs and massive computing systems. We're building and commissioning them now,
-                     across North America and southern Africa.
-                  </p>
-                  <p>
-                     Much of that work is open. Our firmware, control software, and analysis
-                     pipelines live on GitHub alongside the collaborations we build them with.
-                  </p>
-               </div>
+               <p>
+                  RAIL works from the first low-noise signal at the feed to the computing systems
+                  that turn raw voltages into measurements of the universe.
+               </p>
             </div>
 
-            <dl class="facts reveal">
-               <div class="fact">
-                  <dt>What we make</dt>
-                  <dd>Analog &amp; digital<small>Front ends, FPGA correlators, pipelines</small></dd>
-               </div>
-               <div class="fact">
-                  <dt>Science drivers</dt>
-                  <dd>21 cm &amp; FRBs<small>Dark energy, transients, pulsars</small></dd>
-               </div>
-               <div class="fact">
-                  <dt>Outrigger stations</dt>
-                  <dd>Three<small>Green Bank · Hat Creek · KKO</small></dd>
-               </div>
-               <div class="fact">
-                  <dt>Home</dt>
-                  <dd>AERB 304<small>WVU Evansdale Campus, Morgantown</small></dd>
-               </div>
-            </dl>
+            <div class="focus-grid reveal">
+               <article class="focus-card">
+                  <p class="focus-label">01 &middot; Hardware</p>
+                  <h3>Capture faint signals</h3>
+                  <p>Low-noise analog front ends, calibration, clock distribution, and field-ready telescope systems.</p>
+               </article>
+               <article class="focus-card">
+                  <p class="focus-label">02 &middot; Computing</p>
+                  <h3>Process the radio sky</h3>
+                  <p>FPGA correlators, high-throughput networking, control software, and analysis pipelines.</p>
+               </article>
+               <article class="focus-card">
+                  <p class="focus-label">03 &middot; Discovery</p>
+                  <h3>Measure the universe</h3>
+                  <p>Cosmology with neutral hydrogen, fast radio burst localization, and pulsar science.</p>
+               </article>
+            </div>
+
+            <div class="btn-row reveal">
+               <a class="btn btn--primary" href="{{ '/where-we-work/' | relative_url }}">
+                  Research &amp; telescopes {% include icon.html name="arrow" %}
+               </a>
+               <a class="btn" href="{{ '/who-we-work-with/' | relative_url }}">Our collaborators</a>
+            </div>
+
+            <p class="recognition-line reveal">
+               <span>Recognition</span>
+               Members of RAIL are part of the CHIME/FRB team, recipient of the
+               <a href="https://aas.org/press/chime-fast-radio-burst-team-receive-2022-berkeley-prize">2022 Berkeley Prize for Meritorious Work in Astronomy</a>.
+            </p>
          </div>
       </section>
 
-      {% include sites.html %}
+      {% include people.html preview=true %}
       {% include publications-preview.html %}
       {% include education.html %}
-      {% include people.html %}
       {% include join.html %}
    </main>
 

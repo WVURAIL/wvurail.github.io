@@ -22,25 +22,56 @@
    /* --- Mobile navigation ---------------------------------------------- */
    var toggle = document.querySelector(".nav-toggle");
    if (toggle) {
-      var setOpen = function (open) {
+      var nav = document.getElementById("site-nav");
+      var navLinks = nav ? [].slice.call(nav.querySelectorAll("a")) : [];
+      var setOpen = function (open, returnFocus) {
          document.documentElement.toggleAttribute("data-nav-open", open);
          toggle.setAttribute("aria-expanded", String(open));
+         toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
          // Stop the page scrolling behind the open drawer.
          document.body.style.overflow = open ? "hidden" : "";
+         if (open && navLinks.length) {
+            window.requestAnimationFrame(function () { navLinks[0].focus(); });
+         } else if (returnFocus) {
+            toggle.focus();
+         }
       };
       toggle.addEventListener("click", function () {
          setOpen(!document.documentElement.hasAttribute("data-nav-open"));
       });
-      document.querySelectorAll(".site-nav a").forEach(function (a) {
+      navLinks.forEach(function (a) {
          a.addEventListener("click", function () { setOpen(false); });
       });
       document.addEventListener("keydown", function (e) {
-         if (e.key === "Escape" && document.documentElement.hasAttribute("data-nav-open")) setOpen(false);
+         if (!document.documentElement.hasAttribute("data-nav-open")) return;
+         if (e.key === "Escape") {
+            setOpen(false, true);
+            return;
+         }
+         // Keep keyboard focus within the open drawer and its close control.
+         if (e.key === "Tab") {
+            var focusable = [toggle].concat(navLinks);
+            var first = focusable[0];
+            var last = focusable[focusable.length - 1];
+            if (e.shiftKey && document.activeElement === first) {
+               e.preventDefault();
+               last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+               e.preventDefault();
+               first.focus();
+            }
+         }
       });
       document.addEventListener("click", function (e) {
          if (!document.documentElement.hasAttribute("data-nav-open")) return;
          if (!e.target.closest(".site-nav") && !e.target.closest(".nav-toggle")) setOpen(false);
       });
+      // A drawer opened on a narrow screen must not leave body scrolling locked
+      // if the viewport is widened past the desktop breakpoint.
+      var desktopNav = window.matchMedia("(min-width: 981px)");
+      var closeAtDesktop = function (e) { if (e.matches) setOpen(false); };
+      if (desktopNav.addEventListener) desktopNav.addEventListener("change", closeAtDesktop);
+      else desktopNav.addListener(closeAtDesktop);
    }
 
    /* --- Reveal on scroll ------------------------------------------------ */
@@ -191,11 +222,7 @@
    /* --- Publications filter --------------------------------------------- */
    var search = document.getElementById("pub-search");
    if (search) {
-      // Exclude the Selected band: it duplicates entries from the category
-      // bands and is hidden while filtering, so counting it would report more
-      // matches than are on screen.
-      var entries = [].slice.call(document.querySelectorAll(".pub-list .pub"))
-         .filter(function (el) { return !el.closest("#selected"); });
+      var entries = [].slice.call(document.querySelectorAll(".pub-list .pub"));
       var counter = document.querySelector(".pub-filter-count");
 
       // Index once — 69 entries re-read from the DOM on every keystroke is
@@ -225,7 +252,6 @@
                ? hits + (hits === 1 ? " match" : " matches")
                : "";
          }
-         document.body.classList.toggle("is-filtering", !!q);
       };
 
       var t;

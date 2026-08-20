@@ -5,7 +5,7 @@ Pages) cannot parse "p.cover and p.highlight".{% endcomment %}
 {%- assign covers = pubs | where_exp: "p", "p.cover" | where: "highlight", true -%}
 {%- assign selected = pubs | where: "highlight", true -%}
 {%- if selected.size == 0 %}{% assign selected = pubs %}{% endif -%}
-{%- assign slots = 5 | minus: covers.size -%}
+{%- assign slots = 3 | minus: covers.size -%}
 <section class="section" id="publications">
    <div class="container">
       <div class="section-head reveal">

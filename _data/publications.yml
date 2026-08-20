@@ -42,11 +42,11 @@
 #                           preprint     — not yet refereed
 #                         `note` and `preprint` share one band.
 #   preprint  true        Marks it as not yet refereed.
-#   highlight true        Pins it to the "Selected" band at the top of the page.
+#   highlight true        Marks it as selected and makes it eligible for the home preview.
 #   cover                 Short badge text for a journal cover, e.g. "Nature cover".
-#                         A cover paper leads the Selected band when it also has
+#                         A cover paper leads the home preview when it also has
 #                         highlight: true; without highlight it just keeps its badge
-#                         in the category bands. Only set cover where the issue's
+#                         in the publication list. Only set cover where the issue's
 #                         own cover blurb names the paper.
 #   cover_note            The full citation for that cover, shown under the badge.
 #   note                  One short line of context shown in grey. Optional.

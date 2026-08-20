@@ -1,5 +1,5 @@
 <!-- People. Content comes from _data/people.yml; cards render via person-card.html -->
-<section class="section" id="people">
+<section class="section{% if include.preview %} section--tint{% endif %}" id="people">
    <div class="container">
       {%- unless include.bare %}
       <div class="section-head reveal">
@@ -16,6 +16,21 @@
       </div>
       {%- endunless %}
 
+      {%- if include.preview %}
+      <div class="people-block reveal">
+         <h3 class="people-block-title">Current team</h3>
+         <div class="people-grid people-grid--preview">
+            {%- for person in site.data.people.pi %}{% include person-card.html person=person variant="grid" compact=true heading_level=4 %}{% endfor %}
+            {%- for person in site.data.people.grad %}{% include person-card.html person=person variant="grid" compact=true heading_level=4 %}{% endfor %}
+            {%- for person in site.data.people.students %}{% include person-card.html person=person variant="grid" heading_level=4 %}{% endfor %}
+         </div>
+         <div class="btn-row">
+            <a class="btn" href="{{ '/people/' | relative_url }}">
+               Meet the full lab &amp; alumni {% include icon.html name="arrow" %}
+            </a>
+         </div>
+      </div>
+      {%- else %}
       {%- if site.data.people.pi and site.data.people.pi.size > 0 %}
       <div class="people-block reveal">
          <h2 class="people-block-title">Principal Investigator</h2>
@@ -73,6 +88,7 @@
             {%- endfor %}
          </div>
       </div>
+      {%- endif %}
       {%- endif %}
    </div>
 </section>

@@ -64,15 +64,21 @@ description: >
             page above.
          </p>
       </div>
-      {%- for g in inst.groups %}
-      <div class="people-block">
-         <h3 class="people-block-title">{{ g.region }} <span class="count">{{ g.names.size }}</span></h3>
-         <p class="pub-people">
-            {%- for n in g.names %}<span class="pub-tag">{{ n }}</span>{% endfor %}
-         </p>
-      </div>
-      {%- endfor %}
+      <details class="directory-disclosure">
+         <summary>
+            <span>Browse the complete regional directory</span>
+            <small>All institutions represented in the publication record</small>
+         </summary>
+         <div class="directory-content">
+            {%- for g in inst.groups %}
+            <div class="people-block">
+               <h3 class="people-block-title">{{ g.region }} <span class="count">{{ g.names.size }}</span></h3>
+               <p class="pub-people">
+                  {%- for n in g.names %}<span class="pub-tag">{{ n }}</span>{% endfor %}
+               </p>
+            </div>
+            {%- endfor %}
+         </div>
+      </details>
    </div>
 </section>
-
-{% include join.html %}

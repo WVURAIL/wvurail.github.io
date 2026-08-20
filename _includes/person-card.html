@@ -12,13 +12,15 @@
    {%- endunless %}
 
    <div class="person-info">
-      <h3>{{ p.name }}</h3>
+      {%- if include.heading_level == 4 %}<h4>{{ p.name }}</h4>{% else %}<h3>{{ p.name }}</h3>{% endif %}
       {%- if p.roles %}
       <ul class="person-roles">
          {%- for role in p.roles %}<li>{{ role }}</li>{% endfor %}
       </ul>
       {%- endif %}
-      {%- if p.bio %}<p class="person-bio">{{ p.bio | strip_newlines | strip }}</p>{% endif %}
+      {%- if p.bio %}
+      {%- unless include.compact %}<p class="person-bio">{{ p.bio | strip_newlines | strip }}</p>{% endunless %}
+      {%- endif %}
       {%- if p.email or p.link %}
       <p class="person-links">
          {%- if p.email %}

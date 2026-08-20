@@ -61,6 +61,7 @@ jobs:
             publications/index.html \
             bandura/index.html \
             where-we-work/index.html \
+            who-we-work-with/index.html \
             dspiratalk/index.html \
             contact/index.html \
             projects/index.html \
@@ -96,10 +97,10 @@ jobs:
               fail=1
             fi
           }
-          check "publication entries" publications/index.html 'class="pub[ "]' 50
+          check "publication entries" publications/index.html '<li class="pub' 60
           check "people cards"        people/index.html       'class="person'   3
           check "alumni rows"         people/index.html       'class="alumni-row"' 5
-          check "site cards"          index.html              'class="site"'    4
+          check "site cards"          where-we-work/index.html 'class="site"'   4
           # The cohort layout looks its roster up in _data/education.yml by year.
           # If that lookup ever misses, the page still builds — it just renders
           # with no names and a blank stats row. Assert the names are there.

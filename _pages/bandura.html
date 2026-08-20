@@ -47,6 +47,7 @@ Everything else comes from _data/cv.yml.
          <a class="btn btn--primary" href="{{ '/bandura/cv/' | relative_url }}">
             Get CV {% include icon.html name="arrow" %}
          </a>
+         <a class="btn" href="{{ '/people/' | relative_url }}">Back to the lab</a>
       </div>
    </div>
 </div>
@@ -168,14 +169,14 @@ Everything else comes from _data/cv.yml.
       </div>
 
       <div class="people-block">
-         <h2 class="people-block-title">Journal articles <span class="count">{{ my_journal.size }}</span></h2>
+         <h3 class="people-block-title">Journal articles <span class="count">{{ my_journal.size }}</span></h3>
          <ul class="pub-list">
             {%- for pub in my_journal %}{% include publication.html pub=pub %}{% endfor %}
          </ul>
       </div>
 
       <div class="people-block">
-         <h2 class="people-block-title">Conference proceedings <span class="count">{{ my_proc.size }}</span></h2>
+         <h3 class="people-block-title">Conference proceedings <span class="count">{{ my_proc.size }}</span></h3>
          <ul class="pub-list">
             {%- for pub in my_proc %}{% include publication.html pub=pub %}{% endfor %}
          </ul>
@@ -183,7 +184,7 @@ Everything else comes from _data/cv.yml.
 
       {%- if n_unref > 0 %}
       <div class="people-block">
-         <h2 class="people-block-title">Research notes &amp; preprints <span class="count">{{ n_unref }}</span></h2>
+         <h3 class="people-block-title">Research notes &amp; preprints <span class="count">{{ n_unref }}</span></h3>
          <ul class="pub-list">
             {%- for pub in my_notes %}{% include publication.html pub=pub %}{% endfor %}
             {%- for pub in my_preprints %}{% include publication.html pub=pub %}{% endfor %}
@@ -192,7 +193,7 @@ Everything else comes from _data/cv.yml.
       {%- endif %}
 
       <div class="people-block">
-         <h2 class="people-block-title">Before WVU <span class="count">{{ cv.pre_wvu_publications.size }}</span></h2>
+         <h3 class="people-block-title">Before WVU <span class="count">{{ cv.pre_wvu_publications.size }}</span></h3>
          <p class="pub-band-note">
             The Carnegie Mellon and McGill years, 2006–2016 — 21&nbsp;cm intensity mapping
             at the GBT and GMRT, the CHIME Pathfinder, and the ICE correlator hardware.
@@ -204,7 +205,7 @@ Everything else comes from _data/cv.yml.
 
       {%- if cv.retracted and cv.retracted.size > 0 %}
       <div class="people-block">
-         <h2 class="people-block-title">Retracted <span class="count">{{ cv.retracted.size }}</span></h2>
+         <h3 class="people-block-title">Retracted <span class="count">{{ cv.retracted.size }}</span></h3>
          <p class="pub-band-note">
             One paper was retracted after publication; its entry carries the
             retraction notice.
@@ -275,7 +276,7 @@ Everything else comes from _data/cv.yml.
       </div>
       {%- if site.data.people.grad and site.data.people.grad.size > 0 %}
       <div class="people-block">
-         <h2 class="people-block-title">Current</h2>
+         <h3 class="people-block-title">Current</h3>
          <div class="alumni-list">
             {%- for person in site.data.people.grad %}
             <div class="alumni-row">
@@ -289,7 +290,7 @@ Everything else comes from _data/cv.yml.
       {%- endif %}
       {%- if site.data.people.alumni and site.data.people.alumni.size > 0 %}
       <div class="people-block">
-         <h2 class="people-block-title">Graduated <span class="count">{{ site.data.people.alumni.size }}</span></h2>
+         <h3 class="people-block-title">Graduated <span class="count">{{ site.data.people.alumni.size }}</span></h3>
          <div class="alumni-list">
             {%- for person in site.data.people.alumni %}
             <div class="alumni-row">
@@ -311,7 +312,7 @@ Everything else comes from _data/cv.yml.
       {%- endif %}
       {%- if cv.committees and cv.committees.size > 0 %}
       <div class="people-block">
-         <h2 class="people-block-title">Committee service <span class="count">{{ cv.committees.size }}</span></h2>
+         <h3 class="people-block-title">Committee service <span class="count">{{ cv.committees.size }}</span></h3>
          <p class="pub-band-note">
             Graduate committees served on across Physics &amp; Astronomy and the
             Lane Department, beyond his own students above.
@@ -433,5 +434,3 @@ Everything else comes from _data/cv.yml.
       </div>
    </div>
 </section>
-
-{% include join.html %}
