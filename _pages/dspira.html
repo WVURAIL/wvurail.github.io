@@ -6,7 +6,7 @@ full_width: true
 # No lesson count in this sentence on purpose. Front matter is not run through
 # Liquid, so a number here cannot read _data/education.yml and has to be kept in
 # step by hand—which is why the live count is checked by a scheduled workflow.
-description: DSPIRA grew from NSF Award 1611114, which ran from 2017 through 2021. Its teachers, free radio-telescope lessons, and outreach work remain active.
+description: DSPIRA continues through its educator community, open lessons, and DSPIRA-based outreach hardware now being developed under NSF Award 2511256.
 ---
 {%- assign ed = site.data.education -%}
 <div class="page-head">
@@ -70,7 +70,7 @@ description: DSPIRA grew from NSF Award 1611114, which ran from 2017 through 202
       <div class="section-head">
          <div>
             <p class="eyebrow">Program timeline</p>
-            <h2>A five-year award period—and work beyond it</h2>
+            <h2>The grant ended. The work changed shape.</h2>
          </div>
          <p>
             The original proposal planned three summer cohorts. NSF Award {{ ed.award.number }}
@@ -91,11 +91,11 @@ description: DSPIRA grew from NSF Award 1611114, which ran from 2017 through 202
       </div>
 
       <div class="btn-row">
-         <a class="btn btn--primary" href="{{ ed.award.url }}">
-            NSF Award {{ ed.award.number }} {% include icon.html name="external" %}
+         <a class="btn btn--primary" href="{{ ed.follow_on.outreach_hardware.url }}">
+            Current NSF Award {{ ed.follow_on.outreach_hardware.number }} {% include icon.html name="external" %}
          </a>
+         <a class="btn" href="{{ ed.award.url }}">Original RET Award {{ ed.award.number }}</a>
          <a class="btn" href="https://github.com/WVURAIL/dspira-lessons/commits/master/">Lesson project history</a>
-         <a class="btn" href="{{ ed.follow_on.stars.program_url }}">2025 STARS workshop</a>
       </div>
    </div>
 </section>
@@ -210,10 +210,10 @@ description: DSPIRA grew from NSF Award 1611114, which ran from 2017 through 202
    <div class="container">
       <div class="statement">
          <div class="statement-side">
-            <p class="eyebrow">The original RET site</p>
+            <p class="eyebrow">Funding and continuity</p>
             <p class="statement-lead">
-               DSPIRA began as a partnership between the university and the
-               <em>observatory next door</em>.
+               Seed funding started the work. The community and hardware
+               <em>carried it forward</em>.
             </p>
          </div>
          <div class="statement-body">
@@ -233,7 +233,7 @@ description: DSPIRA grew from NSF Award 1611114, which ran from 2017 through 202
                   </span>
                </li>
                <li>
-                  <span class="k">Funding</span>
+                  <span class="k">Seed funding</span>
                   <span class="v">
                      <a href="{{ ed.award.url }}">NSF Award {{ ed.award.number }}</a><br />
                      {{ ed.award.title }}<br />
@@ -241,13 +241,21 @@ description: DSPIRA grew from NSF Award 1611114, which ran from 2017 through 202
                   </span>
                </li>
                <li>
-                  <span class="k">Follow-on work</span>
+                  <span class="k">Current DSPIRA-based hardware</span>
                   <span class="v">
-                     The original award is closed. Separate
-                     <a href="{{ ed.follow_on.stars.url }}">NSF Award {{ ed.follow_on.stars.number }}</a>
-                     funded the 2025 STARS teacher workshop, and
                      <a href="{{ ed.follow_on.outreach_hardware.url }}">NSF Award {{ ed.follow_on.outreach_hardware.number }}</a>
-                     uses DSPIRA receivers in newer outreach hardware work.
+                     &middot; {{ ed.follow_on.outreach_hardware.start }}–{{ ed.follow_on.outreach_hardware.end }}<br />
+                     Its outreach component uses DSPIRA receivers as prototypes for a
+                     more robust lab for high-school teachers and students, while continuing
+                     education-oriented receiver development for STEM programs at WVU and Yale.
+                  </span>
+               </li>
+               <li>
+                  <span class="k">Related teacher workshop</span>
+                  <span class="v">
+                     <a href="{{ ed.follow_on.stars.url }}">NSF Award {{ ed.follow_on.stars.number }}</a>
+                     funded the 2025 <a href="{{ ed.follow_on.stars.program_url }}">STARS workshop</a>,
+                     extending DSPIRA to another group of educators.
                   </span>
                </li>
             </ul>

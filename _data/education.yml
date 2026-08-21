@@ -1,9 +1,13 @@
 # DSPIRA — the lab's science-education work.
 #
-# Keep three related timelines distinct when editing this page:
+# Keep the related timelines distinct when editing this page:
 #   * NSF award 1611114 ran from January 2017 through December 2021.
 #   * This site's detailed in-person cohort archive covers 2017, 2018 and 2019.
-#   * The online lesson library and educator community continued after the award.
+#   * COVID interrupted the in-person program's momentum; the lessons, educator
+#     network and telescope platform continued at a different cadence.
+#   * The outreach component of NSF award 2511256 (2025–28) now builds directly
+#     on DSPIRA receivers. It continues one strand of DSPIRA, but the award's
+#     primary research focus is advanced calibration for 21 cm cosmology.
 #
 # The original abstract proposed three summer cohorts, while NSF's final outcome
 # report describes teacher participation and program development across five
@@ -20,9 +24,11 @@ summary: >
 
 # One-line answer to "is this still running?" — shown near the top of the page.
 status: >
-  The original NSF RET award ended in 2021, but DSPIRA did not. Its educators
-  and telescope designs remain active; the public lessons and discussion forum
-  remain online, with follow-on activities extending the work to new teachers.
+  The pandemic interrupted the momentum of DSPIRA's in-person summers, but the
+  original RET award was seed funding—not an expiration date. The project
+  continues through its educators, open curriculum, and telescope platform;
+  the outreach component of NSF Award 2511256 is developing a more robust
+  generation of DSPIRA-based outreach receivers through 2028.
 
 award:
   number: "1611114"
@@ -40,6 +46,9 @@ follow_on:
     program_url: "https://www.concord.edu/stars/"
   outreach_hardware:
     number: "2511256"
+    title: "Collaborative Research: Advanced Digital Calibrators for 21cm Cosmology"
+    start: 2025
+    end: 2028
     url: "https://www.nsf.gov/awardsearch/show-award?AWD_ID=2511256"
 
 principal_investigators:
@@ -52,9 +61,9 @@ partners:
   - Green Bank Observatory
 
 facts:
-  - label: NSF award period
-    value: 2017–21
-    note: "Award 1611114 · $577,815"
+  - label: Current NSF work
+    value: 2025–28
+    note: "Award 2511256 · DSPIRA-based outreach hardware"
   - label: In-person cohorts
     value: "3"
     note: Documented here from 2017–19
@@ -115,8 +124,8 @@ materials:
     - text: GNU Radio modules on GitHub
       url: "https://github.com/WVURAIL/gr-radio_astro"
 
-# The public record does not establish that COVID caused the online shift, so
-# the page describes the observed timing without assigning a cause.
+# Kevin Bandura's account supplies the COVID context. The public award and
+# repository records independently establish the timing and later activity.
 phases:
   - label: 2017–2019
     title: Three in-person cohorts
@@ -130,12 +139,14 @@ phases:
       The public lessons repository launched in July 2020. During the award's
       final two years, teachers and staff consolidated lectures, labs, setup
       guides, and technical discussion into an online home.
-  - label: After 2021
-    title: The network kept building
+  - label: 2022–present
+    title: DSPIRA's next hardware chapter
     body: >
-      The original RET award closed, but teachers continued updating lessons while
-      community contributors helped telescope users. A separately funded 2025 STARS
-      workshop introduced another group of educators to DSPIRA group meetings.
+      The in-person summers did not return to their earlier cadence, but the
+      educator network, lessons, and telescope platform continued. The outreach
+      component of NSF Award 2511256 now uses DSPIRA receivers as prototypes for
+      a more robust lab for high-school teachers and students, while continuing
+      education-oriented receiver development for STEM programs at WVU and Yale.
 
 # What a summer actually involved.
 arc:
