@@ -1,4 +1,4 @@
-# Is the lesson count on /education/ still true?
+# Is what /education/ says about the lessons site still true?
 #
 # The number lives in one place, _data/education.yml's materials.lesson_count,
 # and every mention of it on the site renders from there. But it describes a
@@ -11,7 +11,7 @@
 #
 # The job does not fail when the lessons site is unreachable — see the note in
 # the script. It fails only when the two sites genuinely disagree.
-name: Lesson count
+name: Lesson count and modules
 
 on:
   schedule:

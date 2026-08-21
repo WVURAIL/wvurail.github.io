@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Does _data/education.yml still agree with the lessons site about how many
-lessons there are?
+lessons there are, and what the modules are called?
 
     python3 .github/scripts/check_lesson_count.py
 
@@ -14,6 +14,11 @@ number is copied by hand and goes stale silently.
 It has gone stale twice. Once the page said 47 while the lessons site said 48,
 and the page's own meta description said 44. Nobody noticed either time; there
 is nothing to notice, which is the whole problem. Hence a scheduled job.
+
+The same is true of the module list, which is copied here for the same reason
+and had nothing watching it at all. It named eleven modules for some weeks
+after the lessons site consolidated them into seven. It is checked here too
+now.
 
 Exit codes:
   0  the numbers agree, OR the lessons site could not be reached
@@ -32,6 +37,7 @@ import urllib.request
 
 LESSONS = "https://wvurail.org/dspira-lessons/"
 ALL_LESSONS = LESSONS + "all/"
+MODULE_INDEX = LESSONS + "lesson-modules/"
 EDUCATION_YML = "_data/education.yml"
 TIMEOUT = 30
 UA = "wvurail.org lesson-count check (+https://github.com/WVURAIL/wvurail.github.io)"
@@ -46,6 +52,71 @@ def declared_count(path=EDUCATION_YML):
                  f"file been restructured? This check reads it by regex so it "
                  f"needs no YAML library.")
     return int(m.group(1))
+
+
+def declared_modules(path=EDUCATION_YML):
+    """The module names this repository claims, read without a YAML library.
+
+    The block is `  modules:` followed by `    - Name` lines; it ends at the
+    first line that is not one of those or a comment.
+    """
+    lines = open(path, encoding="utf-8").read().splitlines()
+    out, inside = [], False
+    for line in lines:
+        if re.match(r"^\s*modules:\s*$", line):
+            inside = True
+            continue
+        if inside:
+            item = re.match(r"^\s+-\s+(.+?)\s*$", line)
+            if item:
+                out.append(item.group(1))
+            elif line.strip() == "" or line.lstrip().startswith("#"):
+                continue
+            else:
+                break
+    return out
+
+
+def published_modules(html):
+    """The module names the lessons site's module index shows, in order."""
+    names = re.findall(
+        r'class="module-toc__item".*?<h2>\s*<a[^>]*>(.*?)</a>',
+        html,
+        re.S,
+    )
+    if not names:
+        # The older index rendered module names as card headings instead.
+        names = re.findall(r'class="module"[^>]*>.*?<h3>\s*<a[^>]*>(.*?)</a>',
+                           html, re.S)
+    return [re.sub(r"\s+", " ", n).strip() for n in names]
+
+
+def compare_modules(declared, published):
+    """None if they agree, otherwise a message saying how they differ.
+
+    Capitalisation is not compared -- this file may reasonably write the names
+    in sentence case. Names, count and order are.
+    """
+    if not published:
+        return ("could not read any module names from %s. The site's markup "
+                "has probably changed and this script needs updating -- it has "
+                "not established that the list below is wrong." % MODULE_INDEX)
+
+    if [d.lower() for d in declared] == [p.lower() for p in published]:
+        return None
+
+    missing = [p for p in published if p.lower() not in [d.lower() for d in declared]]
+    extra = [d for d in declared if d.lower() not in [p.lower() for p in published]]
+    detail = []
+    if missing:
+        detail.append("not listed here: " + ", ".join(missing))
+    if extra:
+        detail.append("no longer on the lessons site: " + ", ".join(extra))
+    if not detail:
+        detail.append("same names, different order")
+    return ("the module list is out of date. %s. Fix it by editing the "
+            "`modules:` block in %s to match, in the same order."
+            % ("; ".join(detail), EDUCATION_YML))
 
 
 def fetch(url):
@@ -90,6 +161,7 @@ def main():
     try:
         all_html = fetch(ALL_LESSONS)
         home_html = fetch(LESSONS)
+        modules_html = fetch(MODULE_INDEX)
         listed, source = count_listed_lessons(all_html)
     except (urllib.error.URLError, urllib.error.HTTPError, OSError) as e:
         # Not a failure. See the note at the top.
@@ -115,6 +187,16 @@ def main():
 
     live = listed
 
+    # Unreadable markup is not a disagreement, and this script fails only when
+    # the two sites genuinely disagree -- the same reason an unreachable site
+    # warns rather than failing. A real mismatch of names still fails.
+    published = published_modules(modules_html)
+    module_problem = compare_modules(declared_modules(), published)
+    if module_problem and not published:
+        print("::warning::" + module_problem)
+    elif module_problem:
+        sys.exit("::error::" + module_problem)
+
     if declared != live:
         sys.exit(
             f"::error::lesson count is out of date. _data/education.yml says "
@@ -127,8 +209,10 @@ def main():
     # "compared them, they agree" from "could not reach the site, gave up" —
     # that path warns, but reading the absence of a warning is a poor way to
     # learn that a check did its job.
+    modules = declared_modules()
     print(f"::notice title=Lesson count::agreed: {declared}. "
-          f"_data/education.yml and {source} both say {declared} lessons.")
+          f"_data/education.yml and {source} both say {declared} lessons, "
+          f"in the same {len(modules)} modules.")
     return 0
 
 

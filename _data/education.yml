@@ -91,7 +91,7 @@ materials:
   # .github/workflows/lesson-count.yml checks it against the live site every
   # Monday and fails if the two disagree, so the drift gets noticed rather than
   # discovered. To update: change this line, nothing else.
-  lesson_count: 44
+  lesson_count: 48
   intro: >
     Teachers and lab contributors maintain %COUNT% public lessons covering the
     astronomy, hardware, signal processing, and labs. The discussion forum and
@@ -100,18 +100,25 @@ materials:
   url: "https://wvurail.org/dspira-lessons/"
   # Mirrors _data/modules.yml on the lessons site, in the same order, so a
   # visitor who clicks through sees the same list.
+  #
+  # This went stale in exactly the way the lesson count above does, and with
+  # nothing watching it. In August 2026 the lessons site consolidated eleven
+  # modules into seven -- four of the old ones existed to hold two lessons that
+  # were each filed under two names, and four more were built from the same two
+  # or three words -- and this list went on naming all eleven.
+  #
+  # check_lesson_count.py compares these names against the live module index
+  # now, so the next rename is noticed on the following Monday rather than by
+  # somebody reading the two sites side by side. Capitalisation is not
+  # compared; names, count and order are.
   modules:
-    - Horn construction
-    - Telescope hardware setup
-    - Telescope software setup
-    - Horn operation
-    - Telescope operation
-    - Digital signal processing
+    - Horn Construction
+    - Receiver Electronics
+    - Software Setup
+    - Observing
+    - Digital Signal Processing
     - Astronomy
-    - Labs
-    - GNU Radio
-    - Raspberry Pi
-    - WISRD Radio Astronomy Group
+    - Community Labs
   extras:
     - text: Browse all lessons
       url: "https://wvurail.org/dspira-lessons/all/"
