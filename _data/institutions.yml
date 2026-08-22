@@ -1,0 +1,160 @@
+# Who we work with — renders at /who-we-work-with/.
+#
+# Compiled August 2026 from author affiliations across all 69 papers in
+# _data/publications.yml: INSPIRE-HEP records for 64 papers, the papers' own
+# front matter for the rest. Department-level entries are merged into their
+# parent institution. Counts and completeness caveats live on the page itself.
+# Prune or add freely — the page renders whatever is here.
+#
+# The 2026 RNAAS note's affiliations are NSF, WVU, and the Center for
+# Astrophysics | Harvard & Smithsonian (P. Sanghavi's postdoc home, confirmed
+# Aug 2026) — all already listed below.
+
+featured:
+  - name: "Green Bank Observatory"
+    url: "https://greenbankobservatory.org/"
+    note: >
+      Home of our CHIME/FRB outrigger and the telescopes behind DSPIRA —
+      minutes from campus, inside the National Radio Quiet Zone.
+  - name: "NRC Herzberg — Dominion Radio Astrophysical Observatory"
+    url: "https://nrc.canada.ca/en/research-development/nrc-facilities/dominion-radio-astrophysical-observatory-research-facility"
+    note: >
+      CHIME's home site in Penticton, BC, where our hardware has run
+      since the pathfinder.
+  - name: "National Radio Astronomy Observatory"
+    url: "https://public.nrao.edu/"
+    note: >
+      Pulsar and FRB collaborators from the Central Development Laboratory
+      to open-source software.
+  - name: "McGill University"
+    url: "https://www.mcgill.ca/"
+    note: >
+      CHIME/FRB instrument and correlator partner — and where the ICE
+      system was born.
+  - name: "University of British Columbia"
+    url: "https://www.ubc.ca/"
+    note: "CHIME analysis and operations partner from the pathfinder onward."
+  - name: "University of Toronto"
+    url: "https://www.utoronto.ca/"
+    note: "Dunlap Institute instrumentation and the Algonquin 10-m VLBI pathfinder."
+  - name: "Massachusetts Institute of Technology"
+    url: "https://web.mit.edu/"
+    note: "VLBI correlation and outrigger science with the MIT Kavli Institute."
+  - name: "Yale University"
+    url: "https://www.yale.edu/"
+    note: "HIRAX analog systems, drone beam mapping, and digital calibration."
+  - name: "Carnegie Mellon University"
+    url: "https://www.cmu.edu/"
+    note: "21 cm cosmology collaborators since the GBT intensity-mapping days."
+  - name: "University of KwaZulu-Natal"
+    url: "https://ukzn.ac.za/"
+    note: "Lead institution of HIRAX in South Africa's Karoo."
+
+groups:
+  - region: "Canada"
+    names:
+      - "Perimeter Institute for Theoretical Physics"
+      - "Canadian Institute for Theoretical Astrophysics"
+      - "Canadian Institute for Advanced Research"
+      - "University of Waterloo"
+      - "Thompson Rivers University"
+      - "University of Manitoba"
+      - "York University"
+      - "Simon Fraser University"
+      - "Toronto Metropolitan University"
+      - "Queen's University"
+      - "Thoth Technology (Algonquin Radio Observatory)"
+      - "Sidrat Research"
+      - "AMJ Consulting"
+  - region: "United States"
+    names:
+      - "Marshall University"
+      - "Cornell University"
+      - "University of California, Berkeley"
+      - "Caltech and JPL"
+      - "Northwestern University"
+      - "University of California, Santa Cruz"
+      - "University of Chicago"
+      - "University of Wisconsin–Madison"
+      - "Arizona State University"
+      - "Stanford University"
+      - "SETI Institute"
+      - "Space Telescope Science Institute"
+      - "Center for Astrophysics | Harvard & Smithsonian"
+      - "Harvard University"
+      - "Princeton University"
+      - "Flatiron Institute"
+      - "University of Connecticut"
+      - "University of Montana"
+      - "UCLA"
+      - "University of Southern California"
+      - "Wellesley College"
+      - "Brookhaven National Laboratory"
+      - "Space Science Institute"
+      - "Institute for Advanced Study"
+      - "UT Southwestern Medical Center"
+      - "Franklin & Marshall College"
+      - "Murray State University"
+      - "University of Illinois Urbana-Champaign"
+      - "National Science Foundation"
+  - region: "Europe"
+    names:
+      - "ASTRON — Netherlands Institute for Radio Astronomy"
+      - "University of Amsterdam"
+      - "JIVE — Joint Institute for VLBI ERIC"
+      - "University of Groningen"
+      - "Max Planck Institute for Radio Astronomy"
+      - "DLR"
+      - "Chalmers University of Technology / Onsala Space Observatory"
+      - "University of Manchester (Jodrell Bank)"
+      - "University of Oxford"
+      - "University of Portsmouth"
+      - "University of Edinburgh"
+      - "Nançay Radio Observatory"
+      - "Laboratoire d'Astrophysique de Marseille"
+      - "LPC2E, Université d'Orléans / CNRS"
+      - "APC, Université Paris Cité"
+      - "LPENS, Paris"
+      - "University of Geneva"
+      - "EPFL"
+      - "ETH Zürich"
+      - "Scuola Normale Superiore, Pisa"
+      - "Sapienza University of Rome"
+      - "Nicolaus Copernicus Astronomical Center, Toruń"
+      - "Ioffe Institute"
+  - region: "South Africa"
+    names:
+      - "SARAO / SKA South Africa"
+      - "Rhodes University"
+      - "Stellenbosch University"
+      - "University of Cape Town"
+      - "University of the Western Cape"
+      - "Nelson Mandela University"
+      - "South African Astronomical Observatory"
+      - "African Institute for Mathematical Sciences"
+      - "National Institute for Theoretical and Computational Sciences"
+      - "Hartebeesthoek Radio Astronomy Observatory"
+      - "Durban University of Technology"
+      - "ArioGenix"
+      - "Pronex Engineering"
+  - region: "Asia–Pacific"
+    names:
+      - "NCRA–TIFR, Pune"
+      - "Tata Institute of Fundamental Research"
+      - "Raman Research Institute"
+      - "IUCAA, Pune"
+      - "Academia Sinica Institute of Astronomy and Astrophysics"
+      - "National Taiwan University"
+      - "Kavli IPMU, University of Tokyo"
+      - "National Astronomical Observatory of Japan"
+      - "Sun Yat-sen University"
+      - "Xidian University"
+      - "CSIRO Space & Astronomy / Parkes Observatory"
+      - "ICRAR — Curtin University"
+      - "University of Newcastle"
+  - region: "Latin America"
+    names:
+      - "Universidad de Chile"
+      - "UNAM — Instituto de Astronomía, Ensenada"
+      - "INAOE"
+      - "Observatório Nacional, Rio de Janeiro"

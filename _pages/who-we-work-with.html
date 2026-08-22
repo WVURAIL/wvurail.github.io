@@ -1,0 +1,84 @@
+---
+title: Who We Work With
+layout: default
+permalink: /who-we-work-with/
+full_width: true
+description: >
+  The observatories, universities, and institutes that appear alongside WVU RAIL
+  across our publications — from Green Bank to the Karoo.
+---
+{%- assign inst = site.data.institutions -%}
+{%- assign total = 3 | plus: inst.featured.size -%}
+{%- for g in inst.groups %}{% assign total = total | plus: g.names.size %}{% endfor -%}
+
+<div class="page-head">
+   <div class="container">
+      <p class="eyebrow">Collaborations</p>
+      <h1>Who we work with</h1>
+      <p class="lead">
+         Instruments like CHIME, its outriggers, and HIRAX only exist because many
+         institutions build them together. Compiled from the author lists of all
+         {{ site.data.publications.size }} lab publications, roughly {{ total }} institutions
+         across 15+ countries have appeared alongside the lab &mdash; these are our
+         co-authors' homes, our telescope sites, and our funding partners.
+      </p>
+   </div>
+</div>
+
+<!-- Anchor partners -->
+<section class="section" id="featured">
+   <div class="container">
+      <div class="section-head">
+         <div>
+            <p class="eyebrow">Anchor partners</p>
+            <h2>Facilities &amp; frequent collaborators</h2>
+         </div>
+         <p>
+            The places our hardware lives and the groups we build with most,
+            paper after paper.
+         </p>
+      </div>
+      <div class="alumni-list">
+         {%- for f in inst.featured %}
+         <div class="alumni-row">
+            <span class="alumni-name"><a href="{{ f.url }}">{{ f.name }}</a></span>
+            <span class="alumni-title">{{ f.note | strip_newlines | strip }}</span>
+         </div>
+         {%- endfor %}
+      </div>
+   </div>
+</section>
+
+<!-- Everyone, by region -->
+<section class="section section--line" id="all">
+   <div class="container">
+      <div class="section-head">
+         <div>
+            <p class="eyebrow">The full list</p>
+            <h2>Every institution in our papers</h2>
+         </div>
+         <p>
+            Author affiliations across the publication list, grouped by region.
+            Home institutions &mdash; WVU, the Center for Gravitational Waves and
+            Cosmology, and our Green Bank and Marshall neighbours &mdash; lead the
+            page above.
+         </p>
+      </div>
+      <details class="directory-disclosure">
+         <summary>
+            <span>Browse the complete regional directory</span>
+            <small>All institutions represented in the publication record</small>
+         </summary>
+         <div class="directory-content">
+            {%- for g in inst.groups %}
+            <div class="people-block">
+               <h3 class="people-block-title">{{ g.region }} <span class="count">{{ g.names.size }}</span></h3>
+               <p class="pub-people">
+                  {%- for n in g.names %}<span class="pub-tag">{{ n }}</span>{% endfor %}
+               </p>
+            </div>
+            {%- endfor %}
+         </div>
+      </details>
+   </div>
+</section>

@@ -1,0 +1,18 @@
+# Jekyll build output (GitHub builds this for you — never commit it)
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+
+# Ruby / Bundler
+vendor/
+.bundle/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*Zone.Identifier
+
+# Python bytecode, from running the checks in .github/scripts/ locally
+__pycache__/
+*.py[cod]

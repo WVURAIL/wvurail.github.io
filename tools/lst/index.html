@@ -1,0 +1,44 @@
+---
+layout: default
+title: Local Sidereal Time
+permalink: /tools/lst/
+description: Compute the current Local Sidereal Time for any longitude.
+lead: Local Sidereal Time for any longitude, updating every second.
+eyebrow: Tools
+---
+<p>Enter your longitude to see the current Local Sidereal Time. The value updates every second.</p>
+
+<div>
+   <label>Longitude (degrees):
+      <input type="text" id="long" value="79.8318" size="8" />
+   </label>
+   <select id="hemi" aria-label="Longitude hemisphere">
+      <option value="W" selected>W</option>
+      <option value="E">E</option>
+   </select>
+   <button type="button" onclick="updateLST()">Update</button>
+</div>
+
+<div id="js_clock" class="clock" style="margin-top:1rem;"></div>
+
+<script src="{{ '/tools/astro.js' | relative_url }}"></script>
+<script>
+function currentLongitude() {
+   var v = Math.abs(parseFloat(document.getElementById('long').value) || 0);
+   if (v > 180) { v = 180; }
+   var sign = document.getElementById('hemi').value === 'W' ? -1 : 1;
+   return sign * v;
+}
+function updateLST() {
+   var lon = currentLongitude();
+   document.getElementById('js_clock').innerHTML =
+      '<span class="big">' + hmsFromHours(lstNow(new Date(), lon)) + '</span>' +
+      '<br>for longitude ' + lon.toFixed(4) + '\u00B0';
+}
+updateLST();
+setInterval(updateLST, 1000);
+</script>
+
+<ul class="actions">
+   <li><a href="{{ '/tools/' | relative_url }}" class="button">&larr; All tools</a></li>
+</ul>

@@ -1,0 +1,436 @@
+---
+title: Kevin Bandura
+layout: default
+permalink: /bandura/
+full_width: true
+description: >
+  Kevin M. Bandura — Associate Professor, Lane Department of Computer Science and
+  Electrical Engineering, West Virginia University. Living CV: publications, funding,
+  teaching, and students.
+---
+{%- assign cv = site.data.cv -%}
+{%- comment %}
+The CV of record, replacing the retired WVU faculty page. Publications from the
+WVU years are pulled from _data/publications.yml (entries whose `people`
+includes "K. Bandura") so this page updates itself as papers are added there.
+Everything else comes from _data/cv.yml.
+{%- endcomment %}
+{%- assign mine = site.data.publications | where_exp: "p", "p.people contains 'K. Bandura'" -%}
+{%- assign my_journal = mine | where: "type", "journal" -%}
+{%- assign my_proc = mine | where: "type", "proceedings" -%}
+{%- assign my_notes = mine | where: "type", "note" -%}
+{%- assign my_preprints = mine | where: "type", "preprint" -%}
+{%- assign n_unref = my_notes.size | plus: my_preprints.size -%}
+{%- assign n_all = mine.size | plus: cv.pre_wvu_publications.size -%}
+
+<div class="page-head">
+   <div class="container">
+      <p class="eyebrow">Faculty &middot; Principal Investigator</p>
+      <h1>{{ cv.profile.name }}</h1>
+      <p class="lead">
+         Associate Professor in the Lane Department of Computer Science and Electrical
+         Engineering, and Adjunct Assistant Professor of Physics and Astronomy, at West
+         Virginia University; member of the WVU
+         <a href="https://gwac.wvu.edu/">Center for Gravitational Waves and Cosmology</a>.
+         Builds the instruments behind wide-field radio surveys —
+         CHIME, its FRB outriggers, and HIRAX — to measure dark energy with 21&nbsp;cm
+         intensity mapping and to catch fast radio bursts in the act.
+      </p>
+      <p class="person-links">
+         <a class="person-link person-link--mail" href="mailto:{{ cv.profile.email }}">{% include icon.html name="mail" %} {{ cv.profile.email }}</a>
+         <a class="person-link" href="tel:+13042939686">{{ cv.profile.phone }}</a>
+         <span class="person-link">{{ cv.profile.office }}</span>
+         <a class="person-link" href="https://orcid.org/0000-0003-3772-2798">ORCID {% include icon.html name="external" %}</a>
+         <a class="person-link" href="{{ cv.profile.scholar }}">Google Scholar {% include icon.html name="external" %}</a>
+      </p>
+      <div class="btn-row">
+         <a class="btn btn--primary" href="{{ '/bandura/cv/' | relative_url }}">
+            Get CV {% include icon.html name="arrow" %}
+         </a>
+         <a class="btn" href="{{ '/people/' | relative_url }}">Back to the lab</a>
+      </div>
+   </div>
+</div>
+
+<!-- Jump links, same pattern as /publications/ -->
+<div class="pub-toc">
+   <div class="container">
+      <nav aria-label="CV sections">
+         <a href="#education">Education</a>
+         <a href="#appointments">Appointments</a>
+         <a href="#honors">Honors</a>
+         <a href="#funding">Funding <span>{{ cv.funding.size }}</span></a>
+         <a href="#publications">Publications <span>{{ n_all }}</span></a>
+         <a href="#white-papers">White papers <span>{{ cv.white_papers.size }}</span></a>
+         <a href="#teaching">Teaching</a>
+         <a href="#students">Students</a>
+         <a href="#service">Talks &amp; service</a>
+         <a href="#links">Links</a>
+         <a href="#media">Media <span>{{ cv.media.size }}</span></a>
+      </nav>
+   </div>
+</div>
+
+<!-- Education & appointments -->
+<section class="section" id="education">
+   <div class="container">
+      <div class="people-block">
+         <h2 class="people-block-title">Education</h2>
+         <div class="alumni-list">
+            {%- for e in cv.education %}
+            <div class="alumni-row">
+               <span class="alumni-name">{{ e.degree }}</span>
+               <span class="alumni-degree">{{ e.year }}</span>
+               <span class="alumni-title">
+                  {{- e.school -}}
+                  {%- if e.thesis %} &middot;
+                  <a href="{{ e.thesis_url | relative_url }}">{{ e.thesis }}</a>
+                  {%- if e.advisor %} (advisor: {{ e.advisor }}){% endif %}
+                  {%- endif -%}
+               </span>
+            </div>
+            {%- endfor %}
+         </div>
+      </div>
+      <div class="people-block" id="appointments">
+         <h2 class="people-block-title">Appointments</h2>
+         <div class="alumni-list">
+            {%- for a in cv.appointments %}
+            <div class="alumni-row">
+               <span class="alumni-name">{{ a.role }}</span>
+               <span class="alumni-degree">{{ a.years }}</span>
+               <span class="alumni-title">{{ a.org }}</span>
+            </div>
+            {%- endfor %}
+         </div>
+      </div>
+   </div>
+</section>
+
+<!-- Honors -->
+<section class="section section--tint" id="honors">
+   <div class="container">
+      <div class="people-block">
+         <h2 class="people-block-title">Honors &amp; awards</h2>
+         <div class="alumni-list">
+            {%- for h in cv.honors %}
+            <div class="alumni-row">
+               <span class="alumni-name">{{ h.title }}</span>
+               <span class="alumni-degree">{{ h.year }}</span>
+               <span class="alumni-title"><a href="{{ h.url }}">{{ h.by }}</a></span>
+            </div>
+            {%- endfor %}
+         </div>
+      </div>
+   </div>
+</section>
+
+<!-- Funding -->
+<section class="section section--line" id="funding">
+   <div class="container">
+      <div class="section-head">
+         <div>
+            <p class="eyebrow">Research support</p>
+            <h2>Funding</h2>
+         </div>
+         <p>
+            Amounts are NSF obligated totals to date — public records; each award
+            links to its page in the NSF award search.
+         </p>
+      </div>
+      <div class="alumni-list">
+         {%- for g in cv.funding %}
+         <div class="alumni-row">
+            <span class="alumni-name">
+               <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID={{ g.id }}">{{ g.title }}</a>
+            </span>
+            <span class="alumni-degree">{{ g.years }} &middot; {{ g.amount }}</span>
+            <span class="alumni-title">{{ g.agency }} {{ g.id }} &middot; {{ g.role }}</span>
+         </div>
+         {%- endfor %}
+      </div>
+   </div>
+</section>
+
+<!-- Publications -->
+<section class="section" id="publications">
+   <div class="container">
+      <div class="section-head">
+         <div>
+            <p class="eyebrow">Complete record</p>
+            <h2>Publications</h2>
+         </div>
+         <p>
+            {{ n_all }} papers with CHIME, its FRB outriggers, and HIRAX, plus
+            earlier work from the Carnegie Mellon and McGill years. The WVU-era
+            entries also appear on the
+            <a href="{{ '/publications/' | relative_url }}">lab publication list</a>.
+         </p>
+      </div>
+
+      <div class="people-block">
+         <h3 class="people-block-title">Journal articles <span class="count">{{ my_journal.size }}</span></h3>
+         <ul class="pub-list">
+            {%- for pub in my_journal %}{% include publication.html pub=pub %}{% endfor %}
+         </ul>
+      </div>
+
+      <div class="people-block">
+         <h3 class="people-block-title">Conference proceedings <span class="count">{{ my_proc.size }}</span></h3>
+         <ul class="pub-list">
+            {%- for pub in my_proc %}{% include publication.html pub=pub %}{% endfor %}
+         </ul>
+      </div>
+
+      {%- if n_unref > 0 %}
+      <div class="people-block">
+         <h3 class="people-block-title">Research notes &amp; preprints <span class="count">{{ n_unref }}</span></h3>
+         <ul class="pub-list">
+            {%- for pub in my_notes %}{% include publication.html pub=pub %}{% endfor %}
+            {%- for pub in my_preprints %}{% include publication.html pub=pub %}{% endfor %}
+         </ul>
+      </div>
+      {%- endif %}
+
+      <div class="people-block">
+         <h3 class="people-block-title">Before WVU <span class="count">{{ cv.pre_wvu_publications.size }}</span></h3>
+         <p class="pub-band-note">
+            The Carnegie Mellon and McGill years, 2006–2016 — 21&nbsp;cm intensity mapping
+            at the GBT and GMRT, the CHIME Pathfinder, and the ICE correlator hardware.
+         </p>
+         <ul class="pub-list">
+            {%- for pub in cv.pre_wvu_publications %}{% include publication.html pub=pub %}{% endfor %}
+         </ul>
+      </div>
+
+      {%- if cv.retracted and cv.retracted.size > 0 %}
+      <div class="people-block">
+         <h3 class="people-block-title">Retracted <span class="count">{{ cv.retracted.size }}</span></h3>
+         <p class="pub-band-note">
+            One paper was retracted after publication; its entry carries the
+            retraction notice.
+         </p>
+         <ul class="pub-list">
+            {%- for pub in cv.retracted %}{% include publication.html pub=pub %}{% endfor %}
+         </ul>
+      </div>
+      {%- endif %}
+   </div>
+</section>
+
+<!-- White papers -->
+<section class="section section--tint" id="white-papers">
+   <div class="container">
+      <div class="section-head">
+         <div>
+            <p class="eyebrow">Community planning</p>
+            <h2>White papers &amp; reports</h2>
+         </div>
+         <p>
+            Decadal-survey and long-range-plan submissions — the PUMA concept, CHORD,
+            and the intensity-mapping program going back to Astro2010.
+         </p>
+      </div>
+      <ul class="pub-list">
+         {%- for pub in cv.white_papers %}{% include publication.html pub=pub %}{% endfor %}
+      </ul>
+   </div>
+</section>
+
+<!-- Teaching -->
+<section class="section section--line" id="teaching">
+   <div class="container">
+      <div class="people-block">
+         <h2 class="people-block-title">Teaching</h2>
+         <div class="alumni-list">
+            {%- for course in cv.teaching %}
+            <div class="alumni-row">
+               <span class="alumni-name">{{ course }}</span>
+               <span class="alumni-degree">WVU</span>
+               <span class="alumni-title"></span>
+            </div>
+            {%- endfor %}
+         </div>
+         <p class="pub-band-note">
+            Course syllabi:
+            <a href="https://researchrepository.wvu.edu/wvu_syllabi/5918/">EE 221 (Fall 2018)</a> &middot;
+            <a href="https://researchrepository.wvu.edu/wvu_syllabi/11535/">EE 591B — DSP for Radio Astronomy (Spring 2017)</a>.
+         </p>
+      </div>
+   </div>
+</section>
+
+<!-- Students: pulled from the same data as /people/, so it stays current -->
+<section class="section" id="students">
+   <div class="container">
+      <div class="section-head">
+         <div>
+            <p class="eyebrow">Advising</p>
+            <h2>Graduate students</h2>
+         </div>
+         <p>
+            Current researchers, then every graduate of the lab with a link to their
+            thesis or dissertation — all also on the
+            <a href="{{ '/people/' | relative_url }}">people page</a>.
+         </p>
+      </div>
+      {%- if site.data.people.grad and site.data.people.grad.size > 0 %}
+      <div class="people-block">
+         <h3 class="people-block-title">Current</h3>
+         <div class="alumni-list">
+            {%- for person in site.data.people.grad %}
+            <div class="alumni-row">
+               <span class="alumni-name">{{ person.name }}</span>
+               <span class="alumni-degree">{{ person.roles | first }}</span>
+               <span class="alumni-title">{{ person.bio | strip_newlines | strip }}</span>
+            </div>
+            {%- endfor %}
+         </div>
+      </div>
+      {%- endif %}
+      {%- if site.data.people.alumni and site.data.people.alumni.size > 0 %}
+      <div class="people-block">
+         <h3 class="people-block-title">Graduated <span class="count">{{ site.data.people.alumni.size }}</span></h3>
+         <div class="alumni-list">
+            {%- for person in site.data.people.alumni %}
+            <div class="alumni-row">
+               <span class="alumni-name">{{ person.name }}</span>
+               <span class="alumni-degree">
+                  {{- person.publication.label | default: "Alumna/us" -}}
+                  {%- if person.publication.year %} &middot; {{ person.publication.year }}{% endif -%}
+               </span>
+               <span class="alumni-title">
+                  {%- if person.publication %}
+                  <a href="{{ person.publication.url }}">{{ person.publication.title }}</a>
+                  {%- endif %}
+                  {%- if person.now %}<br /><em>Now: {{ person.now }}</em>{% endif %}
+               </span>
+            </div>
+            {%- endfor %}
+         </div>
+      </div>
+      {%- endif %}
+      {%- if cv.committees and cv.committees.size > 0 %}
+      <div class="people-block">
+         <h3 class="people-block-title">Committee service <span class="count">{{ cv.committees.size }}</span></h3>
+         <p class="pub-band-note">
+            Graduate committees served on across Physics &amp; Astronomy and the
+            Lane Department, beyond his own students above.
+         </p>
+         <div class="alumni-list">
+            {%- for c in cv.committees %}
+            <div class="alumni-row">
+               <span class="alumni-name">{{ c.name }}</span>
+               <span class="alumni-degree">{{ c.degree }}{% if c.year %} &middot; {{ c.year }}{% endif %}</span>
+               <span class="alumni-title"><a href="{{ c.url }}">{{ c.title }}</a></span>
+            </div>
+            {%- endfor %}
+         </div>
+      </div>
+      {%- endif %}
+   </div>
+</section>
+
+<!-- Talks, memberships -->
+<section class="section section--tint" id="service">
+   <div class="container">
+      <div class="people-block">
+         <h2 class="people-block-title">Professional memberships</h2>
+         <div class="alumni-list">
+            {%- for m in cv.memberships.items %}
+            <div class="alumni-row">
+               <span class="alumni-name">{{ m }}</span>
+               <span class="alumni-degree"></span>
+               <span class="alumni-title"></span>
+            </div>
+            {%- endfor %}
+         </div>
+      </div>
+      <div class="people-block">
+         <h2 class="people-block-title">Selected talks &amp; posters</h2>
+         {%- comment %}The list is sparse between 2016 and 2025 — those talks
+         have not been compiled yet. Add to cv.yml presentations as they turn
+         up; the "Selected" in the heading covers the gap meanwhile.{% endcomment %}
+         <div class="alumni-list">
+            {%- for t in cv.presentations %}
+            <div class="alumni-row">
+               <span class="alumni-name">{{ t }}</span>
+               <span class="alumni-degree"></span>
+               <span class="alumni-title"></span>
+            </div>
+            {%- endfor %}
+         </div>
+      </div>
+   </div>
+</section>
+
+<!-- Profiles elsewhere -->
+<section class="section" id="links">
+   <div class="container">
+      <div class="section-head">
+         <div>
+            <p class="eyebrow">Elsewhere</p>
+            <h2>Profiles &amp; links</h2>
+         </div>
+         <p>
+            The same person, everywhere else — academic profiles, university pages,
+            and course listings.
+         </p>
+      </div>
+      <div class="btn-row" style="margin-top:0">
+         {%- for p in cv.profiles %}
+         {%- if p.url and p.url != "" %}
+         <a class="btn" href="{{ p.url }}">{{ p.label }}</a>
+         {%- endif %}
+         {%- endfor %}
+      </div>
+   </div>
+</section>
+
+<!-- Press -->
+<section class="section section--line" id="media">
+   <div class="container">
+      <div class="section-head">
+         <div>
+            <p class="eyebrow">Press</p>
+            <h2>In the media <span class="count">{{ cv.media.size }}</span></h2>
+         </div>
+         <p>
+            University news and press coverage of the lab's instruments and results,
+            2017 to now.
+         </p>
+      </div>
+      <div class="alumni-list">
+         {%- for m in cv.media %}
+         <div class="alumni-row">
+            <span class="alumni-name"><a href="{{ m.url }}">{{ m.title }}</a></span>
+            <span class="alumni-degree">{{ m.year }}</span>
+            <span class="alumni-title">{{ m.outlet }}</span>
+         </div>
+         {%- endfor %}
+      </div>
+   </div>
+</section>
+
+<!-- Provenance: this page replaced the retired community.wvu.edu faculty page. -->
+<section class="section section--tint">
+   <div class="container">
+      <div class="section-head">
+         <div>
+            <p class="eyebrow">About this page</p>
+            <h2>A living CV</h2>
+         </div>
+         <p>
+            This page is Kevin's CV of record — it grows with the lab's
+            publication list and people pages, and a print-ready copy is always
+            one click away via <a href="{{ '/bandura/cv/' | relative_url }}">Get CV</a>.
+         </p>
+         {%- comment %}Maintainers: publications and students render from the
+         lab's data files; everything else lives in _data/cv.yml.{% endcomment %}
+      </div>
+      <div class="btn-row" style="margin-top:0">
+         <a class="btn" href="{{ '/publications/' | relative_url }}">Lab publications {% include icon.html name="arrow" %}</a>
+         <a class="btn" href="{{ '/people/' | relative_url }}">The lab {% include icon.html name="arrow" %}</a>
+      </div>
+   </div>
+</section>

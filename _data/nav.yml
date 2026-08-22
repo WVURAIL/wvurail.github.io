@@ -1,0 +1,16 @@
+# Main navigation. Keep this list short: these are the four routes most visitors
+# need. Collaborators, the faculty profile, and the small lab tools remain easy
+# to find from contextual links and the footer without competing for attention
+# in the header. The Contact button is added automatically.
+
+- title: Research
+  url: /where-we-work/
+
+- title: People
+  url: /people/
+
+- title: Publications
+  url: /publications/
+
+- title: Education
+  url: /education/

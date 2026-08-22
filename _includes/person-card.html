@@ -1,0 +1,40 @@
+{%- assign p = include.person -%}
+{%- assign variant = include.variant | default: "grid" -%}
+<div class="{% if variant == 'lead' %}person-lead{% else %}person{% if p.open %} person--open{% endif %}{% endif %}">
+   {%- unless p.open %}
+   <div class="portrait{% unless p.photo %} portrait--empty{% endunless %}">
+      {%- if p.photo %}
+      <img src="{{ p.photo | relative_url }}" alt="{{ p.name }}" loading="lazy" decoding="async" width="480" height="480" />
+      {%- else %}
+      {% include icon.html name="person" %}
+      {%- endif %}
+   </div>
+   {%- endunless %}
+
+   <div class="person-info">
+      {%- if include.heading_level == 4 %}<h4>{{ p.name }}</h4>{% else %}<h3>{{ p.name }}</h3>{% endif %}
+      {%- if p.roles %}
+      <ul class="person-roles">
+         {%- for role in p.roles %}<li>{{ role }}</li>{% endfor %}
+      </ul>
+      {%- endif %}
+      {%- if p.bio %}
+      {%- unless include.compact %}<p class="person-bio">{{ p.bio | strip_newlines | strip }}</p>{% endunless %}
+      {%- endif %}
+      {%- if p.email or p.link %}
+      <p class="person-links">
+         {%- if p.email %}
+         <a class="person-link person-link--mail" href="mailto:{{ p.email }}">
+            {% include icon.html name="mail" %} {{ p.email }}
+         </a>
+         {%- endif %}
+         {%- if p.link %}
+         <a class="person-link" href="{{ p.link.url }}">
+            {{ p.link.text }} {% include icon.html name="external" %}
+         </a>
+         {%- endif %}
+      </p>
+      {%- endif %}
+
+   </div>
+</div>

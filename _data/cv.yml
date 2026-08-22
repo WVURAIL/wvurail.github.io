@@ -1,0 +1,426 @@
+# Kevin Bandura's living CV. Drives /bandura/ (_pages/bandura.html).
+#
+# Why this file exists: the WVU faculty page (community.wvu.edu/~kmbandura)
+# is being retired, so the lab site now carries the CV of record. The page
+# pulls Kevin's WVU-era publications straight from _data/publications.yml
+# (every entry whose `people` includes "K. Bandura"), so new lab papers appear
+# on the CV automatically. This file holds everything else: the CV sections,
+# plus the publications the lab list deliberately leaves out — pre-WVU work
+# (CMU and McGill years, including the ICE papers), white papers, and the
+# retracted 2022 Nature paper (listed under its own clearly-marked heading;
+# the lab pages still exclude it — see the note in publications.yml).
+#
+# Publication-shaped entries below use the same fields as publications.yml,
+# so _includes/publication.html renders them unchanged.
+#
+# `review:` keys are questions for a human — DELETE once confirmed, same
+# convention as publications.yml. Links appear only where they were verified;
+# a missing doi/arxiv just means nobody has looked it up yet.
+#
+# Sources: the retired faculty page and its 2016 CV PDF, INSPIRE-HEP, arXiv,
+# Crossref, NSF award search, Statler College news, and Dylan (Aug 2026).
+
+profile:
+  name: "Kevin M. Bandura, Ph.D."
+  email: "kevin.bandura@mail.wvu.edu"
+  phone: "(304) 293-9686"
+  office: "AERB 237, 109 Research Way, Morgantown, WV 26506"
+  scholar: "https://scholar.google.com/citations?user=Qi3FG7cAAAAJ"
+
+# Where to find him elsewhere. An entry with an empty url renders as plain
+# text (a placeholder), not a link.
+profiles:
+  - label: "ORCID"
+    url: "https://orcid.org/0000-0003-3772-2798"
+  - label: "NASA ADS"
+    url: "https://ui.adsabs.harvard.edu/search/q=author%3A%22Bandura%2C%20K.%22&sort=date%20desc"
+  - label: "INSPIRE-HEP"
+    url: "https://inspirehep.net/authors/1033593"
+  - label: "Google Scholar"
+    url: "https://scholar.google.com/citations?user=Qi3FG7cAAAAJ&hl=en"
+  - label: "LinkedIn"
+    url: "https://www.linkedin.com/in/kevin-bandura-54752756/"
+  - label: "ResearchGate"
+    url: "https://www.researchgate.net/profile/Kevin-Bandura"
+  - label: "Statler College directory"
+    url: "https://directory.statler.wvu.edu/faculty-staff-directory/kevin-bandura"
+  - label: "Gravitational Waves & Cosmology center"
+    url: "https://gwac.wvu.edu/about/people/kevin-bandura"
+  - label: "Coursicle"
+    url: "https://www.coursicle.com/wvu/professors/Kevin+Bandura/"
+  - label: "Rate My Professors"
+    url: "https://www.ratemyprofessors.com/professor/2308142"
+  # The old faculty page (community.wvu.edu/~kmbandura) was retired in 2026 and
+  # is deliberately not linked — its content was folded into this page.
+  - label: "The lab"
+    url: "/people/"
+
+# Press and university news featuring Kevin or the lab's instruments.
+# Newest first; add new coverage at the top.
+media:
+  - year: 2026
+    title: "WVU outstanding educators, advisers, staff and researchers recognized by the Statler College"
+    outlet: "Statler College News"
+    url: "https://media.statler.wvu.edu/news/2026/04/06/wvu-outstanding-educators-advisers-staff-and-researchers-recognized-by-the-statler-college"
+  - year: 2026
+    title: "WVUniverse public talk on backyard radio astronomy"
+    outlet: "WVU Physics & Astronomy and WVU Planetarium, on Instagram"
+    url: "https://www.instagram.com/p/DWgnpmiDUYF/"
+  - year: 2025
+    title: "WVU engineers recalibrate radio telescopes to illuminate dark energy"
+    outlet: "WVU, via EurekAlert"
+    url: "https://www.eurekalert.org/news-releases/1102434"
+  - year: 2023
+    title: "WVU researchers aim to cut through radio interference that obscures signal detection"
+    outlet: "WVU Today"
+    url: "https://wvutoday.wvu.edu/stories/2023/11/27/wvu-researchers-aim-to-cut-through-radio-interference-that-obscures-signal-detection"
+  - year: 2022
+    title: "WVU researchers on team that detected strange cosmic 'heartbeat'"
+    outlet: "Statler College News — coverage of the paper since retracted (see Publications)"
+    url: "https://media.statler.wvu.edu/news/2022/07/19/wvu-researchers-on-team-that-detected-strange-cosmic-heartbeat"
+  - year: 2022
+    title: "WVU Center for Gravitational Waves and Cosmology faculty on international team to receive the Honorary 2022 Berkeley Prize"
+    outlet: "EurekAlert"
+    url: "https://www.eurekalert.org/news-releases/942138"
+  - year: 2021
+    title: "CHIME telescope and collaborative efforts from WVU lead to the detection of more than 500 fast radio bursts"
+    outlet: "WVU Today"
+    url: "https://wvutoday.wvu.edu/stories/2021/06/09/chime-telescope-and-collaborative-efforts-from-wvu-lead-to-the-detection-of-more-than-500-fast-radio-bursts"
+  - year: 2021
+    title: "Bandura to start a new National Science Foundation project"
+    outlet: "Statler College News"
+    url: "https://media.statler.wvu.edu/news/2021/12/08/bandura-to-start-a-new-national-science-foundation-project"
+  - year: 2021
+    title: "Bandura's work on detection of radio bursts within the Milky Way galaxy detailed in study published by Nature"
+    outlet: "Statler College News"
+    url: "https://media.statler.wvu.edu/news/2021/01/12/bandura-s-work-on-detection-of-radio-bursts-within-the-milky-way-galaxy-detailed-in-study-published-by-nature"
+  - year: 2020
+    title: "Unraveling the mysteries of the cosmos: new telescope at Green Bank Observatory will improve localization of fast radio bursts"
+    outlet: "WVU Today"
+    url: "https://wvutoday.wvu.edu/stories/2020/11/06/unraveling-the-mysteries-of-the-cosmos-new-telescope-at-green-bank-observatory-will-improve-localization-of-fast-radio-bursts"
+  - year: 2020
+    title: "New telescope in works at Green Bank to detect, map fast radio bursts"
+    outlet: "Charleston Gazette-Mail"
+    url: "https://www.wvgazettemail.com/news/new-telescope-in-works-at-green-bank-to-detect-map-fast-radio-bursts/article_0922d95a-1cc1-5a23-800d-41fca9e3fe92.html"
+  - year: 2020
+    title: "WVU researcher to tackle the mysteries of dark energy and the universe beyond"
+    outlet: "WVU Today"
+    url: "https://wvutoday.wvu.edu/stories/2020/09/30/wvu-researcher-to-tackle-the-mysteries-of-dark-energy-and-the-universe-beyond"
+  - year: 2020
+    title: "In a nearby galaxy, a fast radio burst unravels more questions than answers"
+    outlet: "WVU Today"
+    url: "https://wvutoday.wvu.edu/stories/2020/01/06/in-a-nearby-galaxy-a-fast-radio-burst-unravels-more-questions-than-answers"
+  - year: 2019
+    title: "WVU professor's work on detection of fast radio bursts detailed in Nature"
+    outlet: "WVU Today"
+    url: "https://wvutoday.wvu.edu/stories/2019/01/09/wvu-professor-s-work-on-detection-of-fast-radio-bursts-detailed-in-nature"
+  - year: 2017
+    title: "WVU professor plays key role in telescope program that will map the history of the universe"
+    outlet: "Newswise"
+    url: "https://www.newswise.com/articles/wvu-professor-plays-key-role-in-telescope-program-that-will-map-the-history-of-the-universe"
+  - year: 2016
+    title: "Engineering professors to utilize Green Bank telescope in K-12 teacher research experience"
+    outlet: "Statler College News"
+    url: "https://media.statler.wvu.edu/news/2016/09/08/engineering-professors-to-utilize-green-bank-telescope-in-k-12-teacher-research-experience"
+
+education:
+  - degree: "Ph.D., Physics"
+    school: "Carnegie Mellon University"
+    year: 2011
+    thesis: "Pathfinder for a Neutral Hydrogen Dark Energy Survey"
+    thesis_url: "/pdf/kbandura_phd_thesis.pdf"   # hosted here; advised by Jeff Peterson
+    advisor: "Jeff Peterson"
+  - degree: "B.S., Physics and Psychology"
+    school: "Carnegie Mellon University"
+    year: 2003
+
+appointments:
+  - role: "Associate Professor"
+    org: "Lane Department of Computer Science and Electrical Engineering, West Virginia University"
+    years: "2021–present"
+  - role: "Adjunct Assistant Professor"
+    org: "Department of Physics and Astronomy, West Virginia University"
+    years: "2015–present"   # confirmed by Kevin: adjunct in astro since he started
+  - role: "Member"
+    org: "Center for Gravitational Waves and Cosmology, West Virginia University"
+    years: ""
+    review: add the membership start year if Kevin wants it shown — his paper
+      affiliations carry the center by 2016–2018
+  - role: "Assistant Professor"
+    org: "Lane Department of Computer Science and Electrical Engineering, West Virginia University"
+    years: "2015–2021"
+  - role: "Postdoctoral Fellow"
+    org: "Department of Physics, McGill University"
+    years: "2011–2015"
+
+honors:
+  - year: 2026
+    title: "Outstanding Researcher, senior level (2025–26)"
+    by: "Statler College of Engineering and Mineral Resources, West Virginia University"
+    url: "https://media.statler.wvu.edu/news/2026/04/06/wvu-outstanding-educators-advisers-staff-and-researchers-recognized-by-the-statler-college"
+  - year: 2023
+    title: "Outstanding Researcher, senior level (2022–23)"
+    by: "Statler College of Engineering and Mineral Resources, West Virginia University"
+    url: "https://media.statler.wvu.edu/news/2023/03/31/teaching-advising-research-and-staff-awards-announced-at-wvu-s-statler-college"
+  - year: 2022
+    title: "Lancelot M. Berkeley – New York Community Trust Prize for Meritorious Work in Astronomy, awarded to the CHIME/FRB team"
+    by: "American Astronomical Society"
+    url: "https://www.eurekalert.org/news-releases/942138"
+
+# NSF public records; `amount` is the obligated total to date on the award page.
+funding:
+  - title: "Mapping the Universe in Neutral Hydrogen with CHIME"
+    agency: "NSF"
+    id: "2510773"
+    role: "PI"
+    years: "2025–2028"
+    amount: "$281,080"
+  - title: "Collaborative Research: Advanced Digital Calibrators for 21cm Cosmology"
+    agency: "NSF"
+    id: "2511256"
+    role: "PI"
+    years: "2025–2028"
+    amount: "$321,340"
+  - title: "Collaborative Research: New Interference Detection, Mitigation, and Fusion Methodologies"
+    agency: "NSF"
+    id: "2307581"
+    role: "Co-PI (PI N. Schmid, with D. Lorimer)"
+    years: "2023–2027"
+    amount: "$510,811"
+  - title: "Collaborative Research: Advanced Digital Calibrators for 21cm Cosmology"
+    agency: "NSF"
+    id: "2108338"
+    role: "PI"
+    years: "2021–2026"
+    amount: "$233,044"
+  - title: "MRI: Development of a CHIME Outrigger Telescope"
+    agency: "NSF"
+    id: "2018490"
+    role: "PI (co-PIs J. Peterson, K. Masui)"
+    years: "2020–2026"
+    amount: "$1,762,469"
+  - title: "Collaborative Research: Cosmology with CHIME"
+    agency: "NSF"
+    id: "2006548"
+    role: "PI"
+    years: "2020–2024"
+    amount: "$242,120"
+  - title: "RET Site: Digital Signal Processing in Radio Astronomy (DSPIRA)"
+    agency: "NSF"
+    id: "1611114"
+    role: "Co-PI (PI N. Schmid)"
+    years: "2017–2021"
+    amount: "$577,815"
+
+teaching:
+  - "EE 221 — Introduction to Electrical Engineering"
+  - "EE 345 — Engineering Electromagnetics"
+  - "EE 564 — Digital Signal Processing for Radio Astronomy"
+
+memberships:
+  # APS/AAS/ASEE from the 2016 CV; IEEE confirmed by Kevin (Aug 2026).
+  items:
+    - "IEEE"
+    - "American Physical Society"
+    - "American Astronomical Society"
+    - "American Society for Engineering Education"
+
+# Earlier invited talks and posters, as listed on the 2016 CV. Recent talks
+# have not been compiled yet — add them above the older ones as they come in.
+# ---------------------------------------------------------------------------
+# Thesis & dissertation committee service — member only, not chair; his own
+# students are the Graduated list on the page. This set came from Kevin's
+# records (Aug 2026), each verified against its WVU Research Repository page.
+# The repository's search does not index committee fields, so new ones must be
+# added here by hand.
+committees:
+  - name: "Evan T. Smith"
+    degree: "Ph.D., Physics & Astronomy"
+    year: 2022
+    title: "Impact of Radio Frequency Interference and Real-Time Spectral Kurtosis Mitigation"
+    url: "https://researchrepository.wvu.edu/etd/11467/"
+    chair: "D.J. Pisano"
+  - name: "Morgan R. Dameron"
+    degree: "M.S., Lane Dept. of CSEE"
+    year: 2022
+    title: "Inferential Statistics and Information Theoretical Measures: An Approach to Interference Detection in Radio Astronomy"
+    url: "https://researchrepository.wvu.edu/etd/11205/"
+    chair: "Natalia Schmid"
+  - name: "Brent J. Shapiro-Albert"
+    degree: "Ph.D., Physics & Astronomy"
+    year: 2021
+    title: "Pulsar Noise Processes and Emission Physics"
+    url: "https://researchrepository.wvu.edu/etd/8060/"
+    chair: "Maura McLaughlin"
+  - name: "Marwan M. Alkhweldi"
+    degree: "Ph.D., Lane Dept. of CSEE"
+    year: 2021
+    title: "Transform Based Approaches for the Detection of Astrophysical Signals"
+    url: "https://researchrepository.wvu.edu/etd/8302/"
+    chair: "Natalia A. Schmid"
+  - name: "Nickolas M. Pingel"
+    degree: "Ph.D., Physics & Astronomy"
+    year: 2017
+    title: "Deep Extragalactic Neutral Hydrogen Surveys with the Green Bank Telescope"
+    url: "https://researchrepository.wvu.edu/etd/7228/"
+    chair: "D.J. Pisano"
+
+presentations:
+  - "WVUniverse public talk, WVU Planetarium — backyard radio astronomy — 2026"
+  - "APS Mid-Atlantic Section Meeting (poster) — 2015"
+  - "SPIE Astronomical Telescopes + Instrumentation, Montreal — 2014"
+  - "URSI, Boulder, Colorado — 2014"
+  - "Interferometric Techniques for Impulsive Signals at Radio/Microwave Frequencies, Ohio State University — 2013"
+  - "Intensity Mapping Workshop, Oxford — 2012"
+  - "AAS Meeting, Boston (poster) — 2011"
+  - "Great Lakes Cosmology Workshop (poster) — 2009"
+  - "Sackler 21 cm Cosmology Conference, Harvard (poster) — 2008"
+
+# ---------------------------------------------------------------------------
+# White papers and community reports. Excluded from the lab publication list
+# by its scope note; a CV lists them. Newest first.
+white_papers:
+  - year: 2019
+    title: "LRP 2020 Whitepaper: The Canadian Hydrogen Observatory and Radio-transient Detector (CHORD)"
+    authors: "K. Vanderlinde, K. Bandura, L. Belostotski, R. Bond, P. Boyle, et al."
+    venue: "Canadian Long Range Plan (LRP2020) white paper"
+    arxiv: '1911.01777'
+  - year: 2019
+    title: "Packed Ultra-wideband Mapping Array (PUMA): A Radio Telescope for Cosmology and Transients"
+    authors: "K. Bandura, E. Castorina, L. Connor, et al."
+    venue: "Astro2020 Decadal Survey project white paper"
+    arxiv: '1907.12559'
+  - year: 2019
+    title: "Research and Development for HI Intensity Mapping"
+    authors: "P. Timbie et al., incl. K. Bandura"
+    venue: "Astro2020 Decadal Survey APC white paper"
+    arxiv: '1907.13090'
+  - year: 2018
+    title: "Inflation and Early Dark Energy with a Stage II Hydrogen Intensity Mapping Experiment"
+    authors: "Cosmic Visions 21 cm Collaboration (R. Ansari, E. J. Arena, K. Bandura, et al.)"
+    venue: "Cosmic Visions Dark Energy report"
+    arxiv: '1810.09572'
+  - year: 2009
+    title: "21-cm Intensity Mapping"
+    authors: "J. B. Peterson et al., incl. K. Bandura"
+    venue: "Astro2010 Decadal Survey white paper"
+    arxiv: '0902.3091'
+    review: confirm author order — Peterson-first not yet verified
+
+# ---------------------------------------------------------------------------
+# Before WVU (2006–2016): the CMU and McGill years. The lab publication list
+# deliberately excludes these (see the scope note in publications.yml); the CV
+# is where they live. Compiled from the 2016 CV PDF and INSPIRE-HEP. Newest
+# first.
+pre_wvu_publications:
+  - year: 2016
+    title: "ICE: A Scalable, Low-cost FPGA-Based Telescope Signal Processing and Networking System"
+    authors: "K. Bandura, A. N. Bender, J. F. Cliche, T. de Haan, M. A. Dobbs, et al."
+    venue: "Journal of Astronomical Instrumentation"
+    ref: "JAI 5"
+    doi: 10.1142/S2251171716410051
+    arxiv: '1608.06262'
+  - year: 2016
+    title: "ICE-Based Custom Full-Mesh Network for the CHIME High Bandwidth Radio Astronomy Correlator"
+    authors: "K. Bandura, J. F. Cliche, M. A. Dobbs, A. J. Gilbert, D. Ittah, J. Mena-Parra, G. Smecher"
+    venue: "Journal of Astronomical Instrumentation"
+    ref: "JAI 5"
+    doi: 10.1142/S225117171641004X
+    arxiv: '1608.04347'
+  - year: 2015
+    title: "GPU Kernels for High-Speed 4-Bit Astrophysical Data Processing"
+    authors: "P. Klages, K. Bandura, N. Denman, A. Recnik, J. Sievers, K. Vanderlinde"
+    venue: "2015 IEEE 26th Int. Conf. on Application-specific Systems, Architectures and Processors (ASAP)"
+    ref: "pp. 164–165"
+    doi: 10.1109/ASAP.2015.7245729
+  - year: 2015
+    title: "A GPU-based Correlator X-engine Implemented on the CHIME Pathfinder"
+    authors: "N. Denman et al., incl. K. Bandura"
+    venue: "2015 IEEE 26th Int. Conf. on Application-specific Systems, Architectures and Processors (ASAP)"
+    ref: "pp. 35–40"
+    doi: 10.1109/ASAP.2015.7245702
+  - year: 2015
+    title: "An Efficient Real-time Data Pipeline for the CHIME Pathfinder Radio Telescope X-engine"
+    authors: "A. Recnik et al., incl. K. Bandura"
+    venue: "2015 IEEE 26th Int. Conf. on Application-specific Systems, Architectures and Processors (ASAP)"
+    ref: "pp. 57–61"
+    doi: 10.1109/ASAP.2015.7245705
+  - year: 2014
+    title: "The Performance of the Bolometer Array and Readout System during the 2012/2013 Flight of the E and B Experiment (EBEX)"
+    authors: "EBEX Collaboration, incl. K. Bandura"
+    venue: "Proc. SPIE 9153, Millimeter, Submillimeter, and Far-Infrared Detectors and Instrumentation for Astronomy VII"
+    doi: 10.1117/12.2056267
+    arxiv: '1407.6894'
+  - year: 2014
+    title: "Canadian Hydrogen Intensity Mapping Experiment (CHIME) Pathfinder"
+    authors: "K. Bandura et al."
+    venue: "Proc. SPIE 9145, Ground-based and Airborne Telescopes V"
+    ref: "914522"
+    arxiv: '1406.2288'
+  - year: 2014
+    title: "Calibrating CHIME: A New Radio Interferometer to Probe Dark Energy"
+    authors: "L. B. Newburgh et al., incl. K. Bandura"
+    venue: "Proc. SPIE 9145, Ground-based and Airborne Telescopes V"
+    arxiv: '1406.2267'
+  - year: 2013
+    title: "A Radio-Frequency-over-Fiber Link for Large-Array Radio Astronomy Applications"
+    authors: "J. Mena-Parra, K. Bandura, J.-F. Cliche, M. A. Dobbs, A. Gilbert, Q. Y. Tang"
+    venue: "Journal of Instrumentation"
+    ref: "JINST 8, T10003"
+    arxiv: '1308.5481'
+  - year: 2013
+    title: "A Simulation-calibrated Limit on the HI Power Spectrum from the GMRT Epoch of Reionization Experiment"
+    authors: "G. Paciga, J. G. Albert, K. Bandura, et al."
+    venue: "Monthly Notices of the Royal Astronomical Society"
+    ref: "MNRAS 433, 639"
+    arxiv: '1301.5906'
+  - year: 2013
+    title: "Determination of z ≈ 0.8 Neutral Hydrogen Fluctuations Using the 21 cm Intensity Mapping Autocorrelation"
+    authors: "E. R. Switzer, K. W. Masui, K. Bandura, et al."
+    venue: "Monthly Notices of the Royal Astronomical Society: Letters"
+    ref: "MNRAS 434, L46"
+    doi: 10.1093/mnrasl/slt074
+    arxiv: '1304.3712'
+  - year: 2013
+    title: "Measurement of 21 cm Brightness Fluctuations at z ≈ 0.8 in Cross-correlation"
+    authors: "K. W. Masui, E. R. Switzer, N. Banavar, K. Bandura, et al."
+    venue: "The Astrophysical Journal Letters"
+    ref: "ApJL 763, L20"
+    arxiv: '1208.0331'
+  - year: 2010
+    title: "An Intensity Map of Hydrogen 21-cm Emission at Redshift z ≈ 0.8"
+    authors: "T.-C. Chang, U.-L. Pen, K. Bandura, J. B. Peterson"
+    venue: "Nature"
+    ref: "Nature 466, 463"
+    doi: 10.1038/nature09187
+  - year: 2008
+    title: "The GMRT Search for Reionization: The Evolution of Galaxies Through the Neutral Hydrogen Window"
+    authors: "U.-L. Pen, T.-C. Chang, J. B. Peterson, J. Roy, Y. Gupta, K. Bandura"
+    venue: "AIP Conference Proceedings"
+    ref: "AIP Conf. Proc. 1035, 75"
+    doi: 10.1063/1.2973618
+  - year: 2006
+    title: "The Hubble Sphere Hydrogen Survey"
+    authors: "J. B. Peterson, K. Bandura, U.-L. Pen"
+    venue: "arXiv preprint"
+    arxiv: 'astro-ph/0606104'
+    preprint: true
+
+# ---------------------------------------------------------------------------
+# Listed on the CV under its own clearly-marked heading, per an editorial
+# decision in Aug 2026 (Dylan): a complete CV that silently omitted it would
+# read worse to anyone cross-checking Google Scholar than one that marks it.
+# The lab publication pages still exclude it — see the note in
+# publications.yml, which stays authoritative for the lab lists.
+retracted:
+  - year: 2022
+    title: "Sub-second periodicity in a fast radio burst"
+    authors: "CHIME/FRB Collaboration, incl. K. Bandura"
+    venue: "Nature"
+    ref: "Nature 607, 256"
+    doi: 10.1038/s41586-022-04841-8
+    people:
+    - K. Bandura
+    - P. Sanghavi
+    - J. Kania
+    note: "Retracted 23 June 2026 (retraction notice: doi 10.1038/s41586-026-10799-8). An unusual calibration problem left CHIME's digital beams incorrectly pointed when FRB 20191221A was detected; the reported periodicity was the known Galactic pulsar PSR J0248+6021."
