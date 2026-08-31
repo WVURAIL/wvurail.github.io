@@ -38,14 +38,14 @@ description: >
             paper after paper.
          </p>
       </div>
-      <div class="alumni-list">
+      <ul class="alumni-list">
          {%- for f in inst.featured %}
-         <div class="alumni-row">
+         <li class="alumni-row">
             <span class="alumni-name"><a href="{{ f.url }}">{{ f.name }}</a></span>
             <span class="alumni-title">{{ f.note | strip_newlines | strip }}</span>
-         </div>
+         </li>
          {%- endfor %}
-      </div>
+      </ul>
    </div>
 </section>
 

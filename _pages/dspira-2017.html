@@ -151,8 +151,20 @@ roster_intro: >
             <figcaption>Measuring the noise figure, in the RF room at WVU.</figcaption>
          </figure>
          <figure class="figure">
-            <img src="/images/dspira/timelapse.gif" alt="Time-lapse of a horn antenna undergoing measurement in the laboratory"
-                 width="480" height="270" loading="lazy" decoding="async" />
+            {%- comment %}
+            An animated GIF cannot be paused, which fails WCAG 2.2.2 for motion
+            that starts on its own and runs past five seconds. Held behind a
+            button so the motion is user-initiated; this also keeps 2 MB off the
+            page until it is asked for. Without JS the noscript copy still shows
+            the frames.
+            {% endcomment -%}
+            <div class="gif-player" data-gif="/images/dspira/timelapse.gif"
+                 data-alt="Time-lapse of a horn antenna undergoing measurement in the laboratory">
+               <noscript>
+                  <img src="/images/dspira/timelapse.gif" alt="Time-lapse of a horn antenna undergoing measurement in the laboratory"
+                       width="480" height="270" loading="lazy" decoding="async" />
+               </noscript>
+            </div>
             <figcaption>Hot&ndash;cold measurements, to get the system temperature of the horn.</figcaption>
          </figure>
       </div>

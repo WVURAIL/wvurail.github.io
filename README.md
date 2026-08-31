@@ -43,13 +43,13 @@ code.
 | `_data/education.yml` | **Science education** — the DSPIRA section on the home page. |
 | `_data/publications.yml` | **Papers.** Hand-curated; see the comments at the top of the file. |
 | `_includes/` | Reusable pieces: `head`, `header`, `footer`, `scripts`, `icon`, plus the page sections `sites`, `publications-preview`, `education`, `people`, `join` and the `person-card` / `publication` item templates. |
-| `_layouts/` | Page shells: `default` (standard page), `home` (landing page), `page` (alias of default). |
+| `_layouts/` | Page shells: `default` (standard page), `home` (landing page), `cohort` (a DSPIRA cohort archive). |
 | `_pages/` | Individual pages (Research & Telescopes, Publications, People, Contact, DSPIRA program pages, talks). |
-| `apps/` | Small standalone web tools (sidereal-time clock, coordinate converter). |
+| `tools/` | Small standalone web tools (sidereal-time clock, coordinate converter). `/apps/` still redirects here. |
 | `assets/css/site.css` | **The entire stylesheet.** Organized into numbered sections; start there. |
 | `assets/js/site.js` | Sticky header, mobile nav, hero canvas, scroll reveals, gallery lightbox. |
 | `assets/fonts/` | Self-hosted woff2 (Instrument Serif, Inter, JetBrains Mono). All three are SIL OFL 1.1; the notices and licence are in `assets/fonts/OFL.txt` and have to stay with the files. |
-| `images/`, `pdf/` | Media. |
+| `images/` | Media. PDFs are not hosted here: link the canonical record (DOI, ADS, or the WVU Research Repository) instead — an untagged PDF will not pass an accessibility review. |
 
 ## Common edits
 

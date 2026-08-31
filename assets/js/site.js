@@ -219,6 +219,33 @@
       start();
    }
 
+   /* --- Click-to-play GIFs ---------------------------------------------- */
+   // An animated GIF starts itself and cannot be paused, so it is held behind a
+   // button (WCAG 2.2.2). Built here rather than in the markup so that with JS
+   // off the <noscript> image is what renders.
+   [].slice.call(document.querySelectorAll(".gif-player")).forEach(function (host) {
+      var src = host.getAttribute("data-gif");
+      var alt = host.getAttribute("data-alt") || "";
+      if (!src) return;
+
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "gif-play";
+      btn.innerHTML = 'Play time-lapse <span class="gif-meta">GIF &middot; 2 MB</span>';
+      btn.setAttribute("aria-label", "Play time-lapse: " + alt);
+
+      btn.addEventListener("click", function () {
+         var img = new Image();
+         img.src = src;
+         img.alt = alt;
+         img.width = 480;
+         img.height = 270;
+         host.replaceChildren(img);
+      });
+
+      host.replaceChildren(btn);
+   });
+
    /* --- Publications filter --------------------------------------------- */
    var search = document.getElementById("pub-search");
    if (search) {

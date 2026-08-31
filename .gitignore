@@ -7,6 +7,10 @@ _site/
 # Ruby / Bundler
 vendor/
 .bundle/
+# Written by .github/workflows/build.yml, and by hand for a local build against
+# the same gems Pages runs. Never committed: a stale copy would shadow CI's.
+Gemfile.ci
+Gemfile.ci.lock
 
 # OS / editor cruft
 .DS_Store

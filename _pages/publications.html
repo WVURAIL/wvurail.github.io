@@ -60,7 +60,7 @@ description: Journal articles, conference proceedings, and preprints from the WV
          </h3>
          <ul class="pub-list">
             {%- for pub in journals %}
-            {%- if pub.year == year %}{% include publication.html pub=pub %}{% endif %}
+            {%- if pub.year == year %}{% include publication.html pub=pub heading_level=4 %}{% endif %}
             {%- endfor %}
          </ul>
       </div>
@@ -90,7 +90,7 @@ description: Journal articles, conference proceedings, and preprints from the WV
          </h3>
          <ul class="pub-list">
             {%- for pub in proceedings %}
-            {%- if pub.year == year %}{% include publication.html pub=pub %}{% endif %}
+            {%- if pub.year == year %}{% include publication.html pub=pub heading_level=4 %}{% endif %}
             {%- endfor %}
          </ul>
       </div>

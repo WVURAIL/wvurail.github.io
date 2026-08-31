@@ -128,7 +128,12 @@ education:
     school: "Carnegie Mellon University"
     year: 2011
     thesis: "Pathfinder for a Neutral Hydrogen Dark Energy Survey"
-    thesis_url: "/pdf/kbandura_phd_thesis.pdf"   # hosted here; advised by Jeff Peterson
+    # Linked, not hosted. The local copy was a 12.9 MB PDF with no tags, no
+    # structure tree and no document language, which WVU's accessibility review
+    # would reject outright -- and their guidance is to link a canonical record
+    # rather than serve a PDF at all. Same pattern _data/people.yml already uses
+    # for every student thesis.
+    thesis_url: "https://ui.adsabs.harvard.edu/abs/2011PhDT.......158B/abstract"
     advisor: "Jeff Peterson"
   - degree: "B.S., Physics and Psychology"
     school: "Carnegie Mellon University"

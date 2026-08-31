@@ -64,7 +64,7 @@ description: How to reach the WVU Radio Astronomy Instrumentation Lab — email,
                pull requests are usually the quickest route.
             </p>
             <a class="btn" href="https://github.com/WVURAIL">
-               {% include icon.html name="github" %} github.com/WVURAIL
+               {% include icon.html name="github" %} RAIL code on GitHub
             </a>
             <p class="contact-card-who">Open an issue on the relevant repository</p>
          </div>

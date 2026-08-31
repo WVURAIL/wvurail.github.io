@@ -233,9 +233,6 @@ outputs:
     venue: 2019 IEEE Integrated STEM Education Conference (ISEC)
     doi: "10.1109/ISECon.2019.8882039"
     note: Two of the four authors are DSPIRA teachers.
-    extra:
-      text: Conference presentation (PDF)
-      url: /pdf/isec.pdf
 
   - title: Open Source Radio Telescopes
     authors: "J. Makous"

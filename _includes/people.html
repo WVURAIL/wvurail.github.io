@@ -51,7 +51,12 @@
       version GitHub Pages runs is not worth betting the build on.
       {%- endcomment %}
       {%- assign n_grad = site.data.people.grad.size | default: 0 -%}
-      {%- assign n_students = site.data.people.students.size | default: 0 -%}
+      {%- comment %}
+      The "This could be you" card carries open: true. It is a recruitment slot,
+      not a person, so it must not be counted as one.
+      {% endcomment -%}
+      {%- assign open_slots = site.data.people.students | where: "open", true -%}
+      {%- assign n_students = site.data.people.students.size | default: 0 | minus: open_slots.size -%}
       {%- assign n_researchers = n_grad | plus: n_students -%}
       {%- if n_researchers > 0 %}
       <div class="people-block reveal">
@@ -70,9 +75,9 @@
          <h2 class="people-block-title">
             Alumni <span class="count">{{ site.data.people.alumni.size }}</span>
          </h2>
-         <div class="alumni-list">
+         <ul class="alumni-list">
             {%- for person in site.data.people.alumni %}
-            <div class="alumni-row">
+            <li class="alumni-row">
                <span class="alumni-name">{{ person.name }}</span>
                <span class="alumni-degree">
                   {{- person.publication.label | default: "Alumna/us" -}}
@@ -84,9 +89,9 @@
                   {%- endif %}
                   {%- if person.now %}<br /><em>Now: {{ person.now }}</em>{% endif %}
                </span>
-            </div>
+            </li>
             {%- endfor %}
-         </div>
+         </ul>
       </div>
       {%- endif %}
       {%- endif %}

@@ -10,7 +10,13 @@
          {%- if pub.cover_note %}<span class="pub-cover-note">{{ pub.cover_note }}</span>{% endif %}
       </p>
       {%- endif %}
-      <h3 class="pub-title">
+      {%- comment %}
+      Callers that render papers beneath an h3 year or category band pass
+      heading_level=4, so each paper is a child of its band rather than a
+      sibling of it. Same shape as person-card.html.
+      {% endcomment -%}
+      {%- assign hl = include.heading_level | default: 3 -%}
+      {%- if hl == 4 %}<h4 class="pub-title">{% else %}<h3 class="pub-title">{% endif %}
          {%- if pub.doi -%}
          <a href="https://doi.org/{{ pub.doi }}">{{ pub.title }}</a>
          {%- elsif pub.url -%}
@@ -20,7 +26,7 @@
          {%- else -%}
          {{ pub.title }}
          {%- endif -%}
-      </h3>
+      {%- if hl == 4 %}</h4>{% else %}</h3>{% endif %}
       <p class="pub-authors">{{ pub.authors }}</p>
       {%- if pub.venue or pub.ref %}
       <p class="pub-venue">

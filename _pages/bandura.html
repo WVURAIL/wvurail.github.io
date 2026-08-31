@@ -76,9 +76,9 @@ Everything else comes from _data/cv.yml.
    <div class="container">
       <div class="people-block">
          <h2 class="people-block-title">Education</h2>
-         <div class="alumni-list">
+         <ul class="alumni-list">
             {%- for e in cv.education %}
-            <div class="alumni-row">
+            <li class="alumni-row">
                <span class="alumni-name">{{ e.degree }}</span>
                <span class="alumni-degree">{{ e.year }}</span>
                <span class="alumni-title">
@@ -88,21 +88,21 @@ Everything else comes from _data/cv.yml.
                   {%- if e.advisor %} (advisor: {{ e.advisor }}){% endif %}
                   {%- endif -%}
                </span>
-            </div>
+            </li>
             {%- endfor %}
-         </div>
+         </ul>
       </div>
       <div class="people-block" id="appointments">
          <h2 class="people-block-title">Appointments</h2>
-         <div class="alumni-list">
+         <ul class="alumni-list">
             {%- for a in cv.appointments %}
-            <div class="alumni-row">
+            <li class="alumni-row">
                <span class="alumni-name">{{ a.role }}</span>
                <span class="alumni-degree">{{ a.years }}</span>
                <span class="alumni-title">{{ a.org }}</span>
-            </div>
+            </li>
             {%- endfor %}
-         </div>
+         </ul>
       </div>
    </div>
 </section>
@@ -112,15 +112,15 @@ Everything else comes from _data/cv.yml.
    <div class="container">
       <div class="people-block">
          <h2 class="people-block-title">Honors &amp; awards</h2>
-         <div class="alumni-list">
+         <ul class="alumni-list">
             {%- for h in cv.honors %}
-            <div class="alumni-row">
+            <li class="alumni-row">
                <span class="alumni-name">{{ h.title }}</span>
                <span class="alumni-degree">{{ h.year }}</span>
                <span class="alumni-title"><a href="{{ h.url }}">{{ h.by }}</a></span>
-            </div>
+            </li>
             {%- endfor %}
-         </div>
+         </ul>
       </div>
    </div>
 </section>
@@ -138,17 +138,17 @@ Everything else comes from _data/cv.yml.
             links to its page in the NSF award search.
          </p>
       </div>
-      <div class="alumni-list">
+      <ul class="alumni-list">
          {%- for g in cv.funding %}
-         <div class="alumni-row">
+         <li class="alumni-row">
             <span class="alumni-name">
                <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID={{ g.id }}">{{ g.title }}</a>
             </span>
             <span class="alumni-degree">{{ g.years }} &middot; {{ g.amount }}</span>
             <span class="alumni-title">{{ g.agency }} {{ g.id }} &middot; {{ g.role }}</span>
-         </div>
+         </li>
          {%- endfor %}
-      </div>
+      </ul>
    </div>
 </section>
 
@@ -171,14 +171,14 @@ Everything else comes from _data/cv.yml.
       <div class="people-block">
          <h3 class="people-block-title">Journal articles <span class="count">{{ my_journal.size }}</span></h3>
          <ul class="pub-list">
-            {%- for pub in my_journal %}{% include publication.html pub=pub %}{% endfor %}
+            {%- for pub in my_journal %}{% include publication.html pub=pub heading_level=4 %}{% endfor %}
          </ul>
       </div>
 
       <div class="people-block">
          <h3 class="people-block-title">Conference proceedings <span class="count">{{ my_proc.size }}</span></h3>
          <ul class="pub-list">
-            {%- for pub in my_proc %}{% include publication.html pub=pub %}{% endfor %}
+            {%- for pub in my_proc %}{% include publication.html pub=pub heading_level=4 %}{% endfor %}
          </ul>
       </div>
 
@@ -186,8 +186,8 @@ Everything else comes from _data/cv.yml.
       <div class="people-block">
          <h3 class="people-block-title">Research notes &amp; preprints <span class="count">{{ n_unref }}</span></h3>
          <ul class="pub-list">
-            {%- for pub in my_notes %}{% include publication.html pub=pub %}{% endfor %}
-            {%- for pub in my_preprints %}{% include publication.html pub=pub %}{% endfor %}
+            {%- for pub in my_notes %}{% include publication.html pub=pub heading_level=4 %}{% endfor %}
+            {%- for pub in my_preprints %}{% include publication.html pub=pub heading_level=4 %}{% endfor %}
          </ul>
       </div>
       {%- endif %}
@@ -199,7 +199,7 @@ Everything else comes from _data/cv.yml.
             at the GBT and GMRT, the CHIME Pathfinder, and the ICE correlator hardware.
          </p>
          <ul class="pub-list">
-            {%- for pub in cv.pre_wvu_publications %}{% include publication.html pub=pub %}{% endfor %}
+            {%- for pub in cv.pre_wvu_publications %}{% include publication.html pub=pub heading_level=4 %}{% endfor %}
          </ul>
       </div>
 
@@ -211,7 +211,7 @@ Everything else comes from _data/cv.yml.
             retraction notice.
          </p>
          <ul class="pub-list">
-            {%- for pub in cv.retracted %}{% include publication.html pub=pub %}{% endfor %}
+            {%- for pub in cv.retracted %}{% include publication.html pub=pub heading_level=4 %}{% endfor %}
          </ul>
       </div>
       {%- endif %}
@@ -242,15 +242,15 @@ Everything else comes from _data/cv.yml.
    <div class="container">
       <div class="people-block">
          <h2 class="people-block-title">Teaching</h2>
-         <div class="alumni-list">
+         <ul class="alumni-list">
             {%- for course in cv.teaching %}
-            <div class="alumni-row">
+            <li class="alumni-row">
                <span class="alumni-name">{{ course }}</span>
                <span class="alumni-degree">WVU</span>
                <span class="alumni-title"></span>
-            </div>
+            </li>
             {%- endfor %}
-         </div>
+         </ul>
          <p class="pub-band-note">
             Course syllabi:
             <a href="https://researchrepository.wvu.edu/wvu_syllabi/5918/">EE 221 (Fall 2018)</a> &middot;
@@ -277,23 +277,23 @@ Everything else comes from _data/cv.yml.
       {%- if site.data.people.grad and site.data.people.grad.size > 0 %}
       <div class="people-block">
          <h3 class="people-block-title">Current</h3>
-         <div class="alumni-list">
+         <ul class="alumni-list">
             {%- for person in site.data.people.grad %}
-            <div class="alumni-row">
+            <li class="alumni-row">
                <span class="alumni-name">{{ person.name }}</span>
                <span class="alumni-degree">{{ person.roles | first }}</span>
                <span class="alumni-title">{{ person.bio | strip_newlines | strip }}</span>
-            </div>
+            </li>
             {%- endfor %}
-         </div>
+         </ul>
       </div>
       {%- endif %}
       {%- if site.data.people.alumni and site.data.people.alumni.size > 0 %}
       <div class="people-block">
          <h3 class="people-block-title">Graduated <span class="count">{{ site.data.people.alumni.size }}</span></h3>
-         <div class="alumni-list">
+         <ul class="alumni-list">
             {%- for person in site.data.people.alumni %}
-            <div class="alumni-row">
+            <li class="alumni-row">
                <span class="alumni-name">{{ person.name }}</span>
                <span class="alumni-degree">
                   {{- person.publication.label | default: "Alumna/us" -}}
@@ -305,9 +305,9 @@ Everything else comes from _data/cv.yml.
                   {%- endif %}
                   {%- if person.now %}<br /><em>Now: {{ person.now }}</em>{% endif %}
                </span>
-            </div>
+            </li>
             {%- endfor %}
-         </div>
+         </ul>
       </div>
       {%- endif %}
       {%- if cv.committees and cv.committees.size > 0 %}
@@ -317,15 +317,15 @@ Everything else comes from _data/cv.yml.
             Graduate committees served on across Physics &amp; Astronomy and the
             Lane Department, beyond his own students above.
          </p>
-         <div class="alumni-list">
+         <ul class="alumni-list">
             {%- for c in cv.committees %}
-            <div class="alumni-row">
+            <li class="alumni-row">
                <span class="alumni-name">{{ c.name }}</span>
                <span class="alumni-degree">{{ c.degree }}{% if c.year %} &middot; {{ c.year }}{% endif %}</span>
                <span class="alumni-title"><a href="{{ c.url }}">{{ c.title }}</a></span>
-            </div>
+            </li>
             {%- endfor %}
-         </div>
+         </ul>
       </div>
       {%- endif %}
    </div>
@@ -336,30 +336,30 @@ Everything else comes from _data/cv.yml.
    <div class="container">
       <div class="people-block">
          <h2 class="people-block-title">Professional memberships</h2>
-         <div class="alumni-list">
+         <ul class="alumni-list">
             {%- for m in cv.memberships.items %}
-            <div class="alumni-row">
+            <li class="alumni-row">
                <span class="alumni-name">{{ m }}</span>
                <span class="alumni-degree"></span>
                <span class="alumni-title"></span>
-            </div>
+            </li>
             {%- endfor %}
-         </div>
+         </ul>
       </div>
       <div class="people-block">
          <h2 class="people-block-title">Selected talks &amp; posters</h2>
          {%- comment %}The list is sparse between 2016 and 2025 — those talks
          have not been compiled yet. Add to cv.yml presentations as they turn
          up; the "Selected" in the heading covers the gap meanwhile.{% endcomment %}
-         <div class="alumni-list">
+         <ul class="alumni-list">
             {%- for t in cv.presentations %}
-            <div class="alumni-row">
+            <li class="alumni-row">
                <span class="alumni-name">{{ t }}</span>
                <span class="alumni-degree"></span>
                <span class="alumni-title"></span>
-            </div>
+            </li>
             {%- endfor %}
-         </div>
+         </ul>
       </div>
    </div>
 </section>
@@ -400,15 +400,15 @@ Everything else comes from _data/cv.yml.
             2017 to now.
          </p>
       </div>
-      <div class="alumni-list">
+      <ul class="alumni-list">
          {%- for m in cv.media %}
-         <div class="alumni-row">
+         <li class="alumni-row">
             <span class="alumni-name"><a href="{{ m.url }}">{{ m.title }}</a></span>
             <span class="alumni-degree">{{ m.year }}</span>
             <span class="alumni-title">{{ m.outlet }}</span>
-         </div>
+         </li>
          {%- endfor %}
-      </div>
+      </ul>
    </div>
 </section>
 

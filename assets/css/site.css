@@ -77,6 +77,10 @@
 
    --line: rgba(255, 255, 255, 0.09);
    --line-2: rgba(255, 255, 255, 0.16);
+   /* Form-control borders carry meaning, so they need 3:1 against the field
+      behind them (WCAG 1.4.11). --line-2 resolves to #313641 over --ink-800,
+      which is 1.56:1 — right for a decorative rule, wrong for an input. */
+   --field-border: rgba(255, 255, 255, 0.36);
 
    /* Type */
    --font-display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
@@ -467,7 +471,7 @@ strong, b { font-weight: 600; color: #fff; }
 .hero-bg {
    position: absolute;
    inset: 0;
-   z-index: -2;
+   z-index: -3;
    overflow: hidden;
    background: radial-gradient(120% 90% at 50% 8%, #0d1b30 0%, #060b16 45%, var(--ink-900) 100%);
 }
@@ -484,23 +488,32 @@ strong, b { font-weight: 600; color: #fff; }
    mix-blend-mode: luminosity;
    transform: scale(1.06);
 }
-.hero-bg::after {
-   content: "";
-   position: absolute;
-   inset: 0;
-   background:
-      radial-gradient(70% 55% at 50% 100%, rgba(234, 170, 0, 0.12), transparent 70%),
-      linear-gradient(to bottom, rgba(4, 7, 14, 0.55) 0%, rgba(4, 7, 14, 0.2) 38%, rgba(4, 7, 14, 0.9) 88%, var(--ink-900) 100%);
-}
 
 /* Starfield + signal trace */
 #sky {
    position: absolute;
    inset: 0;
-   z-index: -1;
+   z-index: -2;
    width: 100%;
    height: 100%;
    pointer-events: none;
+}
+
+/* The scrim that guarantees hero text contrast. It has to sit ABOVE #sky, which
+   is why it lives on .hero and not inside .hero-bg: as a child of a z-index:-3
+   element it could never rise over the canvas, so it was protecting nothing. The
+   38% stop is held at 0.55 rather than 0.2 because that band is exactly where
+   .lead and .hero-meta sit, and a star crossing them took the eyebrow down to
+   1.09:1 and .hero-meta .dot to 3.44:1. */
+.hero::before {
+   content: "";
+   position: absolute;
+   inset: 0;
+   z-index: -1;
+   pointer-events: none;
+   background:
+      radial-gradient(70% 55% at 50% 100%, rgba(234, 170, 0, 0.12), transparent 70%),
+      linear-gradient(to bottom, rgba(4, 7, 14, 0.62) 0%, rgba(4, 7, 14, 0.55) 38%, rgba(4, 7, 14, 0.92) 88%, var(--ink-900) 100%);
 }
 
 .hero-inner { position: relative; width: 100%; }
@@ -987,6 +1000,11 @@ a.site-name:hover svg { opacity: 1; }
 /* Alumni: a dense, readable list of theses */
 .alumni-list {
    border-top: 1px solid var(--line);
+   /* A real <ul> now, for the item count and list navigation a screen reader
+      needs (1.3.1). Reset the list affordances the grid rows replace. */
+   list-style: none;
+   margin: 0;
+   padding: 0;
 }
 .alumni-row {
    display: grid;
@@ -1101,9 +1119,9 @@ a.site-name:hover svg { opacity: 1; }
 .pub-filter input {
    width: min(20rem, 46vw);
    padding: 0.45rem 0.85rem;
-   border: 1px solid var(--line-2);
+   border: 1px solid var(--field-border);
    border-radius: 100px;
-   background: var(--ink-800);
+   background: var(--ink-900);
    color: var(--paper);
    font-family: var(--font-sans);
    font-size: 0.85rem;
@@ -2100,8 +2118,8 @@ select {
    font-family: var(--font-mono);
    font-size: 0.95rem;
    color: var(--paper);
-   background: var(--ink-800);
-   border: 1px solid var(--line-2);
+   background: var(--ink-900);
+   border: 1px solid var(--field-border);
    border-radius: var(--radius-sm);
    padding: 0.55rem 0.7rem;
    min-width: 6.5rem;
@@ -2302,3 +2320,97 @@ button:not(.btn):not(.button):not(.nav-toggle):not(.lb-close):hover { background
    a { color: #111; }
    a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.8em; color: #666; }
 }
+
+/* --- Links inside running text -------------------------------------------- *
+   WCAG 1.4.1 (failure F73): when colour is the only thing marking a link, it
+   needs 3:1 against the surrounding text. Gold on --paper is 1.79:1 and
+   --paper-2 on --paper-3 is 1.54:1, so neither qualifies. The base `a` rule
+   underlines correctly; these component rules strip it, which is right for
+   links that read as buttons or cards and wrong for a link inside a sentence.
+   Put the underline back for those, and leave the button-like ones alone. */
+.contact-list .v a,
+.archive-pointer a,
+.archive-nav a,
+.ed-archive a,
+.prose a:not(.btn):not(.button):not(.arrow-link) {
+   text-decoration: underline;
+   text-decoration-color: rgba(234, 170, 0, 0.45);
+   text-underline-offset: 0.22em;
+   text-decoration-thickness: 1px;
+}
+.contact-list .v a:hover,
+.archive-pointer a:hover,
+.archive-nav a:hover,
+.ed-archive a:hover,
+.prose a:not(.btn):not(.button):not(.arrow-link):hover {
+   text-decoration-color: currentColor;
+}
+
+/* --- Click-to-play GIF ----------------------------------------------------- *
+   WCAG 2.2.2: a looping GIF is motion that starts on its own and cannot be
+   stopped. The button holds it until asked for, and swaps itself for the image. */
+.gif-player {
+   position: relative;
+   aspect-ratio: 16 / 9;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background: var(--ink-800);
+   border: 1px solid var(--line-2);
+   border-radius: var(--radius-sm);
+   overflow: hidden;
+}
+.gif-player img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gif-play {
+   display: inline-flex;
+   align-items: center;
+   gap: 0.6rem;
+   padding: 0.7rem 1.15rem;
+   background: var(--gold);
+   color: #14100a;
+   border: 0;
+   border-radius: 100px;
+   font: 600 0.85rem/1 var(--font-sans);
+   cursor: pointer;
+   transition: background 0.16s var(--ease);
+}
+.gif-play:hover { background: var(--gold-2); }
+.gif-play .gif-meta {
+   font-family: var(--font-mono);
+   font-size: 0.68rem;
+   letter-spacing: 0.06em;
+   opacity: 0.72;
+}
+
+/* --- Footer disclaimer ----------------------------------------------------- *
+   Policy requires a site that is not through the University's approval process
+   to distinguish itself from an official WVU property. */
+.footer-disclaimer {
+   max-width: 62ch;
+   margin: 2.5rem 0 0;
+   padding-top: 1.75rem;
+   border-top: 1px solid var(--line);
+   font-size: 0.82rem;
+   line-height: 1.6;
+   color: var(--paper-3);
+}
+.footer-disclaimer a { color: var(--paper-2); }
+
+/* --- Pause control for the ticking clocks --------------------------------- *
+   WCAG 2.2.2: the tool readings update once a second, which is auto-updating
+   content and needs a way to stop it. */
+.clock-pause {
+   font-family: var(--font-mono);
+   font-size: 0.72rem;
+   letter-spacing: 0.08em;
+   text-transform: uppercase;
+   color: var(--paper-2);
+   background: transparent;
+   border: 1px solid var(--field-border);
+   border-radius: 100px;
+   padding: 0.4rem 0.9rem;
+   cursor: pointer;
+   transition: border-color 0.16s var(--ease), color 0.16s var(--ease);
+}
+.clock-pause:hover { color: var(--gold); border-color: var(--gold); }
+.clock-pause[aria-pressed="true"] { color: var(--gold); border-color: var(--gold); }

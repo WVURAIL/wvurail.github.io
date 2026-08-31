@@ -1,0 +1,30 @@
+---
+layout: default
+permalink: /404.html
+sitemap: false
+title: Page not found
+eyebrow: Error 404
+lead: That address doesn't exist on this site. It may have moved, or the link that brought you here may be out of date.
+---
+{%- comment %}
+Without this file GitHub Pages serves its own unbranded error page, which drops
+the visitor out of the site entirely — no navigation, no way back. SiteImprove
+flags broken links, and this is where they land.
+{% endcomment -%}
+
+<p>A few places worth trying:</p>
+
+<ul>
+   <li><a href="{{ '/where-we-work/' | relative_url }}">Research and telescopes</a> — what the lab builds and where it observes</li>
+   <li><a href="{{ '/publications/' | relative_url }}">Papers</a> — everything the lab and its collaborations have published</li>
+   <li><a href="{{ '/people/' | relative_url }}">The lab</a> — who works here, and who used to</li>
+   <li><a href="{{ '/education/' | relative_url }}">DSPIRA</a> — the teacher programme, its cohorts, and the lesson collection</li>
+   <li><a href="{{ '/tools/' | relative_url }}">Tools</a> — sidereal time and coordinate conversion</li>
+   <li><a href="{{ '/contact/' | relative_url }}">Contact</a> — including how to join the lab</li>
+</ul>
+
+<p>
+   If you followed a link from somewhere else and it should work,
+   <a href="mailto:{{ site.email }}?Subject=Broken%20link%20on%20wvurail.org">tell us where it came from</a>
+   and we'll fix it.
+</p>

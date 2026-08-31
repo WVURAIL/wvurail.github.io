@@ -19,13 +19,28 @@ eyebrow: Tools
       <select id="latHemi" aria-label="Latitude hemisphere"><option value="N">N</option><option value="S">S</option></select></p>
    <p><label>Azimuth (&deg;): <input type="text" id="az" value="0.0" size="8" /></label></p>
    <p><label>Altitude (&deg;): <input type="text" id="alt" value="0.0" size="8" /></label></p>
-   <button type="button" onclick="updateCoords()">Convert</button>
+   <button type="button" onclick="announceCoords()">Convert</button>
 </div>
 
-<div id="result" class="clock" style="margin-top:1rem;"></div>
+<div id="result" class="clock" tabindex="0" style="margin-top:1rem;"></div>
+<p id="coord-announce" class="visually-hidden" role="status" aria-live="polite"></p>
+<p><button type="button" class="clock-pause" aria-pressed="false"
+           onclick="toggleCoordTick(this)">Pause updating</button></p>
 
 <script src="{{ '/tools/astro.js' | relative_url }}"></script>
 <script>
+// #result is rewritten every second, so aria-live cannot sit on it -- it would
+// announce continuously. Announce only what an explicit Convert press produced.
+function spokenFrom(el) {
+   // textContent renders "A<br>B" as "AB". Turn the breaks into pauses first,
+   // then strip the remaining markup.
+   return el.innerHTML.replace(/<br\s*\/?>/gi, ', ').replace(/<[^>]+>/g, '').trim();
+}
+function announceCoords() {
+   updateCoords();
+   document.getElementById('coord-announce').textContent =
+      spokenFrom(document.getElementById('result'));
+}
 function signedVal(inputId, selId, posCode) {
    var v = Math.abs(parseFloat(document.getElementById(inputId).value) || 0);
    var sign = document.getElementById(selId).value === posCode ? 1 : -1;
@@ -48,8 +63,20 @@ function updateCoords() {
       "Right Ascension: " + hmsFromHours(eq.raHours) + "<br>" +
       "Declination: " + dmsFromDeg(eq.decDeg);
 }
+// RA depends on time, so the reading ticks. WCAG 2.2.2 wants a way to stop
+// auto-updating content; this is it.
+var coordTimer = null;
+function toggleCoordTick(btn) {
+   if (coordTimer) {
+      clearInterval(coordTimer); coordTimer = null;
+      btn.textContent = 'Resume updating'; btn.setAttribute('aria-pressed', 'true');
+   } else {
+      coordTimer = setInterval(updateCoords, 1000);
+      btn.textContent = 'Pause updating'; btn.setAttribute('aria-pressed', 'false');
+   }
+}
 updateCoords();
-setInterval(updateCoords, 1000);
+coordTimer = setInterval(updateCoords, 1000);
 </script>
 
 <ul class="actions">
