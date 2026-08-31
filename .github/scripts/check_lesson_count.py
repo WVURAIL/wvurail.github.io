@@ -35,6 +35,9 @@ import sys
 import urllib.error
 import urllib.request
 
+# CUTOVER ITEM: must change in the same commit as the CNAME/domain move, or the
+# unreachable-site escape hatch (exit 0 below) turns this check silently green
+# forever. Listed in .github/CUTOVER.md.
 LESSONS = "https://wvurail.org/dspira-lessons/"
 ALL_LESSONS = LESSONS + "all/"
 # The module names are read off /all/. They used to be on /lesson-modules/,
@@ -42,7 +45,7 @@ ALL_LESSONS = LESSONS + "all/"
 MODULE_INDEX = ALL_LESSONS
 EDUCATION_YML = "_data/education.yml"
 TIMEOUT = 30
-UA = "wvurail.org lesson-count check (+https://github.com/WVURAIL/wvurail.github.io)"
+UA = "WVU RAIL lesson-count check (+https://github.com/WVURAIL/wvurail.github.io)"
 
 
 def declared_count(path=EDUCATION_YML):

@@ -86,7 +86,7 @@ materials:
   # THE number. Everywhere else on this site that shows a lesson count reads it
   # from here, including the %COUNT% above and in intro below.
   #
-  # It has to be kept in step with wvurail.org/dspira-lessons by hand, because
+  # It has to be kept in step with the lessons site by hand, because
   # that site is a different repository and this one cannot count its posts.
   # .github/workflows/lesson-count.yml checks it against the live site every
   # Monday and fails if the two disagree, so the drift gets noticed rather than
@@ -97,7 +97,10 @@ materials:
     astronomy, hardware, signal processing, and labs. The discussion forum and
     group meetings keep the collaboration open to educators, students, and
     independent telescope builders.
-  url: "https://wvurail.org/dspira-lessons/"
+  # Root-relative on purpose: the lessons repo is a project site inheriting
+  # this org site's custom domain, so they share a host on any domain we move
+  # to. (Absolute links would bounce through redirects after a domain change.)
+  url: "/dspira-lessons/"
   # Mirrors _data/modules.yml on the lessons site, in the same order, so a
   # visitor who clicks through sees the same list.
   #
@@ -121,13 +124,13 @@ materials:
     - Community Labs
   extras:
     - text: Browse all lessons
-      url: "https://wvurail.org/dspira-lessons/all/"
+      url: "/dspira-lessons/all/"
     - text: Contribute a lesson
-      url: "https://wvurail.org/dspira-lessons/newpost/"
+      url: "/dspira-lessons/newpost/"
     # The one part of the lessons site a visitor can talk back through. It runs
     # on GitHub Discussions, and threads there go back to 2020.
     - text: Ask a question in the forum
-      url: "https://wvurail.org/dspira-lessons/forum/"
+      url: "/dspira-lessons/forum/"
     - text: GNU Radio modules on GitHub
       url: "https://github.com/WVURAIL/gr-radio_astro"
 

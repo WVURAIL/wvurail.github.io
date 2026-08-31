@@ -1,0 +1,86 @@
+# Cutover checklist: wvurail.org → rail.wvu.edu
+
+This file is the single list of everything that must happen when the site moves
+to the University domain, in order. It lives in `.github/` so Jekyll never
+publishes it. The Week-0 sweep already made every internal link domain-neutral
+(root-relative between the sites, `site.url`-derived where a page displays its
+own address), so the move itself is small — but each item below is small *and*
+load-bearing, and several go silently wrong rather than loudly.
+
+Background, mechanism, and the review process that gates all of this: the
+migration plan. The one-line version: this repo is the GitHub Pages
+**organization** site, so its custom domain is inherited by every WVURAIL
+project site with Pages enabled. Changing the domain here moves all of them at
+once.
+
+## The inheritance family (what moves together)
+
+| Repo | Serves today | After cutover |
+|---|---|---|
+| `wvurail.github.io` | wvurail.org | rail.wvu.edu |
+| `dspira-lessons` | wvurail.org/dspira-lessons/ | rail.wvu.edu/dspira-lessons/ |
+| `lightwork` | wvurail.org/lightwork/ | rail.wvu.edu/lightwork/ |
+| `gr-transient` | wvurail.org/gr-transient/ | (decide: archive shell) |
+| `dspira` | wvurail.org/dspira/ | (decide: archive shell) |
+| `cra` | wvurail.org/cra/ | (decide: archive shell) |
+
+The last three are self-described archive shells. Decide before review whether
+they belong on a University domain at all; disabling Pages on them and letting
+the wvurail.org redirector send their URLs to the successors (`/dspira-lessons/`)
+honors their own "use dspira-lessons instead" notices.
+
+## Before the cutover (safe any time)
+
+- [ ] **Probe**: in a throwaway WVURAIL repo (never this one — it is
+      branch-built, so saving a domain in Settings→Pages *is* a deploy), try to
+      save `rail.wvu.edu` as the custom domain. Saves with "DNS check
+      unsuccessful" → clear. Errors as taken → stop, ask GitHub Support.
+- [ ] **Verify wvurail.org for the WVURAIL org** (org Settings → Pages →
+      verified domains; TXT record in the lab's own DNS). Closes the takeover
+      window that opens the moment the domain detaches from this repo.
+- [ ] Review approval in hand (Conceptboard + Website Approval and Launch Form;
+      three-week minimum; zero WCAG A/AA errors).
+- [ ] ITS ticket filed: CNAME `rail.wvu.edu → wvurail.github.io`, TXT
+      `_github-pages-challenge-wvurail.rail.wvu.edu` (value from org
+      Settings→Pages verification flow), and a request not to introduce a
+      `wvu.edu` CAA record that omits `letsencrypt.org`.
+
+## The cutover commit (this repo)
+
+- [ ] `CNAME` file: `wvurail.org` → `rail.wvu.edu` — **this is the cutover**;
+      wvurail.org stops being served by GitHub the moment it lands
+- [ ] `_config.yml` `url:` → `https://rail.wvu.edu` (and the line-1 comment)
+- [ ] `.github/scripts/check_lesson_count.py` `LESSONS` constant → the new
+      domain. Same commit, not later: the script deliberately exits 0 when the
+      site is unreachable, so a stale domain makes it green forever.
+- [ ] `.github/workflows/lesson-count.yml` cosmetic references (line 5 comment,
+      job display name)
+- [ ] `README.md` line 3 (the site's address)
+
+## The cutover commit (dspira-lessons repo)
+
+- [ ] `_config.yml` `url:` → `https://rail.wvu.edu` (serving does not need it;
+      canonicals, og:url, sitemap and feed do)
+- [ ] `tools/check_links.py` default base URL
+- [ ] GitHub-rendered files (`README.md`, `CONTRIBUTING.md`, `code/**` READMEs
+      and the `map_h1_hdf5_drift.py` docstring) still say wvurail.org — they
+      keep working through the redirector, update at leisure
+
+## Immediately after DNS resolves
+
+- [ ] Enforce HTTPS in Settings→Pages once the certificate issues (up to 24 h)
+- [ ] Point wvurail.org DNS (lab-controlled) at the redirect shim — real 301s:
+      `/*  https://rail.wvu.edu/:splat  301` covers every legacy URL including
+      the three in NSF reporting and teachers' CVs
+- [ ] Re-run both link checkers against the new domain
+- [ ] SiteImprove: confirm the dashboard tracks rail.wvu.edu
+- [ ] The accessibility statement: the "not an official University web page"
+      disclaimer (footer + `/accessibility/`) must be REMOVED at cutover — on
+      the University domain it is false. The privacy claims must match whatever
+      analytics the University requires by then.
+
+## Rollback
+
+Everything before the ITS DNS step is one revert of the cutover commit. After
+DNS exists, rolling back also means asking ITS to remove the record — plan the
+cutover for a day someone can watch it.

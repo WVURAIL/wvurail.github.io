@@ -12,6 +12,10 @@ description: >
   solutions in radio astronomy.
 
 baseurl: ""                     # subpath of the site, e.g. /blog (empty for a root domain)
+# THE CUTOVER SWITCH. Changing this to https://rail.wvu.edu (together with the
+# CNAME file) is the move to the University domain. Everything else on the site
+# derives its absolute URLs from here — see .github/CUTOVER.md for the full
+# cutover checklist before touching it.
 url: "https://wvurail.org"      # base hostname & protocol, no trailing slash
 
 # Content & build

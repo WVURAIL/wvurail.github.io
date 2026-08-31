@@ -3,8 +3,8 @@ title: Kevin M. Bandura — CV
 permalink: /bandura/cv/
 sitemap: false
 description: >
-  Curriculum vitae of Kevin M. Bandura, generated from the living faculty page
-  at wvurail.org/bandura. Print or save as PDF — always current.
+  Curriculum vitae of Kevin M. Bandura, generated from the living faculty
+  page. Print or save as PDF — always current.
 ---
 {%- comment %}
 The printable CV. No layout on purpose: this file is a complete standalone
@@ -104,7 +104,7 @@ where_exp only; GitHub Pages does not run Jekyll 4).
    </p>
    <p class="cv-contact">
       {{ cv.profile.email }} &middot; {{ cv.profile.phone }} &middot; {{ cv.profile.office }}<br>
-      ORCID: 0000-0003-3772-2798 &middot; wvurail.org/bandura
+      ORCID: 0000-0003-3772-2798 &middot; {{ site.url | remove: 'https://' }}/bandura
    </p>
 </header>
 
@@ -241,9 +241,9 @@ where_exp only; GitHub Pages does not run Jekyll 4).
 </ul>
 
 <footer class="stamp">
-   Generated from the living faculty page at wvurail.org/bandura &middot;
+   Generated from the living faculty page at {{ site.url | remove: 'https://' }}/bandura &middot;
    site last built {{ site.time | date: "%B %-d, %Y" }} &middot;
-   the current version of this CV is always at wvurail.org/bandura/cv/
+   the current version of this CV is always at {{ site.url | remove: 'https://' }}/bandura/cv/
 </footer>
 
 </main>

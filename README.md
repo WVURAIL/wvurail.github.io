@@ -168,7 +168,7 @@ Pages get a dark title header and a readable prose column automatically. Set
 ## A trap worth knowing about
 
 A Markdown or HTML file **without front matter** is copied verbatim into the
-built site. `NOTES.md` in the repo root becomes `wvurail.org/NOTES.md`, publicly.
+built site. `NOTES.md` in the repo root becomes `/NOTES.md` on the public site.
 Anything internal should do both: start with an underscore, which Jekyll skips
 structurally, and appear under `exclude:` in `_config.yml`. Belt and braces, because
 the cost of getting it wrong is that a private working note is served at a public URL

@@ -4,7 +4,7 @@ permalink: /accessibility/
 title: Accessibility
 eyebrow: About this site
 lead: What we aim for, what we know is imperfect, and how to tell us when something gets in your way.
-description: Accessibility statement for wvurail.org — conformance target, known issues, and how to report a problem.
+description: Accessibility statement for the RAIL website — conformance target, known issues, and how to report a problem.
 ---
 
 ## What we aim for
@@ -45,7 +45,7 @@ We would rather list these than imply the site is perfect.
 ## Telling us about a problem
 
 If any part of this site gets in your way, email
-[{{ site.email }}](mailto:{{ site.email }}?Subject=Accessibility%20on%20wvurail.org).
+[{{ site.email }}](mailto:{{ site.email }}?Subject=Accessibility%20on%20{{ site.url | remove: 'https://' }}).
 Say which page and what happened; you do not need to know the technical cause.
 We will reply, and we will tell you what we can fix and when.
 

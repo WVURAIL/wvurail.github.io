@@ -25,6 +25,6 @@ flags broken links, and this is where they land.
 
 <p>
    If you followed a link from somewhere else and it should work,
-   <a href="mailto:{{ site.email }}?Subject=Broken%20link%20on%20wvurail.org">tell us where it came from</a>
+   <a href="mailto:{{ site.email }}?Subject=Broken%20link%20on%20{{ site.url | remove: 'https://' }}">tell us where it came from</a>
    and we'll fix it.
 </p>
