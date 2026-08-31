@@ -143,7 +143,7 @@ appointments:
   - role: "Associate Professor"
     org: "Lane Department of Computer Science and Electrical Engineering, West Virginia University"
     years: "2021–present"
-  - role: "Adjunct Assistant Professor"
+  - role: "Adjunct Professor"
     org: "Department of Physics and Astronomy, West Virginia University"
     years: "2015–present"   # confirmed by Kevin: adjunct in astro since he started
   - role: "Member"

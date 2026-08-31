@@ -516,7 +516,19 @@ strong, b { font-weight: 600; color: #fff; }
       linear-gradient(to bottom, rgba(4, 7, 14, 0.62) 0%, rgba(4, 7, 14, 0.55) 38%, rgba(4, 7, 14, 0.92) 88%, var(--ink-900) 100%);
 }
 
-.hero-inner { position: relative; width: 100%; }
+/* The signal trace rides ABOVE the scrim so it stays visible; the starfield
+   stays below it. site.js explains why they are split. */
+#trace {
+   position: absolute;
+   inset: 0;
+   z-index: 0;
+   width: 100%;
+   height: 100%;
+   pointer-events: none;
+}
+
+/* z-index keeps the copy above the signal trace. */
+.hero-inner { position: relative; z-index: 1; width: 100%; }
 
 .hero h1 {
    font-size: clamp(2.9rem, 7vw, 6rem);
@@ -545,16 +557,26 @@ strong, b { font-weight: 600; color: #fff; }
    letter-spacing: 0.12em;
    text-transform: uppercase;
    color: var(--paper-3);
+   /* Keeps the last line clear of .scroll-cue in the corner. */
+   padding-right: 5rem;
 }
 .hero-meta a { color: var(--paper-2); text-decoration: none; }
 .hero-meta a:hover { color: var(--gold); }
 .hero-meta .dot { color: var(--paper-4); }
 
+/* Anchored to the right rather than centred. Centred, it sat directly in the
+   path of .hero-meta: the two overlap whenever the viewport is shorter than
+   about 830px, and .hero already fills 100svh exactly, so there is no room to
+   separate them vertically. */
 .scroll-cue {
    position: absolute;
-   left: 50%;
+   /* .hero-inner is z-index 1, and .hero-meta's box runs the full width even
+      though its text stops short. Without a layer of its own the cue used to
+      win on DOM order alone; now the copy paints over the "Scroll" label and
+      eats the clicks. */
+   z-index: 2;
+   right: clamp(1.25rem, 4vw, 3rem);
    bottom: 1.75rem;
-   transform: translateX(-50%);
    display: flex;
    flex-direction: column;
    align-items: center;
@@ -2306,7 +2328,7 @@ button:not(.btn):not(.button):not(.nav-toggle):not(.lb-close):hover { background
 
 @media print {
    body { background: #fff; color: #111; }
-   .site-header, .scroll-cue, #sky, .hero-bg, .btn-row, .social, .archive-bar { display: none; }
+   .site-header, .scroll-cue, #sky, #trace, .hero-bg, .btn-row, .social, .archive-bar { display: none; }
    /* Reveals never fire for content below the fold when printing */
    .js .reveal, .js .reveal.is-in { opacity: 1 !important; animation: none !important; transform: none !important; }
    .section, .join, .page-head, .cohort-hero, .chapter { background: none !important; padding-block: 1.5rem; }

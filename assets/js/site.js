@@ -93,11 +93,24 @@
    }
 
    /* --- Hero sky: starfield + a drifting signal trace -------------------- */
+   // Two layers on purpose. The stars sit UNDER the scrim: they run to alpha
+   // 0.8 and are scattered over the whole hero, so one crossing the eyebrow or
+   // .hero-meta would drop that small text well under 4.5:1. The signal trace
+   // sits OVER the scrim, because covering it was hiding the nicest thing on
+   // the page. Nothing above the scrim may cross small text, so build() keeps
+   // the band anchored under the copy — see the note there.
    var canvas = document.getElementById("sky");
+   var traceCanvas = document.getElementById("trace");
+   var heroEl = document.querySelector(".hero");
+   var metaEl = document.querySelector(".hero-meta");
    if (canvas && canvas.getContext) {
       var ctx = canvas.getContext("2d");
+      var tctx = traceCanvas && traceCanvas.getContext
+         ? traceCanvas.getContext("2d")
+         : ctx;
       var stars = [];
       var w = 0, h = 0, dpr = 1, raf = null, visible = true;
+      var signalBaseY = 0;
 
       // Small deterministic PRNG so the sky is identical on every load.
       var seed = 20240612;
@@ -113,6 +126,27 @@
          canvas.width = Math.round(w * dpr);
          canvas.height = Math.round(h * dpr);
          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+         if (tctx !== ctx) {
+            traceCanvas.width = canvas.width;
+            traceCanvas.height = canvas.height;
+            tctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+         }
+
+         // .hero centres its copy, so .hero-meta drifts down as the window grows
+         // while a band pinned to a fraction of h does not. Past roughly 940px of
+         // hero height the two meet — and since the trace now rides above the
+         // scrim, nothing is left to protect that 11.5px text. So anchor the band
+         // under the copy. Below ~940px this resolves to the original 0.74h and
+         // the hero looks exactly as it did.
+         var amp = h * 0.055;
+         signalBaseY = h * 0.74;
+         if (heroEl && metaEl) {
+            var clear = metaEl.getBoundingClientRect().top
+                      - heroEl.getBoundingClientRect().top
+                      - amp - 24;
+            signalBaseY = Math.min(signalBaseY, clear);
+         }
+         signalBaseY = Math.max(signalBaseY, h * 0.45);
 
          seed = 20240612;
          stars = [];
@@ -149,7 +183,7 @@
       // Three summed sinusoids of different frequency — an incoming signal
       // sweeping across the field of view.
       var drawSignal = function (time) {
-         var baseY = h * 0.74;
+         var baseY = signalBaseY;
          var waves = [
             { amp: h * 0.055, freq: 0.0042, speed: 0.00021, alpha: 0.24, width: 1.4 },
             { amp: h * 0.032, freq: 0.0091, speed: -0.00034, alpha: 0.15, width: 1 },
@@ -157,21 +191,26 @@
          ];
          for (var k = 0; k < waves.length; k++) {
             var wv = waves[k];
-            ctx.beginPath();
+            tctx.beginPath();
             for (var x = 0; x <= w; x += 3) {
                // Gaussian envelope keeps the trace from touching the edges
                var env = Math.exp(-Math.pow((x - w * 0.5) / (w * 0.42), 2));
                var y = baseY + Math.sin(x * wv.freq + time * wv.speed) * wv.amp * env;
-               x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+               x === 0 ? tctx.moveTo(x, y) : tctx.lineTo(x, y);
             }
-            ctx.strokeStyle = "rgba(234, 170, 0, " + wv.alpha + ")";
-            ctx.lineWidth = wv.width;
-            ctx.stroke();
+            tctx.strokeStyle = "rgba(234, 170, 0, " + wv.alpha + ")";
+            tctx.lineWidth = wv.width;
+            tctx.stroke();
          }
       };
 
-      var frame = function (time) {
+      var clearAll = function () {
          ctx.clearRect(0, 0, w, h);
+         if (tctx !== ctx) { tctx.clearRect(0, 0, w, h); }
+      };
+
+      var frame = function (time) {
+         clearAll();
          drawStars(time);
          drawSignal(time);
          raf = requestAnimationFrame(frame);
@@ -181,11 +220,11 @@
          build();
          if (!visible) {
             // Re-render one static frame but don't restart the loop off-screen.
-            ctx.clearRect(0, 0, w, h);
+            clearAll();
             drawStars(0);
             drawSignal(0);
          } else if (reduceMotion) {
-            ctx.clearRect(0, 0, w, h);
+            clearAll();
             drawStars(0);
             drawSignal(0);
          } else if (raf === null) {
