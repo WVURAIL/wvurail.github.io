@@ -58,10 +58,15 @@
       {%- assign open_slots = site.data.people.students | where: "open", true -%}
       {%- assign n_students = site.data.people.students.size | default: 0 | minus: open_slots.size -%}
       {%- assign n_researchers = n_grad | plus: n_students -%}
-      {%- if n_researchers > 0 %}
+      {%- comment %}
+      The recruitment card must survive an empty roster — hiding the block when
+      the only card left is "This could be you" would remove the one thing the
+      page says about joining.
+      {% endcomment -%}
+      {%- if n_researchers > 0 or open_slots.size > 0 %}
       <div class="people-block reveal">
          <h2 class="people-block-title">
-            Researchers <span class="count">{{ n_researchers }}</span>
+            Researchers{% if n_researchers > 0 %} <span class="count">{{ n_researchers }}</span>{% endif %}
          </h2>
          <div class="people-grid">
             {%- for person in site.data.people.grad %}{% include person-card.html person=person variant="grid" %}{% endfor %}

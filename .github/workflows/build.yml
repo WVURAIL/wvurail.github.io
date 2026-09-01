@@ -101,7 +101,7 @@ jobs:
             fi
           }
           check "publication entries" publications/index.html '<li class="pub' 60
-          check "people cards"        people/index.html       'class="person'   3
+          check "people cards"        people/index.html       'class="person'   2
           check "alumni rows"         people/index.html       'class="alumni-row"' 5
           check "site cards"          where-we-work/index.html 'class="site"'   4
           # The cohort layout looks its roster up in _data/education.yml by year.

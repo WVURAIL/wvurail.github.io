@@ -22,12 +22,7 @@ pi:
       expansion has accelerated, and the outrigger stations that localize fast radio
       bursts precisely enough to identify the galaxies they came from.
 
-grad:
-  - name: "Dylan J. Gormley"
-    photo: /images/people/dgormley.jpg
-    roles:
-      - "Research Assistant"
-    bio: "Research focus on radio frequency interference (RFI) mitigation."
+grad: []
 
 students:
   - name: "This could be you"
