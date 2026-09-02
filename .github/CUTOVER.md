@@ -20,22 +20,29 @@ once.
 | `wvurail.github.io` | wvurail.org | rail.wvu.edu |
 | `dspira-lessons` | wvurail.org/dspira-lessons/ | rail.wvu.edu/dspira-lessons/ |
 | `lightwork` | wvurail.org/lightwork/ | rail.wvu.edu/lightwork/ |
-| `gr-transient` | wvurail.org/gr-transient/ | (decide: archive shell) |
-| `dspira` | wvurail.org/dspira/ | (decide: archive shell) |
-| `cra` | wvurail.org/cra/ | (decide: archive shell) |
+| `dspira` | wvurail.org/dspira/ | **must keep** — NSF-cited |
+| `cra` | wvurail.org/cra/ | **must keep** — NSF-cited |
+| `gr-transient` | wvurail.org/gr-transient/ | decide: archived 2019 prototype |
 
-The last three are self-described archive shells. Decide before review whether
-they belong on a University domain at all; disabling Pages on them and letting
-the wvurail.org redirector send their URLs to the successors (`/dspira-lessons/`)
-honors their own "use dspira-lessons instead" notices.
+Do NOT disable Pages on `dspira` or `cra`. The public outcomes report for NSF
+award 1611114 cites `wvurail.org/dspira/`, `wvurail.org/dspira-lessons/` and
+`wvurail.org/cra/` by name (two of them as `http://`), and a submitted NSF
+report cannot be edited. Their README notices say the content moved to
+dspira-lessons; for `cra` that is true, for `dspira` it is not — the 14 DSP
+lecture decks in `dspira/lectures/2018/` exist nowhere else. The DSPIRA
+restructure (see the architecture plan) is what makes these URLs honest again;
+until then they stay live. `gr-transient` is not cited anywhere and is a
+genuine candidate for switching Pages off.
 
 ## Before the cutover (safe any time)
 
-- [ ] **Probe**: in a throwaway WVURAIL repo (never this one — it is
+- [x] **Probe** (done 2 Sep 2026 — clear; GitHub accepted rail.wvu.edu with
+      only the expected "DNS check unsuccessful"): in a throwaway WVURAIL repo (never this one — it is
       branch-built, so saving a domain in Settings→Pages *is* a deploy), try to
       save `rail.wvu.edu` as the custom domain. Saves with "DNS check
       unsuccessful" → clear. Errors as taken → stop, ask GitHub Support.
-- [ ] **Verify wvurail.org for the WVURAIL org** (org Settings → Pages →
+- [x] **Verify wvurail.org for the WVURAIL org** (done 2 Sep 2026; TXT record
+      `_github-pages-challenge-wvurail` lives in Squarespace DNS — keep it) (org Settings → Pages →
       verified domains; TXT record in the lab's own DNS). Closes the takeover
       window that opens the moment the domain detaches from this repo.
 - [ ] Review approval in hand (Conceptboard + Website Approval and Launch Form;
