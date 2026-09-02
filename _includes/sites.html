@@ -1,0 +1,50 @@
+<!-- Where we work. Content comes from _data/sites.yml. -->
+<section class="section{% unless include.bare %} section--line{% endunless %}" id="sites">
+   <div class="container">
+      {%- unless include.bare %}
+      <div class="section-head reveal">
+         <div>
+            <p class="eyebrow">Where we work</p>
+            <h2>From Green Bank to the Karoo</h2>
+         </div>
+         <p>
+            Our instruments live where the sky is quiet. Some we build and run; others we
+            contribute to as part of larger collaborations.
+         </p>
+      </div>
+      {%- else %}
+      <h2 class="visually-hidden">Observatory sites</h2>
+      {%- endunless %}
+
+      <div class="sites reveal">
+         {%- for place in site.data.sites %}
+         <div class="site">
+            <p class="site-region">{{ place.region }}</p>
+            <h3 class="site-place">{{ place.place }}</h3>
+            <ul class="site-list">
+               {%- for item in place.instruments %}
+               <li>
+                  {%- if item.url %}
+                  <a class="site-name" href="{{ item.url }}">
+                     {{ item.name }} {% include icon.html name="external" %}
+                  </a>
+                  {%- else %}
+                  <span class="site-name">{{ item.name }}</span>
+                  {%- endif %}
+                  {%- if item.note %}<span class="site-note">{{ item.note }}</span>{% endif %}
+               </li>
+               {%- endfor %}
+            </ul>
+         </div>
+         {%- endfor %}
+      </div>
+
+      {%- unless include.bare %}
+      <div class="btn-row">
+         <a class="btn" href="{{ '/where-we-work/' | relative_url }}">
+            More about the sites {% include icon.html name="arrow" %}
+         </a>
+      </div>
+      {%- endunless %}
+   </div>
+</section>

@@ -1,97 +1,60 @@
 <head>
-		<title>WVU RAIL</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-       	<meta name="description" content="">
-        <meta name="author" content="Pranav Sanghavi">
-		<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-		<!--Navbar style-->
-		<style>
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="theme-color" content="#04070e" />
 
-			body {margin:0;}
-			.navbar {
-  			overflow: hidden;
-  			background-color: #f5f5f5;
-  			position: fixed;
-  			bottom: 0;
-  			width: 100%;
-			opacity: 0.85;
-    		filter: alpha(opacity=50); /* For IE8 and earlier */
-			z-index: 10;
-			}
-			
+   {%- assign full_title = site.title | append: " — " | append: site.tagline -%}
+   {%- if page.title -%}
+   {%- assign full_title = page.title | append: " · " | append: site.title -%}
+   {%- endif -%}
+   {%- assign desc = page.description | default: site.description | strip_newlines | strip -%}
+   {%- assign share = page.image | default: "/images/social-card.png" -%}
 
-			.navbar a {
-  			float: left;
-  			display: block;
-  			color: #333;
-  			text-align: center;
-			width: 25%;
-  			padding: 14px 16px;
-  			text-decoration: none;
-  			font-size: 17px;
-			z-index: 10;
+   <title>{{ full_title }}</title>
+   <meta name="description" content="{{ desc }}" />
+   <link rel="canonical" href="{{ page.url | absolute_url }}" />
 
-			}
+   <!-- Open Graph / Twitter -->
+   <meta property="og:site_name" content="{{ site.title }}" />
+   <meta property="og:title" content="{{ full_title }}" />
+   <meta property="og:description" content="{{ desc }}" />
+   <meta property="og:type" content="website" />
+   <meta property="og:url" content="{{ page.url | absolute_url }}" />
+   <meta property="og:image" content="{{ share | absolute_url }}" />
+   <meta name="twitter:card" content="summary_large_image" />
+   <meta name="twitter:title" content="{{ full_title }}" />
+   <meta name="twitter:description" content="{{ desc }}" />
+   <meta name="twitter:image" content="{{ share | absolute_url }}" />
 
-			.navbar a:hover{
-			background-color: #d2d2d2;
-			z-index: 10;
+   <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" sizes="any" />
+   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}" />
 
-			}
-			 
+   <!-- Self-hosted fonts: no third-party requests, no render-blocking CDN -->
+   <link rel="preload" as="font" type="font/woff2" href="{{ '/assets/fonts/inter-var.woff2' | relative_url }}" crossorigin />
+   <link rel="preload" as="font" type="font/woff2" href="{{ '/assets/fonts/instrument-serif-400.woff2' | relative_url }}" crossorigin />
+   <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}" />
 
-			ul.nav a:hover { color: #111 !important; }
-
-			/* Three columns side by side */
-            .column {
-                float: left;
-                width: 50%;
-                margin-bottom: 16px;
-                padding: 0 8px;
-            }
-
-			.container{
-      		    max-width:850px;
-      		    margin:0 auto;/*make it centered*/
-      		}
-
-            /* Display the columns below each other instead of side by side on small screens */
-            @media (max-width: 650px) {
-                .column {
-                    width: 100%;
-                    display: block;
-                }
-            }
-
-			/* Add some shadows to create a card effect */
-            .card {
-                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            }
-            
-            /* Some left and right padding inside the container */
-            .container {
-                padding: 0 16px;
-            }
-            
-            /* Clear floats */
-            .container::after, .row::after {
-                content: "";
-                clear: both;
-                display: table;
-            }
-
-            
-			.main {
-  			padding: 16px;
-  			margin-bottom: 30px;
-  			height: 1500px; /* Used in this example to enable scrolling */
-			}
-			@media (max-width: 600px ) {
-				  #bg { padding: 10px; }
-  				  #navbar-bg { background-position: center -10px; }
-			}
-
-		</style>
+   <script type="application/ld+json">
+   {
+     "@context": "https://schema.org",
+     "@type": "ResearchOrganization",
+     "name": "WVU Radio Astronomy Instrumentation Laboratory",
+     "alternateName": "WVU RAIL",
+     "url": "{{ site.url }}",
+     "email": "{{ site.email }}",
+     "parentOrganization": {
+       "@type": "CollegeOrUniversity",
+       "name": "West Virginia University",
+       "url": "https://www.wvu.edu"
+     },
+     "address": {
+       "@type": "PostalAddress",
+       "streetAddress": "Advanced Engineering Research Building, Room 304",
+       "addressLocality": "Morgantown",
+       "addressRegion": "WV",
+       "addressCountry": "US"
+     },
+     "sameAs": ["https://github.com/WVURAIL"]
+   }
+   </script>
 </head>

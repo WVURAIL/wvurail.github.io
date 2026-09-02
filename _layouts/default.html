@@ -1,37 +1,31 @@
-<!DOCTYPE HTML>
-<html>
-    {% include head.html %}
-	
-	<body>
-		<div class="navbar">
-  			<div><a href="/">WVU⏦RAIL</a></div>
-  			<div><a href="/projects">Projects</a></div>
- 			<div><a href="/people">People</a></div>
-  			<div><a href="/blog">Blog</a></div>
-		</div>
+<!DOCTYPE html>
+<html lang="en">
+{% include head.html %}
+<body>
+   {% include header.html %}
 
-		<!-- Wrapper -->
-		
-			<div id="wrapper" class="divided">
+   <main id="main">
+      {%- if page.full_width %}
+      {{ content }}
+      {%- else %}
+      <div class="page-head">
+         <div class="container">
+            <p class="eyebrow">{{ page.eyebrow | default: "WVU RAIL" }}</p>
+            <h1>{{ page.title }}</h1>
+            {%- if page.lead %}<p class="lead">{{ page.lead }}</p>{% endif %}
+         </div>
+      </div>
+      <div class="section">
+         <div class="container">
+            <div class="prose">
+               {{ content }}
+            </div>
+         </div>
+      </div>
+      {%- endif %}
+   </main>
 
-				<section class="wrapper style1">
-						<div class="inner">
-						
-							{{ content }}
-					
-						</div>						
-				</section>
-
-				<!-- Footer -->
-				{% include footer.html %}
-			</div>
-		<!-- Scripts -->
-			<script src="/assets/js/jquery.min.js"></script>
-			<script src="/assets/js/jquery.scrollex.min.js"></script>
-			<script src="/assets/js/jquery.scrolly.min.js"></script>
-			<script src="/assets/js/skel.min.js"></script>
-			<script src="/assets/js/util.js"></script>
-			<script src="/assets/js/main.js"></script>
-			<script src="/assets/js/smoothscroll.js"></script>
-	</body>
+   {% include footer.html %}
+   {% include scripts.html %}
+</body>
 </html>

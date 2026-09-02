@@ -1,0 +1,65 @@
+# Are the links off this site still alive?
+#
+# The build workflow checks that pages render and that the data-driven lists
+# have entries. It says nothing about where the links point, and those break on
+# a day nobody here touched anything, because somebody else moved a page.
+#
+# Three were dead before this existed, and a person found all three by clicking:
+# the footer's Lane Dept. of CSEE link, on every page of the site; the Reber
+# Telescope link, because the observatory's own URL contains a typo; and the
+# GRCon18 slides, on a change of capitalisation. That is the job this replaces.
+#
+# Fails only on confirmed-dead. Hosts that answer 200 for deleted content are
+# reported and ignored, or this becomes noise inside a month.
+name: Links
+
+on:
+  schedule:
+    # 06:41 UTC on Sundays, off the hour to miss the queue. The lessons
+    # repository runs its own at 06:23.
+    - cron: "41 6 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  links:
+    name: Check every link on the built site
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Pin the exact gems GitHub Pages uses
+        run: |
+          cat > Gemfile.ci <<'GEMFILE'
+          source "https://rubygems.org"
+          gem "github-pages", group: :jekyll_plugins
+          gem "webrick", "~> 1.8"
+          GEMFILE
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.1"
+          bundler-cache: true
+        env:
+          BUNDLE_GEMFILE: ${{ github.workspace }}/Gemfile.ci
+
+      # Against the real build: internal links are checked by looking for the
+      # file, and pages like /feed.xml only exist once jekyll-feed has run.
+      - name: Build
+        run: bundle exec jekyll build --trace
+        env:
+          BUNDLE_GEMFILE: ${{ github.workspace }}/Gemfile.ci
+          JEKYLL_ENV: production
+
+      - name: Check links, with one retry
+        run: |
+          # One transient 502 from somebody else's server is not worth an email.
+          # Two, five minutes apart, probably is.
+          if python3 .github/scripts/check_links.py; then
+            exit 0
+          fi
+          echo "::notice::first pass found broken links — waiting 5 minutes and trying again"
+          sleep 300
+          python3 .github/scripts/check_links.py

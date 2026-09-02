@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Source for images/social-card.png (Open Graph / Twitter share image, 1200x630).
+
+   The previous card set "WEST VIRGINIA UNIVERSITY" as a letterspaced gold line
+   above a WVU + wave + RAIL lockup. WVU's web standards state the rule flatly —
+   "Do not create your own designs with the words West Virginia University" — and
+   the brand guidelines add that a secondary mark "cannot include or incorporate
+   any existing WVU trademark" and that unit logotypes must be created or
+   approved by University Relations. Since this card is emitted on every page it
+   was the single widest-reaching instance of that.
+
+   This version carries no university identity: RAIL's own wave glyph and name
+   only. Nothing here needs approval.
+
+   To regenerate the PNG: open this file in a browser at 1200x630 and export, or
+   run `rsvg-convert -w 1200 -h 630 social-card.svg -o social-card.png`.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img"
+     aria-label="RAIL — Radio Astronomy Instrumentation Laboratory. Telescopes, analog front ends, and digital systems for surveying the radio sky.">
+
+  <defs>
+    <radialGradient id="sky" cx="50%" cy="8%" r="120%">
+      <stop offset="0%"   stop-color="#0d1b30"/>
+      <stop offset="45%"  stop-color="#060b16"/>
+      <stop offset="100%" stop-color="#04070e"/>
+    </radialGradient>
+    <linearGradient id="scrim" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#04070e" stop-opacity="0.30"/>
+      <stop offset="55%"  stop-color="#04070e" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#04070e" stop-opacity="0.95"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="100%" r="70%">
+      <stop offset="0%"   stop-color="#eaaa00" stop-opacity="0.13"/>
+      <stop offset="70%"  stop-color="#eaaa00" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#sky)"/>
+
+  <!-- Starfield -->
+  <g fill="#e2ecff">
+    <circle cx="74"   cy="46"  r="1.1" opacity=".55"/><circle cx="203" cy="31"  r="0.8" opacity=".38"/>
+    <circle cx="262"  cy="74"  r="1.4" opacity=".62"/><circle cx="331" cy="24"  r="0.9" opacity=".30"/>
+    <circle cx="418"  cy="58"  r="1.0" opacity=".48"/><circle cx="507" cy="18"  r="1.2" opacity=".52"/>
+    <circle cx="561"  cy="97"  r="0.8" opacity=".33"/><circle cx="646" cy="42"  r="1.3" opacity=".60"/>
+    <circle cx="742"  cy="69"  r="0.9" opacity=".41"/><circle cx="833" cy="28"  r="1.1" opacity=".50"/>
+    <circle cx="921"  cy="86"  r="0.8" opacity=".35"/><circle cx="1012" cy="37" r="1.4" opacity=".58"/>
+    <circle cx="1094" cy="62"  r="1.0" opacity=".44"/><circle cx="1163" cy="22" r="0.9" opacity=".37"/>
+    <circle cx="38"   cy="146" r="1.2" opacity=".50"/><circle cx="152" cy="188" r="0.9" opacity=".34"/>
+    <circle cx="288"  cy="132" r="1.0" opacity=".46"/><circle cx="392" cy="205" r="0.8" opacity=".29"/>
+    <circle cx="474"  cy="151" r="1.3" opacity=".56"/><circle cx="588" cy="118" r="0.9" opacity=".40"/>
+    <circle cx="676"  cy="196" r="1.1" opacity=".47"/><circle cx="781" cy="141" r="0.8" opacity=".32"/>
+    <circle cx="869"  cy="211" r="1.2" opacity=".53"/><circle cx="967" cy="163" r="0.9" opacity=".36"/>
+    <circle cx="1058" cy="128" r="1.0" opacity=".45"/><circle cx="1147" cy="199" r="1.3" opacity=".57"/>
+    <circle cx="66"   cy="268" r="0.9" opacity=".33"/><circle cx="176" cy="318" r="1.1" opacity=".42"/>
+    <circle cx="1108" cy="286" r="1.0" opacity=".44"/><circle cx="1032" cy="341" r="0.8" opacity=".31"/>
+    <circle cx="944"  cy="272" r="1.2" opacity=".49"/><circle cx="1176" cy="368" r="0.9" opacity=".35"/>
+    <circle cx="92"   cy="392" r="1.0" opacity=".38"/><circle cx="1129" cy="447" r="1.1" opacity=".40"/>
+    <circle cx="1058" cy="503" r="0.8" opacity=".28"/><circle cx="983" cy="428" r="0.9" opacity=".32"/>
+    <circle cx="616"  cy="256" r="0.8" opacity=".27"/><circle cx="722" cy="308" r="1.0" opacity=".36"/>
+    <circle cx="836"  cy="356" r="0.9" opacity=".30"/><circle cx="521" cy="331" r="0.8" opacity=".26"/>
+  </g>
+  <g fill="#ffd06e">
+    <circle cx="139" cy="63"  r="1.3" opacity=".70"/><circle cx="712" cy="112" r="1.1" opacity=".62"/>
+    <circle cx="1078" cy="94" r="1.2" opacity=".66"/><circle cx="356" cy="171" r="1.0" opacity=".55"/>
+    <circle cx="898"  cy="146" r="1.1" opacity=".58"/>
+  </g>
+
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect width="1200" height="630" fill="url(#scrim)"/>
+
+  <!-- Eyebrow: the lab's own name spelled out, in the slot the university line
+       used to occupy. No trademark, nothing needing approval. -->
+  <g>
+    <rect x="84" y="172" width="38" height="2" fill="#eaaa00"/>
+    <text x="140" y="179" font-family="'JetBrains Mono','IBM Plex Mono',ui-monospace,monospace"
+          font-size="16" letter-spacing="3.6" fill="#eaaa00">RADIO ASTRONOMY INSTRUMENTATION LABORATORY</text>
+  </g>
+
+  <!-- Wordmark. The wave glyph is RAIL's own; dx keeps it clear of the L
+       whatever the serif metrics turn out to be. -->
+  <text x="84" y="318" font-family="'Instrument Serif',Georgia,'Times New Roman',serif"
+        font-size="132" fill="#f2f0eb">RAIL<tspan dx="24" dy="-18" font-size="104" fill="#eaaa00">&#9190;</tspan></text>
+
+  <g font-family="'Inter',Helvetica,Arial,sans-serif" font-size="30" fill="#bac3d0">
+    <text x="86" y="398">Telescopes, analog front ends, and digital systems</text>
+    <text x="86" y="440">for surveying the radio sky.</text>
+  </g>
+
+  <line x1="84" y1="502" x2="1116" y2="502" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1"/>
+
+  <g font-family="'JetBrains Mono','IBM Plex Mono',ui-monospace,monospace" font-size="16" letter-spacing="2.6">
+    <text x="86" y="540" fill="#929daf">CHIME &#160;/&#160; CHORD &#160;/&#160; HIRAX &#160;/&#160; OUTRIGGERS &#160;/&#160; DSPIRA</text>
+    <text x="1114" y="540" fill="#eaaa00" text-anchor="end">wvurail.org</text>
+  </g>
+
+  <!-- Signal trace -->
+  <g fill="none" stroke="#eaaa00" stroke-width="1.5" opacity="0.42">
+    <path d="M0,586 Q60,566 120,586 T240,586 T360,586 T480,586 T600,586 T720,586 T840,586 T960,586 T1080,586 T1200,586"/>
+    <path d="M0,600 Q80,576 160,600 T320,600 T480,600 T640,600 T800,600 T960,600 T1120,600 T1280,600" opacity="0.55"/>
+    <path d="M0,613 Q50,600 100,613 T200,613 T300,613 T400,613 T500,613 T600,613 T700,613 T800,613 T900,613 T1000,613 T1100,613 T1200,613" opacity="0.35"/>
+  </g>
+</svg>

@@ -1,0 +1,809 @@
+# Papers the lab has been part of.
+#
+# Compiled from INSPIRE-HEP, Crossref, NSF-PAR, arXiv, the CHIME collaboration's
+# publication page, and author CVs. Every entry has been through a human once;
+# the `review:` keys that flagged the unresolved ones are gone.
+#
+# Scope: work published by Kevin Bandura or by a lab graduate DURING their time at
+# WVU. Pre-WVU work is excluded, including the McGill-era ICE papers. Also out:
+# Astro2020 and LRP2020 white papers, errata, and one-page conference abstracts.
+# Preprints are in, and carry `preprint: true`.
+#
+# One retracted paper is deliberately excluded from the LAB lists. (Since
+# Aug 2026 it is listed, clearly marked, in the Retracted band of Kevin's CV
+# page — see `retracted:` in _data/cv.yml — so the complete-record question
+# has an answer without it re-entering the lab lists.) The decision of record:
+#
+#   "Sub-second periodicity in a fast radio burst", Nature 607, 256 (2022),
+#   doi 10.1038/s41586-022-04841-8. Retracted 23 June 2026, retraction note
+#   doi 10.1038/s41586-026-10799-8: an unusual calibration problem left CHIME's
+#   digital beams incorrectly pointed when FRB 20191221A was detected, and the
+#   periodicity was in fact the known Galactic pulsar PSR J0248+6021.
+#
+# Kevin, Pranav and Joseph are all authors, and it is still listed on Google
+# Scholar and ResearchGate, so its absence here reads as an oversight to anyone
+# cross-checking. It is not one. Leave it out.
+#
+# Fields
+#   year      (required)  Used for grouping; the page sorts newest first.
+#   title     (required)  No trailing period.
+#   authors   (required)  Displayed verbatim. For collaboration papers, something
+#                         like "CHIME/FRB Collaboration, incl. K. Bandura".
+#   venue                 Journal or conference.
+#   ref                   Volume/pages/article number, e.g. "ApJ 947, 83".
+#   doi                   Bare DOI. Linked automatically.
+#   arxiv                 Bare arXiv id. Linked automatically.
+#   url                   Any other link, used when there is no DOI or arXiv.
+#   people                Lab members on the paper; rendered as small tags.
+#   type      (required)  Which band it appears in on /publications/:
+#                           journal      — peer-reviewed journal article
+#                           proceedings  — conference proceedings (SPIE, IEEE, URSI…)
+#                           note         — research note (e.g. RNAAS)
+#                           preprint     — not yet refereed
+#                         `note` and `preprint` share one band.
+#   preprint  true        Marks it as not yet refereed.
+#   highlight true        Marks it as selected and makes it eligible for the home preview.
+#   cover                 Short badge text for a journal cover, e.g. "Nature cover".
+#                         A cover paper leads the home preview when it also has
+#                         highlight: true; without highlight it just keeps its badge
+#                         in the publication list. Only set cover where the issue's
+#                         own cover blurb names the paper.
+#   cover_note            The full citation for that cover, shown under the badge.
+#   note                  One short line of context shown in grey. Optional.
+#   review                A question for a human. Shown to editors only in the
+#                         sense that it is a reminder in this file — DELETE the
+#                         key once the entry is confirmed.
+
+- year: 2026
+  title: Discovery of Microsecond Duration Radio Flashes with Small Radio Telescopes
+  authors: G. Langston, K. Bandura, P. Sanghavi
+  venue: Research Notes of the AAS
+  ref: RNAAS 10, 7
+  doi: 10.3847/2515-5172/ae34b0
+  people:
+  - K. Bandura
+  - P. Sanghavi
+  type: note
+- year: 2026
+  title: Millisecond-cadence Radio Frequency Interference Filters
+  authors: J. W. Kania, K. Bandura, D. R. Lorimer, R. Prestage
+  venue: The Astronomical Journal
+  ref: AJ 171, 73
+  doi: 10.3847/1538-3881/ae0d86
+  people:
+  - K. Bandura
+  - J. Kania
+  highlight: true
+  type: journal
+- year: 2026
+  title: PEACC - Precision Emitter for 21 cm Array Coherent Calibration
+  authors: K. Bhopi, M. Cole, M. Helfenbein, W. Tyndall, A. Whitmer, K. Bandura, L. Newburgh
+  venue: arXiv preprint
+  arxiv: '2604.09859'
+  people:
+  - K. Bandura
+  - K. Bhopi
+  preprint: true
+  highlight: true
+  type: preprint
+- year: 2026
+  title: The Second CHIME/FRB Catalog of Fast Radio Bursts
+  authors: CHIME/FRB Collaboration, incl. K. Bandura
+  venue: The Astrophysical Journal Supplement Series
+  ref: ApJS 283, 34
+  doi: 10.3847/1538-4365/ae3828
+  arxiv: '2601.09399'
+  people:
+  - K. Bandura
+  type: journal
+- year: 2025
+  title: A Catalog of Local Universe Fast Radio Bursts from CHIME/FRB and the KKO Outrigger
+  authors: CHIME/FRB Collaboration, incl. K. Bandura
+  venue: The Astrophysical Journal Supplement Series
+  ref: ApJS 280, 6
+  doi: 10.3847/1538-4365/addbda
+  arxiv: '2502.11217'
+  people:
+  - K. Bandura
+  - K. Khairy
+  type: journal
+- year: 2025
+  title: A pulsar-like polarization angle swing from a nearby fast radio burst
+  authors: CHIME/FRB Collaboration, incl. K. Bandura
+  venue: Nature
+  ref: Nature 637, 43
+  doi: 10.1038/s41586-024-08184-4
+  arxiv: '2402.09304'
+  people:
+  - K. Bandura
+  type: journal
+- year: 2025
+  title: A Very Long Baseline Interferometry Calibrator Grid at 600 MHz for Fast Radio Transient Localizations
+    with CHIME/FRB Outriggers
+  authors: CHIME/FRB Collaboration, incl. K. Bandura
+  venue: The Astrophysical Journal
+  ref: ApJ 981, 39
+  doi: 10.3847/1538-4357/adaf8d
+  arxiv: '2409.11476'
+  people:
+  - K. Bandura
+  type: journal
+- year: 2025
+  title: A VLBI Software Correlator for Fast Radio Transients
+  authors: C. Leung, S. Andrew, K. W. Masui, et al.
+  venue: The Astronomical Journal
+  ref: AJ 170, 53
+  doi: 10.3847/1538-3881/add876
+  arxiv: '2403.05631'
+  people:
+  - K. Khairy
+  type: journal
+- year: 2025
+  title: Beam Maps of the Canadian Hydrogen Intensity Mapping Experiment (CHIME) Measured With a Drone
+  authors: W. Tyndall et al., incl. K. Bandura
+  venue: IEEE Open Journal of Antennas and Propagation
+  ref: IEEE OJAP 6, 928
+  doi: 10.1109/OJAP.2025.3554457
+  arxiv: '2407.04848'
+  people:
+  - K. Bandura
+  type: journal
+- year: 2025
+  title: 'CHIME/FRB Outriggers: Design Overview'
+  authors: CHIME/FRB Collaboration, incl. K. Bandura
+  venue: The Astrophysical Journal
+  ref: ApJ 993, 55
+  doi: 10.3847/1538-4357/adfdcc
+  arxiv: '2504.05192'
+  people:
+  - K. Bandura
+  - K. Bhopi
+  - K. Khairy
+  type: journal
+- year: 2025
+  title: Demonstration of hybrid foreground removal on CHIME data
+  authors: CHIME Collaboration, incl. K. Bandura
+  venue: Physical Review D
+  ref: PRD 111, 103531
+  doi: 10.1103/PhysRevD.111.103531
+  arxiv: '2408.08949'
+  people:
+  - K. Bandura
+  type: journal
+- year: 2025
+  title: 'FRB 20250316A: A Brilliant and Nearby One-off Fast Radio Burst Localized to 13 pc Precision'
+  authors: CHIME/FRB Collaboration, incl. K. Bandura
+  venue: The Astrophysical Journal Letters
+  ref: ApJL 989, L48
+  doi: 10.3847/2041-8213/adf62f
+  arxiv: '2506.19006'
+  people:
+  - K. Bandura
+  - K. Bhopi
+  type: journal
+- year: 2025
+  title: Stellar Mass-Dispersion Measure Correlations Constrain Baryonic Feedback in Fast Radio Burst
+    Host Galaxies
+  authors: CHIME/FRB Collaboration, incl. K. Bandura
+  venue: The Astrophysical Journal Letters
+  ref: ApJL 991, L25
+  doi: 10.3847/2041-8213/ae044d
+  arxiv: '2507.16816'
+  people:
+  - K. Bandura
+  type: journal
+- year: 2024
+  title: A Detection of Cosmological 21 cm Emission from CHIME in Cross-correlation with eBOSS Measurements
+    of the Lya Forest
+  authors: CHIME Collaboration, incl. K. Bandura
+  venue: The Astrophysical Journal
+  ref: ApJ 963, 23
+  doi: 10.3847/1538-4357/ad0f1d
+  arxiv: '2309.04404'
+  people:
+  - K. Bandura
+  type: journal
+- year: 2024
+  title: A fast radio burst localized at detection to an edge-on galaxy using very-long-baseline interferometry
+  authors: T. Cassanelli, C. Leung, P. Sanghavi, et al., incl. K. Bandura
+  venue: Nature Astronomy
+  ref: Nat. Astron. 8, 1429
+  doi: 10.1038/s41550-024-02357-x
+  arxiv: '2307.09502'
+  note: T. Cassanelli, C. Leung, and P. Sanghavi contributed equally — co-first
+    and co-corresponding authors.
+  people:
+  - K. Bandura
+  - P. Sanghavi
+  - K. Khairy
+  highlight: true
+  type: journal
+- year: 2024
+  title: 'CHIME/FRB Outriggers: KKO Station System and Commissioning Results'
+  authors: A. E. Lanman et al. (CHIME/FRB Collaboration), incl. K. Bandura
+  venue: The Astronomical Journal
+  ref: AJ 168, 87
+  doi: 10.3847/1538-3881/ad5838
+  arxiv: '2402.07898'
+  people:
+  - K. Bandura
+  - K. Khairy
+  type: journal
+- year: 2024
+  title: Do All Fast Radio Bursts Repeat? Constraints from CHIME/FRB Far Sidelobe FRBs
+  authors: CHIME/FRB Collaboration, incl. K. Bandura
+  venue: The Astrophysical Journal
+  ref: ApJ 975, 75
+  doi: 10.3847/1538-4357/ad779d
+  arxiv: '2307.05261'
+  people:
+  - K. Bandura
+  - K. Khairy
+  type: journal
+- year: 2024
+  title: 'Interference detection in radio astronomy: applying Shapiro-Wilks normality test, spectral entropy,
+    and spectral relative entropy'
+  authors: Z. Cao, N. A. Schmid, K. Bandura, D. R. Lorimer, et al.
+  venue: RAS Techniques and Instruments
+  ref: RASTI 3, 535
+  doi: 10.1093/rasti/rzae035
+  people:
+  - K. Bandura
+  type: journal
+- year: 2024
+  title: 'TONE: A CHIME/FRB Outrigger Pathfinder for Localizations of Fast Radio Bursts using Very Long
+    Baseline Interferometry'
+  authors: P. Sanghavi, C. Leung, K. Bandura, et al.
+  venue: Journal of Astronomical Instrumentation
+  ref: JAI 13, 2450010
+  doi: 10.1142/S2251171724500107
+  arxiv: '2304.10534'
+  people:
+  - K. Bandura
+  - P. Sanghavi
+  - K. Khairy
+  highlight: true
+  type: journal
+- year: 2024
+  title: Updating the First CHIME/FRB Catalog of Fast Radio Bursts with Baseband Data
+  authors: CHIME/FRB Collaboration, incl. K. Bandura
+  venue: The Astrophysical Journal
+  ref: ApJ 969, 145
+  doi: 10.3847/1538-4357/ad464b
+  arxiv: '2311.00111'
+  people:
+  - K. Bandura
+  type: journal
+# 2023 is right even though the article number starts "22": World Scientific
+# encodes the online-first year there. Crossref has published-online 2022-10-10
+# and published-print 2023-06, and JAI runs one volume per year — volume 7 is
+# 2018 (see Quantization Bias below), so volume 12 is 2023.
+- year: 2023
+  title: A Digital Calibration Source for 21 cm Cosmology Telescopes
+  authors: K. Bhopi, W. Tyndall, P. Sanghavi, K. Bandura, L. Newburgh, J. Gallicchio
+  venue: Journal of Astronomical Instrumentation
+  ref: JAI 12, 2250016
+  doi: 10.1142/S2251171722500167
+  arxiv: '2201.11806'
+  people:
+  - K. Bandura
+  - P. Sanghavi
+  - K. Bhopi
+  highlight: true
+  type: journal
+- year: 2023
+  title: CHIME/FRB Discovery of 25 Repeating Fast Radio Burst Sources
+  authors: CHIME/FRB Collaboration, incl. K. Bandura
+  venue: The Astrophysical Journal
+  ref: ApJ 947, 83
+  doi: 10.3847/1538-4357/acc6c1
+  arxiv: '2301.08762'
+  people:
+  - K. Bandura
+  type: journal
+- year: 2023
+  title: Constraints on the Intergalactic and Local Dispersion Measure of Fast Radio Bursts with the CHIME/FRB
+    far side-lobe events
+  authors: H.-H. Lin, P. Scholz, C. Ng, et al.
+  venue: arXiv preprint
+  arxiv: '2307.05262'
+  people:
+  - J. Kania
+  - K. Khairy
+  preprint: true
+  type: preprint
+- year: 2023
+  title: Detection of Cosmological 21 cm Emission with the Canadian Hydrogen Intensity Mapping Experiment
+  authors: CHIME Collaboration, incl. K. Bandura
+  venue: The Astrophysical Journal
+  ref: ApJ 947, 16
+  doi: 10.3847/1538-4357/acb13f
+  arxiv: '2202.01242'
+  people:
+  - K. Bandura
+  - J. Kania
+  type: journal
+- year: 2022
+  title: A Clock Stabilization System for CHIME/FRB Outriggers
+  authors: J. Mena-Parra et al. (CHIME/FRB Collaboration), incl. K. Bandura
+  venue: The Astronomical Journal
+  ref: AJ 163, 48
+  doi: 10.3847/1538-3881/ac397a
+  people:
+  - K. Bandura
+  type: journal
+- year: 2022
+  title: A Sudden Period of High Activity from Repeating Fast Radio Burst 20201124A
+  authors: A. E. Lanman, B. C. Andersen, P. Chawla, et al., incl. K. Bandura
+  venue: The Astrophysical Journal
+  ref: ApJ 927, 59
+  doi: 10.3847/1538-4357/ac4bc7
+  arxiv: '2109.09254'
+  people:
+  - K. Bandura
+  - P. Sanghavi
+  type: journal
+- year: 2022
+  title: An Overview of CHIME, the Canadian Hydrogen Intensity Mapping Experiment
+  authors: CHIME Collaboration, incl. K. Bandura
+  venue: The Astrophysical Journal Supplement Series
+  ref: ApJS 261, 29
+  doi: 10.3847/1538-4365/ac6fd9
+  arxiv: '2201.07869'
+  people:
+  - K. Bandura
+  - J. Kania
+  type: journal
+- year: 2022
+  title: Antenna characterization for the HIRAX experiment
+  authors: E. R. Kuhn et al., incl. K. Bandura
+  venue: Proc. SPIE 12182, Ground-based and Airborne Telescopes IX
+  ref: Proc. SPIE 12182, 1218225
+  doi: 10.1117/12.2627856
+  arxiv: '2207.12461'
+  people:
+  - K. Bandura
+  type: proceedings
+- year: 2022
+  title: Characterization of the John A. Galt telescope for radio holography with CHIME
+  authors: A. Reda, T. Pinsonneault-Marotte, M. Deng, et al., incl. K. Bandura
+  venue: Proc. SPIE 12190, Millimeter, Submillimeter, and Far-Infrared Detectors and Instrumentation for
+    Astronomy XI
+  ref: Proc. SPIE 12190, 121902V
+  doi: 10.1117/12.2629429
+  arxiv: '2207.13876'
+  people:
+  - K. Bandura
+  - J. Kania
+  type: proceedings
+- year: 2022
+  title: Constraining primordial black holes using fast radio burst gravitational-lens interferometry
+    with CHIME/FRB
+  authors: C. Leung, Z. Kader, K. W. Masui, et al., incl. K. Bandura
+  venue: Physical Review D
+  ref: PRD 106, 043017
+  doi: 10.1103/PhysRevD.106.043017
+  arxiv: '2204.06001'
+  people:
+  - K. Bandura
+  - P. Sanghavi
+  type: journal
+- year: 2022
+  title: High-time resolution search for compact objects using fast radio burst gravitational lens interferometry
+    with CHIME/FRB
+  authors: Z. Kader, C. Leung, M. Dobbs, et al., incl. K. Bandura
+  venue: Physical Review D
+  ref: PRD 106, 043016
+  doi: 10.1103/PhysRevD.106.043016
+  arxiv: '2204.06014'
+  people:
+  - K. Bandura
+  - P. Sanghavi
+  type: journal
+- year: 2022
+  title: 'Hydrogen Intensity and Real-Time Analysis Experiment: 256-element array status and overview'
+  authors: D. Crichton et al., incl. K. Bandura
+  venue: Journal of Astronomical Telescopes, Instruments, and Systems
+  ref: JATIS 8, 011019
+  doi: 10.1117/1.JATIS.8.1.011019
+  arxiv: '2109.13755'
+  people:
+  - K. Bandura
+  - P. Sanghavi
+  - J. Kania
+  type: journal
+- year: 2022
+  title: Localizing FRBs through VLBI with the Algonquin Radio Observatory 10 m Telescope
+  authors: T. Cassanelli, C. Leung, M. Rahman, et al., incl. K. Bandura
+  venue: The Astronomical Journal
+  ref: AJ 163, 65
+  doi: 10.3847/1538-3881/ac3d2f
+  arxiv: '2107.05659'
+  people:
+  - K. Bandura
+  - P. Sanghavi
+  type: journal
+- year: 2022
+  title: Modeling Fast Radio Burst Dispersion and Scattering Properties in the First CHIME/FRB Catalog
+  authors: P. Chawla, V. M. Kaspi, S. M. Ransom, et al.
+  venue: The Astrophysical Journal
+  ref: ApJ 927, 35
+  doi: 10.3847/1538-4357/ac49e1
+  arxiv: '2107.10858'
+  people:
+  - K. Bandura
+  - P. Sanghavi
+  type: journal
+- year: 2022
+  title: Using the Sun to Measure the Primary Beam Response of the Canadian Hydrogen Intensity Mapping
+    Experiment
+  authors: CHIME Collaboration, incl. K. Bandura
+  venue: The Astrophysical Journal
+  ref: ApJ 932, 100
+  doi: 10.3847/1538-4357/ac6b9f
+  arxiv: '2201.11822'
+  people:
+  - K. Bandura
+  - J. Kania
+  type: journal
+- year: 2021
+  title: A Local Universe Host for the Repeating Fast Radio Burst FRB 20181030A
+  authors: M. Bhardwaj, A. Yu. Kirichenko, D. Michilli, et al.
+  venue: The Astrophysical Journal Letters
+  ref: ApJL 919, L24
+  doi: 10.3847/2041-8213/ac223b
+  arxiv: '2108.12122'
+  people:
+  - K. Bandura
+  - P. Sanghavi
+  type: journal
+- year: 2021
+  title: A Synoptic VLBI Technique for Localizing Nonrepeating Fast Radio Bursts with CHIME/FRB
+  authors: C. Leung, J. Mena-Parra, K. Masui, et al.
+  venue: The Astronomical Journal
+  ref: AJ 161, 81
+  doi: 10.3847/1538-3881/abd174
+  arxiv: '2008.11738'
+  people:
+  - K. Bandura
+  - P. Sanghavi
+  type: journal
+- year: 2021
+  title: An Analysis Pipeline for CHIME/FRB Full-array Baseband Data
+  authors: CHIME/FRB Collaboration, incl. K. Bandura
+  venue: The Astrophysical Journal
+  ref: ApJ 910, 147
+  doi: 10.3847/1538-4357/abe626
+  arxiv: '2010.06748'
+  people:
+  - K. Bandura
+  type: journal
+- year: 2021
+  title: 'CHIME/FRB Catalog 1 Results: Statistical Cross-correlations with Large-scale Structure'
+  authors: M. Rafiei-Ravandi, K. M. Smith, D. Li, et al., incl. K. Bandura
+  venue: The Astrophysical Journal
+  ref: ApJ 922, 42
+  doi: 10.3847/1538-4357/ac1dab
+  arxiv: '2106.04354'
+  people:
+  - K. Bandura
+  - P. Sanghavi
+  type: journal
+- year: 2021
+  title: Fast Radio Burst Morphology in the First CHIME/FRB Catalog
+  authors: Z. Pleunis, D. C. Good, V. M. Kaspi, et al., incl. K. Bandura
+  venue: The Astrophysical Journal
+  ref: ApJ 923, 1
+  doi: 10.3847/1538-4357/ac33ac
+  arxiv: '2106.04356'
+  people:
+  - K. Bandura
+  - P. Sanghavi
+  type: journal
+- year: 2021
+  title: No Evidence for Galactic Latitude Dependence of the Fast Radio Burst Sky Distribution
+  authors: A. Josephy, P. Chawla, A. P. Curtin, et al.
+  venue: The Astrophysical Journal
+  ref: ApJ 923, 2
+  doi: 10.3847/1538-4357/ac33ad
+  arxiv: '2106.04353'
+  people:
+  - K. Bandura
+  - P. Sanghavi
+  type: journal
+- year: 2021
+  title: 'The CHIME Pulsar Project: System Overview'
+  authors: CHIME/Pulsar Collaboration, incl. K. Bandura
+  venue: The Astrophysical Journal Supplement Series
+  ref: ApJS 255, 5
+  doi: 10.3847/1538-4365/abfdcb
+  arxiv: '2008.05681'
+  people:
+  - K. Bandura
+  type: journal
+- year: 2021
+  title: The First CHIME/FRB Fast Radio Burst Catalog
+  authors: CHIME/FRB Collaboration, incl. K. Bandura
+  venue: The Astrophysical Journal Supplement Series
+  ref: ApJS 257, 59
+  doi: 10.3847/1538-4365/ac33ab
+  arxiv: '2106.04352'
+  people:
+  - K. Bandura
+  - P. Sanghavi
+  - J. Kania
+  type: journal
+- year: 2020
+  title: A bright millisecond-duration radio burst from a Galactic magnetar
+  authors: CHIME/FRB Collaboration, incl. K. Bandura
+  venue: Nature
+  ref: Nature 587, 54
+  doi: 10.1038/s41586-020-2863-y
+  arxiv: '2005.10324'
+  people:
+  - K. Bandura
+  - P. Sanghavi
+  - J. Kania
+  type: journal
+- year: 2020
+  title: A repeating fast radio burst source localized to a nearby spiral galaxy
+  authors: CHIME/FRB Collaboration, incl. K. Bandura
+  venue: Nature
+  ref: Nature 577, 190
+  doi: 10.1038/s41586-019-1866-z
+  arxiv: '2001.02222'
+  people:
+  - K. Bandura
+  type: journal
+- year: 2020
+  title: Detection of Repeating FRB 180916.J0158+65 Down to Frequencies of 300 MHz
+  authors: P. Chawla, B. C. Andersen, M. Bhardwaj, et al., incl. K. Bandura
+  venue: The Astrophysical Journal Letters
+  ref: ApJL 896, L41
+  doi: 10.3847/2041-8213/ab96bf
+  arxiv: '2004.02862'
+  people:
+  - K. Bandura
+  - P. Sanghavi
+  type: journal
+# These two SPIE papers are dated by the conference, not the printing. SPIE
+# Astronomical Telescopes + Instrumentation 2020 ran in December 2020 and the
+# proceedings appeared in January 2021, so Crossref says 2021 while NASA ADS
+# says 2020. Astronomers look these up in ADS, so the page follows ADS. Change
+# both together or not at all.
+- year: 2020
+  title: Mechanical and optical design of the HIRAX radio telescope
+  authors: B. R. B. Saliwanchik et al., incl. K. Bandura
+  venue: Proc. SPIE 11445, Ground-based and Airborne Telescopes VIII
+  ref: Proc. SPIE 11445, 114455O
+  doi: 10.1117/12.2552508
+  arxiv: '2101.06338'
+  people:
+  - K. Bandura
+  type: proceedings
+- year: 2020
+  title: Nine New Repeating Fast Radio Burst Sources from CHIME/FRB
+  authors: CHIME/FRB Collaboration, incl. K. Bandura
+  venue: The Astrophysical Journal Letters
+  ref: ApJL 891, L6
+  doi: 10.3847/2041-8213/ab7208
+  arxiv: '2001.03595'
+  people:
+  - K. Bandura
+  type: journal
+- year: 2020
+  title: Noise temperature testing for the Hydrogen Intensity and Real-time Analysis eXperiment (HIRAX)
+  authors: E. R. Kuhn et al., incl. K. Bandura
+  venue: Proc. SPIE 11445, Ground-based and Airborne Telescopes VIII
+  ref: Proc. SPIE 11445, 114452Z
+  doi: 10.1117/12.2560270
+  arxiv: '2101.06337'
+  people:
+  - K. Bandura
+  type: proceedings
+- year: 2020
+  title: Periodic activity from a fast radio burst source
+  authors: CHIME/FRB Collaboration, incl. K. Bandura
+  venue: Nature
+  ref: Nature 582, 351
+  doi: 10.1038/s41586-020-2398-2
+  arxiv: '2001.10275'
+  people:
+  - K. Bandura
+  - P. Sanghavi
+  - J. Kania
+  type: journal
+- year: 2020
+  title: Simultaneous X-Ray and Radio Observations of the Repeating Fast Radio Burst FRB 180916.J0158+65
+  authors: P. Scholz et al. (CHIME/FRB Collaboration), incl. K. Bandura
+  venue: The Astrophysical Journal
+  ref: ApJ 901, 165
+  doi: 10.3847/1538-4357/abb1a8
+  arxiv: '2004.06082'
+  people:
+  - K. Bandura
+  type: journal
+- year: 2020
+  title: 'Your: Your Unified Reader'
+  authors: K. Aggarwal, D. Agarwal, J. W. Kania, W. Fiore, et al.
+  venue: Journal of Open Source Software
+  ref: JOSS 5(55), 2750
+  doi: 10.21105/joss.02750
+  people:
+  - J. Kania
+  type: journal
+- year: 2019
+  title: Observations of fast radio bursts at frequencies down to 400 megahertz
+  authors: CHIME/FRB Collaboration, incl. K. Bandura
+  venue: Nature
+  ref: Nature 566, 230
+  doi: 10.1038/s41586-018-0867-7
+  arxiv: '1901.04524'
+  people:
+  - K. Bandura
+  cover: Nature cover
+  cover_note: Cover story, Nature, 14 February 2019 — "Space and CHIME"
+  type: journal
+- year: 2019
+  title: CHIME/FRB Detection of the Original Repeating Fast Radio Burst Source FRB 121102
+  authors: CHIME/FRB Collaboration, incl. K. Bandura
+  venue: The Astrophysical Journal Letters
+  ref: ApJL 882, L18
+  doi: 10.3847/2041-8213/ab2c00
+  arxiv: '1906.11305'
+  people:
+  - K. Bandura
+  type: journal
+- year: 2019
+  title: CHIME/FRB Discovery of Eight New Repeating Fast Radio Burst Sources
+  authors: CHIME/FRB Collaboration, incl. K. Bandura
+  venue: The Astrophysical Journal Letters
+  ref: ApJL 885, L24
+  doi: 10.3847/2041-8213/ab4a80
+  arxiv: '1908.03507'
+  people:
+  - K. Bandura
+  type: journal
+- year: 2019
+  title: 'Digital Signal Processing in Radio Astronomy: An Interdisciplinary Experience'
+  authors: P. Sanghavi, K. Bandura, J. Makous, H. Chun
+  venue: 2019 IEEE Integrated STEM Education Conference (ISEC)
+  ref: pp. 362-366
+  doi: 10.1109/ISECon.2019.8882039
+  people:
+  - K. Bandura
+  - P. Sanghavi
+  highlight: true
+  type: proceedings
+- year: 2019
+  title: A Second Source of Repeating Fast Radio Bursts
+  authors: CHIME/FRB Collaboration, incl. K. Bandura
+  venue: Nature
+  ref: Nature 566, 235
+  doi: 10.1038/s41586-018-0864-x
+  arxiv: '1901.04525'
+  people:
+  - K. Bandura
+  cover: Nature cover
+  cover_note: Cover story, Nature, 14 February 2019 — "Space and CHIME"
+  type: journal
+- year: 2018
+  title: Open Source Radio Telescopes
+  authors: E. White, R. Prestage, E. Smith, P. Sanghavi
+  venue: Proceedings of the GNU Radio Conference
+  ref: Vol. 3, No. 1
+  people:
+  - P. Sanghavi
+  type: proceedings
+- year: 2018
+  title: Quantization Bias for Digital Correlators
+  authors: J. Mena-Parra, K. Bandura, M. A. Dobbs, et al.
+  venue: Journal of Astronomical Instrumentation
+  ref: JAI 7, 1850008
+  doi: 10.1142/S2251171718500083
+  arxiv: '1803.04296'
+  people:
+  - K. Bandura
+  type: journal
+- year: 2018
+  title: 'The CHIME Fast Radio Burst Project: System Overview'
+  authors: CHIME/FRB Collaboration, incl. K. Bandura
+  venue: The Astrophysical Journal
+  ref: ApJ 863, 48
+  doi: 10.3847/1538-4357/aad188
+  arxiv: '1803.11235'
+  people:
+  - K. Bandura
+  type: journal
+- year: 2017
+  title: A search for host galaxies of potentially extragalactic rotating radio transients
+  authors: A. Rane, A. Loeb
+  venue: Monthly Notices of the Royal Astronomical Society Letters
+  ref: MNRAS 467, L11
+  doi: 10.1093/mnrasl/slw245
+  arxiv: '1608.06952'
+  people:
+  - A. Rane
+  highlight: true
+  type: journal
+- year: 2017
+  title: 'CHIME FRB: An application of FFT beamforming for a radio telescope'
+  authors: C. Ng et al., incl. K. Bandura
+  venue: 2017 XXXIInd URSI General Assembly and Scientific Symposium (GASS)
+  doi: 10.23919/URSIGASS.2017.8105318
+  arxiv: '1702.04728'
+  people:
+  - K. Bandura
+  type: proceedings
+- year: 2017
+  title: Fast Radio Bursts
+  authors: A. Rane, D. Lorimer
+  venue: Journal of Astrophysics and Astronomy
+  ref: JApA 38, 55
+  doi: 10.1007/s12036-017-9478-1
+  people:
+  - A. Rane
+  highlight: true
+  type: journal
+- year: 2017
+  title: Limits on the ultra-bright Fast Radio Burst population from the CHIME Pathfinder
+  authors: CHIME Scientific Collaboration, incl. K. Bandura
+  venue: The Astrophysical Journal
+  ref: ApJ 844, 161
+  doi: 10.3847/1538-4357/aa713f
+  arxiv: '1702.08040'
+  people:
+  - K. Bandura
+  type: journal
+- year: 2016
+  title: A search for highly dispersed fast radio bursts in three Parkes multibeam surveys
+  authors: F. Crawford, A. Rane, L. Tran, K. Rolph, D. R. Lorimer, J. P. Ridley
+  venue: Monthly Notices of the Royal Astronomical Society
+  ref: MNRAS 460, 3370
+  doi: 10.1093/mnras/stw1233
+  arxiv: '1605.06074'
+  people:
+  - A. Rane
+  type: journal
+- year: 2016
+  title: A search for rotating radio transients and fast radio bursts in the Parkes high-latitude pulsar
+    survey
+  authors: A. Rane, D. R. Lorimer, S. D. Bates, N. McMann, M. A. McLaughlin, K. Rajwade
+  venue: Monthly Notices of the Royal Astronomical Society
+  ref: MNRAS 455, 2207
+  doi: 10.1093/mnras/stv2404
+  arxiv: '1505.00834'
+  people:
+  - A. Rane
+  highlight: true
+  type: journal
+- year: 2016
+  title: 'HIRAX: a probe of dark energy and radio transients'
+  authors: L. B. Newburgh, K. Bandura, et al.
+  venue: Proc. SPIE 9906, Ground-based and Airborne Telescopes VI
+  ref: Proc. SPIE 9906, 99065X
+  doi: 10.1117/12.2234286
+  arxiv: '1607.02059'
+  people:
+  - K. Bandura
+  type: proceedings
+- year: 2016
+  title: Holographic beam mapping of the CHIME pathfinder array
+  authors: P. Berger, L. B. Newburgh, et al., incl. K. Bandura
+  venue: Proc. SPIE 9906, Ground-based and Airborne Telescopes VI
+  ref: Proc. SPIE 9906, 99060D
+  doi: 10.1117/12.2233782
+  arxiv: '1607.01473'
+  people:
+  - K. Bandura
+  type: proceedings
+- year: 2014
+  title: 'PsrPopPy: an open-source package for pulsar population simulations'
+  authors: S. D. Bates, D. R. Lorimer, A. Rane, J. Swiggum
+  venue: Monthly Notices of the Royal Astronomical Society
+  ref: MNRAS 439, 2893
+  doi: 10.1093/mnras/stu157
+  arxiv: '1311.3427'
+  people:
+  - A. Rane
+  type: journal
