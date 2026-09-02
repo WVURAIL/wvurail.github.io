@@ -1,8 +1,7 @@
 ---
+layout: wvu
 title: DSPIRA 2018
-layout: cohort
 permalink: /education/dspira-2018/
-full_width: true
 description: DSPIRA Research Experiences for Teachers, summer 2018 — six teachers and two undergraduates ran eight experiments at Green Bank with telescopes they built themselves.
 year: 2018
 headline: The second summer
@@ -22,24 +21,39 @@ roster_intro: >
   Six teachers, two of whom had done the program the summer before and came back
   to go deeper. Two undergraduate researchers joined them for the season.
 ---
+{%- comment %}
+Port of _pages/dspira-2018.html (and its cohort layout) onto the Design System.
+The cohort switcher, hero, stats, cover and roster come from
+_includes/cohort-roster.html, driven by the front matter above and by
+_data/education.yml; the closing lessons band and cohort links come from
+_includes/cohort-footer.html. What is written here is only this summer's
+story: five chapters, two photo galleries and their figures.
 
-<section class="chapter chapter--tint" id="foundation">
+The gallery lightbox is ported as /assets/js/lightbox.js, loaded at the foot of
+this page. It takes over both <ul data-lightbox> galleries; every gallery image
+stays a plain link to the full-size file, so without JavaScript a click still
+lands on the picture the lightbox would have shown.
+{% endcomment -%}
+{% include cohort-roster.html %}
+
+<!-- ===================== 01 FOUNDATION ===================== -->
+<div class="bg-wvu-not-quite-white py-6" id="foundation">
    <div class="container">
-      <div class="chapter-grid">
-         <div class="chapter-aside">
-            <p class="chapter-num">01</p>
-            <h2>Foundation</h2>
+      <div class="row">
+         <div class="col-24 col-lg-6 mb-4 mb-lg-0">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">01</p>
+            <h2 class="antonia-light display-6 mb-0">Foundation</h2>
          </div>
-         <div class="chapter-body">
+         <div class="col-24 col-lg-16 offset-lg-1">
             <p>
                As in 2017, the first four weeks were daily lectures building a foundation
-               in astronomy and digital signal processing — the celestial sphere,
+               in astronomy and digital signal processing &mdash; the celestial sphere,
                astronomical and solar time, Kepler's laws, the H&ndash;R diagram, galaxies,
                dark matter and galaxy rotation curves on one side; signal basics through to
                the fast Fourier transform, modeled on an undergraduate DSP course, on the
                other.
             </p>
-            <p>
+            <p class="mb-0">
                This cohort also set aside dedicated time to write lesson plans and
                classroom activities, working out how to fold signal processing into what
                they already teach day to day.
@@ -47,16 +61,17 @@ roster_intro: >
          </div>
       </div>
    </div>
-</section>
+</div>
 
-<section class="chapter" id="laboratory">
+<!-- ===================== 02 THE LABORATORY SESSIONS ===================== -->
+<div class="py-6" id="laboratory">
    <div class="container">
-      <div class="chapter-grid">
-         <div class="chapter-aside">
-            <p class="chapter-num">02</p>
-            <h2>The laboratory sessions</h2>
+      <div class="row">
+         <div class="col-24 col-lg-6 mb-4 mb-lg-0">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">02</p>
+            <h2 class="antonia-light display-6 mb-0">The laboratory sessions</h2>
          </div>
-         <div class="chapter-body">
+         <div class="col-24 col-lg-16 offset-lg-1">
             <p>
                Every lecture was followed by a lab. This year the 2017 material was
                revisited, but far more time went on mastering it rather than getting
@@ -66,7 +81,7 @@ roster_intro: >
                writing their own software spectrometer.
             </p>
             <p>
-               They then built the telescope — soldering a low-noise amplifier from very
+               They then built the telescope &mdash; soldering a low-noise amplifier from very
                small components, and fabricating a horn antenna from materials and tools
                you can buy at a hardware store. The horns were built in the industrial
                design workshop at WVU, again as an assembly line. Between the spectrometer,
@@ -79,73 +94,131 @@ roster_intro: >
                measured in the lab and the noise figure taken inside the Faraday cage in
                the RF room.
             </p>
-            <p>
+            <p class="mb-0">
                The two returning teachers spent their second summer going a level deeper
-               into software-defined radio for radio astronomy — learning the internals of
+               into software-defined radio for radio astronomy &mdash; learning the internals of
                GNU Radio well enough to write their own blocks and programs, streamlining
                the data acquisition, and building DSP teaching tools inside GNU Radio.
             </p>
          </div>
       </div>
 
-      <ul class="photo-grid" data-lightbox>
-         <li><figure class="is-logo">
-            <a href="/images/dspira/gnuradio.png"><img src="/images/dspira/gnuradio.png" alt="The GNU Radio project logo" width="992" height="242" loading="lazy" decoding="async" /></a>
-            <figcaption>GNU Radio — free, open source, and the same stack the lab uses on real instruments.</figcaption>
-         </figure></li>
-         <li><figure>
-            <a href="/images/dspira/Resistor.jpg"><img src="/images/dspira/Resistor.jpg" alt="A surface-mount amplifier component a couple of millimeters across, balanced on a fingertip above a printed assembly sheet" width="1600" height="1564" loading="lazy" decoding="async" /></a>
-            <figcaption>The parts you solder are a couple of millimeters across.</figcaption>
-         </figure></li>
-         <li><figure>
-            <a href="/images/dspira/dspira2018/lna.jpg"><img src="/images/dspira/dspira2018/lna.jpg" alt="Macro photograph of an amplifier circuit board laid beside a ruler showing millimeter divisions" width="1600" height="1200" loading="lazy" decoding="async" /></a>
-            <figcaption>Against a millimeter scale.</figcaption>
-         </figure></li>
-         <li><figure>
-            <a href="/images/dspira/dspira2018/con0.jpg"><img src="/images/dspira/dspira2018/con0.jpg" alt="The industrial design workshop at WVU, with teachers working at benches" width="1600" height="1200" loading="lazy" decoding="async" /></a>
-            <figcaption>The workshop at WVU, where the horns were built.</figcaption>
-         </figure></li>
-         <li><figure>
-            <a href="/images/dspira/dspira2018/con1.jpeg"><img src="/images/dspira/dspira2018/con1.jpeg" alt="Two teachers laying out and marking sheet material for a horn antenna on a large table" width="1600" height="1200" loading="lazy" decoding="async" /></a>
-            <figcaption>Marking out.</figcaption>
-         </figure></li>
-         <li><figure>
-            <a href="/images/dspira/dspira2018/con2.jpg"><img src="/images/dspira/dspira2018/con2.jpg" alt="A teacher holding a length of timber cut for a horn antenna mount" width="1200" height="1600" loading="lazy" decoding="async" /></a>
-            <figcaption>Cutting the mount — this cohort redesigned it.</figcaption>
-         </figure></li>
-         <li><figure>
-            <a href="/images/dspira/dspira2018/con3.jpg"><img src="/images/dspira/dspira2018/con3.jpg" alt="Looking into the open end of a completed horn antenna, its internal bracing visible" width="1080" height="1263" loading="lazy" decoding="async" /></a>
-            <figcaption>Looking into a finished horn.</figcaption>
-         </figure></li>
-         <li><figure>
-            <a href="/images/dspira/dspira2018/con4.jpg"><img src="/images/dspira/dspira2018/con4.jpg" alt="Six completed horn antennas standing on their wooden mounts on the workshop floor" width="1600" height="1267" loading="lazy" decoding="async" /></a>
-            <figcaption>The assembly line's output: one working telescope each.</figcaption>
-         </figure></li>
-         <li><figure>
-            <a href="/images/dspira/dspira2018/con5.jpg"><img src="/images/dspira/dspira2018/con5.jpg" alt="Teachers testing two horn antennas on the grass outside a brick building at WVU" width="1600" height="1195" loading="lazy" decoding="async" /></a>
-            <figcaption>First tests, straight outside the building.</figcaption>
-         </figure></li>
-         <li><figure>
-            <a href="/images/dspira/dspira2018/con6.jpg"><img src="/images/dspira/dspira2018/con6.jpg" alt="Teachers working with laptops beside horn antennas in a covered doorway" width="1600" height="1125" loading="lazy" decoding="async" /></a>
-            <figcaption>Data acquisition, worked out on the spot.</figcaption>
-         </figure></li>
+      {%- comment %}
+      Gallery: each thumbnail is a link to the full-size file. The 4:3 boxes keep
+      the grid even; the linked file is uncropped. The GNU Radio logo is a wide
+      wordmark, so it is contained on white rather than cropped. data-lightbox
+      hands the clicks to /assets/js/lightbox.js, which shows the file in a
+      dialog with the figcaption as its caption.
+      {% endcomment -%}
+      <ul class="list-unstyled row g-4 mt-4 mb-0" data-lightbox>
+         <li class="col-12 col-md-8 col-lg-6">
+            <figure class="figure d-block mb-0">
+               <a href="{{ '/images/dspira/gnuradio.png' | relative_url }}" class="ratio ratio-4x3 d-block mb-2 bg-wvu-not-quite-white rounded">
+                  <img src="{{ '/images/dspira/gnuradio.png' | relative_url }}" alt="The GNU Radio project logo"
+                       width="992" height="242" loading="lazy" decoding="async" class="object-fit-contain p-3">
+               </a>
+               <figcaption class="figure-caption">GNU Radio &mdash; free, open source, and the same stack the lab uses on real instruments.</figcaption>
+            </figure>
+         </li>
+         <li class="col-12 col-md-8 col-lg-6">
+            <figure class="figure d-block mb-0">
+               <a href="{{ '/images/dspira/Resistor.jpg' | relative_url }}" class="ratio ratio-4x3 d-block mb-2">
+                  <img src="{{ '/images/dspira/Resistor.jpg' | relative_url }}" alt="A surface-mount amplifier component a couple of millimeters across, balanced on a fingertip above a printed assembly sheet"
+                       width="1600" height="1564" loading="lazy" decoding="async" class="object-fit-cover rounded">
+               </a>
+               <figcaption class="figure-caption">The parts you solder are a couple of millimeters across.</figcaption>
+            </figure>
+         </li>
+         <li class="col-12 col-md-8 col-lg-6">
+            <figure class="figure d-block mb-0">
+               <a href="{{ '/images/dspira/dspira2018/lna.jpg' | relative_url }}" class="ratio ratio-4x3 d-block mb-2">
+                  <img src="{{ '/images/dspira/dspira2018/lna.jpg' | relative_url }}" alt="Macro photograph of an amplifier circuit board laid beside a ruler showing millimeter divisions"
+                       width="1600" height="1200" loading="lazy" decoding="async" class="object-fit-cover rounded">
+               </a>
+               <figcaption class="figure-caption">Against a millimeter scale.</figcaption>
+            </figure>
+         </li>
+         <li class="col-12 col-md-8 col-lg-6">
+            <figure class="figure d-block mb-0">
+               <a href="{{ '/images/dspira/dspira2018/con0.jpg' | relative_url }}" class="ratio ratio-4x3 d-block mb-2">
+                  <img src="{{ '/images/dspira/dspira2018/con0.jpg' | relative_url }}" alt="The industrial design workshop at WVU, with teachers working at benches"
+                       width="1600" height="1200" loading="lazy" decoding="async" class="object-fit-cover rounded">
+               </a>
+               <figcaption class="figure-caption">The workshop at WVU, where the horns were built.</figcaption>
+            </figure>
+         </li>
+         <li class="col-12 col-md-8 col-lg-6">
+            <figure class="figure d-block mb-0">
+               <a href="{{ '/images/dspira/dspira2018/con1.jpeg' | relative_url }}" class="ratio ratio-4x3 d-block mb-2">
+                  <img src="{{ '/images/dspira/dspira2018/con1.jpeg' | relative_url }}" alt="Two teachers laying out and marking sheet material for a horn antenna on a large table"
+                       width="1600" height="1200" loading="lazy" decoding="async" class="object-fit-cover rounded">
+               </a>
+               <figcaption class="figure-caption">Marking out.</figcaption>
+            </figure>
+         </li>
+         <li class="col-12 col-md-8 col-lg-6">
+            <figure class="figure d-block mb-0">
+               <a href="{{ '/images/dspira/dspira2018/con2.jpg' | relative_url }}" class="ratio ratio-4x3 d-block mb-2">
+                  <img src="{{ '/images/dspira/dspira2018/con2.jpg' | relative_url }}" alt="A teacher holding a length of timber cut for a horn antenna mount"
+                       width="1200" height="1600" loading="lazy" decoding="async" class="object-fit-cover rounded">
+               </a>
+               <figcaption class="figure-caption">Cutting the mount &mdash; this cohort redesigned it.</figcaption>
+            </figure>
+         </li>
+         <li class="col-12 col-md-8 col-lg-6">
+            <figure class="figure d-block mb-0">
+               <a href="{{ '/images/dspira/dspira2018/con3.jpg' | relative_url }}" class="ratio ratio-4x3 d-block mb-2">
+                  <img src="{{ '/images/dspira/dspira2018/con3.jpg' | relative_url }}" alt="Looking into the open end of a completed horn antenna, its internal bracing visible"
+                       width="1080" height="1263" loading="lazy" decoding="async" class="object-fit-cover rounded">
+               </a>
+               <figcaption class="figure-caption">Looking into a finished horn.</figcaption>
+            </figure>
+         </li>
+         <li class="col-12 col-md-8 col-lg-6">
+            <figure class="figure d-block mb-0">
+               <a href="{{ '/images/dspira/dspira2018/con4.jpg' | relative_url }}" class="ratio ratio-4x3 d-block mb-2">
+                  <img src="{{ '/images/dspira/dspira2018/con4.jpg' | relative_url }}" alt="Six completed horn antennas standing on their wooden mounts on the workshop floor"
+                       width="1600" height="1267" loading="lazy" decoding="async" class="object-fit-cover rounded">
+               </a>
+               <figcaption class="figure-caption">The assembly line's output: one working telescope each.</figcaption>
+            </figure>
+         </li>
+         <li class="col-12 col-md-8 col-lg-6">
+            <figure class="figure d-block mb-0">
+               <a href="{{ '/images/dspira/dspira2018/con5.jpg' | relative_url }}" class="ratio ratio-4x3 d-block mb-2">
+                  <img src="{{ '/images/dspira/dspira2018/con5.jpg' | relative_url }}" alt="Teachers testing two horn antennas on the grass outside a brick building at WVU"
+                       width="1600" height="1195" loading="lazy" decoding="async" class="object-fit-cover rounded">
+               </a>
+               <figcaption class="figure-caption">First tests, straight outside the building.</figcaption>
+            </figure>
+         </li>
+         <li class="col-12 col-md-8 col-lg-6">
+            <figure class="figure d-block mb-0">
+               <a href="{{ '/images/dspira/dspira2018/con6.jpg' | relative_url }}" class="ratio ratio-4x3 d-block mb-2">
+                  <img src="{{ '/images/dspira/dspira2018/con6.jpg' | relative_url }}" alt="Teachers working with laptops beside horn antennas in a covered doorway"
+                       width="1600" height="1125" loading="lazy" decoding="async" class="object-fit-cover rounded">
+               </a>
+               <figcaption class="figure-caption">Data acquisition, worked out on the spot.</figcaption>
+            </figure>
+         </li>
       </ul>
    </div>
-</section>
+</div>
 
-<section class="chapter chapter--tint" id="experiments">
+<!-- ===================== 03 SCIENCE EXPERIMENTS ===================== -->
+<div class="bg-wvu-not-quite-white py-6" id="experiments">
    <div class="container">
-      <div class="chapter-grid">
-         <div class="chapter-aside">
-            <p class="chapter-num">03</p>
-            <h2>Science experiments</h2>
+      <div class="row">
+         <div class="col-24 col-lg-6 mb-4 mb-lg-0">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">03</p>
+            <h2 class="antonia-light display-6 mb-0">Science experiments</h2>
          </div>
-         <div class="chapter-body">
+         <div class="col-24 col-lg-16 offset-lg-1">
             <p>
                The horns were tested in Morgantown, then taken to the Green Bank
                Observatory for the last two weeks. The teachers went through the
                observatory's outreach program, including training on the 40&nbsp;Foot
-               telescope — and tapped its signal, routing it through the SDR dongle and the
+               telescope &mdash; and tapped its signal, routing it through the SDR dongle and the
                GNU Radio spectrometer they had written at WVU.
             </p>
             <p>
@@ -154,7 +227,7 @@ roster_intro: >
                improving the instrument. Eight distinct experiments came out of the two
                weeks:
             </p>
-            <ul class="chapter-list">
+            <ul class="mb-0">
                <li>Comparative analysis of LNA performance</li>
                <li>Comparative analysis of horn response</li>
                <li>Optimization of horns</li>
@@ -167,44 +240,62 @@ roster_intro: >
          </div>
       </div>
 
-      <div class="figure-row">
-         <figure class="figure">
-            <img src="/images/dspira/dspira2018/gb1.jpeg" alt="Teachers at work in an equipment room at the Green Bank Observatory, one of them writing at a chalkboard" width="1200" height="1600" loading="lazy" decoding="async" />
-            <figcaption>Working through the observatory's own equipment.</figcaption>
-         </figure>
-         <figure class="figure">
-            <img src="/images/dspira/dspira2018/gb2.jpeg" alt="Three horn antennas on wooden mounts under a canopy on the lawn at Green Bank, with teachers at laptops beside them" width="1600" height="1200" loading="lazy" decoding="async" />
-            <figcaption>The observing site, set up on the lawn.</figcaption>
-         </figure>
-         <figure class="figure">
-            <img src="/images/dspira/dspira2018/gb3.jpg" alt="Horn antennas lit against the dark during a night-time observing run at Green Bank" width="1600" height="1067" loading="lazy" decoding="async" />
-            <figcaption>Observing ran into the night.</figcaption>
-         </figure>
-         <figure class="figure">
-            <img src="/images/dspira/dspira2018/gb4.jpg" alt="Teachers gathered at a large circular opening in a concrete structure at the Green Bank Observatory" width="1600" height="1067" loading="lazy" decoding="async" />
-            <figcaption>The observatory opened up more than its telescopes.</figcaption>
-         </figure>
+      <div class="row g-4 mt-4">
+         <div class="col-24 col-md-12 col-lg-6">
+            <figure class="figure d-block mb-0">
+               <img src="{{ '/images/dspira/dspira2018/gb1.jpeg' | relative_url }}" alt="Teachers at work in an equipment room at the Green Bank Observatory, one of them writing at a chalkboard"
+                    width="1200" height="1600" loading="lazy" decoding="async"
+                    class="figure-img img-fluid rounded w-100">
+               <figcaption class="figure-caption">Working through the observatory's own equipment.</figcaption>
+            </figure>
+         </div>
+         <div class="col-24 col-md-12 col-lg-6">
+            <figure class="figure d-block mb-0">
+               <img src="{{ '/images/dspira/dspira2018/gb2.jpeg' | relative_url }}" alt="Three horn antennas on wooden mounts under a canopy on the lawn at Green Bank, with teachers at laptops beside them"
+                    width="1600" height="1200" loading="lazy" decoding="async"
+                    class="figure-img img-fluid rounded w-100">
+               <figcaption class="figure-caption">The observing site, set up on the lawn.</figcaption>
+            </figure>
+         </div>
+         <div class="col-24 col-md-12 col-lg-6">
+            <figure class="figure d-block mb-0">
+               <img src="{{ '/images/dspira/dspira2018/gb3.jpg' | relative_url }}" alt="Horn antennas lit against the dark during a night-time observing run at Green Bank"
+                    width="1600" height="1067" loading="lazy" decoding="async"
+                    class="figure-img img-fluid rounded w-100">
+               <figcaption class="figure-caption">Observing ran into the night.</figcaption>
+            </figure>
+         </div>
+         <div class="col-24 col-md-12 col-lg-6">
+            <figure class="figure d-block mb-0">
+               <img src="{{ '/images/dspira/dspira2018/gb4.jpg' | relative_url }}" alt="Teachers gathered at a large circular opening in a concrete structure at the Green Bank Observatory"
+                    width="1600" height="1067" loading="lazy" decoding="async"
+                    class="figure-img img-fluid rounded w-100">
+               <figcaption class="figure-caption">The observatory opened up more than its telescopes.</figcaption>
+            </figure>
+         </div>
       </div>
 
-      <figure class="figure figure--wide">
-         <img src="/images/dspira/dspira2018/gb5.jpg" alt="Horn antennas spread across the lawn beside a white canopy at the Green Bank Observatory"
-              width="1600" height="1067" loading="lazy" decoding="async" />
-         <figcaption>Two weeks of observing, inside the National Radio Quiet Zone.</figcaption>
+      <figure class="figure d-block mt-4 mb-0">
+         <img src="{{ '/images/dspira/dspira2018/gb5.jpg' | relative_url }}" alt="Horn antennas spread across the lawn beside a white canopy at the Green Bank Observatory"
+              width="1600" height="1067" loading="lazy" decoding="async"
+              class="figure-img img-fluid rounded w-100">
+         <figcaption class="figure-caption">Two weeks of observing, inside the National Radio Quiet Zone.</figcaption>
       </figure>
    </div>
-</section>
+</div>
 
-<section class="chapter" id="students">
+<!-- ===================== 04 STUDENTS AND LESSONS ===================== -->
+<div class="py-6" id="students">
    <div class="container">
-      <div class="chapter-grid">
-         <div class="chapter-aside">
-            <p class="chapter-num">04</p>
-            <h2>Students and lessons</h2>
+      <div class="row">
+         <div class="col-24 col-lg-6 mb-4 mb-lg-0">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">04</p>
+            <h2 class="antonia-light display-6 mb-0">Students and lessons</h2>
          </div>
-         <div class="chapter-body">
-            <p>
+         <div class="col-24 col-lg-16 offset-lg-1">
+            <p class="mb-0">
                While at Green Bank, the cohort worked with the West Virginia Governor's
-               STEM Academy — a chance to turn the research experience straight into
+               STEM Academy &mdash; a chance to turn the research experience straight into
                lesson plans and run them. They taught DSP in radio astronomy through a
                series of hands-on activities across a couple of days, with three separate
                groups of students.
@@ -212,62 +303,147 @@ roster_intro: >
          </div>
       </div>
 
-      <ul class="photo-grid" data-lightbox>
-         <li><figure><a href="/images/dspira/dspira2018/stud0.jpeg"><img src="/images/dspira/dspira2018/stud0.jpeg" alt="A large room of students seated on the floor around a horn antenna during a DSPIRA session" width="1600" height="1200" loading="lazy" decoding="async" /></a></figure></li>
-         <li><figure><a href="/images/dspira/dspira2018/stud1.jpeg"><img src="/images/dspira/dspira2018/stud1.jpeg" alt="Students working at laptops in a classroom during a DSPIRA session" width="1600" height="1200" loading="lazy" decoding="async" /></a></figure></li>
-         <li><figure><a href="/images/dspira/dspira2018/stud2.jpg"><img src="/images/dspira/dspira2018/stud2.jpg" alt="A DSPIRA teacher working with students in a classroom, plots projected on the screen behind" width="1600" height="1067" loading="lazy" decoding="async" /></a></figure></li>
-         <li><figure><a href="/images/dspira/dspira2018/stud3.jpg"><img src="/images/dspira/dspira2018/stud3.jpg" alt="A DSPIRA teacher presenting to students with spectrometer output on the projector screen" width="1600" height="1067" loading="lazy" decoding="async" /></a></figure></li>
-         <li><figure><a href="/images/dspira/dspira2018/stud4.jpeg"><img src="/images/dspira/dspira2018/stud4.jpeg" alt="Students working along a long table during a DSPIRA session at Green Bank" width="1600" height="1200" loading="lazy" decoding="async" /></a></figure></li>
-         <li><figure><a href="/images/dspira/dspira2018/stud5.jpg"><img src="/images/dspira/dspira2018/stud5.jpg" alt="Students at a table with a table of measurements projected on the screen behind them" width="1600" height="1067" loading="lazy" decoding="async" /></a></figure></li>
-         <li><figure><a href="/images/dspira/dspira2018/stud6.jpg"><img src="/images/dspira/dspira2018/stud6.jpg" alt="Students standing around long tables working through a hands-on exercise" width="1600" height="1067" loading="lazy" decoding="async" /></a></figure></li>
-         <li><figure><a href="/images/dspira/dspira2018/stud7.jpg"><img src="/images/dspira/dspira2018/stud7.jpg" alt="A DSPIRA teacher setting up an activity with students at a table" width="1067" height="1600" loading="lazy" decoding="async" /></a></figure></li>
-         <li><figure><a href="/images/dspira/dspira2018/stud8.jpeg"><img src="/images/dspira/dspira2018/stud8.jpeg" alt="Students and a DSPIRA teacher gathered around a tripod-mounted instrument" width="1600" height="1200" loading="lazy" decoding="async" /></a></figure></li>
-         <li><figure><a href="/images/dspira/dspira2018/stud9.jpg"><img src="/images/dspira/dspira2018/stud9.jpg" alt="Two DSPIRA teachers comparing results on a laptop by a window" width="1600" height="1067" loading="lazy" decoding="async" /></a></figure></li>
+      {%- comment %}
+      Gallery, uncaptioned in the source too: each thumbnail links to the
+      full-size file. data-lightbox hands the clicks to /assets/js/lightbox.js;
+      with no figcaption to copy, the dialog shows the picture alone and its
+      alt text describes it.
+      {% endcomment -%}
+      <ul class="list-unstyled row g-4 mt-4 mb-0" data-lightbox>
+         <li class="col-12 col-md-8 col-lg-6">
+            <a href="{{ '/images/dspira/dspira2018/stud0.jpeg' | relative_url }}" class="ratio ratio-4x3 d-block">
+               <img src="{{ '/images/dspira/dspira2018/stud0.jpeg' | relative_url }}" alt="A large room of students seated on the floor around a horn antenna during a DSPIRA session"
+                    width="1600" height="1200" loading="lazy" decoding="async" class="object-fit-cover rounded">
+            </a>
+         </li>
+         <li class="col-12 col-md-8 col-lg-6">
+            <a href="{{ '/images/dspira/dspira2018/stud1.jpeg' | relative_url }}" class="ratio ratio-4x3 d-block">
+               <img src="{{ '/images/dspira/dspira2018/stud1.jpeg' | relative_url }}" alt="Students working at laptops in a classroom during a DSPIRA session"
+                    width="1600" height="1200" loading="lazy" decoding="async" class="object-fit-cover rounded">
+            </a>
+         </li>
+         <li class="col-12 col-md-8 col-lg-6">
+            <a href="{{ '/images/dspira/dspira2018/stud2.jpg' | relative_url }}" class="ratio ratio-4x3 d-block">
+               <img src="{{ '/images/dspira/dspira2018/stud2.jpg' | relative_url }}" alt="A DSPIRA teacher working with students in a classroom, plots projected on the screen behind"
+                    width="1600" height="1067" loading="lazy" decoding="async" class="object-fit-cover rounded">
+            </a>
+         </li>
+         <li class="col-12 col-md-8 col-lg-6">
+            <a href="{{ '/images/dspira/dspira2018/stud3.jpg' | relative_url }}" class="ratio ratio-4x3 d-block">
+               <img src="{{ '/images/dspira/dspira2018/stud3.jpg' | relative_url }}" alt="A DSPIRA teacher presenting to students with spectrometer output on the projector screen"
+                    width="1600" height="1067" loading="lazy" decoding="async" class="object-fit-cover rounded">
+            </a>
+         </li>
+         <li class="col-12 col-md-8 col-lg-6">
+            <a href="{{ '/images/dspira/dspira2018/stud4.jpeg' | relative_url }}" class="ratio ratio-4x3 d-block">
+               <img src="{{ '/images/dspira/dspira2018/stud4.jpeg' | relative_url }}" alt="Students working along a long table during a DSPIRA session at Green Bank"
+                    width="1600" height="1200" loading="lazy" decoding="async" class="object-fit-cover rounded">
+            </a>
+         </li>
+         <li class="col-12 col-md-8 col-lg-6">
+            <a href="{{ '/images/dspira/dspira2018/stud5.jpg' | relative_url }}" class="ratio ratio-4x3 d-block">
+               <img src="{{ '/images/dspira/dspira2018/stud5.jpg' | relative_url }}" alt="Students at a table with a table of measurements projected on the screen behind them"
+                    width="1600" height="1067" loading="lazy" decoding="async" class="object-fit-cover rounded">
+            </a>
+         </li>
+         <li class="col-12 col-md-8 col-lg-6">
+            <a href="{{ '/images/dspira/dspira2018/stud6.jpg' | relative_url }}" class="ratio ratio-4x3 d-block">
+               <img src="{{ '/images/dspira/dspira2018/stud6.jpg' | relative_url }}" alt="Students standing around long tables working through a hands-on exercise"
+                    width="1600" height="1067" loading="lazy" decoding="async" class="object-fit-cover rounded">
+            </a>
+         </li>
+         <li class="col-12 col-md-8 col-lg-6">
+            <a href="{{ '/images/dspira/dspira2018/stud7.jpg' | relative_url }}" class="ratio ratio-4x3 d-block">
+               <img src="{{ '/images/dspira/dspira2018/stud7.jpg' | relative_url }}" alt="A DSPIRA teacher setting up an activity with students at a table"
+                    width="1067" height="1600" loading="lazy" decoding="async" class="object-fit-cover rounded">
+            </a>
+         </li>
+         <li class="col-12 col-md-8 col-lg-6">
+            <a href="{{ '/images/dspira/dspira2018/stud8.jpeg' | relative_url }}" class="ratio ratio-4x3 d-block">
+               <img src="{{ '/images/dspira/dspira2018/stud8.jpeg' | relative_url }}" alt="Students and a DSPIRA teacher gathered around a tripod-mounted instrument"
+                    width="1600" height="1200" loading="lazy" decoding="async" class="object-fit-cover rounded">
+            </a>
+         </li>
+         <li class="col-12 col-md-8 col-lg-6">
+            <a href="{{ '/images/dspira/dspira2018/stud9.jpg' | relative_url }}" class="ratio ratio-4x3 d-block">
+               <img src="{{ '/images/dspira/dspira2018/stud9.jpg' | relative_url }}" alt="Two DSPIRA teachers comparing results on a laptop by a window"
+                    width="1600" height="1067" loading="lazy" decoding="async" class="object-fit-cover rounded">
+            </a>
+         </li>
       </ul>
 
-      <div class="callout">
-         <div>
-            <p class="eyebrow">From the inside</p>
-            <h2>Tad Herman kept a blog</h2>
-            <p>One of the 2018 teachers wrote up the whole summer, day by day, as it happened.</p>
+      <div class="card border-0 bg-wvu-not-quite-white mt-5">
+         <div class="card-body p-5">
+            <div class="row align-items-center">
+               <div class="col-24 col-lg-16 mb-4 mb-lg-0">
+                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">From the inside</p>
+                  <h3 class="antonia-light display-6 mb-2">Tad Herman kept a blog</h3>
+                  <p class="mb-0">One of the 2018 teachers wrote up the whole summer, day by day, as it happened.</p>
+               </div>
+               <div class="col-24 col-lg-8 text-lg-end">
+                  <a href="https://hermandspira2018.travellerspoint.com/" class="btn btn-wvu-blue">
+                     Read the blog
+                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16"
+                          fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                          aria-hidden="true" focusable="false" class="ms-1 align-baseline">
+                        <path d="M6 3h7v7M13 3 4 12"></path>
+                     </svg>
+                  </a>
+               </div>
+            </div>
          </div>
-         <a class="btn" href="https://hermandspira2018.travellerspoint.com/">
-            Read the blog {% include icon.html name="external" %}
-         </a>
       </div>
    </div>
-</section>
+</div>
 
-<section class="chapter chapter--tint" id="undergraduates">
+<!-- ===================== 05 UNDERGRADUATE RESEARCH ===================== -->
+<div class="bg-wvu-not-quite-white py-6" id="undergraduates">
    <div class="container">
-      <div class="chapter-grid">
-         <div class="chapter-aside">
-            <p class="chapter-num">05</p>
-            <h2>Undergraduate research</h2>
+      <div class="row">
+         <div class="col-24 col-lg-6 mb-4 mb-lg-0">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">05</p>
+            <h2 class="antonia-light display-6 mb-0">Undergraduate research</h2>
          </div>
-         <div class="chapter-body">
+         <div class="col-24 col-lg-16 offset-lg-1">
             <p>
-               The 2018 program also took on two undergraduates — Andy Dycke from the
+               The 2018 program also took on two undergraduates &mdash; Andy Dycke from the
                University of Toronto and Rhys Lockhart from West Virginia University. They
                took the same inexpensive horn hardware and pointed it at a harder problem:
                detecting radio transients.
             </p>
-            <p>
+            <p class="mb-0">
                Working with an aperture array of horns and custom data acquisition
-               software, they set out to detect the brightest pulsars — turning a
+               software, they set out to detect the brightest pulsars &mdash; turning a
                classroom instrument into a time-domain one.
             </p>
          </div>
       </div>
-      <div class="figure-row">
-         <figure class="figure">
-            <img src="/images/dspira/dspira2018/ug1.jpeg" alt="An undergraduate researcher working at a laptop outdoors, a horn aperture array set up in the field behind him" width="1600" height="1200" loading="lazy" decoding="async" />
-            <figcaption>Running the aperture array in the field.</figcaption>
-         </figure>
-         <figure class="figure">
-            <img src="/images/dspira/dspira2018/ug2.jpeg" alt="Researchers working at computers in the lab on the pulsar detection data" width="1600" height="639" loading="lazy" decoding="async" />
-            <figcaption>And back in the lab, with the data.</figcaption>
-         </figure>
+
+      <div class="row g-4 mt-4">
+         <div class="col-24 col-md-12">
+            <figure class="figure d-block mb-0">
+               <img src="{{ '/images/dspira/dspira2018/ug1.jpeg' | relative_url }}" alt="An undergraduate researcher working at a laptop outdoors, a horn aperture array set up in the field behind him"
+                    width="1600" height="1200" loading="lazy" decoding="async"
+                    class="figure-img img-fluid rounded w-100">
+               <figcaption class="figure-caption">Running the aperture array in the field.</figcaption>
+            </figure>
+         </div>
+         <div class="col-24 col-md-12">
+            <figure class="figure d-block mb-0">
+               <img src="{{ '/images/dspira/dspira2018/ug2.jpeg' | relative_url }}" alt="Researchers working at computers in the lab on the pulsar detection data"
+                    width="1600" height="639" loading="lazy" decoding="async"
+                    class="figure-img img-fluid rounded w-100">
+               <figcaption class="figure-caption">And back in the lab, with the data.</figcaption>
+            </figure>
+         </div>
       </div>
    </div>
-</section>
+</div>
+
+{% include cohort-footer.html %}
+
+{%- comment %}
+The gallery lightbox is the page's only scripted element. External file, no
+inline handlers, per the site's CSP posture.
+{% endcomment -%}
+<script src="{{ '/assets/js/lightbox.js' | relative_url }}" defer></script>

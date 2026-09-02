@@ -1,84 +1,137 @@
 ---
+layout: wvu
 title: Who We Work With
-layout: default
 permalink: /who-we-work-with/
-full_width: true
-description: >
-  The observatories, universities, and institutes that appear alongside WVU RAIL
-  across our publications — from Green Bank to the Karoo.
+description: The observatories, universities, and institutes that appear alongside WVU RAIL across our publications — from Green Bank to the Karoo.
 ---
+{%- comment %}
+Port of _pages/who-we-work-with.html onto the Design System. Everything on
+the page comes from _data/institutions.yml; the only other datum is the size
+of _data/publications.yml, quoted in the lead.
+
+Two lists on the source page. The anchor-partner list had already been
+corrected to a real <ul> for WCAG 1.3.1 (item count and list navigation for a
+screen reader). The regional directory was still a <p> of <span>s; here it is
+a <ul> per region as well, so both lists carry their semantics. Nothing about
+either list depends on CSS: they are Bootstrap grid columns on the <li>s.
+
+The regional directory sits inside a native <details>, exactly as the source
+did, so the ten anchor partners lead and the ~100-name directory does not
+force every visitor to scroll past it. <details> needs no script, so it also
+works with JavaScript off and survives any CSP.
+{% endcomment -%}
+
 {%- assign inst = site.data.institutions -%}
+{%- comment %}
+The source's own arithmetic, carried over unchanged: its constant 3 covers
+home institutions the data file deliberately does not list, and everything
+else is the file's own sizes. The data cannot supply that 3, which is one
+reason the lead says "roughly".
+{% endcomment -%}
 {%- assign total = 3 | plus: inst.featured.size -%}
 {%- for g in inst.groups %}{% assign total = total | plus: g.names.size %}{% endfor -%}
 
-<div class="page-head">
+<!-- ===================== PAGE HEAD ===================== -->
+<div class="bg-wvu-blue text-white py-7">
    <div class="container">
-      <p class="eyebrow">Collaborations</p>
-      <h1>Who we work with</h1>
-      <p class="lead">
-         Instruments like CHIME, its outriggers, and HIRAX only exist because many
-         institutions build them together. Compiled from the author lists of all
-         {{ site.data.publications.size }} lab publications, roughly {{ total }} institutions
-         across 15+ countries have appeared alongside the lab &mdash; these are our
-         co-authors' homes, our telescope sites, and our funding partners.
-      </p>
+      <div class="row">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-gold mb-3">Collaborations</p>
+            <h1 class="antonia-light display-3 mb-4">Who we work with</h1>
+            <p class="fs-4 mb-4">
+               Instruments like CHIME, its outriggers, and HIRAX only exist because many
+               institutions build them together. Compiled from the author lists of all
+               {{ site.data.publications.size }} lab publications, roughly {{ total }} institutions
+               across 15+ countries have appeared alongside the lab &mdash; these are our
+               co-authors' homes, our telescope sites, and our funding partners.
+            </p>
+            <a href="{{ '/where-we-work/' | relative_url }}" class="btn btn-wvu-gold me-2">Where we work</a>
+            <a href="{{ '/publications/' | relative_url }}" class="btn btn-outline-light">Browse publications</a>
+         </div>
+      </div>
    </div>
 </div>
 
-<!-- Anchor partners -->
-<section class="section" id="featured">
+<!-- ===================== ANCHOR PARTNERS ===================== -->
+{%- if inst.featured and inst.featured.size > 0 %}
+<div class="py-6" id="featured">
    <div class="container">
-      <div class="section-head">
-         <div>
-            <p class="eyebrow">Anchor partners</p>
-            <h2>Facilities &amp; frequent collaborators</h2>
+      <div class="row mb-4">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Anchor partners</p>
+            <h2 class="antonia-light display-5">
+               Facilities &amp; frequent collaborators <span class="text-body-secondary">{{ inst.featured.size }}</span>
+            </h2>
+            <p class="fs-5 text-body-secondary mb-0">
+               The places our hardware lives and the groups we build with most,
+               paper after paper.
+            </p>
          </div>
-         <p>
-            The places our hardware lives and the groups we build with most,
-            paper after paper.
-         </p>
       </div>
-      <ul class="alumni-list">
+
+      <ul class="list-unstyled border-top mb-0">
          {%- for f in inst.featured %}
-         <li class="alumni-row">
-            <span class="alumni-name"><a href="{{ f.url }}">{{ f.name }}</a></span>
-            <span class="alumni-title">{{ f.note | strip_newlines | strip }}</span>
+         <li class="border-bottom py-4">
+            <div class="row">
+               <div class="col-24 col-md-8 mb-2 mb-md-0">
+                  <p class="helvetica-neue-bold fs-5 mb-0">
+                     {%- if f.url -%}
+                     <a href="{{ f.url }}">{{ f.name }}</a><svg class="ms-1 align-baseline" width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     {%- else -%}
+                     {{ f.name }}
+                     {%- endif -%}
+                  </p>
+               </div>
+               <div class="col-24 col-md-16">
+                  {%- if f.note %}
+                  <p class="mb-0 text-body-secondary">{{ f.note | strip_newlines | strip }}</p>
+                  {%- endif %}
+               </div>
+            </div>
          </li>
          {%- endfor %}
       </ul>
    </div>
-</section>
+</div>
+{%- endif %}
 
-<!-- Everyone, by region -->
-<section class="section section--line" id="all">
+<!-- ===================== EVERYONE, BY REGION ===================== -->
+{%- if inst.groups and inst.groups.size > 0 %}
+<div class="bg-wvu-not-quite-white py-6" id="all">
    <div class="container">
-      <div class="section-head">
-         <div>
-            <p class="eyebrow">The full list</p>
-            <h2>Every institution in our papers</h2>
+      <div class="row mb-4">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">The full list</p>
+            <h2 class="antonia-light display-5">Every institution in our papers</h2>
+            <p class="fs-5 text-body-secondary mb-0">
+               Author affiliations across the publication list, grouped by region.
+               Home institutions &mdash; WVU, the Center for Gravitational Waves and
+               Cosmology, and our Green Bank and Marshall neighbours &mdash; lead the
+               page above.
+            </p>
          </div>
-         <p>
-            Author affiliations across the publication list, grouped by region.
-            Home institutions &mdash; WVU, the Center for Gravitational Waves and
-            Cosmology, and our Green Bank and Marshall neighbours &mdash; lead the
-            page above.
-         </p>
       </div>
-      <details class="directory-disclosure">
-         <summary>
-            <span>Browse the complete regional directory</span>
-            <small>All institutions represented in the publication record</small>
+
+      <details class="bg-white border">
+         <summary class="p-4 helvetica-neue-bold fs-5">
+            Browse the complete regional directory
+            <span class="d-block small fw-normal text-body-secondary mt-1">All institutions represented in the publication record</span>
          </summary>
-         <div class="directory-content">
+         <div class="border-top p-4">
             {%- for g in inst.groups %}
-            <div class="people-block">
-               <h3 class="people-block-title">{{ g.region }} <span class="count">{{ g.names.size }}</span></h3>
-               <p class="pub-people">
-                  {%- for n in g.names %}<span class="pub-tag">{{ n }}</span>{% endfor %}
-               </p>
+            <div class="{% unless forloop.last %}mb-5{% endunless %}">
+               <h3 class="h4 helvetica-neue-bold mb-3">
+                  {{ g.region }} <span class="text-body-secondary">{{ g.names.size }}</span>
+               </h3>
+               <ul class="list-unstyled row mb-0">
+                  {%- for n in g.names %}
+                  <li class="col-24 col-md-12 col-lg-8 mb-2">{{ n }}</li>
+                  {%- endfor %}
+               </ul>
             </div>
             {%- endfor %}
          </div>
       </details>
    </div>
-</section>
+</div>
+{%- endif %}

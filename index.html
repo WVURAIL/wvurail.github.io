@@ -1,0 +1,294 @@
+---
+layout: wvu
+title: Home
+description: RAIL designs and builds the telescopes, analog front ends, and digital systems that survey the radio sky.
+---
+{%- comment %}
+Prototype homepage. Real data, real counts — the point is to find out how much
+of RAIL's identity survives the brand rules, so nothing here is mocked.
+Components used are stock Design System / Bootstrap 5.3 classes on the DS's
+24-column grid.
+
+Paper selection follows the old _includes/publications-preview.html: papers
+flagged highlight: true (every paper if none is flagged), journal-cover papers
+first, then newest first. Titles break ties inside a year, so the order never
+depends on how _data/publications.yml happens to be sorted. Built from
+where / map / uniq / sort / concat only, all present in the Liquid that GitHub
+Pages' Jekyll 3.9 ships.
+{% endcomment -%}
+
+{%- assign pubs = site.data.publications -%}
+{%- assign journal = pubs | where: "type", "journal" -%}
+{%- assign pi = site.data.people.pi | first -%}
+{%- assign ed = site.data.education -%}
+
+{%- assign selected = pubs | where: "highlight", true -%}
+{%- if selected.size == 0 %}{% assign selected = pubs %}{% endif -%}
+{%- assign cover_papers = "" | split: "" -%}
+{%- assign other_papers = "" | split: "" -%}
+{%- assign years = selected | map: "year" | uniq | sort | reverse -%}
+{%- for year in years -%}
+   {%- assign in_year = selected | where: "year", year | sort: "title" -%}
+   {%- for pub in in_year -%}
+      {%- comment %}`where` on the title is the one-element array push Liquid
+      lacks; titles are unique in the data file.{% endcomment -%}
+      {%- assign one = in_year | where: "title", pub.title -%}
+      {%- if pub.cover -%}
+         {%- assign cover_papers = cover_papers | concat: one -%}
+      {%- else -%}
+         {%- assign other_papers = other_papers | concat: one -%}
+      {%- endif -%}
+   {%- endfor -%}
+{%- endfor -%}
+{%- assign featured = cover_papers | concat: other_papers -%}
+
+<!-- ===================== HERO ===================== -->
+<div class="wvu-bg-position-center wvu-bg-size-cover position-relative bg-wvu-blue text-white"
+     style="background-image:url('{{ '/images/banner.jpg' | relative_url }}')">
+   <div class="wvu-z-index-content position-relative py-7"
+        style="background:linear-gradient(to bottom, rgba(0,32,91,.86), rgba(0,32,91,.94))">
+      <div class="container">
+         <div class="row">
+            <div class="col-24 col-lg-16">
+               <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-gold mb-3">
+                  Lane Department of Computer Science and Electrical Engineering
+               </p>
+               <h1 class="antonia-light display-3 mb-4">Instruments that listen to the distant universe</h1>
+               <p class="fs-4 mb-4">
+                  RAIL designs and builds the telescopes, analog front ends, and digital
+                  systems that survey the radio sky &mdash; chasing cosmology, fast radio
+                  bursts, and pulsars.
+               </p>
+               <a href="{{ '/where-we-work/' | relative_url }}" class="btn btn-wvu-gold me-2">Explore our work</a>
+               <a href="{{ '/people/' | relative_url }}" class="btn btn-outline-light">Meet the lab</a>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- ===================== FACTOIDS ===================== -->
+<div class="bg-wvu-not-quite-white py-6">
+   <div class="container">
+      <div class="row text-center">
+         <div class="col-24 col-md-8 mb-4 mb-md-0">
+            <p class="antonia-light display-4 text-wvu-blue mb-1">{{ pubs.size }}</p>
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small mb-0">Publications</p>
+         </div>
+         <div class="col-24 col-md-8 mb-4 mb-md-0">
+            <p class="antonia-light display-4 text-wvu-blue mb-1">{{ site.data.sites.size }}</p>
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small mb-0">Places we work</p>
+         </div>
+         <div class="col-24 col-md-8">
+            <p class="antonia-light display-4 text-wvu-blue mb-1">{{ site.data.education.materials.lesson_count }}</p>
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small mb-0">Free lessons published</p>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- ===================== RESEARCH FOCUS (cards) ===================== -->
+<div class="py-6">
+   <div class="container">
+      <div class="row mb-5">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Research &amp; engineering</p>
+            <h2 class="antonia-light display-5">We build the systems behind wide-field radio telescopes</h2>
+            <p class="fs-5 text-body-secondary">
+               From the first low-noise signal at the feed to the computing systems that
+               turn raw voltages into measurements of the universe.
+            </p>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-24 col-md-8 mb-4">
+            <div class="card h-100 border-0 bg-wvu-not-quite-white">
+               <div class="card-body p-4">
+                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-2">Hardware</p>
+                  <h3 class="h4 helvetica-neue-bold">Capture faint signals</h3>
+                  <p class="mb-0 text-body-secondary">Low-noise analog front ends, calibration, clock distribution, and field-ready telescope systems.</p>
+               </div>
+            </div>
+         </div>
+         <div class="col-24 col-md-8 mb-4">
+            <div class="card h-100 border-0 bg-wvu-not-quite-white">
+               <div class="card-body p-4">
+                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-2">Computing</p>
+                  <h3 class="h4 helvetica-neue-bold">Process the radio sky</h3>
+                  <p class="mb-0 text-body-secondary">FPGA correlators, high-throughput networking, control software, and analysis pipelines.</p>
+               </div>
+            </div>
+         </div>
+         <div class="col-24 col-md-8 mb-4">
+            <div class="card h-100 border-0 bg-wvu-not-quite-white">
+               <div class="card-body p-4">
+                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-2">Discovery</p>
+                  <h3 class="h4 helvetica-neue-bold">Measure the universe</h3>
+                  <p class="mb-0 text-body-secondary">Cosmology with neutral hydrogen, fast radio burst localization, and pulsar science.</p>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="row mt-2">
+         <div class="col-24 col-lg-16">
+            <a href="{{ '/who-we-work-with/' | relative_url }}" class="btn btn-outline-wvu-blue">Our collaborators</a>
+            <p class="mt-4 mb-0">
+               <span class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue me-2">Recognition</span>
+               Members of RAIL are part of the CHIME/FRB team, recipient of the
+               <a href="https://aas.org/press/chime-fast-radio-burst-team-receive-2022-berkeley-prize">2022 Berkeley Prize for Meritorious Work in Astronomy</a>.
+            </p>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- ===================== PEOPLE ===================== -->
+<div class="bg-wvu-not-quite-white py-6">
+   <div class="container">
+      <div class="row">
+         <div class="col-24 col-lg-8 mb-4 mb-lg-0">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">The lab</p>
+            <h2 class="antonia-light display-6 mb-3">Who works here</h2>
+            <a href="{{ '/people/' | relative_url }}" class="btn btn-outline-wvu-blue">All lab members</a>
+         </div>
+         <div class="col-24 col-lg-16">
+            <div class="d-flex align-items-start">
+               <img src="{{ pi.photo | relative_url }}" alt="" width="120" height="120"
+                    class="rounded-circle me-4 flex-shrink-0 object-fit-cover">
+               <div>
+                  <h3 class="h4 helvetica-neue-bold mb-1">{{ pi.name }}</h3>
+                  {%- for role in pi.roles %}
+                  <p class="mb-1 text-body-secondary">{{ role }}</p>
+                  {%- endfor %}
+                  {%- if pi.email %}
+                  <p class="mt-3 mb-1 text-break"><a href="mailto:{{ pi.email }}">{{ pi.email }}</a></p>
+                  {%- endif %}
+                  <p class="{% unless pi.email %}mt-3 {% endunless %}mb-0"><a href="{{ '/bandura/' | relative_url }}">Profile, publications and CV</a></p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- ===================== RECENT PUBLICATIONS ===================== -->
+<div class="py-6">
+   <div class="container">
+      <div class="row mb-4">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Publications</p>
+            <h2 class="antonia-light display-6">Recent papers</h2>
+         </div>
+      </div>
+      <ul class="list-unstyled">
+         {%- for pub in featured limit: 5 %}
+         <li class="border-bottom py-4">
+            <div class="row">
+               <div class="col-24 col-md-3">
+                  <p class="wvu-b-label text-wvu-blue mb-0">{{ pub.year }}</p>
+               </div>
+               <div class="col-24 col-md-21">
+                  {%- if pub.cover %}
+                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-1">{{ pub.cover }}</p>
+                  {%- endif %}
+                  <h3 class="h5 helvetica-neue-bold mb-1">
+                     {%- if pub.doi -%}
+                     <a href="https://doi.org/{{ pub.doi }}" class="text-decoration-none">{{ pub.title }}</a>
+                     {%- elsif pub.arxiv -%}
+                     <a href="https://arxiv.org/abs/{{ pub.arxiv }}" class="text-decoration-none">{{ pub.title }}</a>
+                     {%- elsif pub.url -%}
+                     <a href="{{ pub.url }}" class="text-decoration-none">{{ pub.title }}</a>
+                     {%- else -%}{{ pub.title }}{%- endif -%}
+                  </h3>
+                  <p class="small text-body-secondary mb-0">{{ pub.authors }}</p>
+                  {%- if pub.venue or pub.ref or pub.preprint %}
+                  <p class="small text-body-secondary mb-0">
+                     {%- if pub.venue %}<em>{{ pub.venue }}</em>{% endif %}
+                     {%- comment %}`ref` often repeats the journal name (venue "Nature",
+                     ref "Nature 566, 230") — drop the duplicate.{% endcomment %}
+                     {%- if pub.ref %}
+                     {%- assign shown_ref = pub.ref | remove_first: pub.venue | strip %}
+                     {%- if shown_ref != "" %}{% if pub.venue %} &middot; {% endif %}{{ shown_ref }}{% endif %}
+                     {%- endif %}
+                     {%- if pub.preprint %} <span class="badge bg-wvu-blue text-white align-middle">Preprint</span>{% endif %}
+                  </p>
+                  {%- endif %}
+                  {%- if pub.cover_note %}<p class="small text-body-secondary mb-0">{{ pub.cover_note }}</p>{% endif %}
+               </div>
+            </div>
+         </li>
+         {%- endfor %}
+      </ul>
+      <a href="{{ '/publications/' | relative_url }}" class="btn btn-wvu-blue mt-3">All {{ pubs.size }} publications</a>
+   </div>
+</div>
+
+<!-- ===================== SCIENCE EDUCATION (DSPIRA) ===================== -->
+{%- comment %}
+Everything here reads from _data/education.yml. %COUNT% is substituted from
+materials.lesson_count exactly as _pages/education.html does, so the lesson
+count stays written down in one place. materials.url is a sibling GitHub Pages
+project site on the same host, so it is root-absolute and NOT passed through
+relative_url (see the note beside it in the data file).
+{% endcomment -%}
+<div class="bg-wvu-not-quite-white py-6">
+   <div class="container">
+      <div class="row mb-5">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Science education</p>
+            <h2 class="antonia-light display-5 mb-3">Teachers build radio telescopes too</h2>
+            <p class="fs-5 text-body-secondary mb-0">{{ ed.summary | strip_newlines | strip }}</p>
+         </div>
+      </div>
+      <div class="row align-items-center">
+         <div class="col-24 col-lg-10 mb-4 mb-lg-0">
+            <img src="{{ '/images/projects/dspira.jpg' | relative_url }}"
+                 alt="Two DSPIRA teachers operating a small horn radio telescope in a field at dusk"
+                 loading="lazy" decoding="async" width="1200" height="1200" class="img-fluid rounded">
+         </div>
+         <div class="col-24 col-lg-13 offset-lg-1">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-2">Free classroom materials</p>
+            <h3 class="h4 helvetica-neue-bold">{{ ed.materials.title }}</h3>
+            <p>{{ ed.materials.intro | strip_newlines | strip | replace: '%COUNT%', ed.materials.lesson_count }}</p>
+            <p>
+               The original RET award, <a href="{{ ed.award.url }}">NSF Award {{ ed.award.number }}</a>,
+               was seed funding: contributors still maintain the collection, while the
+               outreach component of <a href="{{ ed.follow_on.outreach_hardware.url }}">NSF Award {{ ed.follow_on.outreach_hardware.number }}</a>
+               ({{ ed.follow_on.outreach_hardware.start }}&ndash;{{ ed.follow_on.outreach_hardware.end }})
+               carries DSPIRA receivers into a more robust outreach lab.
+            </p>
+            <p class="small text-body-secondary">
+               <span class="helvetica-neue-bold">Partners:</span>
+               {%- for p in ed.partners %} {{ p }}{% if forloop.last %}.{% elsif forloop.rindex == 2 %} and{% else %},{% endif %}{% endfor %}
+            </p>
+            <a href="{{ ed.materials.url }}" class="btn btn-wvu-blue me-2 mb-2">
+               Open the lessons
+               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                    fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"
+                    class="ms-1 align-baseline">
+                  <path d="M2 8h11M9 4l4 4-4 4"></path>
+               </svg>
+            </a>
+            <a href="{{ '/education/' | relative_url }}" class="btn btn-outline-wvu-blue mb-2">About DSPIRA</a>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- ===================== CTA / OPPORTUNITIES ===================== -->
+<div class="bg-wvu-blue text-white py-6">
+   <div class="container">
+      <div class="row align-items-center">
+         <div class="col-24 col-lg-16 mb-4 mb-lg-0">
+            <h2 class="antonia-light display-6 mb-2">Join the lab</h2>
+            <p class="fs-5 mb-0">
+               We take on undergraduate and graduate researchers every year. Write to
+               Prof. Kevin Bandura to talk about joining.
+            </p>
+         </div>
+         <div class="col-24 col-lg-8 text-lg-end">
+            <a href="{{ '/contact/' | relative_url }}" class="btn btn-wvu-gold">Get in touch</a>
+         </div>
+      </div>
+   </div>
+</div>

@@ -1,8 +1,7 @@
 ---
+layout: wvu
 title: DSPIRA 2019
-layout: cohort
 permalink: /education/dspira-2019/
-full_width: true
 description: DSPIRA Research Experiences for Teachers, summer 2019 — the third documented in-person cohort, with four returning teachers who helped turn the program into a public curriculum.
 year: 2019
 headline: The third summer
@@ -12,22 +11,33 @@ roster_intro: >
   Six teachers, four of them returning for a second or third summer — the most
   experienced of the three in-person cohorts documented here.
 ---
-{%- comment -%}
-   2019 has no photographs of its own in images/dspira/. The page previously
-   showed the 2018 cover and the 2018 group photo captioned as 2019, which was
-   simply wrong, so they were removed rather than relabelled. If 2019 photos
-   turn up, add cover: / cover_w: / cover_h: / cover_alt: (and the group_photo_*
-   equivalents) to the front matter above — the layout picks them up.
-{%- endcomment -%}
+{%- comment %}
+Port of _pages/dspira-2019.html (and its cohort layout) onto the Design System.
+The cohort switcher, hero, stats and roster come from
+_includes/cohort-roster.html, driven by the front matter above and by
+_data/education.yml; the closing lessons band and cohort links come from
+_includes/cohort-footer.html. What is written here is only this summer's
+story, in three chapters.
 
-<section class="chapter chapter--tint" id="third-summer">
+2019 has no photographs of its own in images/dspira/. The source page
+previously showed the 2018 cover and the 2018 group photo captioned as 2019,
+which was simply wrong, so they were removed rather than relabelled. If 2019
+photos turn up, add cover: / cover_w: / cover_h: / cover_alt: (and the
+group_photo_* equivalents) to the front matter above — the include picks
+them up.
+{% endcomment -%}
+{%- assign ed = site.data.education -%}
+{% include cohort-roster.html %}
+
+<!-- ===================== 01 A DIFFERENT KIND OF SUMMER ===================== -->
+<div class="bg-wvu-not-quite-white py-6" id="third-summer">
    <div class="container">
-      <div class="chapter-grid">
-         <div class="chapter-aside">
-            <p class="chapter-num">01</p>
-            <h2>A different kind of summer</h2>
+      <div class="row">
+         <div class="col-24 col-lg-6 mb-4 mb-lg-0">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">01</p>
+            <h2 class="antonia-light display-6 mb-0">A different kind of summer</h2>
          </div>
-         <div class="chapter-body">
+         <div class="col-24 col-lg-16 offset-lg-1">
             <p>
                By 2019 the shape of the program was settled: four weeks in Morgantown
                building a horn antenna, a low-noise amplifier and a software spectrometer,
@@ -35,12 +45,12 @@ roster_intro: >
             </p>
             <p>
                What was different was who turned up. Four of the six teachers had already
-               been through it, two of them for the third time — which meant the summer
+               been through it, two of them for the third time &mdash; which meant the summer
                did not have to start from first principles. The returning teachers already
                knew GNU Radio well enough to write their own blocks, and had spent the
                intervening school years running these projects with their own students.
             </p>
-            <p>
+            <p class="mb-0">
                So the emphasis moved. Less time on getting the instrument working; more on
                consolidating three years of labs, lectures and classroom activities into
                something another teacher could pick up cold.
@@ -48,23 +58,24 @@ roster_intro: >
          </div>
       </div>
    </div>
-</section>
+</div>
 
-<section class="chapter" id="cra">
+<!-- ===================== 02 WRITTEN BY THE TEACHERS ===================== -->
+<div class="py-6" id="cra">
    <div class="container">
-      <div class="chapter-grid">
-         <div class="chapter-aside">
-            <p class="chapter-num">02</p>
-            <h2>Written by the teachers</h2>
+      <div class="row">
+         <div class="col-24 col-lg-6 mb-4 mb-lg-0">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">02</p>
+            <h2 class="antonia-light display-6 mb-0">Written by the teachers</h2>
          </div>
-         <div class="chapter-body">
+         <div class="col-24 col-lg-16 offset-lg-1">
             <p>
                The clearest output of the third in-person summer was a site the teachers curated
                themselves. Classroom Radio Astronomy collected the lessons and exercises
-               they had developed and tested — written by the people who had actually run
+               they had developed and tested &mdash; written by the people who had actually run
                them in front of students, rather than by the faculty who ran the program.
             </p>
-            <p>
+            <p class="mb-0">
                That site was archived in 2026 and everything on it was migrated into the
                main lessons site, alongside the material from the summer institute's own
                repository. The teachers' AP Physics velocity-curve unit is there in full.
@@ -73,54 +84,73 @@ roster_intro: >
          </div>
       </div>
 
-      <div class="callout">
-         <div>
-            <p class="eyebrow">Where it lives now</p>
-            <h2>The velocity curve unit</h2>
-            <p>
-               The 2019 cohort's own material, migrated into the lessons site and still
-               maintained.
-            </p>
+      <div class="card border-0 bg-wvu-not-quite-white mt-5">
+         <div class="card-body p-5">
+            <div class="row align-items-center">
+               <div class="col-24 col-lg-16 mb-4 mb-lg-0">
+                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Where it lives now</p>
+                  <h3 class="antonia-light display-6 mb-2">The velocity curve unit</h3>
+                  <p class="mb-0">
+                     The 2019 cohort's own material, migrated into the lessons site and still
+                     maintained.
+                  </p>
+               </div>
+               <div class="col-24 col-lg-8 text-lg-end">
+                  <a href="/dspira-lessons/Astronomy_VelocityCurve_Overview" class="btn btn-wvu-blue">
+                     Open the unit
+                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                          fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                          aria-hidden="true" focusable="false" class="ms-1 align-baseline">
+                        <path d="M2 8h11M9 4l4 4-4 4"></path>
+                     </svg>
+                  </a>
+               </div>
+            </div>
          </div>
-         <a class="btn" href="/dspira-lessons/Astronomy_VelocityCurve_Overview">
-            Open the unit {% include icon.html name="arrow" %}
-         </a>
       </div>
    </div>
-</section>
+</div>
 
-<section class="chapter chapter--tint" id="after">
+<!-- ===================== 03 WHAT CAME NEXT ===================== -->
+<div class="bg-wvu-not-quite-white py-6" id="after">
    <div class="container">
-      <div class="chapter-grid">
-         <div class="chapter-aside">
-            <p class="chapter-num">03</p>
-            <h2>What came next</h2>
+      <div class="row">
+         <div class="col-24 col-lg-6 mb-4 mb-lg-0">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">03</p>
+            <h2 class="antonia-light display-6 mb-0">What came next</h2>
          </div>
-         <div class="chapter-body">
+         <div class="col-24 col-lg-16 offset-lg-1">
             <p>
                2019 closed the three in-person cohorts documented on this site, but it did
-               not close DSPIRA. NSF Award {{ site.data.education.award.number }} continued
-               through 2021. Beginning in summer 2020, participants shifted their effort
-               into the public lessons site and remote collaboration.
+               not close DSPIRA. NSF Award {{ ed.award.number }} continued
+               through {{ ed.award.end | date: "%Y" }}. Beginning in summer 2020, participants
+               shifted their effort into the public lessons site and remote collaboration.
             </p>
             <p>
                Teachers kept building after the original award ended, updating lesson
                material in 2025 while community contributors helped telescope users. A
                follow-on workshop brought DSPIRA to another group of educators. The
-               collection now includes {{ site.data.education.materials.lesson_count }}
-               free lessons across {{ site.data.education.materials.modules | size }} modules.
+               collection now includes {{ ed.materials.lesson_count }}
+               free lessons across {{ ed.materials.modules | size }} modules.
             </p>
             <p>
-               The program's conference paper came out in 2019—and two of its four authors,
+               The program's conference paper came out in 2019&mdash;and two of its four authors,
                John Makous and Howard Chun, are teachers from these cohorts rather than staff.
                That was the point of the whole exercise.
             </p>
-            <p class="btn-row">
-               <a class="btn" href="{{ '/education/' | relative_url }}#outputs">
-                  What DSPIRA published {% include icon.html name="arrow" %}
+            <p class="mb-0">
+               <a href="{{ '/education/' | relative_url }}#outputs" class="btn btn-wvu-blue">
+                  What DSPIRA published
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                       fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                       aria-hidden="true" focusable="false" class="ms-1 align-baseline">
+                     <path d="M2 8h11M9 4l4 4-4 4"></path>
+                  </svg>
                </a>
             </p>
          </div>
       </div>
    </div>
-</section>
+</div>
+
+{% include cohort-footer.html %}

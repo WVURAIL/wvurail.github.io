@@ -1,0 +1,128 @@
+---
+layout: wvu
+title: Astronomy Web Apps
+permalink: /tools/
+description: Small web tools for radio astronomy — sidereal time and coordinate conversion.
+---
+{%- comment %}
+Port of /tools/ onto the Design System: a live sidereal clock plus links to the
+two tools. All behaviour lives in assets/js/tools.js (with assets/js/astro.js
+for the maths) and attaches by element id -- no inline handlers and no inline
+<script>, so the page survives any plausible Content-Security-Policy.
+
+Each tool's blurb is that page's own front-matter description, read from
+site.pages rather than typed a second time here.
+{% endcomment -%}
+
+{%- assign lst_page   = site.pages | where: "url", "/tools/lst/"   | first -%}
+{%- assign coord_page = site.pages | where: "url", "/tools/coord/" | first -%}
+
+<!-- ===================== PAGE HEAD ===================== -->
+<div class="bg-wvu-blue text-white py-7">
+   <div class="container">
+      <div class="row">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-gold mb-3">Tools</p>
+            <h1 class="antonia-light display-3 mb-4">Astronomy web apps</h1>
+            <p class="fs-4 mb-0">
+               Small browser tools we use around the lab &mdash; no install, no server.
+            </p>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- ===================== LIVE CLOCKS ===================== -->
+<div class="py-6">
+   <div class="container">
+      <div class="row mb-4">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Right now</p>
+            <h2 id="clock-heading" class="antonia-light display-5 mb-0">Sidereal clocks</h2>
+         </div>
+      </div>
+
+      <div class="row">
+         <div class="col-24 col-lg-16">
+            {%- comment %}
+            tabindex="0": the box can scroll sideways on a narrow screen
+            (overflow-auto), and a scrollable region must be reachable from the
+            keyboard. It is rewritten every second, so it carries no aria-live.
+            {% endcomment -%}
+            <div class="bg-wvu-not-quite-white border rounded p-4 overflow-auto" tabindex="0"
+                 role="region" aria-labelledby="clock-heading">
+               <dl class="row mb-0 lh-lg">
+                  <dt class="col-24 col-md-14">Coordinated Universal Time (UTC)</dt>
+                  <dd class="col-24 col-md-10 mb-2 font-monospace fs-5 text-wvu-blue" id="clock-utc">--:--:--</dd>
+
+                  <dt class="col-24 col-md-14">Greenwich Sidereal Time</dt>
+                  <dd class="col-24 col-md-10 mb-2 font-monospace fs-5 text-wvu-blue" id="clock-gst">--:--:--</dd>
+
+                  <dt class="col-24 col-md-14">Green Bank, WV &mdash; Local Sidereal Time</dt>
+                  <dd class="col-24 col-md-10 mb-2 font-monospace fs-5 text-wvu-blue" id="clock-greenbank">--:--:--</dd>
+
+                  <dt class="col-24 col-md-14">Morgantown, WV &mdash; Local Sidereal Time</dt>
+                  <dd class="col-24 col-md-10 mb-0 font-monospace fs-5 text-wvu-blue" id="clock-morgantown">--:--:--</dd>
+               </dl>
+               <p id="clock-nojs" class="small text-body-secondary mt-3 mb-0">
+                  The clocks are computed in your browser and need JavaScript to run.
+               </p>
+            </div>
+
+            {%- comment %}
+            WCAG 2.2.2: the clocks re-tick every second, so offer a way to stop
+            them. Disabled until tools.js enables it.
+            {% endcomment -%}
+            <p class="mt-3 mb-0">
+               <button type="button" id="clock-pause" class="btn btn-outline-wvu-blue"
+                       aria-pressed="false" disabled>Pause updating</button>
+            </p>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- ===================== THE TOOLS ===================== -->
+<div class="bg-wvu-not-quite-white py-6">
+   <div class="container">
+      <div class="row mb-4">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Tools</p>
+            <h2 class="antonia-light display-5 mb-0">Pick a tool</h2>
+         </div>
+      </div>
+
+      <div class="row">
+         <div class="col-24 col-md-12 mb-4">
+            <div class="card h-100 border-0">
+               <div class="card-body p-4 d-flex flex-column">
+                  <h3 class="h4 helvetica-neue-bold">Local Sidereal Time for your location</h3>
+                  {%- if lst_page.description %}
+                  <p class="text-body-secondary">{{ lst_page.description }}</p>
+                  {%- endif %}
+                  <p class="mt-auto mb-0">
+                     <a href="{{ '/tools/lst/' | relative_url }}" class="btn btn-wvu-blue">Open the sidereal clock</a>
+                  </p>
+               </div>
+            </div>
+         </div>
+
+         <div class="col-24 col-md-12 mb-4">
+            <div class="card h-100 border-0">
+               <div class="card-body p-4 d-flex flex-column">
+                  <h3 class="h4 helvetica-neue-bold">Horizontal &rarr; Equatorial coordinate converter</h3>
+                  {%- if coord_page.description %}
+                  <p class="text-body-secondary">{{ coord_page.description }}</p>
+                  {%- endif %}
+                  <p class="mt-auto mb-0">
+                     <a href="{{ '/tools/coord/' | relative_url }}" class="btn btn-wvu-blue">Open the converter</a>
+                  </p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+<script src="{{ '/assets/js/astro.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/tools.js' | relative_url }}" defer></script>

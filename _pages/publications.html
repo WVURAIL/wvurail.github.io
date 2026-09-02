@@ -1,145 +1,372 @@
 ---
+layout: wvu
 title: Publications
-layout: default
 permalink: /publications/
-full_width: true
 description: Journal articles, conference proceedings, and preprints from the WVU Radio Astronomy Instrumentation Lab.
 ---
-<div class="page-head">
-   <div class="container">
-      <p class="eyebrow">Publications</p>
-      <h1>Papers</h1>
-      <p class="lead">
-         Work by the lab and the collaborations we're part of, from our time at WVU.
-         Dissertations and theses are listed with their authors on the
-         <a href="{{ '/people/' | relative_url }}">people page</a>. Selected work is
-         marked in place, so every paper appears only once on this page.
-      </p>
-   </div>
-</div>
+{%- comment %}
+Port of the dark-theme /publications/ page onto the Design System.
+
+Structure is unchanged from the original: grouped by type, then by year
+descending inside each type. Headings cascade h1 (page) > h2 (type band) >
+h3 (year band) > h4 (paper), so every paper is a child of its year rather
+than a sibling of it.
+
+The original's JavaScript filter box is not ported — this prototype ships no
+a small vanilla filter (no framework, no dependency) plus the jump-link band.
+The filter is the same 40 lines the current site uses; on a 69-item page it is
+a real affordance, not decoration. The jump links carry the counts the filter's
+type links did, so the page is still navigable without scrolling blind.
+{% endcomment -%}
 
 {%- assign pubs = site.data.publications -%}
 {%- assign journals = pubs | where: "type", "journal" -%}
 {%- assign proceedings = pubs | where: "type", "proceedings" -%}
 {%- assign notes = pubs | where: "type", "note" -%}
 {%- assign preprints = pubs | where: "type", "preprint" -%}
+{%- assign unrefereed = notes | concat: preprints -%}
 
-<!-- Jump links, so a 69-entry page is navigable without scrolling blind -->
-<div class="pub-toc">
+<!-- ===================== HERO ===================== -->
+<div class="bg-wvu-blue text-white py-7">
    <div class="container">
-      <div class="pub-filter" role="search">
-         <label class="visually-hidden" for="pub-search">Filter publications</label>
-         <input type="search" id="pub-search" placeholder="Filter by title, author, or journal…"
-                autocomplete="off" spellcheck="false" />
-         <span class="pub-filter-count" aria-live="polite"></span>
+      <div class="row">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-gold mb-3">Publications</p>
+            <h1 class="antonia-light display-3 mb-4">Papers</h1>
+            <p class="fs-4 mb-0">
+               {{ pubs.size }} papers by the lab and the collaborations we are part of,
+               from our time at WVU. Dissertations and theses are listed with their
+               authors on the <a href="{{ '/people/' | relative_url }}" class="text-white">people page</a>.
+               Selected work is marked in place, so every paper appears only once
+               on this page.
+            </p>
+         </div>
       </div>
+   </div>
+</div>
+
+<!-- ===================== JUMP LINKS (replaces the original JS filter) ======= -->
+<div class="bg-wvu-not-quite-white py-4">
+   <div class="container">
+      {%- comment %}
+      Progressive enhancement: this block is hidden until site.js adds .js to
+      <html>, so with JavaScript off nobody is offered a filter that cannot work.
+      The jump links below are the no-JS path and stay either way.
+      {% endcomment -%}
+      <div class="pub-filter row mb-4" role="search">
+         <div class="col-24 col-md-12 col-lg-10">
+            <label class="form-label visually-hidden" for="pub-search">Filter publications</label>
+            <input type="search" id="pub-search" class="form-control"
+                   placeholder="Filter by title, author, or journal&hellip;"
+                   autocomplete="off" spellcheck="false">
+            <p class="pub-filter-count small text-body-secondary mt-2 mb-0" aria-live="polite"></p>
+         </div>
+      </div>
+
       <nav aria-label="Publication types">
-         <a href="#journal">Journal articles <span>{{ journals.size }}</span></a>
-         <a href="#proceedings">Conference proceedings <span>{{ proceedings.size }}</span></a>
-         {%- assign unrefereed = notes.size | plus: preprints.size %}
-         {%- if unrefereed > 0 %}<a href="#other">Notes &amp; preprints <span>{{ unrefereed }}</span></a>{% endif %}
+         <ul class="list-inline mb-0">
+            <li class="list-inline-item me-4">
+               <a href="#journal">Journal articles <span class="text-body-secondary">({{ journals.size }})</span></a>
+            </li>
+            {%- if proceedings.size > 0 %}
+            <li class="list-inline-item me-4">
+               <a href="#proceedings">Conference proceedings <span class="text-body-secondary">({{ proceedings.size }})</span></a>
+            </li>
+            {%- endif %}
+            {%- if unrefereed.size > 0 %}
+            <li class="list-inline-item">
+               <a href="#other">Notes &amp; preprints <span class="text-body-secondary">({{ unrefereed.size }})</span></a>
+            </li>
+            {%- endif %}
+         </ul>
       </nav>
    </div>
 </div>
 
-<!-- Journal articles -->
-<section class="section" id="journal">
+<!-- ===================== JOURNAL ARTICLES ===================== -->
+<div class="py-6" id="journal">
    <div class="container">
-      <div class="section-head">
-         <div>
-            <p class="eyebrow">Peer reviewed</p>
-            <h2>Journal articles</h2>
+      <div class="row mb-4">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Peer reviewed</p>
+            <h2 class="antonia-light display-5 mb-3">Journal articles</h2>
+            <p class="fs-5 text-body-secondary mb-0">
+               {{ journals.size }} papers in refereed journals, grouped by year.
+            </p>
          </div>
-         <p>{{ journals.size }} papers in refereed journals, grouped by year.</p>
       </div>
+
       {%- assign years = journals | map: "year" | uniq | sort | reverse %}
       {%- for year in years %}
-      <div class="people-block">
-         <h3 class="people-block-title">
-            {{ year }} <span class="count">{{ journals | where: "year", year | size }}</span>
-         </h3>
-         <ul class="pub-list">
-            {%- for pub in journals %}
-            {%- if pub.year == year %}{% include publication.html pub=pub heading_level=4 %}{% endif %}
-            {%- endfor %}
-         </ul>
-      </div>
+      {%- assign in_year = journals | where: "year", year %}
+      <h3 class="pub-year antonia-light h3 text-wvu-blue border-bottom pb-2 mb-0 mt-5">
+         {{ year }}
+         <span class="fs-6 helvetica-neue-bold text-body-secondary">{{ in_year.size }} paper{% if in_year.size != 1 %}s{% endif %}</span>
+      </h3>
+      <ul class="list-unstyled mb-0">
+         {%- for pub in in_year %}
+         <li class="pub border-bottom py-4">
+            <div class="row">
+               <div class="col-24 col-md-18">
+                  {%- if pub.cover %}
+                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-1">{{ pub.cover }}</p>
+                  {%- elsif pub.highlight %}
+                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-1">Selected work</p>
+                  {%- endif %}
+                  <h4 class="h5 helvetica-neue-bold mb-1">
+                     {%- if pub.doi -%}
+                     <a href="https://doi.org/{{ pub.doi }}" class="text-decoration-none">{{ pub.title }}</a>
+                     {%- elsif pub.url -%}
+                     <a href="{{ pub.url }}" class="text-decoration-none">{{ pub.title }}</a>
+                     {%- elsif pub.arxiv -%}
+                     <a href="https://arxiv.org/abs/{{ pub.arxiv }}" class="text-decoration-none">{{ pub.title }}</a>
+                     {%- else -%}
+                     {{ pub.title }}
+                     {%- endif -%}
+                  </h4>
+                  <p class="small text-body-secondary mb-1">{{ pub.authors }}</p>
+                  {%- if pub.venue or pub.ref %}
+                  <p class="small text-body-secondary mb-1">
+                     {%- if pub.venue %}<em>{{ pub.venue }}</em>{% endif %}
+                     {%- if pub.ref %}
+                     {%- assign shown_ref = pub.ref | remove_first: pub.venue | strip %}
+                     {%- if shown_ref != "" %} &middot; {{ shown_ref }}{% endif %}
+                     {%- endif %}
+                     {%- if pub.year %} &middot; {{ pub.year }}{% endif %}
+                     {%- if pub.preprint %} &middot; Preprint{% endif %}
+                  </p>
+                  {%- endif %}
+                  {%- if pub.cover_note %}<p class="small text-body-secondary mb-1">{{ pub.cover_note }}</p>{% endif %}
+                  {%- if pub.note %}<p class="small text-body-secondary mb-1">{{ pub.note }}</p>{% endif %}
+                  {%- if pub.people and pub.people.size > 0 %}
+                  <p class="small mb-0"><span class="text-body-secondary">Lab authors:</span> {{ pub.people | join: ", " }}</p>
+                  {%- endif %}
+               </div>
+               <div class="col-24 col-md-6 text-md-end">
+                  {%- comment %}A paper with no DOI, arXiv id or URL gets no list at
+                  all, rather than an empty one.{% endcomment -%}
+                  {%- if pub.doi or pub.arxiv or pub.url %}
+                  <ul class="list-inline small mb-0 mt-3 mt-md-0">
+                     {%- if pub.doi %}
+                     <li class="list-inline-item"><a href="https://doi.org/{{ pub.doi }}"><span class="visually-hidden">{{ pub.title }} &ndash; </span>DOI</a></li>
+                     {%- endif %}
+                     {%- if pub.arxiv %}
+                     <li class="list-inline-item"><a href="https://arxiv.org/abs/{{ pub.arxiv }}"><span class="visually-hidden">{{ pub.title }} &ndash; </span>arXiv</a></li>
+                     {%- endif %}
+                     {%- if pub.url and pub.doi == nil %}
+                     <li class="list-inline-item"><a href="{{ pub.url }}"><span class="visually-hidden">{{ pub.title }} &ndash; </span>Link</a></li>
+                     {%- endif %}
+                  </ul>
+                  {%- endif %}
+               </div>
+            </div>
+         </li>
+         {%- endfor %}
+      </ul>
       {%- endfor %}
    </div>
-</section>
+</div>
 
-<!-- Conference proceedings -->
+<!-- ===================== CONFERENCE PROCEEDINGS ===================== -->
 {%- if proceedings.size > 0 %}
-<section class="section section--tint" id="proceedings">
+<div class="bg-wvu-not-quite-white py-6" id="proceedings">
    <div class="container">
-      <div class="section-head">
-         <div>
-            <p class="eyebrow">Conference</p>
-            <h2>Proceedings</h2>
+      <div class="row mb-4">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Conference</p>
+            <h2 class="antonia-light display-5 mb-3">Proceedings</h2>
+            <p class="fs-5 text-body-secondary mb-0">
+               {{ proceedings.size }} instrument and system papers presented at SPIE, IEEE
+               and URSI meetings &mdash; where most telescope-building work gets published first.
+            </p>
          </div>
-         <p>
-            Instrument and system papers presented at SPIE, IEEE and URSI meetings —
-            where most telescope-building work gets published first.
-         </p>
       </div>
+
       {%- assign years = proceedings | map: "year" | uniq | sort | reverse %}
       {%- for year in years %}
-      <div class="people-block">
-         <h3 class="people-block-title">
-            {{ year }} <span class="count">{{ proceedings | where: "year", year | size }}</span>
-         </h3>
-         <ul class="pub-list">
-            {%- for pub in proceedings %}
-            {%- if pub.year == year %}{% include publication.html pub=pub heading_level=4 %}{% endif %}
-            {%- endfor %}
-         </ul>
-      </div>
+      {%- assign in_year = proceedings | where: "year", year %}
+      <h3 class="pub-year antonia-light h3 text-wvu-blue border-bottom pb-2 mb-0 mt-5">
+         {{ year }}
+         <span class="fs-6 helvetica-neue-bold text-body-secondary">{{ in_year.size }} paper{% if in_year.size != 1 %}s{% endif %}</span>
+      </h3>
+      <ul class="list-unstyled mb-0">
+         {%- for pub in in_year %}
+         <li class="pub border-bottom py-4">
+            <div class="row">
+               <div class="col-24 col-md-18">
+                  {%- if pub.cover %}
+                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-1">{{ pub.cover }}</p>
+                  {%- elsif pub.highlight %}
+                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-1">Selected work</p>
+                  {%- endif %}
+                  <h4 class="h5 helvetica-neue-bold mb-1">
+                     {%- if pub.doi -%}
+                     <a href="https://doi.org/{{ pub.doi }}" class="text-decoration-none">{{ pub.title }}</a>
+                     {%- elsif pub.url -%}
+                     <a href="{{ pub.url }}" class="text-decoration-none">{{ pub.title }}</a>
+                     {%- elsif pub.arxiv -%}
+                     <a href="https://arxiv.org/abs/{{ pub.arxiv }}" class="text-decoration-none">{{ pub.title }}</a>
+                     {%- else -%}
+                     {{ pub.title }}
+                     {%- endif -%}
+                  </h4>
+                  <p class="small text-body-secondary mb-1">{{ pub.authors }}</p>
+                  {%- if pub.venue or pub.ref %}
+                  <p class="small text-body-secondary mb-1">
+                     {%- if pub.venue %}<em>{{ pub.venue }}</em>{% endif %}
+                     {%- if pub.ref %}
+                     {%- assign shown_ref = pub.ref | remove_first: pub.venue | strip %}
+                     {%- if shown_ref != "" %} &middot; {{ shown_ref }}{% endif %}
+                     {%- endif %}
+                     {%- if pub.year %} &middot; {{ pub.year }}{% endif %}
+                     {%- if pub.preprint %} &middot; Preprint{% endif %}
+                  </p>
+                  {%- endif %}
+                  {%- if pub.cover_note %}<p class="small text-body-secondary mb-1">{{ pub.cover_note }}</p>{% endif %}
+                  {%- if pub.note %}<p class="small text-body-secondary mb-1">{{ pub.note }}</p>{% endif %}
+                  {%- if pub.people and pub.people.size > 0 %}
+                  <p class="small mb-0"><span class="text-body-secondary">Lab authors:</span> {{ pub.people | join: ", " }}</p>
+                  {%- endif %}
+               </div>
+               <div class="col-24 col-md-6 text-md-end">
+                  {%- comment %}A paper with no DOI, arXiv id or URL gets no list at
+                  all, rather than an empty one.{% endcomment -%}
+                  {%- if pub.doi or pub.arxiv or pub.url %}
+                  <ul class="list-inline small mb-0 mt-3 mt-md-0">
+                     {%- if pub.doi %}
+                     <li class="list-inline-item"><a href="https://doi.org/{{ pub.doi }}"><span class="visually-hidden">{{ pub.title }} &ndash; </span>DOI</a></li>
+                     {%- endif %}
+                     {%- if pub.arxiv %}
+                     <li class="list-inline-item"><a href="https://arxiv.org/abs/{{ pub.arxiv }}"><span class="visually-hidden">{{ pub.title }} &ndash; </span>arXiv</a></li>
+                     {%- endif %}
+                     {%- if pub.url and pub.doi == nil %}
+                     <li class="list-inline-item"><a href="{{ pub.url }}"><span class="visually-hidden">{{ pub.title }} &ndash; </span>Link</a></li>
+                     {%- endif %}
+                  </ul>
+                  {%- endif %}
+               </div>
+            </div>
+         </li>
+         {%- endfor %}
+      </ul>
       {%- endfor %}
    </div>
-</section>
+</div>
 {%- endif %}
 
-<!-- Notes and preprints — grouped together because neither is peer reviewed -->
-{%- assign unrefereed = notes.size | plus: preprints.size %}
-{%- if unrefereed > 0 %}
-<section class="section section--line" id="other">
+<!-- ===================== NOTES & PREPRINTS ===================== -->
+{%- comment %}
+Notes and preprints share one band because neither is peer reviewed. They are
+still grouped by year so the heading cascade does not skip from h2 to h4.
+{% endcomment -%}
+{%- if unrefereed.size > 0 %}
+<div class="py-6" id="other">
    <div class="container">
-      <div class="section-head">
-         <div>
-            <p class="eyebrow">Not yet refereed</p>
-            <h2>Notes &amp; preprints</h2>
+      <div class="row mb-4">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Not yet refereed</p>
+            <h2 class="antonia-light display-5 mb-3">Notes &amp; preprints</h2>
+            <p class="fs-5 text-body-secondary mb-0">
+               Research notes are editorially reviewed rather than peer reviewed;
+               preprints have not been through review at all yet.
+            </p>
          </div>
-         <p>
-            Research notes are editorially reviewed rather than peer reviewed; preprints
-            have not been through review at all yet.
-         </p>
       </div>
-      <ul class="pub-list">
-         {%- for pub in notes %}{% include publication.html pub=pub %}{% endfor %}
-         {%- for pub in preprints %}{% include publication.html pub=pub %}{% endfor %}
+
+      {%- assign years = unrefereed | map: "year" | uniq | sort | reverse %}
+      {%- for year in years %}
+      {%- assign in_year = unrefereed | where: "year", year %}
+      <h3 class="pub-year antonia-light h3 text-wvu-blue border-bottom pb-2 mb-0 mt-5">
+         {{ year }}
+         <span class="fs-6 helvetica-neue-bold text-body-secondary">{{ in_year.size }} item{% if in_year.size != 1 %}s{% endif %}</span>
+      </h3>
+      <ul class="list-unstyled mb-0">
+         {%- for pub in in_year %}
+         <li class="pub border-bottom py-4">
+            <div class="row">
+               <div class="col-24 col-md-18">
+                  {%- if pub.cover %}
+                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-1">{{ pub.cover }}</p>
+                  {%- elsif pub.highlight %}
+                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-1">Selected work</p>
+                  {%- endif %}
+                  <h4 class="h5 helvetica-neue-bold mb-1">
+                     {%- if pub.doi -%}
+                     <a href="https://doi.org/{{ pub.doi }}" class="text-decoration-none">{{ pub.title }}</a>
+                     {%- elsif pub.url -%}
+                     <a href="{{ pub.url }}" class="text-decoration-none">{{ pub.title }}</a>
+                     {%- elsif pub.arxiv -%}
+                     <a href="https://arxiv.org/abs/{{ pub.arxiv }}" class="text-decoration-none">{{ pub.title }}</a>
+                     {%- else -%}
+                     {{ pub.title }}
+                     {%- endif -%}
+                  </h4>
+                  <p class="small text-body-secondary mb-1">{{ pub.authors }}</p>
+                  {%- if pub.venue or pub.ref %}
+                  <p class="small text-body-secondary mb-1">
+                     {%- if pub.venue %}<em>{{ pub.venue }}</em>{% endif %}
+                     {%- if pub.ref %}
+                     {%- assign shown_ref = pub.ref | remove_first: pub.venue | strip %}
+                     {%- if shown_ref != "" %} &middot; {{ shown_ref }}{% endif %}
+                     {%- endif %}
+                     {%- if pub.year %} &middot; {{ pub.year }}{% endif %}
+                     {%- if pub.preprint %} &middot; Preprint{% endif %}
+                  </p>
+                  {%- endif %}
+                  {%- if pub.cover_note %}<p class="small text-body-secondary mb-1">{{ pub.cover_note }}</p>{% endif %}
+                  {%- if pub.note %}<p class="small text-body-secondary mb-1">{{ pub.note }}</p>{% endif %}
+                  {%- if pub.people and pub.people.size > 0 %}
+                  <p class="small mb-0"><span class="text-body-secondary">Lab authors:</span> {{ pub.people | join: ", " }}</p>
+                  {%- endif %}
+               </div>
+               <div class="col-24 col-md-6 text-md-end">
+                  {%- comment %}A paper with no DOI, arXiv id or URL gets no list at
+                  all, rather than an empty one.{% endcomment -%}
+                  {%- if pub.doi or pub.arxiv or pub.url %}
+                  <ul class="list-inline small mb-0 mt-3 mt-md-0">
+                     {%- if pub.doi %}
+                     <li class="list-inline-item"><a href="https://doi.org/{{ pub.doi }}"><span class="visually-hidden">{{ pub.title }} &ndash; </span>DOI</a></li>
+                     {%- endif %}
+                     {%- if pub.arxiv %}
+                     <li class="list-inline-item"><a href="https://arxiv.org/abs/{{ pub.arxiv }}"><span class="visually-hidden">{{ pub.title }} &ndash; </span>arXiv</a></li>
+                     {%- endif %}
+                     {%- if pub.url and pub.doi == nil %}
+                     <li class="list-inline-item"><a href="{{ pub.url }}"><span class="visually-hidden">{{ pub.title }} &ndash; </span>Link</a></li>
+                     {%- endif %}
+                  </ul>
+                  {%- endif %}
+               </div>
+            </div>
+         </li>
+         {%- endfor %}
       </ul>
+      {%- endfor %}
    </div>
-</section>
+</div>
 {%- endif %}
 
-<!-- Theses and dissertations deliberately live on /people/ only, so a graduate
-     appears in exactly one place. This is just a pointer. -->
-<section class="section section--tint">
+<!-- ===================== DISSERTATIONS & THESES (pointer) ===================== -->
+<div class="bg-wvu-blue text-white py-6">
    <div class="container">
-      <div class="section-head">
-         <div>
-            <p class="eyebrow">Graduate work</p>
-            <h2>Dissertations &amp; theses</h2>
+      <div class="row align-items-center">
+         <div class="col-24 col-lg-16 mb-4 mb-lg-0">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-gold mb-2">Graduate work</p>
+            <h2 class="antonia-light display-6 mb-2">Dissertations &amp; theses</h2>
+            <p class="fs-5 mb-0">
+               Every degree completed in the lab is listed with its author on the people
+               page, with a link to the full text in the WVU Research Repository.
+            </p>
          </div>
-         <p>
-            Every degree completed in the lab is listed with its author on the people page,
-            with a link to the full text in the WVU Research Repository.
-         </p>
-      </div>
-      <div class="btn-row" style="margin-top:0">
-         <a class="btn" href="{{ '/people/' | relative_url }}">
-            See the alumni {% include icon.html name="arrow" %}
-         </a>
+         <div class="col-24 col-lg-8 text-lg-end">
+            <a href="{{ '/people/' | relative_url }}" class="btn btn-wvu-gold">
+               See the alumni
+               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                    fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"
+                    class="ms-1 align-middle">
+                  <path d="M2 8h11M9 4l4 4-4 4"></path>
+               </svg>
+            </a>
+         </div>
       </div>
    </div>
-</section>
+</div>

@@ -1,22 +1,247 @@
 ---
+layout: wvu
 title: People
-layout: default
 permalink: /people/
-full_width: true
-description: The people of the WVU Radio Astronomy Instrumentation Lab — principal investigator, graduate researchers, students, and alumni.
+description: The people of the WVU Radio Astronomy Instrumentation Lab — principal investigator, researchers, and alumni.
 ---
-<div class="page-head">
+{%- comment %}
+Port of the dark-theme /people/ page onto the Design System. Data is unchanged
+(_data/people.yml); only the markup and classes differ. The former
+_includes/person-card.html include was folded into this page — the card is
+rendered twice (grad, then students) exactly as the original did, rather than
+with `concat:`, whose behaviour on the Jekyll version GitHub Pages runs is not
+worth betting the build on.
+{% endcomment -%}
+
+{%- assign pi = site.data.people.pi -%}
+{%- assign grad = site.data.people.grad -%}
+{%- assign students = site.data.people.students -%}
+{%- assign alumni = site.data.people.alumni -%}
+
+{%- comment %}
+The "This could be you" entry carries open: true. It is a recruitment slot, not
+a person, so it renders as a card but is subtracted from the researcher count —
+the same arithmetic the source _includes/people.html does.
+{% endcomment -%}
+{%- assign open_slots = students | where: "open", true -%}
+{%- assign n_grad = grad.size | default: 0 -%}
+{%- assign n_students = students.size | default: 0 | minus: open_slots.size -%}
+{%- assign n_researchers = n_grad | plus: n_students -%}
+
+<!-- ===================== PAGE HEAD ===================== -->
+<div class="bg-wvu-blue text-white py-7">
    <div class="container">
-      <p class="eyebrow">People</p>
-      <h1>The lab</h1>
-      <p class="lead">
-         A multidisciplinary group in the Lane Department of Computer Science and Electrical
-         Engineering and part of WVU's
-         <a href="https://gwac.wvu.edu/">Center for Gravitational Waves and Cosmology</a>,
-         working across engineering and astronomy — and the alumni who built
-         much of what runs today.
-      </p>
+      <div class="row">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-gold mb-3">People</p>
+            <h1 class="antonia-light display-3 mb-4">The lab</h1>
+            <p class="fs-4 mb-0">
+               A multidisciplinary group in the Lane Department of Computer Science and
+               Electrical Engineering and part of WVU's
+               <a class="text-white" href="https://gwac.wvu.edu/">Center for Gravitational Waves and Cosmology</a>,
+               working across engineering and astronomy &mdash; and the alumni who built
+               much of what runs today.
+            </p>
+         </div>
+      </div>
    </div>
 </div>
 
-{% include people.html bare=true %}
+<!-- ===================== PRINCIPAL INVESTIGATOR ===================== -->
+{%- if pi and pi.size > 0 %}
+<div class="py-6">
+   <div class="container">
+      <div class="row mb-5">
+         <div class="col-24">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Leadership</p>
+            <h2 class="antonia-light display-5 mb-0">Principal investigator</h2>
+         </div>
+      </div>
+
+      {%- for person in pi %}
+      <div class="person row g-5 align-items-start">
+         <div class="col-24 col-md-8 col-lg-6">
+            {%- if person.photo %}
+            <img src="{{ person.photo | relative_url }}" alt="{{ person.name }}" width="480" height="480"
+                 class="img-fluid rounded">
+            {%- endif %}
+         </div>
+         <div class="col-24 col-md-16 col-lg-14">
+            <h3 class="helvetica-neue-bold h2 mb-3">{{ person.name }}</h3>
+            {%- if person.roles %}
+            <ul class="list-unstyled fs-5 text-body-secondary mb-4">
+               {%- for role in person.roles %}
+               <li class="mb-1">{{ role }}</li>
+               {%- endfor %}
+            </ul>
+            {%- endif %}
+            {%- if person.bio %}
+            <p class="mb-4">{{ person.bio | strip_newlines | strip }}</p>
+            {%- endif %}
+            {%- if person.link %}
+            <a href="{{ person.link.url | relative_url }}" class="btn btn-wvu-blue">{{ person.link.text }}</a>
+            {%- endif %}
+         </div>
+         <div class="col-24 col-lg-4">
+            <div class="bg-wvu-not-quite-white p-4 h-100">
+               <h4 class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-3">Contact</h4>
+               <ul class="list-unstyled small mb-0 lh-lg">
+                  {%- if person.email %}
+                  <li class="text-break"><a href="mailto:{{ person.email }}">{{ person.email }}</a></li>
+                  {%- endif %}
+                  {%- if person.phone %}
+                  {%- comment %}+1 to match the footer's tel: on this same page.{% endcomment -%}
+                  <li><a href="tel:+1{{ person.phone | remove: " " | remove: "(" | remove: ")" | remove: "-" }}">{{ person.phone }}</a></li>
+                  {%- endif %}
+                  {%- if person.office %}
+                  <li>{{ person.office }}</li>
+                  {%- endif %}
+               </ul>
+            </div>
+         </div>
+      </div>
+      {%- endfor %}
+   </div>
+</div>
+{%- endif %}
+
+<!-- ===================== RESEARCHERS ===================== -->
+{%- comment %}
+Graduate and student researchers share one grid; each card's role line carries
+the distinction. The block also survives an empty roster, because hiding it
+would remove the one thing the page says about joining.
+{% endcomment -%}
+{%- if n_researchers > 0 or open_slots.size > 0 %}
+<div class="bg-wvu-not-quite-white py-6">
+   <div class="container">
+      <div class="row mb-5">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">The team</p>
+            <h2 class="antonia-light display-5 mb-0">
+               Researchers{% if n_researchers > 0 %} <span class="text-body-secondary">{{ n_researchers }}</span>{% endif %}
+            </h2>
+         </div>
+      </div>
+
+      <div class="row">
+         {%- for person in grad %}
+         <div class="col-24 col-md-12 col-lg-8 mb-4">
+            <div class="person card h-100 border-0">
+               <div class="card-body p-4">
+                  {%- if person.photo %}
+                  <img src="{{ person.photo | relative_url }}" alt="{{ person.name }}" width="120" height="120"
+                       loading="lazy" decoding="async" class="rounded-circle mb-3 object-fit-cover">
+                  {%- endif %}
+                  <h3 class="h4 helvetica-neue-bold mb-2">{{ person.name }}</h3>
+                  {%- if person.roles %}
+                  <ul class="list-unstyled small text-body-secondary mb-3">
+                     {%- for role in person.roles %}
+                     <li>{{ role }}</li>
+                     {%- endfor %}
+                  </ul>
+                  {%- endif %}
+                  {%- if person.bio %}
+                  <p class="mb-3">{{ person.bio | strip_newlines | strip }}</p>
+                  {%- endif %}
+                  {%- if person.email %}
+                  <p class="small mb-0 text-break"><a href="mailto:{{ person.email }}">{{ person.email }}</a></p>
+                  {%- endif %}
+                  {%- if person.link %}
+                  <p class="small mb-0"><a href="{{ person.link.url | relative_url }}">{{ person.link.text }}</a></p>
+                  {%- endif %}
+               </div>
+            </div>
+         </div>
+         {%- endfor %}
+
+         {%- for person in students %}
+         {%- if person.open %}
+         <!-- Opportunities: a recruitment slot, not a member of the lab. -->
+         <div class="col-24 col-lg-16 mb-4">
+            <div class="person card h-100 border-0 bg-wvu-blue text-white">
+               <div class="card-body p-5">
+                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-gold mb-2">Opportunity</p>
+                  <h3 class="antonia-light display-6 mb-3">{{ person.name }}</h3>
+                  {%- if person.bio %}
+                  <p class="fs-5">{{ person.bio | strip_newlines | strip }}</p>
+                  {%- endif %}
+                  {%- if person.email %}
+                  <a href="mailto:{{ person.email }}" class="btn btn-wvu-gold mt-2">Email {{ person.email }}</a>
+                  {%- endif %}
+               </div>
+            </div>
+         </div>
+         {%- else %}
+         <div class="col-24 col-md-12 col-lg-8 mb-4">
+            <div class="person card h-100 border-0">
+               <div class="card-body p-4">
+                  {%- if person.photo %}
+                  <img src="{{ person.photo | relative_url }}" alt="{{ person.name }}" width="120" height="120"
+                       loading="lazy" decoding="async" class="rounded-circle mb-3 object-fit-cover">
+                  {%- endif %}
+                  <h3 class="h4 helvetica-neue-bold mb-2">{{ person.name }}</h3>
+                  {%- if person.roles %}
+                  <ul class="list-unstyled small text-body-secondary mb-3">
+                     {%- for role in person.roles %}
+                     <li>{{ role }}</li>
+                     {%- endfor %}
+                  </ul>
+                  {%- endif %}
+                  {%- if person.bio %}
+                  <p class="mb-3">{{ person.bio | strip_newlines | strip }}</p>
+                  {%- endif %}
+                  {%- if person.email %}
+                  <p class="small mb-0 text-break"><a href="mailto:{{ person.email }}">{{ person.email }}</a></p>
+                  {%- endif %}
+                  {%- if person.link %}
+                  <p class="small mb-0"><a href="{{ person.link.url | relative_url }}">{{ person.link.text }}</a></p>
+                  {%- endif %}
+               </div>
+            </div>
+         </div>
+         {%- endif %}
+         {%- endfor %}
+      </div>
+   </div>
+</div>
+{%- endif %}
+
+<!-- ===================== ALUMNI ===================== -->
+{%- if alumni and alumni.size > 0 %}
+<div class="py-6">
+   <div class="container">
+      <div class="row mb-4">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Where they are now</p>
+            <h2 class="antonia-light display-5 mb-0">
+               Alumni <span class="text-body-secondary">{{ alumni.size }}</span>
+            </h2>
+         </div>
+      </div>
+
+      <ul class="list-unstyled mb-0">
+         {%- for person in alumni %}
+         <li class="border-bottom py-4">
+            <div class="row">
+               <div class="col-24 col-md-8 mb-2 mb-md-0">
+                  <p class="helvetica-neue-bold fs-5 mb-1">{{ person.name }}</p>
+                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-0">
+                     {{- person.publication.label | default: "Alumna/us" -}}
+                     {%- if person.publication.year %} &middot; {{ person.publication.year }}{% endif -%}
+                  </p>
+               </div>
+               <div class="col-24 col-md-16">
+                  {%- if person.publication %}
+                  <p class="mb-1"><a href="{{ person.publication.url }}">{{ person.publication.title }}</a></p>
+                  {%- endif %}
+                  {%- if person.now %}
+                  <p class="small text-body-secondary mb-0">Now: {{ person.now }}</p>
+                  {%- endif %}
+               </div>
+            </div>
+         </li>
+         {%- endfor %}
+      </ul>
+   </div>
+</div>
+{%- endif %}

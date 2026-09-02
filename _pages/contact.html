@@ -1,0 +1,191 @@
+---
+layout: wvu
+title: Contact
+permalink: /contact/
+description: How to reach the WVU Radio Astronomy Instrumentation Lab — email, phone, and where to find us on the Evansdale Campus in Morgantown, West Virginia.
+---
+{%- comment %}
+Port of _pages/contact.md onto the Design System.
+
+This is the page Common Elements points at, so the detail block below carries the
+full set: physical address, mailing address, email, phone and fax. The fax is
+the Lane Department's — the lab has no line of its own — because the rule
+names fax and a number is more useful than "none".
+
+Every value is read from _data or _config: the PI's email, phone and office
+come from _data/people.yml; the building, street, mailing address and fax from
+the contact: block in _config.yml, which the site footer reads too, so the two
+cannot disagree.
+Icons are inline SVG: the Font Awesome kit named in the DS docs is account-bound
+and 403s off-domain.
+{% endcomment -%}
+
+{%- assign pi = site.data.people.pi | first -%}
+{%- assign pi_tel = pi.phone | remove: "(" | remove: ")" | remove: " " | remove: "-" -%}
+
+<!-- ===================== HERO ===================== -->
+<div class="bg-wvu-blue text-white py-7">
+   <div class="container">
+      <div class="row">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-gold mb-3">Contact</p>
+            <h1 class="antonia-light display-3 mb-4">Get in touch</h1>
+            <p class="fs-4 mb-0">
+               We&rsquo;re glad to hear from students, collaborators, and anyone curious
+               about what we&rsquo;re building.
+            </p>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- ===================== WHO TO ASK ===================== -->
+<div class="py-6">
+   <div class="container">
+      <div class="row mb-5">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Who to ask</p>
+            <h2 class="antonia-light display-5">Start here</h2>
+            <p class="fs-5 text-body-secondary mb-0">
+               Most questions are answered fastest by going straight to the right person
+               rather than the general lab address.
+            </p>
+         </div>
+      </div>
+
+      <div class="row">
+         <div class="col-24 col-lg-8 mb-4">
+            <div class="card h-100 border-0 bg-wvu-not-quite-white">
+               <div class="card-body p-4 d-flex flex-column">
+                  <h3 class="h4 helvetica-neue-bold">Prospective students</h3>
+                  <p class="text-body-secondary">
+                     Graduate or undergraduate, and whether or not you&rsquo;ve settled on a
+                     project &mdash; write to the PI directly. Mention what you&rsquo;ve built
+                     or studied.
+                  </p>
+                  {%- if pi.email %}
+                  <p class="mt-auto mb-3">
+                     <a class="btn btn-wvu-blue d-inline-flex align-items-center" href="mailto:{{ pi.email }}?subject=Joining%20RAIL">
+                        <svg class="me-2" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
+                           <rect x="1" y="3" width="14" height="10" rx="1.5"></rect>
+                           <path d="m1.6 4 6.4 5 6.4-5"></path>
+                        </svg>
+                        {{ pi.email }}
+                     </a>
+                  </p>
+                  {%- endif %}
+                  <p class="small text-body-secondary mb-0">{{ pi.name }}{% if pi.office %} &middot; {{ pi.office }}{% endif %}</p>
+               </div>
+            </div>
+         </div>
+
+         <div class="col-24 col-lg-8 mb-4">
+            <div class="card h-100 border-0 bg-wvu-not-quite-white">
+               <div class="card-body p-4 d-flex flex-column">
+                  <h3 class="h4 helvetica-neue-bold">Collaboration &amp; instruments</h3>
+                  <p class="text-body-secondary">
+                     Questions about CHIME, CHORD, HIRAX, the outrigger stations, or any of
+                     the hardware and software described in our papers.
+                  </p>
+                  <p class="mt-auto mb-3">
+                     <a class="btn btn-outline-wvu-blue d-inline-flex align-items-center" href="mailto:{{ site.email }}">
+                        <svg class="me-2" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
+                           <rect x="1" y="3" width="14" height="10" rx="1.5"></rect>
+                           <path d="m1.6 4 6.4 5 6.4-5"></path>
+                        </svg>
+                        {{ site.email }}
+                     </a>
+                  </p>
+                  <p class="small text-body-secondary mb-0">General lab address</p>
+               </div>
+            </div>
+         </div>
+
+         <div class="col-24 col-lg-8 mb-4">
+            <div class="card h-100 border-0 bg-wvu-not-quite-white">
+               <div class="card-body p-4 d-flex flex-column">
+                  <h3 class="h4 helvetica-neue-bold">Code &amp; data</h3>
+                  <p class="text-body-secondary">
+                     Firmware, control software, and analysis pipelines are public. Issues
+                     and pull requests are usually the quickest route.
+                  </p>
+                  <p class="mt-auto mb-3">
+                     <a class="btn btn-outline-wvu-blue d-inline-flex align-items-center" href="https://github.com/WVURAIL">
+                        <svg class="me-2" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                           <path d="m5.5 4.5-4 3.5 4 3.5"></path>
+                           <path d="m10.5 4.5 4 3.5-4 3.5"></path>
+                        </svg>
+                        RAIL code on GitHub
+                     </a>
+                  </p>
+                  <p class="small text-body-secondary mb-0">Open an issue on the relevant repository</p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- ===================== FIND US / FULL CONTACT DETAIL ===================== -->
+<div class="bg-wvu-not-quite-white py-6">
+   <div class="container">
+      <div class="row">
+         <div class="col-24 col-lg-10 mb-5 mb-lg-0">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Find us</p>
+            <h2 class="antonia-light display-6 mb-3">Advanced Engineering Research Building</h2>
+            <p class="fs-5 text-body-secondary">
+               The lab is on the WVU Evansdale Campus in Morgantown. Visitors are welcome
+               &mdash; email ahead so someone&rsquo;s there to let you in.
+            </p>
+            <a class="btn btn-wvu-gold d-inline-flex align-items-center" href="https://www.google.com/maps/search/?api=1&amp;query=Advanced+Engineering+Research+Building+West+Virginia+University+Morgantown+WV">
+               <svg class="me-2" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <path d="M8 14.5s5-5 5-8.5a5 5 0 0 0-10 0c0 3.5 5 8.5 5 8.5z"></path>
+                  <circle cx="8" cy="6" r="1.9"></circle>
+               </svg>
+               Open in Maps
+            </a>
+         </div>
+
+         <div class="col-24 col-lg-13 offset-lg-1">
+            <address class="mb-0">
+               <dl class="row mb-0">
+                  <dt class="col-24 col-sm-6 helvetica-neue-bold">Lab</dt>
+                  <dd class="col-24 col-sm-18 mb-4">
+                     {{ site.contact.building }}<br>
+                     {{ site.contact.street }}, WVU Evansdale Campus<br>
+                     {{ site.contact.city }}, {{ site.contact.state }}
+                  </dd>
+
+                  {%- if pi.office %}
+                  <dt class="col-24 col-sm-6 helvetica-neue-bold">PI office</dt>
+                  <dd class="col-24 col-sm-18 mb-4">{{ pi.office }} &middot; {{ pi.name }}</dd>
+                  {%- endif %}
+
+                  <dt class="col-24 col-sm-6 helvetica-neue-bold">Mail</dt>
+                  <dd class="col-24 col-sm-18 mb-4">
+                     Lane Department of Computer Science<br>and Electrical Engineering<br>
+                     West Virginia University<br>
+                     {{ site.contact.street }}, {{ site.contact.mailing }}<br>
+                     {{ site.contact.city }}, {{ site.contact.state }} {{ site.contact.zip }}
+                  </dd>
+
+                  {%- if pi.phone %}
+                  <dt class="col-24 col-sm-6 helvetica-neue-bold">Phone</dt>
+                  <dd class="col-24 col-sm-18 mb-4"><a href="tel:+1{{ pi_tel }}">{{ pi.phone }}</a></dd>
+                  {%- endif %}
+
+                  <dt class="col-24 col-sm-6 helvetica-neue-bold">Fax</dt>
+                  <dd class="col-24 col-sm-18 mb-4">{{ site.contact.fax }} &middot; {{ site.contact.fax_note }} office; the lab has no fax line of its own</dd>
+
+                  <dt class="col-24 col-sm-6 helvetica-neue-bold">Email</dt>
+                  <dd class="col-24 col-sm-18 mb-0"><a href="mailto:{{ site.email }}">{{ site.email }}</a></dd>
+               </dl>
+            </address>
+         </div>
+      </div>
+   </div>
+</div>
+{%- comment %}
+No recruiting band at the foot of this page on purpose: the header's Contact
+route lands here, so repeating "Join the lab" would duplicate the page itself.
+{% endcomment -%}

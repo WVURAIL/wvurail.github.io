@@ -1,0 +1,25 @@
+{%- comment %}
+Lab-member co-author tags for one publication record: one small badge per
+name in `people` (the same field /publications/ uses to pick the lab's papers),
+placed directly after the authors line. Renders nothing when the record has no
+`people`, so it is safe on the cv.yml lists too. Ported from the tag row the
+source site's _includes/publication.html emitted.
+
+The badge is white with a border rather than not-quite-white so it stays
+visible on the tinted (bg-wvu-not-quite-white) publication band as well as on
+plain white sections.
+
+Usage, inside a publication loop:
+  {% include pub-people.html pub=pub %}
+
+Nothing is assigned here on purpose: the caller's `pub` is read through
+include.pub, so the include cannot shadow a page variable.
+{% endcomment -%}
+{%- if include.pub.people and include.pub.people.size > 0 %}
+<p class="small mb-1">
+   <span class="text-body-secondary">Lab authors:</span>
+   {%- for person in include.pub.people %}
+   <span class="badge bg-white text-wvu-blue border">{{ person }}</span>
+   {%- endfor %}
+</p>
+{%- endif %}

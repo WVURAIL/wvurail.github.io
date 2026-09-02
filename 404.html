@@ -1,30 +1,70 @@
 ---
-layout: default
+layout: wvu
+title: Page not found
 permalink: /404.html
 sitemap: false
-title: Page not found
-eyebrow: Error 404
-lead: That address doesn't exist on this site. It may have moved, or the link that brought you here may be out of date.
+noindex: true
+description: That address doesn't exist on the WVU RAIL site. A few places worth trying, and how to tell us about a broken link.
 ---
 {%- comment %}
+Port of the dark-theme 404 onto the Design System.
+
 Without this file GitHub Pages serves its own unbranded error page, which drops
 the visitor out of the site entirely — no navigation, no way back. SiteImprove
 flags broken links, and this is where they land.
+
+The permalink must be exactly /404.html: GitHub Pages looks for that file at
+the site root and serves it for any unknown URL. /404/ would not be found.
+The page is noindex and out of the sitemap for the same reason — it exists
+at every unknown address and should never be a search result.
+
+The old layout rendered `eyebrow:` and `lead:` from front matter; the wvu
+layout does not, so both live in the hero band below. Destination links use
+relative_url as the source did, so the page still works at any depth if the
+site ever gains a baseurl. The mailto subject derives from site.url exactly as
+the source does, so it follows the cutover to the University domain.
 {% endcomment -%}
 
-<p>A few places worth trying:</p>
+<!-- ===================== HERO ===================== -->
+<div class="bg-wvu-blue text-white py-7">
+   <div class="container">
+      <div class="row">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-gold mb-3">Error 404</p>
+            <h1 class="antonia-light display-3 mb-4">Page not found</h1>
+            <p class="fs-4 mb-4">
+               That address doesn&rsquo;t exist on this site. It may have moved, or the
+               link that brought you here may be out of date.
+            </p>
+            <a href="{{ '/' | relative_url }}" class="btn btn-wvu-gold">Go to the homepage</a>
+         </div>
+      </div>
+   </div>
+</div>
 
-<ul>
-   <li><a href="{{ '/where-we-work/' | relative_url }}">Research and telescopes</a> — what the lab builds and where it observes</li>
-   <li><a href="{{ '/publications/' | relative_url }}">Papers</a> — everything the lab and its collaborations have published</li>
-   <li><a href="{{ '/people/' | relative_url }}">The lab</a> — who works here, and who used to</li>
-   <li><a href="{{ '/education/' | relative_url }}">DSPIRA</a> — the teacher programme, its cohorts, and the lesson collection</li>
-   <li><a href="{{ '/tools/' | relative_url }}">Tools</a> — sidereal time and coordinate conversion</li>
-   <li><a href="{{ '/contact/' | relative_url }}">Contact</a> — including how to join the lab</li>
-</ul>
+<!-- ===================== WHERE TO GO ===================== -->
+<div class="py-6">
+   <div class="container">
+      <div class="row">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Where to go next</p>
+            <h2 class="antonia-light display-5 mb-4">A few places worth trying</h2>
 
-<p>
-   If you followed a link from somewhere else and it should work,
-   <a href="mailto:{{ site.email }}?Subject=Broken%20link%20on%20{{ site.url | remove: 'https://' }}">tell us where it came from</a>
-   and we'll fix it.
-</p>
+            <ul class="fs-5 lh-lg mb-5">
+               <li><a href="{{ '/where-we-work/' | relative_url }}">Research and telescopes</a> &mdash; what the lab builds and where it observes</li>
+               <li><a href="{{ '/publications/' | relative_url }}">Papers</a> &mdash; everything the lab and its collaborations have published</li>
+               <li><a href="{{ '/people/' | relative_url }}">The lab</a> &mdash; who works here, and who used to</li>
+               <li><a href="{{ '/education/' | relative_url }}">DSPIRA</a> &mdash; the teacher programme, its cohorts, and the lesson collection</li>
+               <li><a href="{{ '/tools/' | relative_url }}">Tools</a> &mdash; sidereal time and coordinate conversion</li>
+               <li><a href="{{ '/contact/' | relative_url }}">Contact</a> &mdash; including how to join the lab</li>
+            </ul>
+
+            <p class="mb-0">
+               If you followed a link from somewhere else and it should work,
+               <a href="mailto:{{ site.email }}?subject=Broken%20link%20on%20{{ site.url | remove: 'https://' }}">tell us where it came from</a>
+               and we&rsquo;ll fix it.
+            </p>
+         </div>
+      </div>
+   </div>
+</div>

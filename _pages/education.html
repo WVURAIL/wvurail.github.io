@@ -1,0 +1,402 @@
+---
+layout: wvu
+title: DSPIRA
+permalink: /education/
+description: DSPIRA continues through its educator community, open lessons, and DSPIRA-based outreach hardware now being developed under NSF Award 2511256.
+---
+{%- comment %}
+Port of _pages/dspira.html onto the Design System. Every number and list comes
+from _data/education.yml; nothing is typed twice.
+
+  * materials.lesson_count is THE lesson count. It reaches the page only through
+    the %COUNT% placeholder + replace filter, exactly as the original did, so the
+    file still has one place to edit.
+  * The original hardcoded "15 teachers from 8 states filling 21 places" and
+    "four returned" in prose. Those are derivable from cohorts, so they are
+    computed below instead — the roster can change without the sentence lying.
+  * No DSPIRA photography exists in this prototype's images/, so the hero is a
+    plain blue band rather than an invented image.
+
+Two classes used by index.html are NOT in designsystem.wvu.edu/scss/site.min.css
+and silently do nothing. Verified against the shipped stylesheet; this page uses
+the real utilities instead, and index.html still needs the same correction:
+
+  * antonia-light    -> antonia-light. "antonia-light" is the FONT-FAMILY
+    name, not a utility. The DS ships .antonia-light / -regular / -bold, which
+    set that family plus font-variation-settings. .antonia-light is the display
+    optical size (opsz 26.57), so it is the right one for display-* headings;
+    with the phantom class the headings fell back to the body sans.
+  * bg-wvu-not-quite-white -> bg-wvu-not-quite-white (#F7F7F7). There is no
+    "wvu-neutral" colour in the DS palette at all, so the alternating bands were
+    rendering as plain white and the section rhythm was invisible.
+{% endcomment -%}
+
+{%- assign ed = site.data.education -%}
+
+{%- comment %}Flatten every cohort roster once, then derive the roster figures.{% endcomment -%}
+{%- assign roster = "" | split: "" -%}
+{%- assign returning_names = "" | split: "" -%}
+{%- assign places = 0 -%}
+{%- for c in ed.cohorts -%}
+   {%- assign roster = roster | concat: c.teachers -%}
+   {%- assign places = places | plus: c.count -%}
+{%- endfor -%}
+{%- for t in roster -%}
+   {%- if t.returning -%}
+      {%- assign one = t.name | split: "|" -%}
+      {%- assign returning_names = returning_names | concat: one -%}
+   {%- endif -%}
+{%- endfor -%}
+{%- assign teacher_names = roster | map: "name" | uniq -%}
+{%- assign teacher_states = roster | map: "state" | uniq -%}
+{%- assign returning_names = returning_names | uniq -%}
+
+<!-- ===================== HERO ===================== -->
+<div class="bg-wvu-blue text-white py-7">
+   <div class="container">
+      <div class="row">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-gold mb-3">Education</p>
+            <h1 class="antonia-light display-3 mb-4">Teachers built radio telescopes &mdash; and a community</h1>
+            <p class="fs-4 mb-4">{{ ed.summary | strip_newlines | strip }}</p>
+            <div class="border-start border-1 border-white ps-4">
+               <p class="mb-0">{{ ed.status | strip_newlines | strip }}</p>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- ===================== LESSONS AND COMMUNITY ===================== -->
+{%- comment %}
+The id attributes below are load-bearing, not decoration: _pages/dspira-2019.html
+links to /education/#outputs, and the section ids are the only inbound anchors
+the old site published. Keep them if these bands are ever reordered.
+{% endcomment -%}
+<div class="py-6" id="lessons">
+   <div class="container">
+      <div class="row mb-5">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Still active</p>
+            <h2 class="antonia-light display-5 mb-3">{{ ed.materials.title }}</h2>
+            <p class="fs-5 text-body-secondary mb-0">
+               {{ ed.materials.intro | strip_newlines | strip | replace: '%COUNT%', ed.materials.lesson_count }}
+            </p>
+         </div>
+      </div>
+
+      <div class="row">
+         <div class="col-24 col-lg-14 mb-5 mb-lg-0">
+            <h3 class="h5 helvetica-neue-bold mb-3">
+               The {{ ed.materials.modules.size }} lesson modules
+            </h3>
+            <ul class="list-unstyled row mb-0">
+               {%- for m in ed.materials.modules %}
+               <li class="col-24 col-sm-12 mb-3">
+                  <div class="bg-wvu-not-quite-white p-3 h-100">{{ m }}</div>
+               </li>
+               {%- endfor %}
+            </ul>
+         </div>
+
+         <div class="col-24 col-lg-9 offset-lg-1">
+            <div class="card border-0 bg-wvu-not-quite-white h-100">
+               <div class="card-body p-4">
+                  <h3 class="h5 helvetica-neue-bold mb-3">Use the lessons</h3>
+                  <p class="text-body-secondary">
+                     All {{ ed.materials.lesson_count }} lessons are free, open and maintained
+                     by teachers and lab contributors.
+                  </p>
+                  <a href="{{ ed.materials.url }}" class="btn btn-wvu-blue mb-4">
+                     Open the lessons site
+                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                          fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"
+                          class="ms-1 align-baseline">
+                        <path d="M2 8h11M9 4l4 4-4 4"></path>
+                     </svg>
+                  </a>
+                  <ul class="list-unstyled mb-0">
+                     {%- for x in ed.materials.extras %}
+                     <li class="mb-2"><a href="{{ x.url }}">{{ x.text }}</a></li>
+                     {%- endfor %}
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- ===================== FACTS ===================== -->
+<div class="bg-wvu-not-quite-white py-6">
+   <div class="container">
+      <h2 class="visually-hidden">DSPIRA at a glance</h2>
+      <dl class="row mb-0">
+         {%- for f in ed.facts %}
+         <div class="col-24 col-md-12 col-lg-6 mb-4 mb-lg-0">
+            <dt class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-1 fw-normal">{{ f.label }}</dt>
+            <dd class="mb-0">
+               <span class="d-block antonia-light display-5 text-wvu-blue lh-1 mb-2">{{ f.value | replace: '%COUNT%', ed.materials.lesson_count }}</span>
+               <span class="d-block small text-body-secondary">{{ f.note }}</span>
+            </dd>
+         </div>
+         {%- endfor %}
+      </dl>
+   </div>
+</div>
+
+<!-- ===================== PROGRAMME TIMELINE ===================== -->
+<div class="py-6" id="timeline">
+   <div class="container">
+      <div class="row mb-5">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Program timeline</p>
+            <h2 class="antonia-light display-5 mb-3">The grant ended. The work changed shape.</h2>
+            <p class="fs-5 text-body-secondary mb-0">
+               The original proposal planned three summer cohorts. NSF Award {{ ed.award.number }}
+               ran through {{ ed.award.end | date: "%Y" }}, and its
+               <a href="{{ ed.award.outcome_url }}">final report</a> describes teacher
+               participation and program development across five summers. The detailed
+               archive here covers the {{ ed.cohorts.size }} known in-person cohorts from 2017&ndash;19.
+            </p>
+         </div>
+      </div>
+
+      <div class="row mb-4">
+         {%- for phase in ed.phases %}
+         <div class="col-24 col-lg-8 mb-4">
+            <div class="card h-100 border-0 bg-wvu-not-quite-white">
+               <div class="card-body p-4">
+                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-2">
+                     {{ forloop.index | prepend: '0' }} &middot; {{ phase.label }}
+                  </p>
+                  <h3 class="h4 helvetica-neue-bold">{{ phase.title }}</h3>
+                  <p class="mb-0 text-body-secondary">{{ phase.body | strip_newlines | strip }}</p>
+               </div>
+            </div>
+         </div>
+         {%- endfor %}
+      </div>
+
+      <a href="{{ ed.follow_on.outreach_hardware.url }}" class="btn btn-wvu-blue me-2 mb-2">
+         Current NSF Award {{ ed.follow_on.outreach_hardware.number }}
+      </a>
+      <a href="{{ ed.award.url }}" class="btn btn-outline-wvu-blue mb-2">
+         Original RET Award {{ ed.award.number }}
+      </a>
+   </div>
+</div>
+
+<!-- ===================== HOW A SUMMER WORKED ===================== -->
+<div class="bg-wvu-not-quite-white py-6" id="how">
+   <div class="container">
+      <div class="row mb-5">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">The in-person program</p>
+            <h2 class="antonia-light display-5 mb-3">Six weeks, one telescope each</h2>
+            <p class="fs-5 text-body-secondary mb-0">
+               Teachers spent the summer doing engineering rather than reading about it,
+               finishing at Green Bank with an instrument they had built themselves.
+            </p>
+         </div>
+      </div>
+      <ol class="list-unstyled row mb-0">
+         {%- for step in ed.arc %}
+         <li class="col-24 col-md-12 col-lg-6 mb-4 mb-lg-0">
+            <p class="antonia-light display-6 text-wvu-blue lh-1 mb-2">{{ forloop.index }}</p>
+            <h3 class="h5 helvetica-neue-bold">{{ step.title }}</h3>
+            <p class="mb-0 text-body-secondary">{{ step.body | strip_newlines | strip }}</p>
+         </li>
+         {%- endfor %}
+      </ol>
+   </div>
+</div>
+
+<!-- ===================== COHORTS ===================== -->
+<div class="py-6" id="cohorts">
+   <div class="container">
+      <div class="row mb-5">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Who came</p>
+            <h2 class="antonia-light display-5 mb-3">Archived in-person cohorts</h2>
+            {%- comment %}
+            The second sentence deliberately does NOT repeat teacher_names.size.
+            "More than 15" in the original was NSF's separately reported figure,
+            not the roster total; they agree today only by coincidence. Printing
+            the roster count there would make an edit to _data/education.yml
+            silently restate NSF's finding as a number NSF never published.
+            {% endcomment -%}
+            <p class="fs-5 text-body-secondary mb-0">
+               These rosters contain {{ teacher_names.size }} teachers from {{ teacher_states.size }}
+               states filling {{ places }} places &mdash; {{ returning_names.size }} returned for a
+               second or third summer. NSF's final report counts more teachers than these
+               rosters name, across five summers, so this is not a complete census of the
+               project's later participation.
+            </p>
+         </div>
+      </div>
+
+      <div class="row">
+         {%- for c in ed.cohorts %}
+         <div class="col-24 col-md-12 col-lg-8 mb-4">
+            <div class="card h-100 border-0 bg-wvu-not-quite-white">
+               <div class="card-body p-4 d-flex flex-column">
+                  <h3 class="antonia-light display-6 text-wvu-blue mb-1">{{ c.year }}</h3>
+                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small mb-3">{{ c.count }} teachers</p>
+                  <ul class="list-unstyled mb-3">
+                     {%- for t in c.teachers %}
+                     <li class="mb-2">
+                        {{ t.name }}
+                        <span class="small text-body-secondary">{{ t.state }}</span>
+                        {%- if t.returning %}
+                        <span class="badge bg-wvu-blue text-white align-middle">returning</span>
+                        {%- endif %}
+                     </li>
+                     {%- endfor %}
+                  </ul>
+                  {%- if c.note %}
+                  <p class="small text-body-secondary">{{ c.note }}</p>
+                  {%- endif %}
+                  <p class="mt-auto mb-0">
+                     <a href="{{ c.url | relative_url }}">{{ c.year }} summer</a>
+                  </p>
+               </div>
+            </div>
+         </div>
+         {%- endfor %}
+      </div>
+   </div>
+</div>
+
+<!-- ===================== PUBLISHED WORK ===================== -->
+{%- if ed.outputs and ed.outputs.size > 0 %}
+<div class="bg-wvu-not-quite-white py-6" id="outputs">
+   <div class="container">
+      <div class="row mb-4">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">What came out of it</p>
+            <h2 class="antonia-light display-5 mb-3">Published &amp; presented</h2>
+            <p class="fs-5 text-body-secondary mb-0">
+               Teachers did not just attend. They published classroom research, co-authored
+               the program's conference paper, and presented their work to other engineers.
+            </p>
+         </div>
+      </div>
+      <ul class="list-unstyled mb-0">
+         {%- for o in ed.outputs %}
+         <li class="border-bottom py-4">
+            <div class="row">
+               <div class="col-24 col-lg-17">
+                  <h3 class="h5 helvetica-neue-bold mb-1">
+                     {%- if o.doi -%}
+                     <a href="https://doi.org/{{ o.doi }}">{{ o.title }}</a>
+                     {%- elsif o.url -%}
+                     <a href="{{ o.url }}">{{ o.title }}</a>
+                     {%- else -%}{{ o.title }}{%- endif -%}
+                  </h3>
+                  <p class="small text-body-secondary mb-0">{{ o.authors }}</p>
+                  <p class="small fst-italic text-body-secondary mb-0">{{ o.venue }}</p>
+                  {%- if o.note %}
+                  <p class="small text-body-secondary mb-0">{{ o.note }}</p>
+                  {%- endif %}
+               </div>
+               <div class="col-24 col-lg-7 mt-3 mt-lg-0 text-lg-end">
+                  <ul class="list-inline small mb-0">
+                     {%- if o.doi %}
+                     <li class="list-inline-item"><a href="https://doi.org/{{ o.doi }}">DOI</a></li>
+                     {%- endif %}
+                     {%- if o.extra %}
+                     <li class="list-inline-item"><a href="{{ o.extra.url | relative_url }}">{{ o.extra.text }}</a></li>
+                     {%- endif %}
+                  </ul>
+               </div>
+            </div>
+         </li>
+         {%- endfor %}
+      </ul>
+   </div>
+</div>
+{%- endif %}
+
+<!-- ===================== FUNDING AND CONTINUITY ===================== -->
+<div class="py-6">
+   <div class="container">
+      <div class="row">
+         <div class="col-24 col-lg-8 mb-4 mb-lg-0">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Credits</p>
+            <h2 class="antonia-light display-5 mb-3">Funding and continuity</h2>
+            <p class="fs-5 text-body-secondary mb-0">
+               Seed funding started the work. The community and hardware carried it forward.
+            </p>
+         </div>
+         <div class="col-24 col-lg-15 offset-lg-1">
+            <dl class="row mb-0">
+               <dt class="col-24 col-md-7 helvetica-neue-bold">Investigators</dt>
+               <dd class="col-24 col-md-17 mb-4">{{ ed.principal_investigators | join: " and " }}</dd>
+
+               <dt class="col-24 col-md-7 helvetica-neue-bold">GBO coordinator</dt>
+               <dd class="col-24 col-md-17 mb-4">{{ ed.observatory_coordinator }}</dd>
+
+               <dt class="col-24 col-md-7 helvetica-neue-bold">Partners</dt>
+               <dd class="col-24 col-md-17 mb-4">
+                  <ul class="list-unstyled mb-0">
+                     {%- for p in ed.partners %}
+                     <li>{{ p }}</li>
+                     {%- endfor %}
+                  </ul>
+               </dd>
+
+               <dt class="col-24 col-md-7 helvetica-neue-bold">Seed funding</dt>
+               <dd class="col-24 col-md-17 mb-4">
+                  <a href="{{ ed.award.url }}">NSF Award {{ ed.award.number }}</a><br>
+                  {{ ed.award.title }}<br>
+                  {{ ed.award.amount }} &middot; {{ ed.award.start }}&ndash;{{ ed.award.end }}
+               </dd>
+
+               <dt class="col-24 col-md-7 helvetica-neue-bold">Current DSPIRA-based hardware</dt>
+               <dd class="col-24 col-md-17 mb-4">
+                  <a href="{{ ed.follow_on.outreach_hardware.url }}">NSF Award {{ ed.follow_on.outreach_hardware.number }}</a>
+                  &middot; {{ ed.follow_on.outreach_hardware.start }}&ndash;{{ ed.follow_on.outreach_hardware.end }}<br>
+                  Its outreach component uses DSPIRA receivers as prototypes for a more
+                  robust lab for high-school teachers and students, while continuing
+                  education-oriented receiver development for STEM programs at WVU and Yale.
+               </dd>
+
+               <dt class="col-24 col-md-7 helvetica-neue-bold">Related teacher workshop</dt>
+               <dd class="col-24 col-md-17 mb-0">
+                  <a href="{{ ed.follow_on.stars.url }}">NSF Award {{ ed.follow_on.stars.number }}</a>
+                  funded the 2025 <a href="{{ ed.follow_on.stars.program_url }}">STARS workshop</a>,
+                  extending DSPIRA to another group of educators.
+               </dd>
+            </dl>
+
+            {%- if ed.archive_sites and ed.archive_sites.size > 0 %}
+            <p class="small text-body-secondary mt-4 mb-0">
+               Earlier sites:
+               {%- for a in ed.archive_sites %}
+               <a href="{{ a.url }}">{{ a.text }}</a>{% unless forloop.last %},{% endunless %}
+               {%- endfor %}
+            </p>
+            {%- endif %}
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- ===================== CTA ===================== -->
+<div class="bg-wvu-blue text-white py-6">
+   <div class="container">
+      <div class="row align-items-center">
+         <div class="col-24 col-lg-16 mb-4 mb-lg-0">
+            <h2 class="antonia-light display-6 mb-2">Teach with DSPIRA</h2>
+            <p class="fs-5 mb-0">
+               The {{ ed.materials.lesson_count }} lessons, the build guides and the
+               discussion forum are open to any educator, student or telescope builder.
+            </p>
+         </div>
+         <div class="col-24 col-lg-8 text-lg-end">
+            <a href="{{ ed.materials.url }}" class="btn btn-wvu-gold">Open the lessons site</a>
+         </div>
+      </div>
+   </div>
+</div>

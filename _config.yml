@@ -5,6 +5,27 @@
 title: WVU RAIL
 tagline: Radio Astronomy Instrumentation Laboratory
 email: wvurail@gmail.com
+
+# The lab's contact block. Rendered in the footer of every page and on
+# /contact/, from this one place so the two cannot disagree. WVU's Common
+# Elements rule wants physical address, mailing address, email, phone and fax
+# on every page. Street and mailing address are the Lane Department's, as
+# published at lcsee.statler.wvu.edu (the AERB is 1220 Evansdale Drive per WVU
+# Facilities Planning — not 1306, which is the Engineering Sciences Building).
+# The phone is the PI's office line, as the old contact page listed it; the
+# fax is the department's, since the lab has none of its own.
+contact:
+  building: Advanced Engineering Research Building, Room 304
+  street: 1220 Evansdale Drive
+  mailing: PO Box 6109
+  city: Morgantown
+  state: WV
+  zip: "26506-6109"
+  phone: "(304) 293-9686"
+  phone_tel: "+13042939686"
+  fax: "(304) 293-8602"
+  fax_note: Lane Department
+
 description: >
   RAIL is a multidisciplinary group within the Lane Department of Computer Science
   and Electrical Engineering at West Virginia University and part of the WVU Center

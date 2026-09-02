@@ -1,0 +1,57 @@
+{%- comment %}
+Shared tail for the three DSPIRA cohort pages: the lessons call-to-action and
+the links back to the program page and the other cohorts. Recomputes its own
+variables because assigns made inside cohort-roster.html do not leak out of
+that include.
+{% endcomment -%}
+{%- assign ed = site.data.education -%}
+{%- assign chronological = ed.cohorts | reverse -%}
+
+<!-- ===================== LESSONS CTA ===================== -->
+<div class="bg-wvu-blue text-white py-6">
+   <div class="container">
+      <div class="row align-items-center">
+         <div class="col-24 col-lg-16 mb-4 mb-lg-0">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-gold mb-2">Everything they used</p>
+            <h2 class="antonia-light display-6 mb-2">Use the lessons online</h2>
+            <p class="fs-5 mb-0">
+               {{ ed.materials.lesson_count }} lessons covering the astronomy, the hardware, the
+               signal processing and the labs&mdash;free and maintained by the DSPIRA community.
+            </p>
+         </div>
+         <div class="col-24 col-lg-8 text-lg-end">
+            <a href="{{ ed.materials.url }}" class="btn btn-wvu-gold">
+               Open the lessons site
+               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    aria-hidden="true" focusable="false" class="ms-1 align-baseline">
+                  <path d="M2 8h11M9 4l4 4-4 4"></path>
+               </svg>
+            </a>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- ===================== OTHER COHORTS ===================== -->
+<nav aria-label="Other DSPIRA cohorts" class="bg-wvu-not-quite-white py-4">
+   <div class="container">
+      <div class="d-flex flex-wrap align-items-center small">
+         <a href="{{ '/education/' | relative_url }}" class="text-decoration-none helvetica-neue-bold me-4">&larr; DSPIRA program</a>
+         <div class="d-flex align-items-center">
+            <span class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-body-secondary me-3">Cohorts</span>
+            <ol class="list-inline mb-0">
+               {%- for c in chronological %}
+               <li class="list-inline-item">
+                  {%- if c.year == page.year %}
+                  <a href="{{ c.url | relative_url }}" aria-current="page" class="text-decoration-none fw-bold text-wvu-blue">{{ c.year }}</a>
+                  {%- else %}
+                  <a href="{{ c.url | relative_url }}" class="text-decoration-none">{{ c.year }}</a>
+                  {%- endif %}
+               </li>
+               {%- endfor %}
+            </ol>
+         </div>
+      </div>
+   </div>
+</nav>

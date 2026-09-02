@@ -1,0 +1,160 @@
+---
+layout: wvu
+title: Accessibility
+permalink: /accessibility/
+description: Accessibility statement for the RAIL website — conformance target, known issues, and how to report a problem.
+---
+{%- comment %}
+Port of _pages/accessibility.md onto the Design System.
+
+Every claim below was re-checked against this tree when the site moved onto the
+Design System, so the page describes the site as it is now: the stylesheet and
+typefaces come from University services rather than being self-hosted, the
+home hero is a still photograph, and the tools clocks carry a Pause control
+(assets/js/tools.js). The email subject is built from site.url so it follows
+the domain at cutover without an edit here.
+{% endcomment -%}
+
+<!-- ===================== PAGE HEAD ===================== -->
+<div class="bg-wvu-blue text-white py-7">
+   <div class="container">
+      <div class="row">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-gold mb-3">About this site</p>
+            <h1 class="antonia-light display-3 mb-4">Accessibility</h1>
+            <p class="fs-4 mb-0">
+               What we aim for, what we know is imperfect, and how to tell us when
+               something gets in your way.
+            </p>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- ===================== WHAT WE AIM FOR ===================== -->
+<div class="py-6">
+   <div class="container">
+      <div class="row">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">The standard</p>
+            <h2 class="antonia-light display-5 mb-3">What we aim for</h2>
+            <p class="mb-0">
+               This site targets <strong>WCAG 2.1 Level AA</strong>. West Virginia
+               University is required to meet that standard under Section 504 of the
+               Rehabilitation Act and Title II of the Americans with Disabilities Act,
+               and we hold the lab&rsquo;s own site to it whether or not it is hosted on
+               University systems.
+            </p>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- ===================== WHERE WE ARE ===================== -->
+<div class="bg-wvu-not-quite-white py-6">
+   <div class="container">
+      <div class="row">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Today</p>
+            <h2 class="antonia-light display-5 mb-3">Where we are</h2>
+            <p>
+               Every page is checked with automated tooling and by hand. The site
+               carries no analytics and no tracking script, and the only scripts it runs
+               are its own. It does load its stylesheet from the University&rsquo;s
+               <a href="https://designsystem.wvu.edu/">Design System</a> at
+               designsystem.wvu.edu, the University&rsquo;s typefaces from Adobe Fonts,
+               and the University&rsquo;s logos from static.wvu.edu, so a visit here also
+               makes requests to those services.
+            </p>
+            <p>Specifically, the site aims to:</p>
+            <ul class="mb-0">
+               <li>describe every photograph in context rather than by filename</li>
+               <li>keep a single <code>h1</code> on each page with headings that cascade beneath it</li>
+               <li>give every interactive element a visible keyboard focus indicator</li>
+               <li>mark links inside running text with an underline, not colour alone</li>
+               <li>link to canonical records rather than serving PDFs</li>
+            </ul>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- ===================== KNOWN ISSUES ===================== -->
+<div class="py-6">
+   <div class="container">
+      <div class="row">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Honestly</p>
+            <h2 class="antonia-light display-5 mb-3">Known issues</h2>
+            <p class="fs-5 text-body-secondary">
+               We would rather list these than imply the site is perfect.
+            </p>
+            <ul class="mb-0">
+               <li class="mb-3">
+                  The sidereal clocks at <a href="{{ '/tools/' | relative_url }}">/tools/</a>,
+                  and the readings on the two tools beneath them, tick visibly every
+                  second. Each of those pages has a Pause button that stops the tick.
+                  A screen reader is not interrupted by it: the two tools announce a
+                  reading only when you press Update or Convert.
+               </li>
+               <li class="mb-3">
+                  The time-lapse on the <a href="{{ '/education/dspira-2017/' | relative_url }}">DSPIRA 2017</a>
+                  page plays only when you press its button, and once playing it cannot
+                  be paused; reload the page to stop it.
+               </li>
+               <li class="mb-3">
+                  The DSPIRA cohort pages are archives of summers that have ended and are
+                  not actively revised. If something on them is unusable, tell us and we
+                  will fix or retire the page.
+               </li>
+               <li>
+                  The stylesheet is served by the University&rsquo;s Design System, which
+                  the lab does not control. A change there could affect this site between
+                  our checks.
+               </li>
+            </ul>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- ===================== TELLING US ABOUT A PROBLEM ===================== -->
+<div class="bg-wvu-not-quite-white py-6">
+   <div class="container">
+      <div class="row">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Get in touch</p>
+            <h2 class="antonia-light display-5 mb-3">Telling us about a problem</h2>
+            <p>
+               If any part of this site gets in your way, email
+               <a href="mailto:{{ site.email }}?Subject=Accessibility%20on%20{{ site.url | remove: 'https://' }}">{{ site.email }}</a>.
+               Say which page and what happened; you do not need to know the technical
+               cause. We will reply, and we will tell you what we can fix and when.
+            </p>
+            <p class="mb-0">
+               For accessibility of West Virginia University&rsquo;s own web properties,
+               see <a href="https://digitalaccessibility.wvu.edu/">WVU Digital Accessibility</a>.
+            </p>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- ===================== ABOUT THIS SITE'S STATUS ===================== -->
+<div class="py-6">
+   <div class="container">
+      <div class="row">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Who runs it</p>
+            <h2 class="antonia-light display-5 mb-3">About this site&rsquo;s status</h2>
+            <!-- CUTOVER ITEM: remove this paragraph when the site moves to the University domain — see .github/CUTOVER.md -->
+            <p class="mb-0">
+               RAIL is a research group in the Lane Department of Computer Science and
+               Electrical Engineering. This site is maintained by the lab rather than by
+               the University: it is not an official West Virginia University web page,
+               and its content is the lab&rsquo;s responsibility.
+            </p>
+         </div>
+      </div>
+   </div>
+</div>

@@ -11,7 +11,7 @@
 # the lab pages still exclude it — see the note in publications.yml).
 #
 # Publication-shaped entries below use the same fields as publications.yml,
-# so _includes/publication.html renders them unchanged.
+# so _pages/bandura-cv.html renders them unchanged.
 #
 # `review:` keys are questions for a human — DELETE once confirmed, same
 # convention as publications.yml. Links appear only where they were verified;

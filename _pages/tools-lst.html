@@ -1,0 +1,103 @@
+---
+layout: wvu
+title: Local Sidereal Time
+permalink: /tools/lst/
+description: Compute the current Local Sidereal Time for any longitude.
+---
+{%- comment %}
+Port of /tools/lst/ onto the Design System. All behaviour lives in
+assets/js/tools.js (with assets/js/astro.js for the maths) and attaches by
+element id -- no inline handlers and no inline <script>.
+
+The reading re-ticks every second, so it cannot carry aria-live; the
+visually-hidden role="status" node below it is written only when Update is
+pressed. The Pause button (WCAG 2.2.2) clears the interval. Buttons ship
+disabled until tools.js enables them, so a visitor without JavaScript is never
+offered a control that cannot work.
+{% endcomment -%}
+
+<!-- ===================== PAGE HEAD ===================== -->
+<div class="bg-wvu-blue text-white py-7">
+   <div class="container">
+      <div class="row">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-gold mb-3">Tools</p>
+            <h1 class="antonia-light display-3 mb-4">Local Sidereal Time</h1>
+            <p class="fs-4 mb-0">
+               Local Sidereal Time for any longitude, updating every second.
+            </p>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- ===================== TOOL ===================== -->
+<div class="py-6">
+   <div class="container">
+      <div class="row">
+
+         <div class="col-24 col-lg-10 mb-5 mb-lg-0">
+            <h2 class="h4 helvetica-neue-bold mb-3">Your longitude</h2>
+            <p>Enter your longitude to see the current Local Sidereal Time. The value updates every second.</p>
+
+            <div class="row g-3 align-items-end">
+               <div class="col-14 col-md-9">
+                  <label for="lst-long" class="form-label">Longitude (degrees)</label>
+                  <input type="text" inputmode="decimal" class="form-control" id="lst-long" value="79.8318">
+               </div>
+               <div class="col-10 col-md-6">
+                  <label for="lst-hemi" class="form-label">East or west</label>
+                  <select class="form-select" id="lst-hemi">
+                     <option value="W" selected>W</option>
+                     <option value="E">E</option>
+                  </select>
+               </div>
+               <div class="col-24 col-md-9">
+                  <button type="button" id="lst-update" class="btn btn-wvu-blue" disabled>Update</button>
+               </div>
+            </div>
+         </div>
+
+         <div class="col-24 col-lg-13 offset-lg-1">
+            <h2 id="lst-reading-heading" class="h4 helvetica-neue-bold mb-3">Sidereal time now</h2>
+
+            {%- comment %}
+            tabindex="0": the box can scroll sideways on a narrow screen
+            (overflow-auto), and a scrollable region must be reachable from the
+            keyboard. Rewritten every second, so no aria-live here.
+            {% endcomment -%}
+            <div class="bg-wvu-not-quite-white border rounded p-4 overflow-auto" tabindex="0"
+                 role="region" aria-labelledby="lst-reading-heading">
+               <p class="mb-0">
+                  <span id="lst-time" class="d-block display-5 font-monospace text-wvu-blue lh-1 mb-2">--:--:--</span>
+                  <span id="lst-for" class="d-block text-body-secondary"></span>
+               </p>
+               <p id="lst-nojs" class="small text-body-secondary mt-3 mb-0">
+                  This tool runs in your browser and needs JavaScript.
+               </p>
+            </div>
+
+            <p id="lst-announce" class="visually-hidden" role="status" aria-live="polite"></p>
+
+            <p class="mt-3 mb-0">
+               <button type="button" id="lst-pause" class="btn btn-outline-wvu-blue"
+                       aria-pressed="false" disabled>Pause updating</button>
+            </p>
+         </div>
+
+      </div>
+
+      <p class="mt-5 mb-0">
+         <a href="{{ '/tools/' | relative_url }}" class="btn btn-outline-wvu-blue d-inline-flex align-items-center">
+            <svg class="me-2" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+               <path d="M14 8H2"></path>
+               <path d="m6.5 3.5-4.5 4.5 4.5 4.5"></path>
+            </svg>
+            All tools
+         </a>
+      </p>
+   </div>
+</div>
+
+<script src="{{ '/assets/js/astro.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/tools.js' | relative_url }}" defer></script>

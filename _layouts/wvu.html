@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#002855">
+
+{%- assign full_title = site.title | append: " — " | append: site.tagline %}
+{%- if page.title and page.url != "/" %}
+{%- assign full_title = page.title | append: " · " | append: site.title %}
+{%- endif %}
+{%- assign desc = page.description | default: site.description | strip_newlines | strip %}
+{%- assign share = page.image | default: "/images/social-card.png" %}
+
+<title>{{ full_title }}</title>
+<meta name="description" content="{{ desc }}">
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+{%- comment %}
+page.noindex is per page (the CV). site.noindex_all is set only by the staging
+build's config override, so a review copy under /rail-preview/ never gets
+indexed — a project site cannot serve the host's robots.txt, so this is the
+only tool for it.
+{% endcomment -%}
+{%- if page.noindex or site.noindex_all %}
+<meta name="robots" content="noindex">
+{%- endif %}
+
+<!-- Open Graph / Twitter -->
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:title" content="{{ full_title }}">
+<meta property="og:description" content="{{ desc }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta property="og:image" content="{{ share | absolute_url }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ full_title }}">
+<meta name="twitter:description" content="{{ desc }}">
+<meta name="twitter:image" content="{{ share | absolute_url }}">
+
+<link rel="icon" href="{{ '/favicon.ico' | relative_url }}" sizes="any">
+<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
+
+{%- comment %}
+The Design System, consumed exactly as designsystem.wvu.edu/getting-started
+documents for "other systems". Three notes:
+
+  * site.min.css is 2.8 MB unpinned. For production, vendor a pinned copy into
+    the repo so an upstream change cannot alter the site mid-review — SCM's own
+    production sites self-host an SRI-pinned build rather than hot-linking.
+  * The Font Awesome Pro kit their docs list is account-bound and 403s from any
+    non-allowlisted origin, so icons here are inline SVG (what the old site's
+    icon.html include did). Nothing is lost and nothing is licensed.
+  * The mobile menu is the Design System's own: its navigation script (loaded
+    after <main>) looks for the js-wvu-site-nav-* classes on the toggle button
+    and the list, toggles is-opened and aria-expanded, swaps "Open Menu" /
+    "Close Menu", and closes on Escape. No other script runs on the site.
+  * Typekit serves the WVU faces and is not domain-locked at the network layer.
+{% endcomment -%}
+<link rel="stylesheet" href="https://use.typekit.net/yys7vri.css">
+<link rel="stylesheet" href="https://designsystem.wvu.edu/scss/site.min.css">
+
+{%- comment %}
+The only custom CSS on the site.
+
+.pub-filter: the publications filter is revealed by site.js, so a visitor
+without JavaScript is never offered a control that cannot work. No DS utility
+expresses "show only when JS ran".
+
+Print: drop the site chrome. SCM confirmed (Adam Glenn, 2 Sep 2026) there is
+no requirement for the masthead or footer on a printed page, so a printed or
+save-as-PDF copy of any page is just its content — which is what lets the CV
+live inside the compliant layout and still print as a clean document. The
+selectors are scoped to the layout's own masthead, nav and footer so a page's
+own <header> (the CV's name-and-contact block) is not swallowed. The
+pagination rules keep a heading with what follows it and a citation on one
+page.
+{% endcomment -%}
+<style>
+  .pub-filter { display: none; }
+  .js .pub-filter { display: flex; }
+
+  @media print {
+    body > header, #nav-primary, body > footer, .pub-filter, .no-print { display: none !important; }
+    main { padding: 0 !important; }
+    a { color: inherit; text-decoration: none; }
+    h2, h3 { break-after: avoid; page-break-after: avoid; }
+    li, .row { break-inside: avoid; page-break-inside: avoid; }
+    p, li { orphans: 2; widows: 2; }
+    @page { size: letter; margin: 0.7in; }
+  }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ResearchOrganization",
+  "name": "WVU Radio Astronomy Instrumentation Laboratory",
+  "alternateName": "WVU RAIL",
+  "url": "{{ site.url }}",
+  "email": "{{ site.email }}",
+  "parentOrganization": {
+    "@type": "CollegeOrUniversity",
+    "name": "West Virginia University",
+    "url": "https://www.wvu.edu"
+  },
+  "telephone": "{{ site.contact.phone_tel }}",
+  "faxNumber": "{{ site.contact.fax }}",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "{{ site.contact.building }}, {{ site.contact.street }}",
+    "postOfficeBoxNumber": "{{ site.contact.mailing | remove: 'PO Box ' }}",
+    "addressLocality": "{{ site.contact.city }}",
+    "addressRegion": "{{ site.contact.state }}",
+    "postalCode": "{{ site.contact.zip }}",
+    "addressCountry": "US"
+  },
+  "sameAs": ["https://github.com/WVURAIL"]
+}
+</script>
+</head>
+<body>
+
+<a href="#wvu-main-content" class="visually-hidden-focusable">Skip to main content</a>
+
+<!-- ============ MASTHEAD: the standard lockup, unit name as TEXT ============ -->
+<header class="bg-wvu-blue">
+   <div class="wvu-masthead">
+      <div class="container">
+         <div class="row">
+            <div class="align-self-center col-24 col-lg">
+               <a href="{{ '/' | relative_url }}" class="d-flex position-relative my-4 align-items-center justify-content-center justify-content-lg-start text-decoration-none text-white">
+                  <span class="visually-hidden">West Virginia University</span>
+                  <img class="me-4" src="https://static.wvu.edu/global/images/logos/wvu/flying-wv-r-small--1.0.0.svg"
+                       height="70px" width="65px" alt="Flying WV">
+                  <div class="border-start border-1 border-white py-1 ps-4">
+                     <span class="d-block mb-2 small">West Virginia University</span>
+                     <span class="mt-n2 helvetica-neue-bold fs-4 lh-1">
+                        <span class="d-block">Radio Astronomy Instrumentation Laboratory</span>
+                     </span>
+                  </div>
+               </a>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <nav aria-label="Main navigation" id="nav-primary"
+        class="position-relative wvu-site-nav navbar navbar-expand-lg p-0 navbar-dark w-100 bg-black"
+        style="--bs-bg-opacity:.15">
+      <div class="container">
+         {%- comment %}
+         Below the lg breakpoint the Design System hides .wvu-site-nav__items
+         until its script adds is-opened; this button is the DS's own toggle
+         markup, class for class, so that script drives it. Without JavaScript
+         the footer's Site Menu still lists every route.
+         {% endcomment %}
+         <button aria-controls="wvu-site-nav__items" aria-expanded="false" type="button"
+                 class="wvu-site-nav__toggle js-wvu-site-nav-toggle border-0 bg-transparent text-white position-relative ps-0 pe-3 d-flex d-lg-none align-items-center">
+            <span aria-hidden="true" class="wvu-hamburger js-wvu-hamburger">
+               <span class="wvu-hamburger__line wvu-hamburger__line--top js-wvu-hamburger__line--top"></span>
+               <span class="wvu-hamburger__line wvu-hamburger__line--middle"></span>
+               <span class="wvu-hamburger__line wvu-hamburger__line--bottom js-wvu-hamburger__line--bottom"></span>
+            </span>
+            <span class="js-wvu-site-nav-toggle-text">Open Menu</span>
+         </button>
+         <ul id="wvu-site-nav__items" class="wvu-site-nav__items js-wvu-site-nav-items position-static list-unstyled d-lg-flex align-items-lg-center flex-lg-wrap mb-0">
+            {%- for item in site.data.nav %}
+            <li class="open position-relative d-lg-flex">
+               <a class="nav-link text-white px-3 py-3 fw-normal flex-grow-1" href="{{ item.url | relative_url }}"
+                  {%- if page.url == item.url %} aria-current="page"{% elsif page.url contains item.url %} aria-current="true"{% endif %}>{{ item.title }}</a>
+            </li>
+            {%- endfor %}
+            <li class="open position-relative d-lg-flex">
+               <a class="nav-link text-white px-3 py-3 fw-normal flex-grow-1" href="{{ '/contact/' | relative_url }}"
+                  {%- if page.url == '/contact/' %} aria-current="page"{% endif %}>Contact</a>
+            </li>
+         </ul>
+      </div>
+   </nav>
+</header>
+
+<main id="wvu-main-content">
+{{ content }}
+</main>
+
+<script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
+<script src="https://designsystem.wvu.edu/js/meom-wvu-site-navigation--custom.js" defer></script>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+   <div class="py-6 bg-wvu-coal text-white">
+      <div class="container">
+         <div class="row small">
+
+            <div class="col-md-6 me-auto mb-5">
+               <div class="mb-4">
+                  <h2 class="helvetica-neue-bold h4"><span class="d-block">Radio Astronomy Instrumentation Laboratory</span></h2>
+                  <p class="antonia-italic fs-5">Lane Department of Computer Science and Electrical Engineering</p>
+                  <p class="mb-0">{{ site.description | strip_newlines | strip }}</p>
+               </div>
+
+               {%- comment %}
+               Common Elements requires physical address, mailing address, email,
+               phone and fax on EVERY page. Every value comes from the contact:
+               block in _config.yml — the same source /contact/ reads — so the
+               two cannot disagree. The fax is the department's; the lab has none.
+               {% endcomment -%}
+               <address class="mb-0">
+                  {{ site.contact.building }}<br>
+                  {{ site.contact.street }}<br>
+                  {{ site.contact.mailing }}, {{ site.contact.city }}, {{ site.contact.state }} {{ site.contact.zip }}<br>
+                  Phone <a href="tel:{{ site.contact.phone_tel }}">{{ site.contact.phone }}</a> &middot;
+                  Fax {{ site.contact.fax }} ({{ site.contact.fax_note }})<br>
+                  <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+               </address>
+            </div>
+
+            <div class="col-md-6 col-xl-4 mb-4 mb-md-0">
+               <h2 class="h6 wvu-text-letter-spacing-lg wvu-b-label text-uppercase text-wvu-gold mb-3">Site Menu</h2>
+               <ul class="list-unstyled mb-0 lh-sm">
+                  {%- for item in site.data.nav %}
+                  <li class="mb-3"><a class="text-decoration-none" href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
+                  {%- endfor %}
+                  <li class="mb-3"><a class="text-decoration-none" href="{{ '/contact/' | relative_url }}">Contact</a></li>
+                  <li class="mb-3"><a class="text-decoration-none" href="{{ '/accessibility/' | relative_url }}">Accessibility</a></li>
+               </ul>
+            </div>
+
+            <div class="col-md-6 col-xl-4 mb-4 mb-md-0">
+               <h2 class="h6 wvu-text-letter-spacing-lg wvu-b-label text-uppercase text-wvu-gold mb-3">Quicklinks</h2>
+               {%- comment %}
+               The old footer's Resources column, kept: without these three the
+               collaborators, faculty and tools pages are one nav step away
+               from unreachable. /dspira-lessons/ and /lightwork/ are sibling
+               GitHub Pages sites on the same host — root-absolute on purpose.
+               {% endcomment -%}
+               <ul class="list-unstyled lh-sm">
+                  <li class="mb-3"><a class="text-decoration-none" href="{{ '/who-we-work-with/' | relative_url }}">Collaborators</a></li>
+                  <li class="mb-3"><a class="text-decoration-none" href="{{ '/bandura/' | relative_url }}">Faculty page &amp; CV</a></li>
+                  <li class="mb-3"><a class="text-decoration-none" href="{{ '/tools/' | relative_url }}">Lab tools</a></li>
+                  <li class="mb-3"><a class="text-decoration-none" href="/dspira-lessons/">DSPIRA lessons</a></li>
+                  <li class="mb-3"><a class="text-decoration-none" href="/lightwork/">LightWork</a></li>
+                  <li class="mb-3"><a class="text-decoration-none" href="https://github.com/WVURAIL">RAIL code on GitHub</a></li>
+               </ul>
+            </div>
+
+            <div class="col-md-6 col-xl-4">
+               <h2 class="h6 wvu-text-letter-spacing-lg wvu-b-label text-uppercase text-wvu-gold mb-3">University</h2>
+               <ul class="list-unstyled mb-0 lh-sm">
+                  <li class="mb-3"><a class="text-decoration-none" href="https://lcsee.statler.wvu.edu/">Lane Dept. of CSEE</a></li>
+                  <li class="mb-3"><a class="text-decoration-none" href="https://gwac.wvu.edu/">Center for Gravitational Waves &amp; Cosmology</a></li>
+                  <li class="mb-3"><a class="text-decoration-none" href="https://www.wvu.edu">West Virginia University</a></li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <div class="py-5 bg-wvu-coal-subtle text-white position-relative lh-lg">
+      <div class="container wvu-z-index-content py-2">
+         <div class="row small">
+            <div class="col-md-8 mx-auto text-center align-items-center">
+               <div class="d-inline-flex mb-4">
+                  <img class="me-3" src="https://static.wvu.edu/global/images/logos/let-s-go_gold--1.0.0.svg"
+                       height="54px" width="250px" alt="Let's go! wordmark">
+               </div>
+               <h2 class="visually-hidden">West Virginia University</h2>
+               <p class="mb-1">&copy; {{ 'now' | date: "%Y" }} <a href="https://www.wvu.edu/">West Virginia University</a>.</p>
+
+               {%- comment %}
+               REQUIRED, and absent from both the official Hugo theme and
+               designsystem.wvu.edu's own footer — verified. Do not remove.
+               {% endcomment -%}
+               <p class="mb-3">West Virginia University is an Equal Opportunity/Affirmative Action Institution.</p>
+
+               <ul class="list-inline mb-3">
+                  <li class="list-inline-item"><a href="https://about.wvu.edu/wvu-facts">Accreditations</a></li>
+                  <li class="list-inline-item"><a href="https://webstandards.wvu.edu">Web Standards</a></li>
+                  <li class="list-inline-item"><a href="https://www.wvu.edu/privacy">Privacy Notice</a></li>
+                  <li class="list-inline-item"><a href="https://www.wvu.edu/contact-us">Questions or Comments?</a></li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+</footer>
+
+</body>
+</html>

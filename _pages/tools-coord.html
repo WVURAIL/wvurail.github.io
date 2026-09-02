@@ -1,0 +1,140 @@
+---
+layout: wvu
+title: Coordinate Converter
+permalink: /tools/coord/
+description: Convert horizontal (azimuth/altitude) coordinates to equatorial (RA/Dec) for your location and the current time.
+---
+{%- comment %}
+Port of /tools/coord/ onto the Design System. All behaviour lives in
+assets/js/tools.js (with assets/js/astro.js for the maths) and attaches by
+element id -- no inline handlers and no inline <script>.
+
+The result re-ticks every second (Right Ascension depends on time), so it
+cannot carry aria-live; the visually-hidden role="status" node below it is
+written only when Convert is pressed. The Pause button (WCAG 2.2.2) clears the
+interval. Buttons ship disabled until tools.js enables them, so a visitor
+without JavaScript is never offered a control that cannot work.
+{% endcomment -%}
+
+<!-- ===================== PAGE HEAD ===================== -->
+<div class="bg-wvu-blue text-white py-7">
+   <div class="container">
+      <div class="row">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-gold mb-3">Tools</p>
+            <h1 class="antonia-light display-3 mb-4">Coordinate converter</h1>
+            <p class="fs-4 mb-0">
+               Convert azimuth/altitude to right ascension and declination for your site and the current time.
+            </p>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- ===================== TOOL ===================== -->
+<div class="py-6">
+   <div class="container">
+      <div class="row">
+
+         <div class="col-24 col-lg-10 mb-5 mb-lg-0">
+            <h2 class="h4 helvetica-neue-bold mb-3">Location and direction</h2>
+            <p>
+               Enter your observing location and a direction (azimuth/altitude) to get the current
+               equatorial coordinates. Azimuth is measured from North, increasing toward the East.
+               Because Right Ascension depends on time, the result updates every second.
+            </p>
+
+            <div class="row g-3 mb-3 align-items-end">
+               <div class="col-14 col-md-9">
+                  <label for="coord-long" class="form-label">Longitude (degrees)</label>
+                  <input type="text" inputmode="decimal" class="form-control" id="coord-long" value="0.0">
+               </div>
+               <div class="col-10 col-md-6">
+                  <label for="coord-lon-hemi" class="form-label">East or west</label>
+                  <select class="form-select" id="coord-lon-hemi">
+                     <option value="E">E</option>
+                     <option value="W">W</option>
+                  </select>
+               </div>
+            </div>
+
+            <div class="row g-3 mb-3 align-items-end">
+               <div class="col-14 col-md-9">
+                  <label for="coord-lat" class="form-label">Latitude (degrees)</label>
+                  <input type="text" inputmode="decimal" class="form-control" id="coord-lat" value="0.0">
+               </div>
+               <div class="col-10 col-md-6">
+                  <label for="coord-lat-hemi" class="form-label">North or south</label>
+                  <select class="form-select" id="coord-lat-hemi">
+                     <option value="N">N</option>
+                     <option value="S">S</option>
+                  </select>
+               </div>
+            </div>
+
+            <div class="row g-3 mb-3 align-items-end">
+               <div class="col-12 col-md-9">
+                  <label for="coord-az" class="form-label">Azimuth (degrees)</label>
+                  <input type="text" inputmode="decimal" class="form-control" id="coord-az" value="0.0">
+               </div>
+               <div class="col-12 col-md-9">
+                  <label for="coord-alt" class="form-label">Altitude (degrees)</label>
+                  <input type="text" inputmode="decimal" class="form-control" id="coord-alt" value="0.0">
+               </div>
+            </div>
+
+            <p class="mb-0">
+               <button type="button" id="coord-convert" class="btn btn-wvu-blue" disabled>Convert</button>
+            </p>
+         </div>
+
+         <div class="col-24 col-lg-13 offset-lg-1">
+            <h2 id="coord-result-heading" class="h4 helvetica-neue-bold mb-3">Equatorial coordinates now</h2>
+
+            {%- comment %}
+            tabindex="0": the box can scroll sideways on a narrow screen
+            (overflow-auto), and a scrollable region must be reachable from the
+            keyboard. Rewritten every second, so no aria-live here.
+            {% endcomment -%}
+            <div class="bg-wvu-not-quite-white border rounded p-4 overflow-auto" tabindex="0"
+                 role="region" aria-labelledby="coord-result-heading">
+               <dl id="coord-readings" class="row mb-0 lh-lg">
+                  <dt class="col-24 col-sm-10">Local Sidereal Time</dt>
+                  <dd class="col-24 col-sm-14 mb-2 font-monospace fs-5 text-wvu-blue" id="coord-lst">--:--:--</dd>
+
+                  <dt class="col-24 col-sm-10">Right Ascension</dt>
+                  <dd class="col-24 col-sm-14 mb-2 font-monospace fs-5 text-wvu-blue" id="coord-ra">--:--:--</dd>
+
+                  <dt class="col-24 col-sm-10">Declination</dt>
+                  <dd class="col-24 col-sm-14 mb-0 font-monospace fs-5 text-wvu-blue" id="coord-dec">&mdash;</dd>
+               </dl>
+               <p id="coord-error" class="fw-bold text-danger mb-0" hidden></p>
+               <p id="coord-nojs" class="small text-body-secondary mt-3 mb-0">
+                  This tool runs in your browser and needs JavaScript.
+               </p>
+            </div>
+
+            <p id="coord-announce" class="visually-hidden" role="status" aria-live="polite"></p>
+
+            <p class="mt-3 mb-0">
+               <button type="button" id="coord-pause" class="btn btn-outline-wvu-blue"
+                       aria-pressed="false" disabled>Pause updating</button>
+            </p>
+         </div>
+
+      </div>
+
+      <p class="mt-5 mb-0">
+         <a href="{{ '/tools/' | relative_url }}" class="btn btn-outline-wvu-blue d-inline-flex align-items-center">
+            <svg class="me-2" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+               <path d="M14 8H2"></path>
+               <path d="m6.5 3.5-4.5 4.5 4.5 4.5"></path>
+            </svg>
+            All tools
+         </a>
+      </p>
+   </div>
+</div>
+
+<script src="{{ '/assets/js/astro.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/tools.js' | relative_url }}" defer></script>

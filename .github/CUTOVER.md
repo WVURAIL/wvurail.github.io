@@ -34,6 +34,32 @@ restructure (see the architecture plan) is what makes these URLs honest again;
 until then they stay live. `gr-transient` is not cited anywhere and is a
 genuine candidate for switching Pages off.
 
+## The Design System build (branch `wvu`)
+
+The rail.wvu.edu presentation layer lives on the `wvu` branch: WVU Design
+System v3 via the documented CDN links, the standard masthead and footer with
+the EO/AA statement and the full contact block from `_config.yml`'s `contact:`
+key, every internal link through `relative_url`. Sibling GitHub Pages sites
+(`/dspira-lessons/`, `/lightwork/`, `/dspira/`, `/cra/`) are deliberately left
+root-absolute so the site can be served under a subpath for staging.
+
+Two things about that branch are pre-cutover state, on purpose:
+
+- The footer is already the University footer (© West Virginia University,
+  EO/AA line) — it will only ever be served from the University domain or from
+  a `noindex` staging copy, so the old "not an official University web page"
+  disclaimer is gone from the footer. The accessibility statement still carries
+  the disclaimer paragraph, marked `CUTOVER ITEM` in the source.
+- Merging `wvu` into `main` is NOT the cutover and must not happen before SCM
+  approval: `main` is what wvurail.org serves. The cutover commit below is
+  where the merge lands.
+
+Staging for the review: a project repo (e.g. `WVURAIL/rail-preview`, Pages
+source "GitHub Actions") that checks out this branch and builds it with
+`baseurl: /rail-preview` and `noindex_all: true`, published automatically at
+`wvurail.org/rail-preview/` through the domain inheritance. The workflow file
+for it is drafted; the layout honours `site.noindex_all`.
+
 ## Before the cutover (safe any time)
 
 - [x] **Probe** (done 2 Sep 2026 — clear; GitHub accepted rail.wvu.edu with

@@ -1,0 +1,170 @@
+{%- comment %}
+Shared head for the three DSPIRA cohort pages (dspira-2017/2018/2019.html):
+the cohort switcher, the hero with its stats row, the optional cover photo and
+the roster. Ported from the source site's _layouts/cohort.html (since removed;
+see git history). It is an include rather than a layout so that every page
+keeps `layout: wvu`.
+
+The roster is NOT written into the pages — it is looked up in
+_data/education.yml by matching `page.year`, so the list on /education/ and the
+list on the year page can never drift apart. Add a teacher in one place.
+
+Front matter each page supplies (the same keys the source site used):
+  year          integer, must match a `year` in education.yml
+  headline      the h1
+  lead          one sentence under the h1
+  where         short string for the stats row (e.g. "Morgantown + Green Bank")
+  cover         optional hero image path
+  cover_alt     alt text for the hero (required if `cover` is set)
+  cover_w, cover_h    the file's real pixel size (reserves the space)
+  cover_caption optional caption under the hero
+  group_photo, group_photo_alt, group_photo_caption   optional cohort portrait
+  group_photo_w, group_photo_h   the file's real pixel size
+  roster_intro  sentence introducing the roster
+
+Usage, in the page body:
+  {% include cohort-roster.html %}
+  ...the page's own chapters...
+  {% include cohort-footer.html %}
+
+Variables assigned here stay inside this include (Jekyll renders includes on
+their own context stack), which is why cohort-footer.html recomputes its own.
+{% endcomment -%}
+{%- assign ed = site.data.education -%}
+{%- comment %}
+An explicit loop rather than `where_exp`, as the source layout did: a lookup
+that silently returns nothing renders as a page with no roster and no counts,
+and the loop keeps the match obvious.
+{% endcomment -%}
+{%- for c in ed.cohorts -%}
+   {%- if c.year == page.year -%}{%- assign cohort = c -%}{%- endif -%}
+{%- endfor -%}
+{%- assign chronological = ed.cohorts | reverse -%}
+{%- assign states = cohort.teachers | map: "state" | uniq -%}
+{%- assign returners = cohort.teachers | where_exp: "t", "t.returning" -%}
+
+<!-- ===================== COHORT SWITCHER ===================== -->
+<nav aria-label="DSPIRA cohorts" class="bg-wvu-not-quite-white border-bottom py-3">
+   <div class="container">
+      <div class="d-flex flex-wrap align-items-center small">
+         <a href="{{ '/education/' | relative_url }}" class="text-decoration-none helvetica-neue-bold me-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16"
+                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 aria-hidden="true" focusable="false" class="me-1 align-baseline">
+               <path d="M14 8H3M7 4 3 8l4 4"></path>
+            </svg>DSPIRA
+         </a>
+         <div class="d-flex align-items-center ms-md-auto">
+            <span class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-body-secondary me-3">Cohorts</span>
+            <ol class="list-inline mb-0">
+               {%- for c in chronological %}
+               <li class="list-inline-item">
+                  {%- if c.year == page.year %}
+                  <a href="{{ c.url | relative_url }}" aria-current="page" class="text-decoration-none fw-bold text-wvu-blue">{{ c.year }}</a>
+                  {%- else %}
+                  <a href="{{ c.url | relative_url }}" class="text-decoration-none">{{ c.year }}</a>
+                  {%- endif %}
+               </li>
+               {%- endfor %}
+            </ol>
+         </div>
+      </div>
+   </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<div class="bg-wvu-blue text-white py-7">
+   <div class="container">
+      <div class="row">
+         <div class="col-24 col-lg-18">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-gold mb-3">Cohort archive</p>
+            <h1 class="antonia-light display-3 mb-4">
+               <span class="d-block antonia-light display-2 text-wvu-gold lh-1 mb-2">{{ page.year }}</span>
+               {{ page.headline }}
+            </h1>
+            <p class="fs-4 mb-0">{{ page.lead }}</p>
+         </div>
+      </div>
+
+      <div class="mt-5 pt-4 border-top border-white border-opacity-25">
+         <ul class="list-unstyled row g-4 mb-0">
+            <li class="col-12 col-md-8 col-lg-4">
+               <span class="d-block antonia-light display-5 text-wvu-gold lh-1 mb-1">{{ cohort.teachers | size }}</span>
+               <span class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small">teachers</span>
+            </li>
+            <li class="col-12 col-md-8 col-lg-4">
+               <span class="d-block antonia-light display-5 text-wvu-gold lh-1 mb-1">{{ states | size }}</span>
+               <span class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small">states</span>
+            </li>
+            {%- if returners.size > 0 %}
+            <li class="col-12 col-md-8 col-lg-4">
+               <span class="d-block antonia-light display-5 text-wvu-gold lh-1 mb-1">{{ returners | size }}</span>
+               <span class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small">returning</span>
+            </li>
+            {%- endif %}
+            <li class="col-12 col-md-8 col-lg-4">
+               <span class="d-block antonia-light display-5 text-wvu-gold lh-1 mb-1">6</span>
+               <span class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small">weeks</span>
+            </li>
+            {%- if page.where %}
+            <li class="col-24 col-md-16 col-lg-8 align-self-end">
+               <span class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small">{{ page.where }}</span>
+            </li>
+            {%- endif %}
+         </ul>
+      </div>
+   </div>
+</div>
+
+{%- if page.cover %}
+<!-- ===================== COVER ===================== -->
+<figure class="figure d-block mb-0">
+   <img src="{{ page.cover | relative_url }}" alt="{{ page.cover_alt }}"
+        width="{{ page.cover_w }}" height="{{ page.cover_h }}" decoding="async"
+        class="figure-img img-fluid w-100 mb-0">
+   {%- if page.cover_caption %}
+   <figcaption class="figure-caption"><div class="container py-3">{{ page.cover_caption }}</div></figcaption>
+   {%- endif %}
+</figure>
+{%- endif %}
+
+<!-- ===================== ROSTER ===================== -->
+<div class="py-6" id="cohort">
+   <div class="container">
+      <div class="row mb-5">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Who was here</p>
+            <h2 class="antonia-light display-5 mb-3">The {{ page.year }} cohort</h2>
+            <p class="fs-5 text-body-secondary mb-0">{{ page.roster_intro | strip_newlines | strip }}</p>
+         </div>
+      </div>
+
+      {%- if page.group_photo %}
+      <figure class="figure d-block mb-5">
+         <img src="{{ page.group_photo | relative_url }}" alt="{{ page.group_photo_alt }}"
+              width="{{ page.group_photo_w }}" height="{{ page.group_photo_h }}" loading="lazy" decoding="async"
+              class="figure-img img-fluid w-100 rounded">
+         {%- if page.group_photo_caption %}
+         <figcaption class="figure-caption">{{ page.group_photo_caption }}</figcaption>
+         {%- endif %}
+      </figure>
+      {%- endif %}
+
+      <ol class="list-unstyled row g-3 mb-0">
+         {%- for t in cohort.teachers %}
+         <li class="col-24 col-sm-12 col-lg-8">
+            <div class="d-flex align-items-baseline border-bottom py-2">
+               <span class="helvetica-neue-bold">{{ t.name }}</span>
+               {%- if t.returning %}
+               <span class="badge bg-wvu-blue text-white ms-2">returning</span>
+               {%- endif %}
+               <span class="small text-body-secondary ms-auto">{{ t.state }}</span>
+            </div>
+         </li>
+         {%- endfor %}
+      </ol>
+      {%- if cohort.note %}
+      <p class="small text-body-secondary mt-3 mb-0">{{ cohort.note }}</p>
+      {%- endif %}
+   </div>
+</div>

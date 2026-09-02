@@ -1,38 +1,126 @@
 ---
+layout: wvu
 title: Research & Telescopes
-layout: default
 permalink: /where-we-work/
-full_width: true
 description: The telescopes and observatory sites the WVU Radio Astronomy Instrumentation Lab builds and operates — CHIME, CHORD, HIRAX, and the CHIME/FRB outrigger stations.
 ---
-<div class="page-head">
+{%- comment %}
+Port of _pages/where-we-work.html onto the Design System.
+
+Everything on this page comes from _data/sites.yml. That file carries an
+explicit instruction about the GBO acronym: the notes say what each thing IS
+instead of expanding the acronym, because "GBO" is used for both Green Bank
+Observatory and the Green Bank Outrigger. So the notes are printed verbatim and
+no expansion is added anywhere in the surrounding prose. Do not "fix" this.
+
+Counts in the summary band are derived from the data, never typed in.
+{% endcomment -%}
+
+{%- assign sites = site.data.sites -%}
+{%- assign instrument_count = 0 -%}
+{%- for s in sites -%}
+   {%- assign instrument_count = instrument_count | plus: s.instruments.size -%}
+{%- endfor -%}
+{%- assign regions = sites | map: "region" | uniq -%}
+
+<!-- ===================== HERO ===================== -->
+<div class="bg-wvu-blue text-white py-7">
    <div class="container">
-      <p class="eyebrow">Research &amp; telescopes</p>
-      <h1>Where we build and observe</h1>
-      <p class="lead">
-         Our instruments live where the sky is quiet. Some we build and run;
-         others we contribute to as part of larger collaborations.
-      </p>
-      <div class="btn-row">
-         <a class="btn" href="{{ '/who-we-work-with/' | relative_url }}">Meet our collaborators</a>
-         <a class="btn" href="{{ '/publications/' | relative_url }}">Browse publications</a>
+      <div class="row">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-gold mb-3">
+               Research &amp; telescopes
+            </p>
+            <h1 class="antonia-light display-3 mb-4">Where we build and observe</h1>
+            <p class="fs-4 mb-4">
+               Our instruments live where the sky is quiet. Some we build and run;
+               others we contribute to as part of larger collaborations.
+            </p>
+            <a href="{{ '/who-we-work-with/' | relative_url }}" class="btn btn-wvu-gold me-2">Meet our collaborators</a>
+            <a href="{{ '/publications/' | relative_url }}" class="btn btn-outline-light">Browse publications</a>
+         </div>
       </div>
    </div>
 </div>
 
-{% include sites.html bare=true %}
-
-<section class="section section--tint">
+<!-- ===================== AT A GLANCE ===================== -->
+<div class="bg-wvu-not-quite-white py-6">
    <div class="container">
-      <div class="statement">
-         <div class="statement-side">
-            <p class="eyebrow">Why outriggers</p>
-            <h2 class="statement-lead">
+      <div class="row text-center">
+         <div class="col-24 col-md-8 mb-4 mb-md-0">
+            <p class="antonia-light display-4 text-wvu-blue mb-1">{{ sites.size }}</p>
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small mb-0">Places we work</p>
+         </div>
+         <div class="col-24 col-md-8 mb-4 mb-md-0">
+            <p class="antonia-light display-4 text-wvu-blue mb-1">{{ instrument_count }}</p>
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small mb-0">Instruments and facilities</p>
+         </div>
+         <div class="col-24 col-md-8">
+            <p class="antonia-light display-4 text-wvu-blue mb-1">{{ regions.size }}</p>
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small mb-0">Countries</p>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- ===================== THE SITES ===================== -->
+<div class="py-6">
+   <div class="container">
+      <div class="row mb-5">
+         <div class="col-24 col-lg-16">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Where we work</p>
+            <h2 class="antonia-light display-5">From Green Bank to the Karoo</h2>
+            <p class="fs-5 text-body-secondary mb-0">
+               Each site below lists the instruments the lab runs or contributes to
+               there. Named instruments link out to the project or the paper describing
+               them.
+            </p>
+         </div>
+      </div>
+
+      <div class="row">
+         {%- for place in sites %}
+         <div class="col-24 col-md-12 mb-4">
+            <div class="card h-100 border-0 bg-wvu-not-quite-white">
+               <div class="card-body p-4">
+                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-2">{{ place.region }}</p>
+                  <h3 class="antonia-light mb-4">{{ place.place }}</h3>
+                  <ul class="list-unstyled mb-0">
+                     {%- for item in place.instruments %}
+                     <li class="mb-4">
+                        <p class="helvetica-neue-bold fs-5 mb-1">
+                           {%- if item.url -%}
+                           <a href="{{ item.url }}">{{ item.name }}</a><svg class="ms-1 align-baseline" width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                           {%- else -%}
+                           {{ item.name }}
+                           {%- endif -%}
+                        </p>
+                        {%- if item.note %}
+                        <p class="small text-body-secondary mb-0">{{ item.note }}</p>
+                        {%- endif %}
+                     </li>
+                     {%- endfor %}
+                  </ul>
+               </div>
+            </div>
+         </div>
+         {%- endfor %}
+      </div>
+   </div>
+</div>
+
+<!-- ===================== WHY OUTRIGGERS ===================== -->
+<div class="bg-wvu-not-quite-white py-6">
+   <div class="container">
+      <div class="row">
+         <div class="col-24 col-lg-10 pe-lg-5 mb-4 mb-lg-0">
+            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Why outriggers</p>
+            <h2 class="antonia-light display-6 mb-0">
                A fast radio burst lasts a millisecond. Pinning down <em>which galaxy it
                came from</em> takes telescopes thousands of kilometers apart.
             </h2>
          </div>
-         <div class="statement-body">
+         <div class="col-24 col-lg-14">
             <p>
                CHIME sees a large part of the northern sky at once, which is what makes it
                such a prolific detector of fast radio bursts. What a single site cannot do
@@ -42,10 +130,10 @@ description: The telescopes and observatory sites the WVU Radio Astronomy Instru
                The outrigger stations solve that. By recording the same burst from Green
                Bank, Hat Creek, and KKO at the same time, and correlating those signals
                using very long baseline interferometry, a burst can be localized precisely
-               enough to identify its host galaxy — and in the best cases, a specific
+               enough to identify its host galaxy &mdash; and in the best cases, a specific
                region within it.
             </p>
-            <p>
+            <p class="mb-0">
                Building those stations is much of what this lab does: the analog front
                ends, the timing and clock distribution that keeps widely separated sites
                coherent, and the software that turns the recorded voltages into a position
@@ -54,4 +142,22 @@ description: The telescopes and observatory sites the WVU Radio Astronomy Instru
          </div>
       </div>
    </div>
-</section>
+</div>
+
+<!-- ===================== CTA ===================== -->
+<div class="bg-wvu-blue text-white py-6">
+   <div class="container">
+      <div class="row align-items-center">
+         <div class="col-24 col-lg-16 mb-4 mb-lg-0">
+            <h2 class="antonia-light display-6 mb-2">Work on these instruments</h2>
+            <p class="fs-5 mb-0">
+               Students in the lab build hardware that ends up at these sites. Write to
+               us about undergraduate and graduate research.
+            </p>
+         </div>
+         <div class="col-24 col-lg-8 text-lg-end">
+            <a href="{{ '/contact/' | relative_url }}" class="btn btn-wvu-gold">Get in touch</a>
+         </div>
+      </div>
+   </div>
+</div>
