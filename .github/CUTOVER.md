@@ -70,8 +70,9 @@ honors their own "use dspira-lessons instead" notices.
 
 - [ ] Enforce HTTPS in Settings→Pages once the certificate issues (up to 24 h)
 - [ ] Point wvurail.org DNS (lab-controlled) at the redirect shim — real 301s:
-      `/*  https://rail.wvu.edu/:splat  301` covers every legacy URL including
-      the three in NSF reporting and teachers' CVs
+      `/*  https://rail.wvu.edu/:splat  301` covers every legacy URL. The
+      NSF-cited ones are /dspira/, /dspira-lessons/ and /cra/ (award 1611114);
+      they need to keep resolving to the content they promise, on http AND https
 - [ ] Re-run both link checkers against the new domain
 - [ ] SiteImprove: confirm the dashboard tracks rail.wvu.edu
 - [ ] The accessibility statement: the "not an official University web page"
