@@ -45,8 +45,16 @@ Pages' Jekyll 3.9 ships.
 <!-- ===================== HERO ===================== -->
 <div class="wvu-bg-position-center wvu-bg-size-cover position-relative bg-wvu-blue text-white"
      style="background-image:url('{{ '/images/banner.jpg' | relative_url }}')">
-   <div class="wvu-z-index-content position-relative py-7"
-        style="background:linear-gradient(to bottom, rgba(0,32,91,.86), rgba(0,32,91,.94))">
+   {%- comment %}
+   The scrim over the photograph is a flat rgba colour, not a gradient. A CSS
+   gradient is a background-IMAGE, so a checker walking up from the buttons
+   finds no background colour here and reports the light outline button as
+   1.05:1 on white — a false positive that still lands in a review as a
+   serious violation. A solid rgba composites correctly and looks the same.
+   {% endcomment -%}
+   <div class="wvu-z-index-content position-relative py-7 bg-wvu-blue"
+        style="background-color:rgba(0,32,91,.9)">
+
       <div class="container">
          <div class="row">
             <div class="col-24 col-lg-16">
@@ -60,7 +68,7 @@ Pages' Jekyll 3.9 ships.
                   bursts, and pulsars.
                </p>
                <a href="{{ '/where-we-work/' | relative_url }}" class="btn btn-wvu-gold me-2">Explore our work</a>
-               <a href="{{ '/people/' | relative_url }}" class="btn btn-outline-light">Meet the lab</a>
+               <a href="{{ '/people/' | relative_url }}" class="btn btn-light">Meet the lab</a>
             </div>
          </div>
       </div>
