@@ -18,7 +18,7 @@ once.
 | Repo | Serves today | After cutover |
 |---|---|---|
 | `wvurail.github.io` | wvurail.org | rail.wvu.edu |
-| `dspira-lessons` | wvurail.org/dspira-lessons/ | **decide** — see the forum note below |
+| `dspira-lessons` | wvurail.org/dspira-lessons/ | rail.wvu.edu/dspira-lessons/ — DS port on its `wvu` branch |
 | `lightwork` | wvurail.org/lightwork/ | rail.wvu.edu/lightwork/ |
 | `dspira` | wvurail.org/dspira/ | **must keep** — NSF-cited |
 | `cra` | wvurail.org/cra/ | **must keep** — NSF-cited |
@@ -37,15 +37,20 @@ genuine candidate for switching Pages off.
 SCM ruling (Adam Glenn, 2 Sep 2026): the DSPIRA discussion forum — the giscus
 rooms under `dspira-lessons/forum/` — must stay on a NON-University address
 for now (an old rule against forums on WVU sites; the policy is being
-rewritten). So `dspira-lessons` cannot simply inherit rail.wvu.edu. The two
-workable shapes: (a) the whole lessons site keeps a lab address by giving the
-project repo its own custom domain, e.g. `dspira.wvurail.org`, and the
-wvurail.org shim 301s `/dspira-lessons/*` there — no Design System restyle,
-no sub-site review, NSF links stay honest; or (b) the lessons site moves to
-rail.wvu.edu/dspira-lessons/ (needs the DS masthead/footer and its own review)
-and only the forum is split out to a lab address. Decision pending. Note a
-project site's own custom domain overrides the inherited one, and wvurail.org
-is verified for the org, so its subdomains are protected either way.
+rewritten). Decision (Dylan, 2 Sep 2026): wvurail.org is to be eliminated
+entirely in the long run, so the lessons site comes to rail.wvu.edu with the
+lab site and gets the same Design System masthead/footer treatment, and the
+forum is no longer embedded at all — the `/forum/` pages become plain links
+out to the repo's GitHub Discussions categories, which is what the giscus
+rooms were fronting anyway. Nothing forum-like is then served from a
+University page. The lab site's `/dspiratalk/` stub keeps pointing at
+`/dspira-lessons/forum/`, which keeps existing as that link page.
+
+On eliminating wvurail.org: the NSF public outcomes report for award 1611114
+cites three wvurail.org addresses and cannot be edited, so the domain should
+stay registered as a pure redirect (no content, one 301 rule) for as long as
+those citations matter — it costs a renewal and is invisible to visitors.
+Letting it lapse breaks those links and frees the name for anyone to register.
 
 SCM also ruled that analytics are optional (WVU's standard code on request)
 and that CSP is the host's concern, i.e. ours: GitHub Pages sends no CSP
