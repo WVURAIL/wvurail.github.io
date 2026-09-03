@@ -18,7 +18,7 @@ once.
 | Repo | Serves today | After cutover |
 |---|---|---|
 | `wvurail.github.io` | wvurail.org | rail.wvu.edu |
-| `dspira-lessons` | wvurail.org/dspira-lessons/ | rail.wvu.edu/dspira-lessons/ |
+| `dspira-lessons` | wvurail.org/dspira-lessons/ | **decide** — see the forum note below |
 | `lightwork` | wvurail.org/lightwork/ | rail.wvu.edu/lightwork/ |
 | `dspira` | wvurail.org/dspira/ | **must keep** — NSF-cited |
 | `cra` | wvurail.org/cra/ | **must keep** — NSF-cited |
@@ -33,6 +33,23 @@ lecture decks in `dspira/lectures/2018/` exist nowhere else. The DSPIRA
 restructure (see the architecture plan) is what makes these URLs honest again;
 until then they stay live. `gr-transient` is not cited anywhere and is a
 genuine candidate for switching Pages off.
+
+SCM ruling (Adam Glenn, 2 Sep 2026): the DSPIRA discussion forum — the giscus
+rooms under `dspira-lessons/forum/` — must stay on a NON-University address
+for now (an old rule against forums on WVU sites; the policy is being
+rewritten). So `dspira-lessons` cannot simply inherit rail.wvu.edu. The two
+workable shapes: (a) the whole lessons site keeps a lab address by giving the
+project repo its own custom domain, e.g. `dspira.wvurail.org`, and the
+wvurail.org shim 301s `/dspira-lessons/*` there — no Design System restyle,
+no sub-site review, NSF links stay honest; or (b) the lessons site moves to
+rail.wvu.edu/dspira-lessons/ (needs the DS masthead/footer and its own review)
+and only the forum is split out to a lab address. Decision pending. Note a
+project site's own custom domain overrides the inherited one, and wvurail.org
+is verified for the org, so its subdomains are protected either way.
+
+SCM also ruled that analytics are optional (WVU's standard code on request)
+and that CSP is the host's concern, i.e. ours: GitHub Pages sends no CSP
+header, so nothing on the branch needs to change for it.
 
 ## The Design System build (branch `wvu`)
 
