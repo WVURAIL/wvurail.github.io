@@ -164,7 +164,7 @@ Pages' Jekyll 3.9 ships.
          <div class="col-24 col-lg-16">
             <div class="d-flex align-items-start">
                <img src="{{ pi.photo | relative_url }}" alt="" width="120" height="120"
-                    class="rounded-circle me-4 flex-shrink-0 object-fit-cover">
+                    loading="lazy" decoding="async" class="rounded-circle me-4 flex-shrink-0 object-fit-cover">
                <div>
                   <h3 class="h4 helvetica-neue-bold mb-1">{{ pi.name }}</h3>
                   {%- for role in pi.roles %}
