@@ -1,7 +1,9 @@
 ---
 layout: wvu
 title: Home
-description: RAIL designs and builds the telescopes, analog front ends, and digital systems that survey the radio sky.
+preload_image: /images/banner.jpg
+
+description: "WVU RAIL designs and builds radio telescopes, analog receivers, and digital systems. Explore our research, people, publications, and lessons."
 ---
 {%- comment %}
 Prototype homepage. Real data, real counts — the point is to find out how much
@@ -52,13 +54,13 @@ Pages' Jekyll 3.9 ships.
    1.05:1 on white — a false positive that still lands in a review as a
    serious violation. A solid rgba composites correctly and looks the same.
    {% endcomment -%}
-   <div class="wvu-z-index-content position-relative py-7 bg-wvu-blue"
+   <div class="wvu-z-index-content position-relative py-7"
         style="background-color:rgba(0,32,91,.9)">
 
       <div class="container">
          <div class="row">
             <div class="col-24 col-lg-16">
-               <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-gold mb-3">
+               <p class="fw-bold text-wvu-gold mb-3">
                   Lane Department of Computer Science and Electrical Engineering
                </p>
                <h1 class="antonia-light display-3 mb-4">Instruments that listen to the distant universe</h1>
@@ -81,15 +83,15 @@ Pages' Jekyll 3.9 ships.
       <div class="row text-center">
          <div class="col-24 col-md-8 mb-4 mb-md-0">
             <p class="antonia-light display-4 text-wvu-blue mb-1">{{ pubs.size }}</p>
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small mb-0">Publications</p>
+            <p class="fw-bold small mb-0">Publications</p>
          </div>
          <div class="col-24 col-md-8 mb-4 mb-md-0">
             <p class="antonia-light display-4 text-wvu-blue mb-1">{{ site.data.sites.size }}</p>
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small mb-0">Places we work</p>
+            <p class="fw-bold small mb-0">Places we work</p>
          </div>
          <div class="col-24 col-md-8">
             <p class="antonia-light display-4 text-wvu-blue mb-1">{{ site.data.education.materials.lesson_count }}</p>
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small mb-0">Free lessons published</p>
+            <p class="fw-bold small mb-0">Free lessons published</p>
          </div>
       </div>
    </div>
@@ -100,7 +102,7 @@ Pages' Jekyll 3.9 ships.
    <div class="container">
       <div class="row mb-5">
          <div class="col-24 col-lg-16">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Research &amp; engineering</p>
+            <p class="fw-bold text-wvu-blue mb-2">Research &amp; engineering</p>
             <h2 class="antonia-light display-5">We build the systems behind wide-field radio telescopes</h2>
             <p class="fs-5 text-body-secondary">
                From the first low-noise signal at the feed to the computing systems that
@@ -112,7 +114,7 @@ Pages' Jekyll 3.9 ships.
          <div class="col-24 col-md-8 mb-4">
             <div class="card h-100 border-0 bg-wvu-not-quite-white">
                <div class="card-body p-4">
-                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-2">Hardware</p>
+                  <p class="fw-bold small text-wvu-blue mb-2">Hardware</p>
                   <h3 class="h4 helvetica-neue-bold">Capture faint signals</h3>
                   <p class="mb-0 text-body-secondary">Low-noise analog front ends, calibration, clock distribution, and field-ready telescope systems.</p>
                </div>
@@ -121,7 +123,7 @@ Pages' Jekyll 3.9 ships.
          <div class="col-24 col-md-8 mb-4">
             <div class="card h-100 border-0 bg-wvu-not-quite-white">
                <div class="card-body p-4">
-                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-2">Computing</p>
+                  <p class="fw-bold small text-wvu-blue mb-2">Computing</p>
                   <h3 class="h4 helvetica-neue-bold">Process the radio sky</h3>
                   <p class="mb-0 text-body-secondary">FPGA correlators, high-throughput networking, control software, and analysis pipelines.</p>
                </div>
@@ -130,7 +132,7 @@ Pages' Jekyll 3.9 ships.
          <div class="col-24 col-md-8 mb-4">
             <div class="card h-100 border-0 bg-wvu-not-quite-white">
                <div class="card-body p-4">
-                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-2">Discovery</p>
+                  <p class="fw-bold small text-wvu-blue mb-2">Discovery</p>
                   <h3 class="h4 helvetica-neue-bold">Measure the universe</h3>
                   <p class="mb-0 text-body-secondary">Cosmology with neutral hydrogen, fast radio burst localization, and pulsar science.</p>
                </div>
@@ -141,7 +143,7 @@ Pages' Jekyll 3.9 ships.
          <div class="col-24 col-lg-16">
             <a href="{{ '/who-we-work-with/' | relative_url }}" class="btn btn-outline-wvu-blue">Our collaborators</a>
             <p class="mt-4 mb-0">
-               <span class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue me-2">Recognition</span>
+               <span class="fw-bold small text-wvu-blue me-2">Recognition</span>
                Members of RAIL are part of the CHIME/FRB team, recipient of the
                <a href="https://aas.org/press/chime-fast-radio-burst-team-receive-2022-berkeley-prize">2022 Berkeley Prize for Meritorious Work in Astronomy</a>.
             </p>
@@ -155,7 +157,7 @@ Pages' Jekyll 3.9 ships.
    <div class="container">
       <div class="row">
          <div class="col-24 col-lg-8 mb-4 mb-lg-0">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">The lab</p>
+            <p class="fw-bold text-wvu-blue mb-2">The lab</p>
             <h2 class="antonia-light display-6 mb-3">Who works here</h2>
             <a href="{{ '/people/' | relative_url }}" class="btn btn-outline-wvu-blue">All lab members</a>
          </div>
@@ -184,7 +186,7 @@ Pages' Jekyll 3.9 ships.
    <div class="container">
       <div class="row mb-4">
          <div class="col-24 col-lg-16">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Publications</p>
+            <p class="fw-bold text-wvu-blue mb-2">Publications</p>
             <h2 class="antonia-light display-6">Recent papers</h2>
          </div>
       </div>
@@ -193,11 +195,11 @@ Pages' Jekyll 3.9 ships.
          <li class="border-bottom py-4">
             <div class="row">
                <div class="col-24 col-md-3">
-                  <p class="wvu-b-label text-wvu-blue mb-0">{{ pub.year }}</p>
+                  <p class="fw-bold text-wvu-blue mb-0">{{ pub.year }}</p>
                </div>
                <div class="col-24 col-md-21">
                   {%- if pub.cover %}
-                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-1">{{ pub.cover }}</p>
+                  <p class="fw-bold small text-wvu-blue mb-1">{{ pub.cover }}</p>
                   {%- endif %}
                   <h3 class="h5 helvetica-neue-bold mb-1">
                      {%- if pub.doi -%}
@@ -243,7 +245,7 @@ relative_url (see the note beside it in the data file).
    <div class="container">
       <div class="row mb-5">
          <div class="col-24 col-lg-16">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Science education</p>
+            <p class="fw-bold text-wvu-blue mb-2">Science education</p>
             <h2 class="antonia-light display-5 mb-3">Teachers build radio telescopes too</h2>
             <p class="fs-5 text-body-secondary mb-0">{{ ed.summary | strip_newlines | strip }}</p>
          </div>
@@ -255,7 +257,7 @@ relative_url (see the note beside it in the data file).
                  loading="lazy" decoding="async" width="1200" height="1200" class="img-fluid rounded">
          </div>
          <div class="col-24 col-lg-13 offset-lg-1">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-2">Free classroom materials</p>
+            <p class="fw-bold small text-wvu-blue mb-2">Free classroom materials</p>
             <h3 class="h4 helvetica-neue-bold">{{ ed.materials.title }}</h3>
             <p>{{ ed.materials.intro | strip_newlines | strip | replace: '%COUNT%', ed.materials.lesson_count }}</p>
             <p>

@@ -2,7 +2,8 @@
 layout: wvu
 title: Kevin Bandura
 permalink: /bandura/
-description: Kevin M. Bandura, Associate Professor in the Lane Department of Computer Science and Electrical Engineering at West Virginia University — a living CV of publications, funding, teaching and students.
+meta_title: "Kevin Bandura | Faculty and Research | WVU RAIL"
+description: "Explore Kevin Bandura's work at West Virginia University. Find publications, research funding, teaching, and student projects in radio astronomy."
 ---
 {%- comment %}
 Port of _pages/bandura.html onto the Design System. The Liquid that reads data
@@ -41,7 +42,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
                  alt="Portrait of Kevin M. Bandura">
          </div>
          <div class="col-24 col-lg-18">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-gold mb-3">
+            <p class="fw-bold text-wvu-gold mb-3">
                Faculty &middot; Principal Investigator
             </p>
             <h1 class="antonia-light display-4 mb-4">{{ cv.profile.name }}</h1>
@@ -95,7 +96,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
    <div class="container">
       <div class="row">
          <div class="col-24 col-lg-12 mb-5 mb-lg-0">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Background</p>
+            <p class="fw-bold text-wvu-blue mb-2">Background</p>
             <h2 class="antonia-light display-6 mb-4">Education</h2>
             <ul class="list-unstyled mb-0">
                {%- for e in cv.education %}
@@ -112,7 +113,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
                         {%- endif %}
                      </div>
                      <div class="col-24 col-md-5 text-md-end">
-                        <p class="wvu-b-label text-wvu-blue mb-0">{{ e.year }}</p>
+                        <p class="fw-bold text-wvu-blue mb-0">{{ e.year }}</p>
                      </div>
                   </div>
                </li>
@@ -121,7 +122,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
          </div>
 
          <div class="col-24 col-lg-12" id="appointments">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Positions held</p>
+            <p class="fw-bold text-wvu-blue mb-2">Positions held</p>
             <h2 class="antonia-light display-6 mb-4">Appointments</h2>
             <ul class="list-unstyled mb-0">
                {%- for a in cv.appointments %}
@@ -133,7 +134,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
                      </div>
                      <div class="col-24 col-md-8 text-md-end">
                         {%- if a.years and a.years != "" %}
-                        <p class="wvu-b-label text-wvu-blue mb-0">{{ a.years }}</p>
+                        <p class="fw-bold text-wvu-blue mb-0">{{ a.years }}</p>
                         {%- endif %}
                      </div>
                   </div>
@@ -150,7 +151,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
    <div class="container">
       <div class="row mb-4">
          <div class="col-24 col-lg-16">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Recognition</p>
+            <p class="fw-bold text-wvu-blue mb-2">Recognition</p>
             <h2 class="antonia-light display-6">Honors &amp; awards</h2>
          </div>
       </div>
@@ -159,7 +160,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
          <li class="border-top py-3">
             <div class="row">
                <div class="col-24 col-md-3">
-                  <p class="wvu-b-label text-wvu-blue mb-0">{{ h.year }}</p>
+                  <p class="fw-bold text-wvu-blue mb-0">{{ h.year }}</p>
                </div>
                <div class="col-24 col-md-21">
                   <p class="helvetica-neue-bold mb-1">{{ h.title }}</p>
@@ -177,7 +178,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
    <div class="container">
       <div class="row mb-4">
          <div class="col-24 col-lg-16">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Research support</p>
+            <p class="fw-bold text-wvu-blue mb-2">Research support</p>
             <h2 class="antonia-light display-6 mb-3">Funding <span class="fs-4 text-body-secondary">({{ cv.funding.size }})</span></h2>
             <p class="fs-5 text-body-secondary mb-0">
                Amounts are NSF obligated totals to date &mdash; public records; each award
@@ -196,7 +197,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
                   <p class="mb-0 small text-body-secondary">{{ g.agency }} {{ g.id }} &middot; {{ g.role }}</p>
                </div>
                <div class="col-24 col-md-8 text-md-end">
-                  <p class="wvu-b-label text-wvu-blue mb-0">{{ g.years }}</p>
+                  <p class="fw-bold text-wvu-blue mb-0">{{ g.years }}</p>
                   <p class="mb-0 text-body-secondary">{{ g.amount }}</p>
                </div>
             </div>
@@ -211,7 +212,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
    <div class="container">
       <div class="row mb-5">
          <div class="col-24 col-lg-16">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Complete record</p>
+            <p class="fw-bold text-wvu-blue mb-2">Complete record</p>
             <h2 class="antonia-light display-6 mb-3">Publications <span class="fs-4 text-body-secondary">({{ n_all }})</span></h2>
             <p class="fs-5 text-body-secondary mb-0">
                {{ n_all }} papers with CHIME, its FRB outriggers, and HIRAX, plus earlier
@@ -227,7 +228,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
          <li class="border-top py-3">
             <div class="row">
                <div class="col-24 col-md-3">
-                  <p class="wvu-b-label text-wvu-blue mb-0">{{ pub.year }}</p>
+                  <p class="fw-bold text-wvu-blue mb-0">{{ pub.year }}</p>
                </div>
                <div class="col-24 col-md-21">
                   {%- comment %}Cover stories and selected work carry the same flags the
@@ -238,7 +239,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
                      {%- if pub.cover_note %} <span class="small fst-italic text-body-secondary">{{ pub.cover_note }}</span>{% endif %}
                   </p>
                   {%- elsif pub.highlight %}
-                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-1">Selected work</p>
+                  <p class="fw-bold small text-wvu-blue mb-1">Selected work</p>
                   {%- endif %}
                   <h4 class="h6 helvetica-neue-bold mb-1">
                      {%- if pub.doi -%}<a href="https://doi.org/{{ pub.doi }}">{{ pub.title }}</a>
@@ -269,7 +270,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
          <li class="border-top py-3">
             <div class="row">
                <div class="col-24 col-md-3">
-                  <p class="wvu-b-label text-wvu-blue mb-0">{{ pub.year }}</p>
+                  <p class="fw-bold text-wvu-blue mb-0">{{ pub.year }}</p>
                </div>
                <div class="col-24 col-md-21">
                   {%- comment %}Cover stories and selected work carry the same flags the
@@ -280,7 +281,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
                      {%- if pub.cover_note %} <span class="small fst-italic text-body-secondary">{{ pub.cover_note }}</span>{% endif %}
                   </p>
                   {%- elsif pub.highlight %}
-                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-1">Selected work</p>
+                  <p class="fw-bold small text-wvu-blue mb-1">Selected work</p>
                   {%- endif %}
                   <h4 class="h6 helvetica-neue-bold mb-1">
                      {%- if pub.doi -%}<a href="https://doi.org/{{ pub.doi }}">{{ pub.title }}</a>
@@ -312,7 +313,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
          <li class="border-top py-3">
             <div class="row">
                <div class="col-24 col-md-3">
-                  <p class="wvu-b-label text-wvu-blue mb-0">{{ pub.year }}</p>
+                  <p class="fw-bold text-wvu-blue mb-0">{{ pub.year }}</p>
                </div>
                <div class="col-24 col-md-21">
                   {%- comment %}Cover stories and selected work carry the same flags the
@@ -323,7 +324,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
                      {%- if pub.cover_note %} <span class="small fst-italic text-body-secondary">{{ pub.cover_note }}</span>{% endif %}
                   </p>
                   {%- elsif pub.highlight %}
-                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-1">Selected work</p>
+                  <p class="fw-bold small text-wvu-blue mb-1">Selected work</p>
                   {%- endif %}
                   <h4 class="h6 helvetica-neue-bold mb-1">
                      {%- if pub.doi -%}<a href="https://doi.org/{{ pub.doi }}">{{ pub.title }}</a>
@@ -350,7 +351,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
          <li class="border-top py-3">
             <div class="row">
                <div class="col-24 col-md-3">
-                  <p class="wvu-b-label text-wvu-blue mb-0">{{ pub.year }}</p>
+                  <p class="fw-bold text-wvu-blue mb-0">{{ pub.year }}</p>
                </div>
                <div class="col-24 col-md-21">
                   {%- comment %}Cover stories and selected work carry the same flags the
@@ -361,7 +362,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
                      {%- if pub.cover_note %} <span class="small fst-italic text-body-secondary">{{ pub.cover_note }}</span>{% endif %}
                   </p>
                   {%- elsif pub.highlight %}
-                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-1">Selected work</p>
+                  <p class="fw-bold small text-wvu-blue mb-1">Selected work</p>
                   {%- endif %}
                   <h4 class="h6 helvetica-neue-bold mb-1">
                      {%- if pub.doi -%}<a href="https://doi.org/{{ pub.doi }}">{{ pub.title }}</a>
@@ -398,7 +399,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
          <li class="border-top py-3">
             <div class="row">
                <div class="col-24 col-md-3">
-                  <p class="wvu-b-label text-wvu-blue mb-0">{{ pub.year }}</p>
+                  <p class="fw-bold text-wvu-blue mb-0">{{ pub.year }}</p>
                </div>
                <div class="col-24 col-md-21">
                   {%- comment %}Cover stories and selected work carry the same flags the
@@ -409,7 +410,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
                      {%- if pub.cover_note %} <span class="small fst-italic text-body-secondary">{{ pub.cover_note }}</span>{% endif %}
                   </p>
                   {%- elsif pub.highlight %}
-                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-1">Selected work</p>
+                  <p class="fw-bold small text-wvu-blue mb-1">Selected work</p>
                   {%- endif %}
                   <h4 class="h6 helvetica-neue-bold mb-1">
                      {%- if pub.doi -%}<a href="https://doi.org/{{ pub.doi }}">{{ pub.title }}</a>
@@ -445,7 +446,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
          <li class="border-top py-3">
             <div class="row">
                <div class="col-24 col-md-3">
-                  <p class="wvu-b-label text-wvu-blue mb-0">{{ pub.year }}</p>
+                  <p class="fw-bold text-wvu-blue mb-0">{{ pub.year }}</p>
                </div>
                <div class="col-24 col-md-21">
                   {%- comment %}Cover stories and selected work carry the same flags the
@@ -456,7 +457,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
                      {%- if pub.cover_note %} <span class="small fst-italic text-body-secondary">{{ pub.cover_note }}</span>{% endif %}
                   </p>
                   {%- elsif pub.highlight %}
-                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-1">Selected work</p>
+                  <p class="fw-bold small text-wvu-blue mb-1">Selected work</p>
                   {%- endif %}
                   <h4 class="h6 helvetica-neue-bold mb-1">
                      {%- if pub.doi -%}<a href="https://doi.org/{{ pub.doi }}">{{ pub.title }}</a>
@@ -486,7 +487,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
    <div class="container">
       <div class="row mb-4">
          <div class="col-24 col-lg-16">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Community planning</p>
+            <p class="fw-bold text-wvu-blue mb-2">Community planning</p>
             <h2 class="antonia-light display-6 mb-3">White papers &amp; reports <span class="fs-4 text-body-secondary">({{ cv.white_papers.size }})</span></h2>
             <p class="fs-5 text-body-secondary mb-0">
                Decadal-survey and long-range-plan submissions &mdash; the PUMA concept, CHORD,
@@ -499,7 +500,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
          <li class="border-top py-3">
             <div class="row">
                <div class="col-24 col-md-3">
-                  <p class="wvu-b-label text-wvu-blue mb-0">{{ pub.year }}</p>
+                  <p class="fw-bold text-wvu-blue mb-0">{{ pub.year }}</p>
                </div>
                <div class="col-24 col-md-21">
                   <h3 class="h6 helvetica-neue-bold mb-1">
@@ -524,7 +525,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
    <div class="container">
       <div class="row">
          <div class="col-24 col-lg-16">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">In the classroom</p>
+            <p class="fw-bold text-wvu-blue mb-2">In the classroom</p>
             <h2 class="antonia-light display-6 mb-4">Teaching</h2>
             <ul class="list-unstyled mb-4">
                {%- for course in cv.teaching %}
@@ -549,7 +550,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
    <div class="container">
       <div class="row mb-5">
          <div class="col-24 col-lg-16">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Advising</p>
+            <p class="fw-bold text-wvu-blue mb-2">Advising</p>
             <h2 class="antonia-light display-6 mb-3">Graduate students</h2>
             {%- comment %}people.grad is empty right now, so the lead must not promise a
             "current researchers" list the page cannot show. Both wordings are correct
@@ -645,7 +646,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
    <div class="container">
       <div class="row">
          <div class="col-24 col-lg-8 mb-5 mb-lg-0">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Service</p>
+            <p class="fw-bold text-wvu-blue mb-2">Service</p>
             <h2 class="antonia-light display-6 mb-4">Professional memberships</h2>
             <ul class="list-unstyled mb-0">
                {%- for m in cv.memberships.items %}
@@ -654,7 +655,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
             </ul>
          </div>
          <div class="col-24 col-lg-16">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Invited &amp; contributed</p>
+            <p class="fw-bold text-wvu-blue mb-2">Invited &amp; contributed</p>
             <h2 class="antonia-light display-6 mb-4">Selected talks &amp; posters</h2>
             {%- comment %}The list is sparse between 2016 and 2025 — those talks have not
             been compiled yet. Add to cv.yml presentations as they turn up; the
@@ -674,7 +675,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
    <div class="container">
       <div class="row mb-4">
          <div class="col-24 col-lg-16">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Elsewhere</p>
+            <p class="fw-bold text-wvu-blue mb-2">Elsewhere</p>
             <h2 class="antonia-light display-6 mb-3">Profiles &amp; links</h2>
             <p class="fs-5 text-body-secondary mb-0">
                The same person, everywhere else &mdash; academic profiles, university pages,
@@ -697,7 +698,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
    <div class="container">
       <div class="row mb-4">
          <div class="col-24 col-lg-16">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Press</p>
+            <p class="fw-bold text-wvu-blue mb-2">Press</p>
             <h2 class="antonia-light display-6 mb-3">In the media <span class="fs-4 text-body-secondary">({{ cv.media.size }})</span></h2>
             <p class="fs-5 text-body-secondary mb-0">
                University news and press coverage of the lab's instruments and results,
@@ -710,7 +711,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
          <li class="border-top py-3">
             <div class="row">
                <div class="col-24 col-md-3">
-                  <p class="wvu-b-label text-wvu-blue mb-0">{{ m.year }}</p>
+                  <p class="fw-bold text-wvu-blue mb-0">{{ m.year }}</p>
                </div>
                <div class="col-24 col-md-21">
                   <p class="helvetica-neue-bold mb-1"><a href="{{ m.url }}">{{ m.title }}</a></p>
@@ -728,7 +729,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
    <div class="container">
       <div class="row align-items-center">
          <div class="col-24 col-lg-16 mb-4 mb-lg-0">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-gold mb-2">About this page</p>
+            <p class="fw-bold text-wvu-gold mb-2">About this page</p>
             <h2 class="antonia-light display-6 mb-2">A living CV</h2>
             <p class="fs-5 mb-0">
                This page is Kevin's CV of record. It grows with the lab's publication list

@@ -2,7 +2,8 @@
 layout: wvu
 title: Research & Telescopes
 permalink: /where-we-work/
-description: The telescopes and observatory sites the WVU Radio Astronomy Instrumentation Lab builds and operates — CHIME, CHORD, HIRAX, and the CHIME/FRB outrigger stations.
+description: Explore the radio telescopes and observatory sites that WVU RAIL builds and operates, including CHIME, CHORD, HIRAX, and the CHIME/FRB outriggers.
+meta_title: "Radio Telescope Research and Observatories | WVU RAIL"
 ---
 {%- comment %}
 Port of _pages/where-we-work.html onto the Design System.
@@ -28,7 +29,7 @@ Counts in the summary band are derived from the data, never typed in.
    <div class="container">
       <div class="row">
          <div class="col-24 col-lg-16">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-gold mb-3">
+            <p class="fw-bold text-wvu-gold mb-3">
                Research &amp; telescopes
             </p>
             <h1 class="antonia-light display-3 mb-4">Where we build and observe</h1>
@@ -49,15 +50,15 @@ Counts in the summary band are derived from the data, never typed in.
       <div class="row text-center">
          <div class="col-24 col-md-8 mb-4 mb-md-0">
             <p class="antonia-light display-4 text-wvu-blue mb-1">{{ sites.size }}</p>
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small mb-0">Places we work</p>
+            <p class="fw-bold small mb-0">Places we work</p>
          </div>
          <div class="col-24 col-md-8 mb-4 mb-md-0">
             <p class="antonia-light display-4 text-wvu-blue mb-1">{{ instrument_count }}</p>
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small mb-0">Instruments and facilities</p>
+            <p class="fw-bold small mb-0">Instruments and facilities</p>
          </div>
          <div class="col-24 col-md-8">
             <p class="antonia-light display-4 text-wvu-blue mb-1">{{ regions.size }}</p>
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small mb-0">Countries</p>
+            <p class="fw-bold small mb-0">Countries</p>
          </div>
       </div>
    </div>
@@ -68,7 +69,7 @@ Counts in the summary band are derived from the data, never typed in.
    <div class="container">
       <div class="row mb-5">
          <div class="col-24 col-lg-16">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Where we work</p>
+            <p class="fw-bold text-wvu-blue mb-2">Where we work</p>
             <h2 class="antonia-light display-5">From Green Bank to the Karoo</h2>
             <p class="fs-5 text-body-secondary mb-0">
                Each site below lists the instruments the lab runs or contributes to
@@ -83,7 +84,7 @@ Counts in the summary band are derived from the data, never typed in.
          <div class="col-24 col-md-12 mb-4">
             <div class="card h-100 border-0 bg-wvu-not-quite-white">
                <div class="card-body p-4">
-                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-2">{{ place.region }}</p>
+                  <p class="fw-bold small text-wvu-blue mb-2">{{ place.region }}</p>
                   <h3 class="antonia-light mb-4">{{ place.place }}</h3>
                   <ul class="list-unstyled mb-0">
                      {%- for item in place.instruments %}
@@ -114,7 +115,7 @@ Counts in the summary band are derived from the data, never typed in.
    <div class="container">
       <div class="row">
          <div class="col-24 col-lg-10 pe-lg-5 mb-4 mb-lg-0">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Why outriggers</p>
+            <p class="fw-bold text-wvu-blue mb-2">Why outriggers</p>
             <h2 class="antonia-light display-6 mb-0">
                A fast radio burst lasts a millisecond. Pinning down <em>which galaxy it
                came from</em> takes telescopes thousands of kilometers apart.

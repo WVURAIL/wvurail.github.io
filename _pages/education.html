@@ -3,6 +3,7 @@ layout: wvu
 title: DSPIRA
 permalink: /education/
 description: DSPIRA continues through its educator community, open lessons, and DSPIRA-based outreach hardware now being developed under NSF Award 2511256.
+meta_title: "DSPIRA Radio Astronomy Education | WVU RAIL"
 ---
 {%- comment %}
 Port of _pages/dspira.html onto the Design System. Every number and list comes
@@ -56,7 +57,7 @@ the real utilities instead, and index.html still needs the same correction:
    <div class="container">
       <div class="row">
          <div class="col-24 col-lg-16">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-gold mb-3">Education</p>
+            <p class="fw-bold text-wvu-gold mb-3">Education</p>
             <h1 class="antonia-light display-3 mb-4">Teachers built radio telescopes &mdash; and a community</h1>
             <p class="fs-4 mb-4">{{ ed.summary | strip_newlines | strip }}</p>
             <div class="border-start border-1 border-white ps-4">
@@ -77,7 +78,7 @@ the old site published. Keep them if these bands are ever reordered.
    <div class="container">
       <div class="row mb-5">
          <div class="col-24 col-lg-16">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Still active</p>
+            <p class="fw-bold text-wvu-blue mb-2">Still active</p>
             <h2 class="antonia-light display-5 mb-3">{{ ed.materials.title }}</h2>
             <p class="fs-5 text-body-secondary mb-0">
                {{ ed.materials.intro | strip_newlines | strip | replace: '%COUNT%', ed.materials.lesson_count }}
@@ -134,7 +135,7 @@ the old site published. Keep them if these bands are ever reordered.
       <dl class="row mb-0">
          {%- for f in ed.facts %}
          <div class="col-24 col-md-12 col-lg-6 mb-4 mb-lg-0">
-            <dt class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-1 fw-normal">{{ f.label }}</dt>
+            <dt class="fw-bold small text-wvu-blue mb-1 fw-normal">{{ f.label }}</dt>
             <dd class="mb-0">
                <span class="d-block antonia-light display-5 text-wvu-blue lh-1 mb-2">{{ f.value | replace: '%COUNT%', ed.materials.lesson_count }}</span>
                <span class="d-block small text-body-secondary">{{ f.note }}</span>
@@ -150,7 +151,7 @@ the old site published. Keep them if these bands are ever reordered.
    <div class="container">
       <div class="row mb-5">
          <div class="col-24 col-lg-16">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Program timeline</p>
+            <p class="fw-bold text-wvu-blue mb-2">Program timeline</p>
             <h2 class="antonia-light display-5 mb-3">The grant ended. The work changed shape.</h2>
             <p class="fs-5 text-body-secondary mb-0">
                The original proposal planned three summer cohorts. NSF Award {{ ed.award.number }}
@@ -167,7 +168,7 @@ the old site published. Keep them if these bands are ever reordered.
          <div class="col-24 col-lg-8 mb-4">
             <div class="card h-100 border-0 bg-wvu-not-quite-white">
                <div class="card-body p-4">
-                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-2">
+                  <p class="fw-bold small text-wvu-blue mb-2">
                      {{ forloop.index | prepend: '0' }} &middot; {{ phase.label }}
                   </p>
                   <h3 class="h4 helvetica-neue-bold">{{ phase.title }}</h3>
@@ -192,7 +193,7 @@ the old site published. Keep them if these bands are ever reordered.
    <div class="container">
       <div class="row mb-5">
          <div class="col-24 col-lg-16">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">The in-person program</p>
+            <p class="fw-bold text-wvu-blue mb-2">The in-person program</p>
             <h2 class="antonia-light display-5 mb-3">Six weeks, one telescope each</h2>
             <p class="fs-5 text-body-secondary mb-0">
                Teachers spent the summer doing engineering rather than reading about it,
@@ -217,7 +218,7 @@ the old site published. Keep them if these bands are ever reordered.
    <div class="container">
       <div class="row mb-5">
          <div class="col-24 col-lg-16">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Who came</p>
+            <p class="fw-bold text-wvu-blue mb-2">Who came</p>
             <h2 class="antonia-light display-5 mb-3">Archived in-person cohorts</h2>
             {%- comment %}
             The second sentence deliberately does NOT repeat teacher_names.size.
@@ -242,7 +243,7 @@ the old site published. Keep them if these bands are ever reordered.
             <div class="card h-100 border-0 bg-wvu-not-quite-white">
                <div class="card-body p-4 d-flex flex-column">
                   <h3 class="antonia-light display-6 text-wvu-blue mb-1">{{ c.year }}</h3>
-                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small mb-3">{{ c.count }} teachers</p>
+                  <p class="fw-bold small mb-3">{{ c.count }} teachers</p>
                   <ul class="list-unstyled mb-3">
                      {%- for t in c.teachers %}
                      <li class="mb-2">
@@ -274,7 +275,7 @@ the old site published. Keep them if these bands are ever reordered.
    <div class="container">
       <div class="row mb-4">
          <div class="col-24 col-lg-16">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">What came out of it</p>
+            <p class="fw-bold text-wvu-blue mb-2">What came out of it</p>
             <h2 class="antonia-light display-5 mb-3">Published &amp; presented</h2>
             <p class="fs-5 text-body-secondary mb-0">
                Teachers did not just attend. They published classroom research, co-authored
@@ -323,7 +324,7 @@ the old site published. Keep them if these bands are ever reordered.
    <div class="container">
       <div class="row">
          <div class="col-24 col-lg-8 mb-4 mb-lg-0">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Credits</p>
+            <p class="fw-bold text-wvu-blue mb-2">Credits</p>
             <h2 class="antonia-light display-5 mb-3">Funding and continuity</h2>
             <p class="fs-5 text-body-secondary mb-0">
                Seed funding started the work. The community and hardware carried it forward.

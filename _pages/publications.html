@@ -2,7 +2,8 @@
 layout: wvu
 title: Publications
 permalink: /publications/
-description: Journal articles, conference proceedings, and preprints from the WVU Radio Astronomy Instrumentation Lab.
+meta_title: "Radio Astronomy Research Publications | WVU RAIL"
+description: "Browse journal articles, conference papers, and preprints from WVU RAIL. Explore the lab's work on radio telescopes, instruments, and astronomy."
 ---
 {%- comment %}
 Port of the dark-theme /publications/ page onto the Design System.
@@ -31,7 +32,7 @@ type links did, so the page is still navigable without scrolling blind.
    <div class="container">
       <div class="row">
          <div class="col-24 col-lg-16">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-gold mb-3">Publications</p>
+            <p class="fw-bold text-wvu-gold mb-3">Publications</p>
             <h1 class="antonia-light display-3 mb-4">Papers</h1>
             <p class="fs-4 mb-0">
                {{ pubs.size }} papers by the lab and the collaborations we are part of,
@@ -88,7 +89,7 @@ type links did, so the page is still navigable without scrolling blind.
    <div class="container">
       <div class="row mb-4">
          <div class="col-24 col-lg-16">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Peer reviewed</p>
+            <p class="fw-bold text-wvu-blue mb-2">Peer reviewed</p>
             <h2 class="antonia-light display-5 mb-3">Journal articles</h2>
             <p class="fs-5 text-body-secondary mb-0">
                {{ journals.size }} papers in refereed journals, grouped by year.
@@ -109,9 +110,9 @@ type links did, so the page is still navigable without scrolling blind.
             <div class="row">
                <div class="col-24 col-md-18">
                   {%- if pub.cover %}
-                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-1">{{ pub.cover }}</p>
+                  <p class="fw-bold small text-wvu-blue mb-1">{{ pub.cover }}</p>
                   {%- elsif pub.highlight %}
-                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-1">Selected work</p>
+                  <p class="fw-bold small text-wvu-blue mb-1">Selected work</p>
                   {%- endif %}
                   <h4 class="h5 helvetica-neue-bold mb-1">
                      {%- if pub.doi -%}
@@ -173,7 +174,7 @@ type links did, so the page is still navigable without scrolling blind.
    <div class="container">
       <div class="row mb-4">
          <div class="col-24 col-lg-16">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Conference</p>
+            <p class="fw-bold text-wvu-blue mb-2">Conference</p>
             <h2 class="antonia-light display-5 mb-3">Proceedings</h2>
             <p class="fs-5 text-body-secondary mb-0">
                {{ proceedings.size }} instrument and system papers presented at SPIE, IEEE
@@ -195,9 +196,9 @@ type links did, so the page is still navigable without scrolling blind.
             <div class="row">
                <div class="col-24 col-md-18">
                   {%- if pub.cover %}
-                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-1">{{ pub.cover }}</p>
+                  <p class="fw-bold small text-wvu-blue mb-1">{{ pub.cover }}</p>
                   {%- elsif pub.highlight %}
-                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-1">Selected work</p>
+                  <p class="fw-bold small text-wvu-blue mb-1">Selected work</p>
                   {%- endif %}
                   <h4 class="h5 helvetica-neue-bold mb-1">
                      {%- if pub.doi -%}
@@ -264,7 +265,7 @@ still grouped by year so the heading cascade does not skip from h2 to h4.
    <div class="container">
       <div class="row mb-4">
          <div class="col-24 col-lg-16">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Not yet refereed</p>
+            <p class="fw-bold text-wvu-blue mb-2">Not yet refereed</p>
             <h2 class="antonia-light display-5 mb-3">Notes &amp; preprints</h2>
             <p class="fs-5 text-body-secondary mb-0">
                Research notes are editorially reviewed rather than peer reviewed;
@@ -286,9 +287,9 @@ still grouped by year so the heading cascade does not skip from h2 to h4.
             <div class="row">
                <div class="col-24 col-md-18">
                   {%- if pub.cover %}
-                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-1">{{ pub.cover }}</p>
+                  <p class="fw-bold small text-wvu-blue mb-1">{{ pub.cover }}</p>
                   {%- elsif pub.highlight %}
-                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-1">Selected work</p>
+                  <p class="fw-bold small text-wvu-blue mb-1">Selected work</p>
                   {%- endif %}
                   <h4 class="h5 helvetica-neue-bold mb-1">
                      {%- if pub.doi -%}
@@ -350,7 +351,7 @@ still grouped by year so the heading cascade does not skip from h2 to h4.
    <div class="container">
       <div class="row align-items-center">
          <div class="col-24 col-lg-16 mb-4 mb-lg-0">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-gold mb-2">Graduate work</p>
+            <p class="fw-bold text-wvu-gold mb-2">Graduate work</p>
             <h2 class="antonia-light display-6 mb-2">Dissertations &amp; theses</h2>
             <p class="fs-5 mb-0">
                Every degree completed in the lab is listed with its author on the people

@@ -55,7 +55,7 @@ and the loop keeps the match obvious.
             </svg>DSPIRA
          </a>
          <div class="d-flex align-items-center ms-md-auto">
-            <span class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-body-secondary me-3">Cohorts</span>
+            <span class="fw-bold small text-body-secondary me-3">Cohorts</span>
             <ol class="list-inline mb-0">
                {%- for c in chronological %}
                <li class="list-inline-item">
@@ -77,7 +77,7 @@ and the loop keeps the match obvious.
    <div class="container">
       <div class="row">
          <div class="col-24 col-lg-18">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-gold mb-3">Cohort archive</p>
+            <p class="fw-bold text-wvu-gold mb-3">Cohort archive</p>
             <h1 class="antonia-light display-3 mb-4">
                <span class="d-block antonia-light display-2 text-wvu-gold lh-1 mb-2">{{ page.year }}</span>
                {{ page.headline }}
@@ -90,25 +90,25 @@ and the loop keeps the match obvious.
          <ul class="list-unstyled row g-4 mb-0">
             <li class="col-12 col-md-8 col-lg-4">
                <span class="d-block antonia-light display-5 text-wvu-gold lh-1 mb-1">{{ cohort.teachers | size }}</span>
-               <span class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small">teachers</span>
+               <span class="fw-bold small">teachers</span>
             </li>
             <li class="col-12 col-md-8 col-lg-4">
                <span class="d-block antonia-light display-5 text-wvu-gold lh-1 mb-1">{{ states | size }}</span>
-               <span class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small">states</span>
+               <span class="fw-bold small">states</span>
             </li>
             {%- if returners.size > 0 %}
             <li class="col-12 col-md-8 col-lg-4">
                <span class="d-block antonia-light display-5 text-wvu-gold lh-1 mb-1">{{ returners | size }}</span>
-               <span class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small">returning</span>
+               <span class="fw-bold small">returning</span>
             </li>
             {%- endif %}
             <li class="col-12 col-md-8 col-lg-4">
                <span class="d-block antonia-light display-5 text-wvu-gold lh-1 mb-1">6</span>
-               <span class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small">weeks</span>
+               <span class="fw-bold small">weeks</span>
             </li>
             {%- if page.where %}
             <li class="col-24 col-md-16 col-lg-8 align-self-end">
-               <span class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small">{{ page.where }}</span>
+               <span class="fw-bold small">{{ page.where }}</span>
             </li>
             {%- endif %}
          </ul>
@@ -133,7 +133,7 @@ and the loop keeps the match obvious.
    <div class="container">
       <div class="row mb-5">
          <div class="col-24 col-lg-16">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Who was here</p>
+            <p class="fw-bold text-wvu-blue mb-2">Who was here</p>
             <h2 class="antonia-light display-5 mb-3">The {{ page.year }} cohort</h2>
             <p class="fs-5 text-body-secondary mb-0">{{ page.roster_intro | strip_newlines | strip }}</p>
          </div>

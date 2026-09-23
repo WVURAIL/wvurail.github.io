@@ -2,7 +2,8 @@
 layout: wvu
 title: People
 permalink: /people/
-description: The people of the WVU Radio Astronomy Instrumentation Lab — principal investigator, researchers, and alumni.
+meta_title: "People in the Radio Astronomy Laboratory | WVU RAIL"
+description: "Meet the researchers and alumni of the WVU Radio Astronomy Instrumentation Laboratory. Learn about the people who build and study radio telescopes."
 ---
 {%- comment %}
 Port of the dark-theme /people/ page onto the Design System. Data is unchanged
@@ -33,7 +34,7 @@ the same arithmetic the source _includes/people.html does.
    <div class="container">
       <div class="row">
          <div class="col-24 col-lg-16">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-gold mb-3">People</p>
+            <p class="fw-bold text-wvu-gold mb-3">People</p>
             <h1 class="antonia-light display-3 mb-4">The lab</h1>
             <p class="fs-4 mb-0">
                A multidisciplinary group in the Lane Department of Computer Science and
@@ -53,13 +54,13 @@ the same arithmetic the source _includes/people.html does.
    <div class="container">
       <div class="row mb-5">
          <div class="col-24">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Leadership</p>
+            <p class="fw-bold text-wvu-blue mb-2">Leadership</p>
             <h2 class="antonia-light display-5 mb-0">Principal investigator</h2>
          </div>
       </div>
 
       {%- for person in pi %}
-      <div class="person row g-5 align-items-start">
+      <div class="person row gx-4 gy-5 gx-md-5 align-items-start">
          <div class="col-24 col-md-8 col-lg-6">
             {%- if person.photo %}
             <img src="{{ person.photo | relative_url }}" alt="{{ person.name }}" width="480" height="480"
@@ -84,7 +85,7 @@ the same arithmetic the source _includes/people.html does.
          </div>
          <div class="col-24 col-lg-4">
             <div class="bg-wvu-not-quite-white p-4 h-100">
-               <h4 class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-3">Contact</h4>
+               <h4 class="fw-bold small text-wvu-blue mb-3">Contact</h4>
                <ul class="list-unstyled small mb-0 lh-lg">
                   {%- if person.email %}
                   <li class="text-break"><a href="mailto:{{ person.email }}">{{ person.email }}</a></li>
@@ -116,7 +117,7 @@ would remove the one thing the page says about joining.
    <div class="container">
       <div class="row mb-5">
          <div class="col-24 col-lg-16">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">The team</p>
+            <p class="fw-bold text-wvu-blue mb-2">The team</p>
             <h2 class="antonia-light display-5 mb-0">
                Researchers{% if n_researchers > 0 %} <span class="text-body-secondary">{{ n_researchers }}</span>{% endif %}
             </h2>
@@ -160,7 +161,7 @@ would remove the one thing the page says about joining.
          <div class="col-24 col-lg-16 mb-4">
             <div class="person card h-100 border-0 bg-wvu-blue text-white">
                <div class="card-body p-5">
-                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-gold mb-2">Opportunity</p>
+                  <p class="fw-bold small text-wvu-gold mb-2">Opportunity</p>
                   <h3 class="antonia-light display-6 mb-3">{{ person.name }}</h3>
                   {%- if person.bio %}
                   <p class="fs-5">{{ person.bio | strip_newlines | strip }}</p>
@@ -212,7 +213,7 @@ would remove the one thing the page says about joining.
    <div class="container">
       <div class="row mb-4">
          <div class="col-24 col-lg-16">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg text-wvu-blue mb-2">Where they are now</p>
+            <p class="fw-bold text-wvu-blue mb-2">Where they are now</p>
             <h2 class="antonia-light display-5 mb-0">
                Alumni <span class="text-body-secondary">{{ alumni.size }}</span>
             </h2>
@@ -225,7 +226,7 @@ would remove the one thing the page says about joining.
             <div class="row">
                <div class="col-24 col-md-8 mb-2 mb-md-0">
                   <p class="helvetica-neue-bold fs-5 mb-1">{{ person.name }}</p>
-                  <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg small text-wvu-blue mb-0">
+                  <p class="fw-bold small text-wvu-blue mb-0">
                      {{- person.publication.label | default: "Alumna/us" -}}
                      {%- if person.publication.year %} &middot; {{ person.publication.year }}{% endif -%}
                   </p>

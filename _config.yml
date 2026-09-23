@@ -48,6 +48,8 @@ plugins:                        # `plugins:` is the modern key (old `gems:` is d
   - jekyll-sitemap
 
 exclude:
+  - assets/wvu-design-system/README.md
+  - assets/wvu-design-system/LICENSE
   # Windows writes an NTFS "downloaded from the internet" stream beside any
   # downloaded file; through WSL it lands as "logo.svg:Zone.Identifier". A
   # colon is illegal in a GitHub Actions artifact path, so one of these

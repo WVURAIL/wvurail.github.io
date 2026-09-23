@@ -50,10 +50,10 @@
          if (size) {
             var meta = document.createElement("span");
             meta.className = "small ms-2";
-            meta.textContent = "GIF · " + size;
+            meta.textContent = " GIF · " + size;
             btn.appendChild(meta);
          }
-         btn.setAttribute("aria-label", label + ": " + alt);
+         btn.setAttribute("aria-label", btn.textContent + (alt ? ": " + alt : ""));
 
          btn.addEventListener("click", function () {
             var img = document.createElement("img");

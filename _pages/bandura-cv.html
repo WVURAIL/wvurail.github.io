@@ -7,6 +7,7 @@ noindex: true
 description: >
   Curriculum vitae of Kevin M. Bandura, generated from the living faculty
   page. Print or save as PDF — always current.
+meta_title: "Kevin M. Bandura | Curriculum Vitae | WVU RAIL"
 ---
 {%- comment %}
 The printable CV, inside the compliant layout. Resolved with SCM (Adam Glenn,
@@ -53,7 +54,7 @@ cannot fall behind the site. Liquid stays Jekyll 3.9-safe.
          year / entry layout is the DS grid, not custom CSS.
          {% endcomment -%}
 
-         <h2 class="h4 helvetica-neue-bold text-uppercase wvu-text-letter-spacing-lg mt-5">Education</h2>
+         <h2 class="h4 helvetica-neue-bold mt-5">Education</h2>
          <ul class="list-unstyled">
             {%- for e in cv.education %}
             <li class="row py-2 border-bottom">
@@ -65,7 +66,7 @@ cannot fall behind the site. Liquid stays Jekyll 3.9-safe.
             {%- endfor %}
          </ul>
 
-         <h2 class="h4 helvetica-neue-bold text-uppercase wvu-text-letter-spacing-lg mt-5">Appointments</h2>
+         <h2 class="h4 helvetica-neue-bold mt-5">Appointments</h2>
          <ul class="list-unstyled">
             {%- for a in cv.appointments %}
             <li class="row py-2 border-bottom">
@@ -75,7 +76,7 @@ cannot fall behind the site. Liquid stays Jekyll 3.9-safe.
             {%- endfor %}
          </ul>
 
-         <h2 class="h4 helvetica-neue-bold text-uppercase wvu-text-letter-spacing-lg mt-5">Honors &amp; Awards</h2>
+         <h2 class="h4 helvetica-neue-bold mt-5">Honors &amp; Awards</h2>
          <ul class="list-unstyled">
             {%- for h in cv.honors %}
             <li class="row py-2 border-bottom">
@@ -85,7 +86,7 @@ cannot fall behind the site. Liquid stays Jekyll 3.9-safe.
             {%- endfor %}
          </ul>
 
-         <h2 class="h4 helvetica-neue-bold text-uppercase wvu-text-letter-spacing-lg mt-5">Research Funding</h2>
+         <h2 class="h4 helvetica-neue-bold mt-5">Research Funding</h2>
          <ul class="list-unstyled">
             {%- for g in cv.funding %}
             <li class="row py-2 border-bottom">
@@ -95,7 +96,7 @@ cannot fall behind the site. Liquid stays Jekyll 3.9-safe.
             {%- endfor %}
          </ul>
 
-         <h2 class="h4 helvetica-neue-bold text-uppercase wvu-text-letter-spacing-lg mt-5">Publications</h2>
+         <h2 class="h4 helvetica-neue-bold mt-5">Publications</h2>
 
          <h3 class="h6 helvetica-neue-bold mt-4">Peer-reviewed journal articles ({{ my_journal.size }})</h3>
          <ol class="small">
@@ -148,14 +149,14 @@ cannot fall behind the site. Liquid stays Jekyll 3.9-safe.
             {%- endfor %}
          </ol>
 
-         <h2 class="h4 helvetica-neue-bold text-uppercase wvu-text-letter-spacing-lg mt-5">Teaching</h2>
+         <h2 class="h4 helvetica-neue-bold mt-5">Teaching</h2>
          <ul class="list-unstyled">
             {%- for course in cv.teaching %}
             <li class="py-1">{{ course }} &mdash; West Virginia University</li>
             {%- endfor %}
          </ul>
 
-         <h2 class="h4 helvetica-neue-bold text-uppercase wvu-text-letter-spacing-lg mt-5">Advising</h2>
+         <h2 class="h4 helvetica-neue-bold mt-5">Advising</h2>
          {%- if site.data.people.grad and site.data.people.grad.size > 0 %}
          <h3 class="h6 helvetica-neue-bold mt-4">Current graduate students</h3>
          <ul class="list-unstyled">
@@ -180,14 +181,14 @@ cannot fall behind the site. Liquid stays Jekyll 3.9-safe.
          </ul>
          {%- endif %}
 
-         <h2 class="h4 helvetica-neue-bold text-uppercase wvu-text-letter-spacing-lg mt-5">Professional Memberships</h2>
+         <h2 class="h4 helvetica-neue-bold mt-5">Professional Memberships</h2>
          <ul class="list-unstyled">
             {%- for m in cv.memberships.items %}
             <li class="py-1">{{ m }}</li>
             {%- endfor %}
          </ul>
 
-         <h2 class="h4 helvetica-neue-bold text-uppercase wvu-text-letter-spacing-lg mt-5">Selected Talks &amp; Posters</h2>
+         <h2 class="h4 helvetica-neue-bold mt-5">Selected Talks &amp; Posters</h2>
          <ul class="list-unstyled">
             {%- for t in cv.presentations %}
             <li class="py-1">{{ t }}</li>
