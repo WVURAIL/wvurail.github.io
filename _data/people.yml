@@ -9,7 +9,7 @@ pi:
     roles:
       - "Associate Professor, Department of Computer Science and Electrical Engineering"
       - "Adjunct Professor, Department of Physics and Astronomy"
-    email: "kevin.bandura@mail.wvu.edu"
+    email: "kmbandura@mail.wvu.edu"
     phone: "(304) 293-9686"
     office: "AERB 237"
     link:
@@ -26,7 +26,7 @@ students:
     bio: >
       We take on undergraduate and graduate researchers every year. Write to
       Prof. Kevin Bandura to talk about joining.
-    email: "kevin.bandura@mail.wvu.edu"
+    email: "kmbandura@mail.wvu.edu"
 
 alumni:
   # Verified against the WVU Research Repository (researchrepository.wvu.edu/etd).
