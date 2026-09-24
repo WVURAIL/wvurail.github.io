@@ -1,7 +1,7 @@
 ---
 layout: wvu
 title: Home
-preload_image: /images/banner.jpg
+preload_image: /images/banner.webp
 
 description: "WVU RAIL designs and builds radio telescopes, analog receivers, and digital systems. Explore our research, people, publications, and lessons."
 ---
@@ -46,7 +46,7 @@ Pages' Jekyll 3.9 ships.
 
 <!-- ===================== HERO ===================== -->
 <div class="wvu-bg-position-center wvu-bg-size-cover position-relative bg-wvu-blue text-white"
-     style="background-image:url('{{ '/images/banner.jpg' | relative_url }}')">
+     style="background-image:url('{{ '/images/banner.webp' | relative_url }}')">
    {%- comment %}
    The scrim over the photograph is a flat rgba colour, not a gradient. A CSS
    gradient is a background-IMAGE, so a checker walking up from the buttons
@@ -158,7 +158,7 @@ Pages' Jekyll 3.9 ships.
          </div>
          <div class="col-24 col-lg-16">
             <div class="d-flex align-items-start">
-               <img src="{{ pi.photo | relative_url }}" alt="" width="120" height="120"
+               <img src="{{ pi.thumbnail | default: pi.photo | relative_url }}" alt="" width="120" height="142"
                     loading="lazy" decoding="async" class="rounded-circle me-4 flex-shrink-0 object-fit-cover">
                <div>
                   <h3 class="h4 helvetica-neue-bold mb-1">{{ pi.name }}</h3>

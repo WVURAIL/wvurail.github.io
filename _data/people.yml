@@ -5,6 +5,7 @@
 pi:
   - name: "Kevin M. Bandura, Ph.D."
     photo: /images/people/kbandura.jpg
+    thumbnail: /images/people/kbandura-240.webp
     roles:
       - "Associate Professor, Department of Computer Science and Electrical Engineering"
       - "Adjunct Professor, Department of Physics and Astronomy"
