@@ -231,7 +231,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
                   {%- if pub.cover %}
                   <p class="mb-1">
                      <span class="badge bg-wvu-blue text-white">{{ pub.cover }}</span>
-                     {%- if pub.cover_note %} <span class="small fst-italic text-body-secondary">{{ pub.cover_note }}</span>{% endif %}
+                     {%- if pub.cover_note %} <span class="small text-body-secondary">{{ pub.cover_note }}</span>{% endif %}
                   </p>
                   {%- elsif pub.highlight %}
                   <p class="fw-bold small text-wvu-blue mb-1">Selected work</p>
@@ -245,7 +245,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
                   <p class="small text-body-secondary mb-1">{{ pub.authors }}</p>
                   {%- include pub-people.html pub=pub %}
                   {%- if pub.venue or pub.ref %}
-                  <p class="small fst-italic text-body-secondary mb-0">
+                  <p class="small text-body-secondary mb-0">
                      {%- if pub.venue %}{{ pub.venue }}{% endif %}
                      {%- if pub.ref %}{% assign shown_ref = pub.ref | remove_first: pub.venue | strip %}{% if shown_ref != "" %} &middot; {{ shown_ref }}{% endif %}{% endif %}
                      {%- if pub.year %} &middot; {{ pub.year }}{% endif %}
@@ -273,7 +273,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
                   {%- if pub.cover %}
                   <p class="mb-1">
                      <span class="badge bg-wvu-blue text-white">{{ pub.cover }}</span>
-                     {%- if pub.cover_note %} <span class="small fst-italic text-body-secondary">{{ pub.cover_note }}</span>{% endif %}
+                     {%- if pub.cover_note %} <span class="small text-body-secondary">{{ pub.cover_note }}</span>{% endif %}
                   </p>
                   {%- elsif pub.highlight %}
                   <p class="fw-bold small text-wvu-blue mb-1">Selected work</p>
@@ -287,7 +287,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
                   <p class="small text-body-secondary mb-1">{{ pub.authors }}</p>
                   {%- include pub-people.html pub=pub %}
                   {%- if pub.venue or pub.ref %}
-                  <p class="small fst-italic text-body-secondary mb-0">
+                  <p class="small text-body-secondary mb-0">
                      {%- if pub.venue %}{{ pub.venue }}{% endif %}
                      {%- if pub.ref %}{% assign shown_ref = pub.ref | remove_first: pub.venue | strip %}{% if shown_ref != "" %} &middot; {{ shown_ref }}{% endif %}{% endif %}
                      {%- if pub.year %} &middot; {{ pub.year }}{% endif %}
@@ -316,7 +316,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
                   {%- if pub.cover %}
                   <p class="mb-1">
                      <span class="badge bg-wvu-blue text-white">{{ pub.cover }}</span>
-                     {%- if pub.cover_note %} <span class="small fst-italic text-body-secondary">{{ pub.cover_note }}</span>{% endif %}
+                     {%- if pub.cover_note %} <span class="small text-body-secondary">{{ pub.cover_note }}</span>{% endif %}
                   </p>
                   {%- elsif pub.highlight %}
                   <p class="fw-bold small text-wvu-blue mb-1">Selected work</p>
@@ -330,7 +330,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
                   <p class="small text-body-secondary mb-1">{{ pub.authors }}</p>
                   {%- include pub-people.html pub=pub %}
                   {%- if pub.venue or pub.ref %}
-                  <p class="small fst-italic text-body-secondary mb-0">
+                  <p class="small text-body-secondary mb-0">
                      {%- if pub.venue %}{{ pub.venue }}{% endif %}
                      {%- if pub.ref %}{% assign shown_ref = pub.ref | remove_first: pub.venue | strip %}{% if shown_ref != "" %} &middot; {{ shown_ref }}{% endif %}{% endif %}
                      {%- if pub.year %} &middot; {{ pub.year }}{% endif %}
@@ -354,7 +354,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
                   {%- if pub.cover %}
                   <p class="mb-1">
                      <span class="badge bg-wvu-blue text-white">{{ pub.cover }}</span>
-                     {%- if pub.cover_note %} <span class="small fst-italic text-body-secondary">{{ pub.cover_note }}</span>{% endif %}
+                     {%- if pub.cover_note %} <span class="small text-body-secondary">{{ pub.cover_note }}</span>{% endif %}
                   </p>
                   {%- elsif pub.highlight %}
                   <p class="fw-bold small text-wvu-blue mb-1">Selected work</p>
@@ -369,7 +369,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
                   <p class="small text-body-secondary mb-1">{{ pub.authors }}</p>
                   {%- include pub-people.html pub=pub %}
                   {%- if pub.venue or pub.ref %}
-                  <p class="small fst-italic text-body-secondary mb-0">
+                  <p class="small text-body-secondary mb-0">
                      {%- if pub.venue %}{{ pub.venue }}{% endif %}
                      {%- if pub.ref %}{% assign shown_ref = pub.ref | remove_first: pub.venue | strip %}{% if shown_ref != "" %} &middot; {{ shown_ref }}{% endif %}{% endif %}
                      {%- if pub.year %} &middot; {{ pub.year }}{% endif %}
@@ -401,7 +401,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
                   {%- if pub.cover %}
                   <p class="mb-1">
                      <span class="badge bg-wvu-blue text-white">{{ pub.cover }}</span>
-                     {%- if pub.cover_note %} <span class="small fst-italic text-body-secondary">{{ pub.cover_note }}</span>{% endif %}
+                     {%- if pub.cover_note %} <span class="small text-body-secondary">{{ pub.cover_note }}</span>{% endif %}
                   </p>
                   {%- elsif pub.highlight %}
                   <p class="fw-bold small text-wvu-blue mb-1">Selected work</p>
@@ -416,7 +416,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
                   <p class="small text-body-secondary mb-1">{{ pub.authors }}</p>
                   {%- include pub-people.html pub=pub %}
                   {%- if pub.venue or pub.ref %}
-                  <p class="small fst-italic text-body-secondary mb-0">
+                  <p class="small text-body-secondary mb-0">
                      {%- if pub.venue %}{{ pub.venue }}{% endif %}
                      {%- if pub.ref %}{% assign shown_ref = pub.ref | remove_first: pub.venue | strip %}{% if shown_ref != "" %} &middot; {{ shown_ref }}{% endif %}{% endif %}
                      {%- if pub.year %} &middot; {{ pub.year }}{% endif %}
@@ -448,7 +448,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
                   {%- if pub.cover %}
                   <p class="mb-1">
                      <span class="badge bg-wvu-blue text-white">{{ pub.cover }}</span>
-                     {%- if pub.cover_note %} <span class="small fst-italic text-body-secondary">{{ pub.cover_note }}</span>{% endif %}
+                     {%- if pub.cover_note %} <span class="small text-body-secondary">{{ pub.cover_note }}</span>{% endif %}
                   </p>
                   {%- elsif pub.highlight %}
                   <p class="fw-bold small text-wvu-blue mb-1">Selected work</p>
@@ -460,7 +460,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
                   <p class="small text-body-secondary mb-1">{{ pub.authors }}</p>
                   {%- include pub-people.html pub=pub %}
                   {%- if pub.venue or pub.ref %}
-                  <p class="small fst-italic text-body-secondary mb-2">
+                  <p class="small text-body-secondary mb-2">
                      {%- if pub.venue %}{{ pub.venue }}{% endif %}
                      {%- if pub.ref %}{% assign shown_ref = pub.ref | remove_first: pub.venue | strip %}{% if shown_ref != "" %} &middot; {{ shown_ref }}{% endif %}{% endif %}
                      {%- if pub.year %} &middot; {{ pub.year }}{% endif %}
@@ -504,7 +504,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
                   </h3>
                   <p class="small text-body-secondary mb-1">{{ pub.authors }}</p>
                   {%- include pub-people.html pub=pub %}
-                  {%- if pub.venue %}<p class="small fst-italic text-body-secondary mb-0">{{ pub.venue }} &middot; {{ pub.year }}</p>{% endif %}
+                  {%- if pub.venue %}<p class="small text-body-secondary mb-0">{{ pub.venue }} &middot; {{ pub.year }}</p>{% endif %}
                   {%- if pub.arxiv %}<p class="small mb-0"><a href="https://arxiv.org/abs/{{ pub.arxiv }}">arXiv:{{ pub.arxiv }}</a></p>{% endif %}
                </div>
             </div>
@@ -598,7 +598,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
                   {%- if person.publication %}
                   <p class="mb-1"><a href="{{ person.publication.url }}">{{ person.publication.title }}</a></p>
                   {%- endif %}
-                  {%- if person.now %}<p class="small fst-italic text-body-secondary mb-0">Now: {{ person.now }}</p>{% endif %}
+                  {%- if person.now %}<p class="small text-body-secondary mb-0">Now: {{ person.now }}</p>{% endif %}
                </div>
             </div>
          </li>
