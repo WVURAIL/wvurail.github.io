@@ -65,9 +65,7 @@ Pages' Jekyll 3.9 ships.
                </p>
                <h1 class="antonia-light display-3 mb-4">Instruments that listen to the distant universe</h1>
                <p class="fs-4 mb-4">
-                  RAIL designs and builds the telescopes, analog front ends, and digital
-                  systems that survey the radio sky &mdash; chasing cosmology, fast radio
-                  bursts, and pulsars.
+                  RAIL builds telescopes, analog front ends, and digital systems for radio surveys. Our science spans cosmology, fast radio bursts, and pulsars.
                </p>
                <a href="{{ '/where-we-work/' | relative_url }}" class="btn btn-wvu-gold me-2">Explore our work</a>
                <a href="{{ '/people/' | relative_url }}" class="btn btn-light">Meet the lab</a>
@@ -105,8 +103,7 @@ Pages' Jekyll 3.9 ships.
             <p class="fw-bold text-wvu-blue mb-2">Research &amp; engineering</p>
             <h2 class="antonia-light display-5">We build the systems behind wide-field radio telescopes</h2>
             <p class="fs-5 text-body-secondary">
-               From the first low-noise signal at the feed to the computing systems that
-               turn raw voltages into measurements of the universe.
+               We follow signals from the antenna feed through the computing systems that turn raw voltages into astronomical measurements.
             </p>
          </div>
       </div>
@@ -143,9 +140,7 @@ Pages' Jekyll 3.9 ships.
          <div class="col-24 col-lg-16">
             <a href="{{ '/who-we-work-with/' | relative_url }}" class="btn btn-outline-wvu-blue">Our collaborators</a>
             <p class="mt-4 mb-0">
-               <span class="fw-bold small text-wvu-blue me-2">Recognition</span>
-               Members of RAIL are part of the CHIME/FRB team, recipient of the
-               <a href="https://aas.org/press/chime-fast-radio-burst-team-receive-2022-berkeley-prize">2022 Berkeley Prize for Meritorious Work in Astronomy</a>.
+               <span class="fw-bold small text-wvu-blue me-2">Recognition</span> RAIL members belong to the CHIME/FRB team. The team received the <a href="https://aas.org/press/chime-fast-radio-burst-team-receive-2022-berkeley-prize">2022 Berkeley Prize for Meritorious Work in Astronomy</a>.
             </p>
          </div>
       </div>
@@ -261,16 +256,16 @@ relative_url (see the note beside it in the data file).
             <h3 class="h4 helvetica-neue-bold">{{ ed.materials.title }}</h3>
             <p>{{ ed.materials.intro | strip_newlines | strip | replace: '%COUNT%', ed.materials.lesson_count }}</p>
             <p>
-               The original RET award, <a href="{{ ed.award.url }}">NSF Award {{ ed.award.number }}</a>,
-               was seed funding: contributors still maintain the collection, while the
-               outreach component of <a href="{{ ed.follow_on.outreach_hardware.url }}">NSF Award {{ ed.follow_on.outreach_hardware.number }}</a>
+               <a href="{{ ed.award.url }}">NSF Award {{ ed.award.number }}</a> provided seed funding.
+               Contributors continue maintaining the collection.
+               Outreach supported by <a href="{{ ed.follow_on.outreach_hardware.url }}">NSF Award {{ ed.follow_on.outreach_hardware.number }}</a>
                ({{ ed.follow_on.outreach_hardware.start }}&ndash;{{ ed.follow_on.outreach_hardware.end }})
                carries DSPIRA receivers into a more robust outreach lab.
             </p>
-            <p class="small text-body-secondary">
-               <span class="helvetica-neue-bold">Partners:</span>
-               {%- for p in ed.partners %} {{ p }}{% if forloop.last %}.{% elsif forloop.rindex == 2 %} and{% else %},{% endif %}{% endfor %}
-            </p>
+            <p class="small text-body-secondary helvetica-neue-bold">Partners:</p>
+            <ul class="small text-body-secondary">
+               {%- for p in ed.partners %}<li>{{ p }}</li>{% endfor %}
+            </ul>
             <a href="{{ ed.materials.url }}" class="btn btn-wvu-blue me-2 mb-2">
                Open the lessons
                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"

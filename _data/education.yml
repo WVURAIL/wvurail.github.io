@@ -15,20 +15,14 @@
 # in-person cohorts, but not to say that DSPIRA itself ended in 2019.
 
 summary: >
-  DSPIRA — Digital Signal Processing in Radio Astronomy — began as an NSF
-  Research Experiences for Teachers site run by the lab with the WVU Center for
-  Gravitational Waves and Cosmology and the Green Bank Observatory. Three
+  DSPIRA stands for Digital Signal Processing in Radio Astronomy. It began as an NSF Research Experiences for Teachers site run by the lab. Partners included the WVU Center for Gravitational Waves and Cosmology and Green Bank Observatory. Three
   documented in-person cohorts built working horn radio telescopes in 2017–19.
   Beginning in 2020, participants concentrated on making the curriculum and
   collaboration available online.
 
 # One-line answer to "is this still running?" — shown near the top of the page.
 status: >
-  The pandemic interrupted the momentum of DSPIRA's in-person summers, but the
-  original RET award was seed funding—not an expiration date. The project
-  continues through its educators, open curriculum, and telescope platform;
-  the outreach component of NSF Award 2511256 is developing a more robust
-  generation of DSPIRA-based outreach receivers through 2028.
+  The pandemic interrupted DSPIRA's in-person summers. However, the original RET award provided seed funding, without defining the project's end. Educators, the open curriculum, and the telescope platform keep the project active. NSF Award 2511256 supports outreach receiver development through 2028. This work aims to make DSPIRA-based receivers more robust.
 
 award:
   number: "1611114"
@@ -140,42 +134,32 @@ phases:
   - label: 2017–2019
     title: Three in-person cohorts
     body: >
-      Teachers spent six weeks at WVU and Green Bank building instruments,
-      observing the Milky Way, and carrying projects back to their classrooms.
+      Teachers spent six weeks building instruments and observing the Milky Way at WVU and Green Bank. They brought these projects back to their classrooms.
       These are the three cohorts documented in detail on this site.
   - label: 2020–2021
     title: The work moved online
     body: >
-      The public lessons repository launched in July 2020. During the award's
-      final two years, teachers and staff consolidated lectures, labs, setup
-      guides, and technical discussion into an online home.
+      The public lessons repository launched in July 2020. During the award's final two years, teachers and staff created an online home. It brought together lectures, labs, setup guides, and technical discussions.
   - label: 2022–present
     title: DSPIRA's next hardware chapter
     body: >
       The in-person summers did not return to their earlier cadence, but the
-      educator network, lessons, and telescope platform continued. The outreach
-      component of NSF Award 2511256 now uses DSPIRA receivers as prototypes for
-      a more robust lab for high-school teachers and students, while continuing
-      education-oriented receiver development for STEM programs at WVU and Yale.
+      educator network, lessons, and telescope platform continued. NSF Award 2511256 uses DSPIRA receivers to prototype a more robust lab for high school teachers and students. Its outreach work also develops educational receivers for STEM programs at WVU and Yale.
 
 # What a summer actually involved.
 arc:
   - title: Build the telescope
     body: >
-      Each teacher assembled a horn antenna and a low-noise amplifier from sheet
-      metal and off-the-shelf parts, then tested it in the RF lab at WVU.
+      Each teacher built a horn antenna and low-noise amplifier from sheet metal and readily available parts. They tested their instruments in WVU's RF lab.
   - title: Learn the tools
     body: >
-      GNU Radio, Python and software-defined radio — the same open-source stack
-      the lab uses to commission real instruments, not a teaching substitute.
+      GNU Radio, Python, and software-defined radio form the open-source toolkit. The lab uses these same tools to commission research instruments.
   - title: Observe
     body: >
-      Six weeks ended at Green Bank, mapping neutral hydrogen in the Milky Way
-      with the horn they had built, alongside the observatory's own telescopes.
+      The six weeks ended with neutral-hydrogen mapping at Green Bank. Teachers used their own horns alongside the observatory's telescopes.
   - title: Take it back to class
     body: >
-      Each cohort wrote lessons and classroom exercises from what they had done,
-      and continued the projects with their own students during the school year.
+      Each cohort turned its experience into lessons and classroom exercises. Teachers continued these projects with their students during the school year.
 
 # Cohorts, newest first. `returning` flags teachers who came back another summer.
 cohorts:

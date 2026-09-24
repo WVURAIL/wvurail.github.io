@@ -15,12 +15,7 @@ pi:
       text: "Faculty page & CV"
       url: "/bandura/"
     bio: >
-      Dr. Bandura builds the systems behind wide-field radio telescopes — the analog
-      front ends, FPGA correlators, and timing chains that let an instrument like CHIME
-      survey the whole overhead sky at once. The science driving that work is 21 cm
-      intensity mapping, which traces neutral hydrogen to measure how the universe's
-      expansion has accelerated, and the outrigger stations that localize fast radio
-      bursts precisely enough to identify the galaxies they came from.
+      Dr. Bandura builds analog front ends, FPGA correlators, and timing systems for wide-field radio telescopes. These systems let instruments such as CHIME survey the entire overhead sky at once. The science includes 21 cm intensity mapping, which traces neutral hydrogen to measure accelerated cosmic expansion. Outrigger stations precisely locate fast radio bursts, allowing researchers to identify their host galaxies.
 
 grad: []
 

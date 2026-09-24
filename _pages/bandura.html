@@ -47,13 +47,8 @@ row/col inside each <li> is layout only and does not replace the list semantics.
             </p>
             <h1 class="antonia-light display-4 mb-4">{{ cv.profile.name }}</h1>
             <p class="fs-5 mb-4">
-               Associate Professor in the Lane Department of Computer Science and Electrical
-               Engineering, and Adjunct Professor of Physics and Astronomy, at West Virginia
-               University; member of the WVU
-               <a class="text-white" href="https://gwac.wvu.edu/">Center for Gravitational Waves and Cosmology</a>.
-               Builds the instruments behind wide-field radio surveys &mdash; CHIME, its FRB
-               outriggers, and HIRAX &mdash; to measure dark energy with 21&nbsp;cm intensity
-               mapping and to catch fast radio bursts in the act.
+               Associate Professor in WVU's Lane Department of Computer Science and Electrical Engineering. Adjunct Professor of Physics and Astronomy at WVU. Member of the WVU <a class="text-white" href="https://gwac.wvu.edu/">Center for Gravitational Waves and Cosmology</a>.
+               Builds instruments for CHIME, its FRB outriggers, and HIRAX. These surveys probe dark energy through 21 cm intensity mapping and detect fast radio bursts.
             </p>
             <ul class="list-unstyled mb-4 lh-lg">
                <li><a class="text-white" href="mailto:{{ cv.profile.email }}">{{ cv.profile.email }}</a></li>
@@ -391,8 +386,7 @@ row/col inside each <li> is layout only and does not replace the list semantics.
 
       <h3 class="h4 helvetica-neue-bold mb-2">Before WVU <span class="fs-6 text-body-secondary">({{ cv.pre_wvu_publications.size }})</span></h3>
       <p class="text-body-secondary mb-3">
-         The Carnegie Mellon and McGill years, 2006&ndash;2016 &mdash; 21&nbsp;cm intensity
-         mapping at the GBT and GMRT, the CHIME Pathfinder, and the ICE correlator hardware.
+         The Carnegie Mellon and McGill years, 2006&ndash;2016. Work included 21 cm intensity mapping at the GBT and GMRT, the CHIME Pathfinder, and ICE correlator hardware.
       </p>
       <ul class="list-unstyled mb-5">
          {%- for pub in cv.pre_wvu_publications %}
@@ -732,10 +726,8 @@ row/col inside each <li> is layout only and does not replace the list semantics.
             <p class="fw-bold text-wvu-gold mb-2">About this page</p>
             <h2 class="antonia-light display-6 mb-2">A living CV</h2>
             <p class="fs-5 mb-0">
-               This page is Kevin's CV of record. It grows with the lab's publication list
-               and people pages: the {{ mine.size }} WVU-era papers and the
-               {{ site.data.people.alumni.size }} graduates listed above are read from the
-               same data the rest of the site uses. A print-ready copy is always one
+               This page is Kevin's CV of record. It uses the same data as the lab's publication and people pages.
+               It currently lists {{ mine.size }} WVU-era papers and {{ site.data.people.alumni.size }} graduates. A print-ready copy is always one
                click away via <a class="text-white" href="{{ '/bandura/cv/' | relative_url }}">Get CV</a>.
             </p>
          </div>
