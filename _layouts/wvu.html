@@ -38,7 +38,7 @@ only tool for it.
 <meta name="twitter:description" content="{{ desc | escape }}">
 <meta name="twitter:image" content="{{ share | absolute_url }}">
 
-<link rel="icon" href="{{ '/favicon.ico' | relative_url }}" sizes="any">
+<link rel="icon" href="{{ '/favicon-wvu.ico' | relative_url }}" sizes="any">
 <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
 
 {%- comment %}
@@ -88,6 +88,9 @@ page.
     p, li { orphans: 2; widows: 2; }
     @page { size: letter; margin: 0.7in; }
   }
+  .wvu-text-letter-spacing-lg { letter-spacing: 3px !important; }
+  .pub-section > summary { cursor: pointer; padding: .5rem 0; }
+  .pub-section[open] > summary { margin-bottom: 1.5rem; }
 </style>
 
 <script type="application/ld+json">
@@ -236,7 +239,7 @@ page.
                {% endcomment -%}
                <ul class="list-unstyled lh-sm">
                   <li class="mb-3"><a class="text-decoration-none" href="{{ '/who-we-work-with/' | relative_url }}">Collaborators</a></li>
-                  <li class="mb-3"><a class="text-decoration-none" href="{{ '/bandura/' | relative_url }}">Faculty page &amp; CV</a></li>
+                  <li class="mb-3"><a class="text-decoration-none" href="{{ '/bandura/' | relative_url }}">Faculty page and CV</a></li>
                   <li class="mb-3"><a class="text-decoration-none" href="{{ '/tools/' | relative_url }}">Lab tools</a></li>
                   <li class="mb-3"><a class="text-decoration-none" href="/dspira-lessons/">DSPIRA lessons</a></li>
                   <li class="mb-3"><a class="text-decoration-none" href="/lightwork/">LightWork</a></li>
@@ -248,7 +251,7 @@ page.
                <h2 class="h6 fw-bold text-wvu-gold mb-3">University</h2>
                <ul class="list-unstyled mb-0 lh-sm">
                   <li class="mb-3"><a class="text-decoration-none" href="https://lcsee.statler.wvu.edu/">Lane Dept. of CSEE</a></li>
-                  <li class="mb-3"><a class="text-decoration-none" href="https://gwac.wvu.edu/">Center for Gravitational Waves &amp; Cosmology</a></li>
+                  <li class="mb-3"><a class="text-decoration-none" href="https://gwac.wvu.edu/">Center for Gravitational Waves and Cosmology</a></li>
                   <li class="mb-3"><a class="text-decoration-none" href="https://www.wvu.edu">West Virginia University</a></li>
                </ul>
             </div>
@@ -271,7 +274,6 @@ page.
                REQUIRED, and absent from both the official Hugo theme and
                designsystem.wvu.edu's own footer — verified. Do not remove.
                {% endcomment -%}
-               <p class="mb-3">West Virginia University is an Equal Opportunity/Affirmative Action Institution.</p>
 
                <ul class="list-inline mb-3">
                   <li class="list-inline-item"><a href="https://about.wvu.edu/wvu-facts">Accreditations</a></li>

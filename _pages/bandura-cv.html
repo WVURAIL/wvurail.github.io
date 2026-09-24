@@ -76,7 +76,7 @@ cannot fall behind the site. Liquid stays Jekyll 3.9-safe.
             {%- endfor %}
          </ul>
 
-         <h2 class="h4 helvetica-neue-bold mt-5">Honors &amp; Awards</h2>
+         <h2 class="h4 helvetica-neue-bold mt-5">Honors and Awards</h2>
          <ul class="list-unstyled">
             {%- for h in cv.honors %}
             <li class="row py-2 border-bottom">
@@ -114,7 +114,7 @@ cannot fall behind the site. Liquid stays Jekyll 3.9-safe.
          </ol>
 
          {%- if n_unref > 0 %}
-         <h3 class="h6 helvetica-neue-bold mt-4">Research notes &amp; preprints ({{ n_unref }})</h3>
+         <h3 class="h6 helvetica-neue-bold mt-4">Research notes and preprints ({{ n_unref }})</h3>
          <ol class="small">
             {%- for p in my_notes %}
             <li class="mb-2">{{ p.authors }}, &ldquo;{{ p.title }},&rdquo; <em>{{ p.venue }}</em>{% if p.ref %}, {{ p.ref }}{% endif %} ({{ p.year }}){% if p.doi %}, doi:{{ p.doi }}{% elsif p.arxiv %}, arXiv:{{ p.arxiv }}{% endif %}.</li>
@@ -142,7 +142,7 @@ cannot fall behind the site. Liquid stays Jekyll 3.9-safe.
          </ol>
          {%- endif %}
 
-         <h3 class="h6 helvetica-neue-bold mt-4">White papers &amp; community reports ({{ cv.white_papers.size }})</h3>
+         <h3 class="h6 helvetica-neue-bold mt-4">White papers and community reports ({{ cv.white_papers.size }})</h3>
          <ol class="small">
             {%- for p in cv.white_papers %}
             <li class="mb-2">{{ p.authors }}, &ldquo;{{ p.title }},&rdquo; <em>{{ p.venue }}</em> ({{ p.year }}){% if p.arxiv %}, arXiv:{{ p.arxiv }}{% endif %}.</li>
@@ -169,14 +169,14 @@ cannot fall behind the site. Liquid stays Jekyll 3.9-safe.
          <ul class="list-unstyled">
             {%- for person in site.data.people.alumni %}
             <li class="py-1">{{ person.name }} &mdash; {{ person.publication.label }}, {{ person.publication.year }}:
-                &ldquo;{{ person.publication.title }}&rdquo;{% if person.now %} <span class="text-body-secondary small">(now: {{ person.now }})</span>{% endif %}</li>
+                &ldquo;{{ person.publication.title }}&rdquo;.{% if person.now %} <span class="text-body-secondary small">(now: {{ person.now }})</span>{% endif %}</li>
             {%- endfor %}
          </ul>
          {%- if cv.committees and cv.committees.size > 0 %}
-         <h3 class="h6 helvetica-neue-bold mt-4">Thesis &amp; dissertation committees (member)</h3>
+         <h3 class="h6 helvetica-neue-bold mt-4">Thesis and dissertation committees (member)</h3>
          <ul class="list-unstyled">
             {%- for c in cv.committees %}
-            <li class="py-1">{{ c.name }} &mdash; {{ c.degree }}, {{ c.year }}: &ldquo;{{ c.title }}&rdquo;{% if c.chair %} (chair: {{ c.chair }}){% endif %}</li>
+            <li class="py-1">{{ c.name }} &mdash; {{ c.degree }}, {{ c.year }}: &ldquo;{{ c.title }}&rdquo;.{% if c.chair %} (chair: {{ c.chair }}){% endif %}</li>
             {%- endfor %}
          </ul>
          {%- endif %}
@@ -188,7 +188,7 @@ cannot fall behind the site. Liquid stays Jekyll 3.9-safe.
             {%- endfor %}
          </ul>
 
-         <h2 class="h4 helvetica-neue-bold mt-5">Selected Talks &amp; Posters</h2>
+         <h2 class="h4 helvetica-neue-bold mt-5">Selected Talks and Posters</h2>
          <ul class="list-unstyled">
             {%- for t in cv.presentations %}
             <li class="py-1">{{ t }}</li>

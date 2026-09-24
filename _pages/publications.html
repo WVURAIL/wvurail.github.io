@@ -5,21 +5,6 @@ permalink: /publications/
 meta_title: "Radio Astronomy Research Publications | WVU RAIL"
 description: "Browse journal articles, conference papers, and preprints from WVU RAIL. Explore the lab's work on radio telescopes, instruments, and astronomy."
 ---
-{%- comment %}
-Port of the dark-theme /publications/ page onto the Design System.
-
-Structure is unchanged from the original: grouped by type, then by year
-descending inside each type. Headings cascade h1 (page) > h2 (type band) >
-h3 (year band) > h4 (paper), so every paper is a child of its year rather
-than a sibling of it.
-
-The original's JavaScript filter box is not ported — this prototype ships no
-a small vanilla filter (no framework, no dependency) plus the jump-link band.
-The filter is the same 40 lines the current site uses; on a 69-item page it is
-a real affordance, not decoration. The jump links carry the counts the filter's
-type links did, so the page is still navigable without scrolling blind.
-{% endcomment -%}
-
 {%- assign pubs = site.data.publications -%}
 {%- assign journals = pubs | where: "type", "journal" -%}
 {%- assign proceedings = pubs | where: "type", "proceedings" -%}
@@ -60,7 +45,7 @@ type links did, so the page is still navigable without scrolling blind.
             <input type="search" id="pub-search" class="form-control"
                    placeholder="Filter by title, author, or journal&hellip;"
                    autocomplete="off" spellcheck="false">
-            <p class="pub-filter-count small text-body-secondary mt-2 mb-0" aria-live="polite"></p>
+            <p class="pub-filter-count small text-body-secondary mt-2 mb-0" role="status" aria-live="polite" aria-atomic="true"></p>
          </div>
       </div>
 
@@ -76,7 +61,7 @@ type links did, so the page is still navigable without scrolling blind.
             {%- endif %}
             {%- if unrefereed.size > 0 %}
             <li class="list-inline-item">
-               <a href="#other">Notes &amp; preprints <span class="text-body-secondary">({{ unrefereed.size }})</span></a>
+               <a href="#other">Notes and preprints <span class="text-body-secondary">({{ unrefereed.size }})</span></a>
             </li>
             {%- endif %}
          </ul>
@@ -87,10 +72,11 @@ type links did, so the page is still navigable without scrolling blind.
 <!-- ===================== JOURNAL ARTICLES ===================== -->
 <div class="py-6" id="journal">
    <div class="container">
+      <details class="pub-section">
+         <summary><h2 class="antonia-light display-5 d-inline">Journal articles</h2></summary>
       <div class="row mb-4">
          <div class="col-24 col-lg-16">
             <p class="fw-bold text-wvu-blue mb-2">Peer reviewed</p>
-            <h2 class="antonia-light display-5 mb-3">Journal articles</h2>
             <p class="fs-5 text-body-secondary mb-0">
                {{ journals.size }} papers in refereed journals, grouped by year.
             </p>
@@ -165,6 +151,7 @@ type links did, so the page is still navigable without scrolling blind.
          {%- endfor %}
       </ul>
       {%- endfor %}
+      </details>
    </div>
 </div>
 
@@ -172,10 +159,11 @@ type links did, so the page is still navigable without scrolling blind.
 {%- if proceedings.size > 0 %}
 <div class="bg-wvu-not-quite-white py-6" id="proceedings">
    <div class="container">
+      <details class="pub-section">
+         <summary><h2 class="antonia-light display-5 d-inline">Proceedings</h2></summary>
       <div class="row mb-4">
          <div class="col-24 col-lg-16">
             <p class="fw-bold text-wvu-blue mb-2">Conference</p>
-            <h2 class="antonia-light display-5 mb-3">Proceedings</h2>
             <p class="fs-5 text-body-secondary mb-0">
                {{ proceedings.size }} instrument and system papers presented at SPIE, IEEE
                and URSI meetings &mdash; where most telescope-building work gets published first.
@@ -251,6 +239,7 @@ type links did, so the page is still navigable without scrolling blind.
          {%- endfor %}
       </ul>
       {%- endfor %}
+      </details>
    </div>
 </div>
 {%- endif %}
@@ -263,10 +252,11 @@ still grouped by year so the heading cascade does not skip from h2 to h4.
 {%- if unrefereed.size > 0 %}
 <div class="py-6" id="other">
    <div class="container">
+      <details class="pub-section">
+         <summary><h2 class="antonia-light display-5 d-inline">Notes and preprints</h2></summary>
       <div class="row mb-4">
          <div class="col-24 col-lg-16">
             <p class="fw-bold text-wvu-blue mb-2">Not yet refereed</p>
-            <h2 class="antonia-light display-5 mb-3">Notes &amp; preprints</h2>
             <p class="fs-5 text-body-secondary mb-0">
                Research notes are editorially reviewed rather than peer reviewed;
                preprints have not been through review at all yet.
@@ -342,6 +332,7 @@ still grouped by year so the heading cascade does not skip from h2 to h4.
          {%- endfor %}
       </ul>
       {%- endfor %}
+      </details>
    </div>
 </div>
 {%- endif %}
@@ -352,7 +343,7 @@ still grouped by year so the heading cascade does not skip from h2 to h4.
       <div class="row align-items-center">
          <div class="col-24 col-lg-16 mb-4 mb-lg-0">
             <p class="fw-bold text-wvu-gold mb-2">Graduate work</p>
-            <h2 class="antonia-light display-6 mb-2">Dissertations &amp; theses</h2>
+            <h2 class="antonia-light display-6 mb-2">Dissertations and theses</h2>
             <p class="fs-5 mb-0">
                The people page lists every degree completed in the lab with its author. Each entry links to the full text in the WVU Research Repository.
             </p>

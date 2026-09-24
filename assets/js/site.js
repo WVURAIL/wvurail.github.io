@@ -18,6 +18,26 @@
       btn.addEventListener("click", function () { window.print(); });
    });
 
+   var disclosures = [].slice.call(document.querySelectorAll(".pub-section"));
+   var revealSection = function (hash) {
+      var section = document.getElementById(hash.replace(/^#/, ""));
+      var disclosure = section && section.querySelector(".pub-section");
+      if (disclosure) disclosure.open = true;
+   };
+   document.querySelectorAll('nav[aria-label="Publication types"] a').forEach(function (link) {
+      link.addEventListener("click", function () { revealSection(link.hash); });
+   });
+   window.addEventListener("hashchange", function () { revealSection(window.location.hash); });
+   revealSection(window.location.hash);
+   var printState;
+   window.addEventListener("beforeprint", function () {
+      printState = disclosures.map(function (item) { return item.open; });
+      disclosures.forEach(function (item) { item.open = true; });
+   });
+   window.addEventListener("afterprint", function () {
+      disclosures.forEach(function (item, i) { item.open = printState[i]; });
+   });
+
    /* --- Publications filter ---------------------------------------------
       Ported unchanged in behaviour from the previous site. On a 69-item page
       this is the difference between scanning and hunting. */
@@ -44,9 +64,19 @@
          if (section && sections.indexOf(section) === -1) { sections.push(section); }
       });
 
+      var previousQuery = "";
+      var openState = [];
       var apply = function () {
          var q = search.value.trim().toLowerCase();
          var hits = 0;
+         if (q && !previousQuery) {
+            openState = disclosures.map(function (item) { return item.open; });
+         }
+         disclosures.forEach(function (item, i) {
+            if (q) item.open = true;
+            else if (previousQuery) item.open = openState[i];
+         });
+         previousQuery = q;
 
          entries.forEach(function (el) {
             var show = !q || el._haystack.indexOf(q) !== -1;

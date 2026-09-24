@@ -94,7 +94,8 @@ the old site published. Keep them if these bands are ever reordered.
             <ul class="list-unstyled row mb-0">
                {%- for m in ed.materials.modules %}
                <li class="col-24 col-sm-12 mb-3">
-                  <div class="bg-wvu-not-quite-white p-3 h-100">{{ m }}</div>
+                  {% assign module_url = m | slugify | prepend: '/dspira-lessons/categories/' | append: '/' %}
+                     <a class="d-block bg-wvu-not-quite-white p-3 h-100" href="{{ module_url }}">{{ m }}</a>
                </li>
                {%- endfor %}
             </ul>
@@ -273,7 +274,7 @@ the old site published. Keep them if these bands are ever reordered.
       <div class="row mb-4">
          <div class="col-24 col-lg-16">
             <p class="fw-bold text-wvu-blue mb-2">What came out of it</p>
-            <h2 class="antonia-light display-5 mb-3">Published &amp; presented</h2>
+            <h2 class="antonia-light display-5 mb-3">Published and presented</h2>
             <p class="fs-5 text-body-secondary mb-0">
                Teachers did not just attend. They published classroom research, co-authored
                the program's conference paper, and presented their work to other engineers.

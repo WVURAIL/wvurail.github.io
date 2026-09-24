@@ -13,7 +13,7 @@ pi:
     phone: "(304) 293-9686"
     office: "AERB 237"
     link:
-      text: "Faculty page & CV"
+      text: "Faculty page and CV"
       url: "/bandura/"
     bio: >
       Dr. Bandura builds analog front ends, FPGA correlators, and timing systems for wide-field radio telescopes. These systems let instruments such as CHIME survey the entire overhead sky at once. The science includes 21 cm intensity mapping, which traces neutral hydrogen to measure accelerated cosmic expansion. Outrigger stations precisely locate fast radio bursts, allowing researchers to identify their host galaxies.
@@ -67,7 +67,7 @@ alumni:
       url: "https://researchrepository.wvu.edu/etd/12243/"
 
   - name: "Pranav R. Sanghavi"
-    now: "Postdoctoral Fellow, Center for Astrophysics | Harvard & Smithsonian"
+    now: "Postdoctoral Fellow, Center for Astrophysics | Harvard and Smithsonian"
     publication:
       label: "Ph.D. Dissertation"
       year: 2022
