@@ -38,7 +38,7 @@ import urllib.request
 # CUTOVER ITEM: must change in the same commit as the CNAME/domain move, or the
 # unreachable-site escape hatch (exit 0 below) turns this check silently green
 # forever. Listed in .github/CUTOVER.md.
-LESSONS = "https://wvurail.org/dspira-lessons/"
+LESSONS = "https://wvurail.org/dspira/"
 ALL_LESSONS = LESSONS + "all/"
 # The module names are read off /all/. They used to be on /lesson-modules/,
 # which now redirects there: the two pages listed exactly the same lessons.
@@ -85,13 +85,13 @@ def declared_modules(path=EDUCATION_YML):
 def published_modules(html):
     """The module names the lessons site's module index shows, in order."""
     names = re.findall(
-        r'class="module-toc__head".*?<h2>\s*<a[^>]*>(.*?)</a>',
+        r'class="module-toc__head".*?<h2[^>]*>\s*<a[^>]*>(.*?)</a>',
         html,
         re.S,
     )
     if not names:
         # The older index rendered module names as card headings instead.
-        names = re.findall(r'class="module"[^>]*>.*?<h3>\s*<a[^>]*>(.*?)</a>',
+        names = re.findall(r'class="module"[^>]*>.*?<h3[^>]*>\s*<a[^>]*>(.*?)</a>',
                            html, re.S)
     return [re.sub(r"\s+", " ", n).strip() for n in names]
 

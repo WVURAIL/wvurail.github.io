@@ -7,7 +7,7 @@
 # Prune or add freely — the page renders whatever is here.
 #
 # The 2026 RNAAS note's affiliations are NSF, WVU, and the Center for
-# Astrophysics | Harvard & Smithsonian (P. Sanghavi's postdoc home, confirmed
+# Astrophysics | Harvard and Smithsonian (P. Sanghavi's postdoc home, confirmed
 # Aug 2026) — all already listed below.
 
 featured:
@@ -80,7 +80,7 @@ groups:
       - "Stanford University"
       - "SETI Institute"
       - "Space Telescope Science Institute"
-      - "Center for Astrophysics | Harvard & Smithsonian"
+      - "Center for Astrophysics | Harvard and Smithsonian"
       - "Harvard University"
       - "Princeton University"
       - "Flatiron Institute"
@@ -93,7 +93,7 @@ groups:
       - "Space Science Institute"
       - "Institute for Advanced Study"
       - "UT Southwestern Medical Center"
-      - "Franklin & Marshall College"
+      - "Franklin and Marshall College"
       - "Murray State University"
       - "University of Illinois Urbana-Champaign"
       - "National Science Foundation"
@@ -149,7 +149,7 @@ groups:
       - "National Astronomical Observatory of Japan"
       - "Sun Yat-sen University"
       - "Xidian University"
-      - "CSIRO Space & Astronomy / Parkes Observatory"
+      - "CSIRO Space and Astronomy / Parkes Observatory"
       - "ICRAR — Curtin University"
       - "University of Newcastle"
   - region: "Latin America"

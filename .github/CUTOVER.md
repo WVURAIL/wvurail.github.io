@@ -13,26 +13,81 @@ migration plan. The one-line version: this repo is the GitHub Pages
 project site with Pages enabled. Changing the domain here moves all of them at
 once.
 
-## The inheritance family (what moves together)
+## Current publishing ownership
 
-| Repo | Serves today | After cutover |
-|---|---|---|
-| `wvurail.github.io` | wvurail.org | rail.wvu.edu |
-| `dspira-lessons` | wvurail.org/dspira-lessons/ | rail.wvu.edu/dspira-lessons/ |
-| `lightwork` | wvurail.org/lightwork/ | rail.wvu.edu/lightwork/ |
-| `dspira` | wvurail.org/dspira/ | **must keep** — NSF-cited |
-| `cra` | wvurail.org/cra/ | **must keep** — NSF-cited |
-| `gr-transient` | wvurail.org/gr-transient/ | decide: archived 2019 prototype |
+The approved Design System site is deployed on `main`. The `wvu` branch remains
+the source for the preview. The earlier review and merge guidance below is
+historical; a future domain change is a separate operation.
 
-Do NOT disable Pages on `dspira` or `cra`. The public outcomes report for NSF
-award 1611114 cites `wvurail.org/dspira/`, `wvurail.org/dspira-lessons/` and
-`wvurail.org/cra/` by name (two of them as `http://`), and a submitted NSF
-report cannot be edited. Their README notices say the content moved to
-dspira-lessons; for `cra` that is true, for `dspira` it is not — the 14 DSP
-lecture decks in `dspira/lectures/2018/` exist nowhere else. The DSPIRA
-restructure (see the architecture plan) is what makes these URLs honest again;
-until then they stay live. `gr-transient` is not cited anywhere and is a
-genuine candidate for switching Pages off.
+| Repository | Current ownership |
+| --- | --- |
+| `wvurail.github.io` | Lab root and old project-address redirects |
+| `dspira` | Current lessons, historical materials, and recovery packages |
+| `lightwork` | Numbered technical memos |
+| `rail-preview` | Noindex staging site |
+
+The lab build owns `/dspira-lessons/`, `/dspira-archive/`, `/cra/`,
+`/gr-transient/`, and `/gr-dspira/`. Retired repositories no longer need Pages.
+Their old HTML addresses redirect; existing download addresses keep their bytes.
+Historical content lives under `/dspira/history/sites/`. See DSPIRA's
+`.github/ARCHIVE_RETIREMENT.md` for recovery and verification instructions.
+
+Keep the NSF-cited `/dspira/` and `/cra/` addresses working on both HTTP and HTTPS.
+The lab-owned redirects preserve CRA without retaining a separate publisher.
+The lecture decks and other institute material have verified recovery packages
+and an active DSPIRA home. Do not remove those packages or compatibility routes.
+
+When changing domains, also update the canonical targets in DSPIRA's
+`tools/retired_sites.py`, `tools/publish_pages.py`, public history links, and all
+three publishing workflows. Keep the original frozen recovery packages intact.
+
+SCM ruling (Adam Glenn, 2 Sep 2026): the DSPIRA discussion forum — the giscus
+rooms under `dspira/forum/` — must stay on a NON-University address
+for now (an old rule against forums on WVU sites; the policy is being
+rewritten). Decision (Dylan, 2 Sep 2026): wvurail.org is to be eliminated
+entirely in the long run, so the lessons site comes to rail.wvu.edu with the
+lab site and gets the same Design System masthead/footer treatment, and the
+forum is no longer embedded at all — the `/forum/` pages become plain links
+out to the repo's GitHub Discussions categories, which is what the giscus
+rooms were fronting anyway. Nothing forum-like is then served from a
+University page. The lab site's `/dspiratalk/` stub keeps pointing at
+`/dspira/forum/`, which keeps existing as that link page.
+
+On eliminating wvurail.org: the NSF public outcomes report for award 1611114
+cites three wvurail.org addresses and cannot be edited, so the domain should
+stay registered as a pure redirect (no content, one 301 rule) for as long as
+those citations matter — it costs a renewal and is invisible to visitors.
+Letting it lapse breaks those links and frees the name for anyone to register.
+
+SCM also ruled that analytics are optional (WVU's standard code on request)
+and that CSP is the host's concern, i.e. ours: GitHub Pages sends no CSP
+header, so nothing on the branch needs to change for it.
+
+## The Design System build (branch `wvu`)
+
+The rail.wvu.edu presentation layer lives on the `wvu` branch: WVU Design
+System v3 via the documented CDN links, the standard masthead and footer with
+the EO/AA statement and the full contact block from `_config.yml`'s `contact:`
+key, every internal link through `relative_url`. Sibling GitHub Pages sites
+(`/dspira/`, `/lightwork/`, `/dspira/`, `/cra/`) are deliberately left
+root-absolute so the site can be served under a subpath for staging.
+
+Two things about that branch are pre-cutover state, on purpose:
+
+- The footer is already the University footer (© West Virginia University,
+  EO/AA line) — it will only ever be served from the University domain or from
+  a `noindex` staging copy, so the old "not an official University web page"
+  disclaimer is gone from the footer. The accessibility statement still carries
+  the disclaimer paragraph, marked `CUTOVER ITEM` in the source.
+- Merging `wvu` into `main` is NOT the cutover and must not happen before SCM
+  approval: `main` is what wvurail.org serves. The cutover commit below is
+  where the merge lands.
+
+Staging for the review: a project repo (e.g. `WVURAIL/rail-preview`, Pages
+source "GitHub Actions") that checks out this branch and builds it with
+`baseurl: /rail-preview` and `noindex_all: true`, published automatically at
+`wvurail.org/rail-preview/` through the domain inheritance. The workflow file
+for it is drafted; the layout honours `site.noindex_all`.
 
 ## Before the cutover (safe any time)
 
@@ -64,7 +119,7 @@ genuine candidate for switching Pages off.
       job display name)
 - [ ] `README.md` line 3 (the site's address)
 
-## The cutover commit (dspira-lessons repo)
+## The cutover commit (dspira repo)
 
 - [ ] `_config.yml` `url:` → `https://rail.wvu.edu` (serving does not need it;
       canonicals, og:url, sitemap and feed do)
@@ -78,7 +133,7 @@ genuine candidate for switching Pages off.
 - [ ] Enforce HTTPS in Settings→Pages once the certificate issues (up to 24 h)
 - [ ] Point wvurail.org DNS (lab-controlled) at the redirect shim — real 301s:
       `/*  https://rail.wvu.edu/:splat  301` covers every legacy URL. The
-      NSF-cited ones are /dspira/, /dspira-lessons/ and /cra/ (award 1611114);
+      NSF-cited ones are /dspira/, /dspira/ and /cra/ (award 1611114);
       they need to keep resolving to the content they promise, on http AND https
 - [ ] Re-run both link checkers against the new domain
 - [ ] SiteImprove: confirm the dashboard tracks rail.wvu.edu

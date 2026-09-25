@@ -2,7 +2,7 @@
 #
 # The number lives in one place, _data/education.yml's materials.lesson_count,
 # and every mention of it on the site renders from there. But it describes a
-# different repository — wvurail.org/dspira-lessons — which counts its own posts
+# different repository — wvurail.org/dspira — which counts its own posts
 # and therefore changes on its own the moment somebody publishes a lesson.
 # Nothing links the two, so the number here goes stale in silence.
 #
@@ -32,7 +32,7 @@ permissions:
 
 jobs:
   compare:
-    name: Compare against wvurail.org/dspira-lessons
+    name: Compare against wvurail.org/dspira
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
