@@ -17,11 +17,17 @@ layout: null
 <head>
    <meta charset="utf-8" />
    <title>Redirecting &middot; {{ site.title }}</title>
-   <link rel="canonical" href="{{ '/dspira/forum/' | absolute_url }}" />
-   <meta http-equiv="refresh" content="0; url={{ '/dspira/forum/' | relative_url }}" />
+   {%- comment -%}
+   /dspira/ is a sibling GitHub Pages site on the same host, not a path
+   on this site, so it must NOT go through relative_url/absolute_url: under a
+   subpath (staging at /rail-preview/) those filters would prepend the baseurl
+   and the redirect would point at a page that does not exist.
+   {%- endcomment %}
+   <link rel="canonical" href="{{ site.url }}/dspira/forum/" />
+   <meta http-equiv="refresh" content="0; url=/dspira/forum/" />
    <meta name="robots" content="noindex" />
 </head>
 <body>
-   <p>This page has moved to the <a href="{{ '/dspira/forum/' | relative_url }}">DSPIRA forum</a>.</p>
+   <p>This page has moved to the <a href="/dspira/forum/">DSPIRA forum</a>.</p>
 </body>
 </html>

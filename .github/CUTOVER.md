@@ -18,7 +18,7 @@ once.
 | Repo | Serves today | After cutover |
 |---|---|---|
 | `wvurail.github.io` | wvurail.org | rail.wvu.edu |
-| `dspira` | wvurail.org/dspira/ | rail.wvu.edu/dspira/ |
+| `dspira` | wvurail.org/dspira/ | rail.wvu.edu/dspira/ — DS port on its `wvu` branch |
 | `lightwork` | wvurail.org/lightwork/ | rail.wvu.edu/lightwork/ |
 | `dspira` | wvurail.org/dspira/ | **must keep** — NSF-cited |
 | `cra` | wvurail.org/cra/ | **must keep** — NSF-cited |
@@ -33,6 +33,54 @@ lecture decks in `dspira/lectures/2018/` exist nowhere else. The DSPIRA
 restructure (see the architecture plan) is what makes these URLs honest again;
 until then they stay live. `gr-transient` is not cited anywhere and is a
 genuine candidate for switching Pages off.
+
+SCM ruling (Adam Glenn, 2 Sep 2026): the DSPIRA discussion forum — the giscus
+rooms under `dspira/forum/` — must stay on a NON-University address
+for now (an old rule against forums on WVU sites; the policy is being
+rewritten). Decision (Dylan, 2 Sep 2026): wvurail.org is to be eliminated
+entirely in the long run, so the lessons site comes to rail.wvu.edu with the
+lab site and gets the same Design System masthead/footer treatment, and the
+forum is no longer embedded at all — the `/forum/` pages become plain links
+out to the repo's GitHub Discussions categories, which is what the giscus
+rooms were fronting anyway. Nothing forum-like is then served from a
+University page. The lab site's `/dspiratalk/` stub keeps pointing at
+`/dspira/forum/`, which keeps existing as that link page.
+
+On eliminating wvurail.org: the NSF public outcomes report for award 1611114
+cites three wvurail.org addresses and cannot be edited, so the domain should
+stay registered as a pure redirect (no content, one 301 rule) for as long as
+those citations matter — it costs a renewal and is invisible to visitors.
+Letting it lapse breaks those links and frees the name for anyone to register.
+
+SCM also ruled that analytics are optional (WVU's standard code on request)
+and that CSP is the host's concern, i.e. ours: GitHub Pages sends no CSP
+header, so nothing on the branch needs to change for it.
+
+## The Design System build (branch `wvu`)
+
+The rail.wvu.edu presentation layer lives on the `wvu` branch: WVU Design
+System v3 via the documented CDN links, the standard masthead and footer with
+the EO/AA statement and the full contact block from `_config.yml`'s `contact:`
+key, every internal link through `relative_url`. Sibling GitHub Pages sites
+(`/dspira/`, `/lightwork/`, `/dspira/`, `/cra/`) are deliberately left
+root-absolute so the site can be served under a subpath for staging.
+
+Two things about that branch are pre-cutover state, on purpose:
+
+- The footer is already the University footer (© West Virginia University,
+  EO/AA line) — it will only ever be served from the University domain or from
+  a `noindex` staging copy, so the old "not an official University web page"
+  disclaimer is gone from the footer. The accessibility statement still carries
+  the disclaimer paragraph, marked `CUTOVER ITEM` in the source.
+- Merging `wvu` into `main` is NOT the cutover and must not happen before SCM
+  approval: `main` is what wvurail.org serves. The cutover commit below is
+  where the merge lands.
+
+Staging for the review: a project repo (e.g. `WVURAIL/rail-preview`, Pages
+source "GitHub Actions") that checks out this branch and builds it with
+`baseurl: /rail-preview` and `noindex_all: true`, published automatically at
+`wvurail.org/rail-preview/` through the domain inheritance. The workflow file
+for it is drafted; the layout honours `site.noindex_all`.
 
 ## Before the cutover (safe any time)
 

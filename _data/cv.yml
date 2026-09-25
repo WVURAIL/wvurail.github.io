@@ -11,7 +11,7 @@
 # the lab pages still exclude it — see the note in publications.yml).
 #
 # Publication-shaped entries below use the same fields as publications.yml,
-# so _includes/publication.html renders them unchanged.
+# so _pages/bandura-cv.html renders them unchanged.
 #
 # `review:` keys are questions for a human — DELETE once confirmed, same
 # convention as publications.yml. Links appear only where they were verified;
@@ -44,7 +44,7 @@ profiles:
     url: "https://www.researchgate.net/profile/Kevin-Bandura"
   - label: "Statler College directory"
     url: "https://directory.statler.wvu.edu/faculty-staff-directory/kevin-bandura"
-  - label: "Gravitational Waves & Cosmology center"
+  - label: "Gravitational Waves and Cosmology center"
     url: "https://gwac.wvu.edu/about/people/kevin-bandura"
   - label: "Coursicle"
     url: "https://www.coursicle.com/wvu/professors/Kevin+Bandura/"
@@ -64,7 +64,7 @@ media:
     url: "https://media.statler.wvu.edu/news/2026/04/06/wvu-outstanding-educators-advisers-staff-and-researchers-recognized-by-the-statler-college"
   - year: 2026
     title: "WVUniverse public talk on backyard radio astronomy"
-    outlet: "WVU Physics & Astronomy and WVU Planetarium, on Instagram"
+    outlet: "WVU Physics and Astronomy and WVU Planetarium, on Instagram"
     url: "https://www.instagram.com/p/DWgnpmiDUYF/"
   - year: 2025
     title: "WVU engineers recalibrate radio telescopes to illuminate dark energy"
@@ -233,14 +233,14 @@ memberships:
 # Earlier invited talks and posters, as listed on the 2016 CV. Recent talks
 # have not been compiled yet — add them above the older ones as they come in.
 # ---------------------------------------------------------------------------
-# Thesis & dissertation committee service — member only, not chair; his own
+# Thesis and dissertation committee service — member only, not chair; his own
 # students are the Graduated list on the page. This set came from Kevin's
 # records (Aug 2026), each verified against its WVU Research Repository page.
 # The repository's search does not index committee fields, so new ones must be
 # added here by hand.
 committees:
   - name: "Evan T. Smith"
-    degree: "Ph.D., Physics & Astronomy"
+    degree: "Ph.D., Physics and Astronomy"
     year: 2022
     title: "Impact of Radio Frequency Interference and Real-Time Spectral Kurtosis Mitigation"
     url: "https://researchrepository.wvu.edu/etd/11467/"
@@ -252,7 +252,7 @@ committees:
     url: "https://researchrepository.wvu.edu/etd/11205/"
     chair: "Natalia Schmid"
   - name: "Brent J. Shapiro-Albert"
-    degree: "Ph.D., Physics & Astronomy"
+    degree: "Ph.D., Physics and Astronomy"
     year: 2021
     title: "Pulsar Noise Processes and Emission Physics"
     url: "https://researchrepository.wvu.edu/etd/8060/"
@@ -264,7 +264,7 @@ committees:
     url: "https://researchrepository.wvu.edu/etd/8302/"
     chair: "Natalia A. Schmid"
   - name: "Nickolas M. Pingel"
-    degree: "Ph.D., Physics & Astronomy"
+    degree: "Ph.D., Physics and Astronomy"
     year: 2017
     title: "Deep Extragalactic Neutral Hydrogen Surveys with the Green Bank Telescope"
     url: "https://researchrepository.wvu.edu/etd/7228/"
@@ -428,4 +428,4 @@ retracted:
     - K. Bandura
     - P. Sanghavi
     - J. Kania
-    note: "Retracted 23 June 2026 (retraction notice: doi 10.1038/s41586-026-10799-8). An unusual calibration problem left CHIME's digital beams incorrectly pointed when FRB 20191221A was detected; the reported periodicity was the known Galactic pulsar PSR J0248+6021."
+    note: "Retracted 23 June 2026 (retraction notice: doi 10.1038/s41586-026-10799-8). A calibration problem misdirected CHIME's digital beams when FRB 20191221A was detected. The reported periodicity came from the known Galactic pulsar PSR J0248+6021."

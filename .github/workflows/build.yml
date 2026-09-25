@@ -60,6 +60,8 @@ jobs:
             people/index.html \
             publications/index.html \
             bandura/index.html \
+            bandura/cv/index.html \
+            accessibility/index.html \
             where-we-work/index.html \
             who-we-work-with/index.html \
             dspiratalk/index.html \
@@ -100,17 +102,26 @@ jobs:
               fail=1
             fi
           }
+          # Each pattern is the element a template emits exactly once per data
+          # entry. The Design System markup is mostly Bootstrap utility classes,
+          # so several of these are the utility string of that one element on
+          # that one page — if the page gains another element with the same
+          # string the count inflates, but it can never be satisfied by an
+          # empty loop, which is what the check exists to catch.
           check "publication entries" publications/index.html '<li class="pub' 60
-          check "people cards"        people/index.html       'class="person'   2
-          check "alumni rows"         people/index.html       'class="alumni-row"' 5
-          check "site cards"          where-we-work/index.html 'class="site"'   4
-          # The cohort layout looks its roster up in _data/education.yml by year.
-          # If that lookup ever misses, the page still builds — it just renders
-          # with no names and a blank stats row. Assert the names are there.
-          check "2017 roster"         education/dspira-2017/index.html  'class="roster-name"' 9
-          check "2018 roster"         education/dspira-2018/index.html  'class="roster-name"' 6
-          check "2019 roster"         education/dspira-2019/index.html  'class="roster-name"' 6
-          check "2019 returning tags" education/dspira-2019/index.html  'class="roster-return"' 4
+          # `person` is the one semantic hook on /people/: the PI row, each
+          # researcher card and the open-position card all carry it.
+          check "people cards"        people/index.html       'class="person '  2
+          check "alumni rows"         people/index.html       '<li class="border-bottom py-4">' 5
+          check "site cards"          where-we-work/index.html 'class="card h-100 border-0 bg-wvu-not-quite-white"' 4
+          # The cohort-roster include looks its roster up in _data/education.yml
+          # by year. If that lookup ever misses, the page still builds — it just
+          # renders with no names and a blank stats row. Assert the names are
+          # there: one <li> per teacher, one "returning" badge per returner.
+          check "2017 roster"         education/dspira-2017/index.html  '<li class="col-24 col-sm-12 col-lg-8">' 9
+          check "2018 roster"         education/dspira-2018/index.html  '<li class="col-24 col-sm-12 col-lg-8">' 6
+          check "2019 roster"         education/dspira-2019/index.html  '<li class="col-24 col-sm-12 col-lg-8">' 6
+          check "2019 returning tags" education/dspira-2019/index.html  'class="badge bg-wvu-blue text-white ms-2">returning' 4
           exit $fail
 
       - name: No unrendered Liquid escaped into the output
