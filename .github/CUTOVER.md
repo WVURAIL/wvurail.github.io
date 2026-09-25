@@ -18,24 +18,24 @@ once.
 | Repo | Serves today | After cutover |
 |---|---|---|
 | `wvurail.github.io` | wvurail.org | rail.wvu.edu |
-| `dspira-lessons` | wvurail.org/dspira-lessons/ | rail.wvu.edu/dspira-lessons/ — DS port on its `wvu` branch |
+| `dspira` | wvurail.org/dspira/ | rail.wvu.edu/dspira/ — DS port on its `wvu` branch |
 | `lightwork` | wvurail.org/lightwork/ | rail.wvu.edu/lightwork/ |
 | `dspira` | wvurail.org/dspira/ | **must keep** — NSF-cited |
 | `cra` | wvurail.org/cra/ | **must keep** — NSF-cited |
 | `gr-transient` | wvurail.org/gr-transient/ | decide: archived 2019 prototype |
 
 Do NOT disable Pages on `dspira` or `cra`. The public outcomes report for NSF
-award 1611114 cites `wvurail.org/dspira/`, `wvurail.org/dspira-lessons/` and
+award 1611114 cites `wvurail.org/dspira/`, `wvurail.org/dspira/` and
 `wvurail.org/cra/` by name (two of them as `http://`), and a submitted NSF
 report cannot be edited. Their README notices say the content moved to
-dspira-lessons; for `cra` that is true, for `dspira` it is not — the 14 DSP
+dspira; for `cra` that is true, for `dspira` it is not — the 14 DSP
 lecture decks in `dspira/lectures/2018/` exist nowhere else. The DSPIRA
 restructure (see the architecture plan) is what makes these URLs honest again;
 until then they stay live. `gr-transient` is not cited anywhere and is a
 genuine candidate for switching Pages off.
 
 SCM ruling (Adam Glenn, 2 Sep 2026): the DSPIRA discussion forum — the giscus
-rooms under `dspira-lessons/forum/` — must stay on a NON-University address
+rooms under `dspira/forum/` — must stay on a NON-University address
 for now (an old rule against forums on WVU sites; the policy is being
 rewritten). Decision (Dylan, 2 Sep 2026): wvurail.org is to be eliminated
 entirely in the long run, so the lessons site comes to rail.wvu.edu with the
@@ -44,7 +44,7 @@ forum is no longer embedded at all — the `/forum/` pages become plain links
 out to the repo's GitHub Discussions categories, which is what the giscus
 rooms were fronting anyway. Nothing forum-like is then served from a
 University page. The lab site's `/dspiratalk/` stub keeps pointing at
-`/dspira-lessons/forum/`, which keeps existing as that link page.
+`/dspira/forum/`, which keeps existing as that link page.
 
 On eliminating wvurail.org: the NSF public outcomes report for award 1611114
 cites three wvurail.org addresses and cannot be edited, so the domain should
@@ -62,7 +62,7 @@ The rail.wvu.edu presentation layer lives on the `wvu` branch: WVU Design
 System v3 via the documented CDN links, the standard masthead and footer with
 the EO/AA statement and the full contact block from `_config.yml`'s `contact:`
 key, every internal link through `relative_url`. Sibling GitHub Pages sites
-(`/dspira-lessons/`, `/lightwork/`, `/dspira/`, `/cra/`) are deliberately left
+(`/dspira/`, `/lightwork/`, `/dspira/`, `/cra/`) are deliberately left
 root-absolute so the site can be served under a subpath for staging.
 
 Two things about that branch are pre-cutover state, on purpose:
@@ -112,7 +112,7 @@ for it is drafted; the layout honours `site.noindex_all`.
       job display name)
 - [ ] `README.md` line 3 (the site's address)
 
-## The cutover commit (dspira-lessons repo)
+## The cutover commit (dspira repo)
 
 - [ ] `_config.yml` `url:` → `https://rail.wvu.edu` (serving does not need it;
       canonicals, og:url, sitemap and feed do)
@@ -126,7 +126,7 @@ for it is drafted; the layout honours `site.noindex_all`.
 - [ ] Enforce HTTPS in Settings→Pages once the certificate issues (up to 24 h)
 - [ ] Point wvurail.org DNS (lab-controlled) at the redirect shim — real 301s:
       `/*  https://rail.wvu.edu/:splat  301` covers every legacy URL. The
-      NSF-cited ones are /dspira/, /dspira-lessons/ and /cra/ (award 1611114);
+      NSF-cited ones are /dspira/, /dspira/ and /cra/ (award 1611114);
       they need to keep resolving to the content they promise, on http AND https
 - [ ] Re-run both link checkers against the new domain
 - [ ] SiteImprove: confirm the dashboard tracks rail.wvu.edu

@@ -250,7 +250,7 @@ and nothing warns you.
   `src="{{ pi.photo | relative_url }}"` — so the whole site can be served under
   a subpath such as `/rail-preview/` for staging by setting `baseurl`, while
   production keeps `baseurl: ""`. Sibling GitHub Pages projects on the same host
-  (`/dspira-lessons/`, `/lightwork/`, `/dspira/`, `/cra/`) are separate sites,
+  (`/dspira/`, `/lightwork/`, `/dspira/`, `/cra/`) are separate sites,
   not this one, and stay root-absolute on purpose: do not add the filter to
   those.
 - **JavaScript.** Vanilla, no dependencies, no inline handlers and no inline

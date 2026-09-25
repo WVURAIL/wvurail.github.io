@@ -42,7 +42,7 @@ links are simpler: the file is in _site or it is not.
 
 SIBLING SITES
 
-/dspira-lessons/, /lightwork/, /dspira/ and /cra/ are separate GitHub Pages
+/dspira/, /lightwork/, /dspira/ and /cra/ are separate GitHub Pages
 projects served under this site's domain. They are never in _site, so looking
 for a file would call every one of them broken. Those paths — the
 SIBLING_PREFIXES tuple — are fetched over HTTP on this site's own url, read
@@ -82,7 +82,7 @@ BOT_CODES = {401, 403, 405, 406, 418, 429, 503}
 # Separate GitHub Pages projects served under this site's domain. Never in
 # _site, so these paths are fetched on the site's own url instead of looked
 # for on disk. Trailing slashes matter: /dspira-2017/ is this site's own page.
-SIBLING_PREFIXES = ("/dspira-lessons/", "/lightwork/", "/dspira/", "/cra/")
+SIBLING_PREFIXES = ("/dspira/", "/lightwork/", "/dspira/", "/cra/")
 
 # Where the site's own url is read from. NOT a cutover item: when the site moves
 # to rail.wvu.edu the `url:` line in _config.yml changes and this follows it

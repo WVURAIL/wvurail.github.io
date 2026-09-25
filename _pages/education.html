@@ -94,7 +94,7 @@ the old site published. Keep them if these bands are ever reordered.
             <ul class="list-unstyled row mb-0">
                {%- for m in ed.materials.modules %}
                <li class="col-24 col-sm-12 mb-3">
-                  {% assign module_url = m | slugify | prepend: '/dspira-lessons/categories/' | append: '/' %}
+                  {% assign module_url = m | slugify | prepend: '/dspira/categories/' | append: '/' %}
                      <a class="d-block bg-wvu-not-quite-white p-3 h-100" href="{{ module_url }}">{{ m }}</a>
                </li>
                {%- endfor %}
