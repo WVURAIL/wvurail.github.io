@@ -242,7 +242,7 @@ relative_url (see the note beside it in the data file).
          <div class="col-24 col-lg-16">
             <p class="fw-bold text-wvu-blue mb-2">Science education</p>
             <h2 class="antonia-light display-5 mb-3">Teachers build radio telescopes too</h2>
-            <p class="fs-5 text-body-secondary mb-0">{{ ed.summary | strip_newlines | strip }}</p>
+            <p class="fs-5 text-body-secondary mb-0">Build and use a radio telescope with free activities written by educators. Find a starting point for your classroom or project.</p>
          </div>
       </div>
       <div class="row align-items-center">
@@ -255,17 +255,6 @@ relative_url (see the note beside it in the data file).
             <p class="fw-bold small text-wvu-blue mb-2">Free classroom materials</p>
             <h3 class="h4 helvetica-neue-bold">{{ ed.materials.title }}</h3>
             <p>{{ ed.materials.intro | strip_newlines | strip | replace: '%COUNT%', ed.materials.lesson_count }}</p>
-            <p>
-               <a href="{{ ed.award.url }}">NSF Award {{ ed.award.number }}</a> provided seed funding.
-               Contributors continue maintaining the collection.
-               Outreach supported by <a href="{{ ed.follow_on.outreach_hardware.url }}">NSF Award {{ ed.follow_on.outreach_hardware.number }}</a>
-               ({{ ed.follow_on.outreach_hardware.start }}&ndash;{{ ed.follow_on.outreach_hardware.end }})
-               carries DSPIRA receivers into a more robust outreach lab.
-            </p>
-            <p class="small text-body-secondary helvetica-neue-bold">Partners:</p>
-            <ul class="small text-body-secondary">
-               {%- for p in ed.partners %}<li>{{ p }}</li>{% endfor %}
-            </ul>
             <a href="{{ ed.materials.url }}" class="btn btn-wvu-blue me-2 mb-2">
                Open the lessons
                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
@@ -274,7 +263,7 @@ relative_url (see the note beside it in the data file).
                   <path d="M2 8h11M9 4l4 4-4 4"></path>
                </svg>
             </a>
-            <a href="{{ '/education/' | relative_url }}" class="btn btn-outline-wvu-blue mb-2">About DSPIRA</a>
+            <a href="{{ '/education/' | relative_url }}" class="btn btn-outline-wvu-blue mb-2">Teaching and program information</a>
          </div>
       </div>
    </div>

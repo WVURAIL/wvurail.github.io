@@ -33,12 +33,12 @@ reason the lead says "roughly".
 {%- for g in inst.groups %}{% assign total = total | plus: g.names.size %}{% endfor -%}
 
 <!-- ===================== PAGE HEAD ===================== -->
-<div class="bg-wvu-blue text-white py-7">
+<div class="bg-wvu-blue text-white interior-head">
    <div class="container">
       <div class="row">
          <div class="col-24 col-lg-16">
             <p class="fw-bold text-wvu-gold mb-3">Collaborations</p>
-            <h1 class="antonia-light display-3 mb-4">Who we work with</h1>
+            <h1 class="antonia-light interior-title mb-4">Who we work with</h1>
             <p class="fs-4 mb-4">
                Instruments like CHIME, its outriggers, and HIRAX only exist because many
                institutions build them together. Author lists from {{ site.data.publications.size }} lab publications include roughly {{ total }} institutions across 15+ countries.

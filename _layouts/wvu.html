@@ -75,6 +75,11 @@ pagination rules keep a heading with what follows it and a citation on one
 page.
 {% endcomment -%}
 <style>
+.interior-head { padding: 2rem 0; }
+.interior-title { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15; }
+.program-history summary { cursor: pointer; }
+@media (max-width: 767px) { .interior-head { padding: 1.5rem 0; } }
+
   main :not(pre) > code { color: inherit; }
   .pub-filter { display: none; }
   .js .pub-filter { display: flex; }

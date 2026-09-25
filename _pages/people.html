@@ -30,12 +30,12 @@ the same arithmetic the source _includes/people.html does.
 {%- assign n_researchers = n_grad | plus: n_students -%}
 
 <!-- ===================== PAGE HEAD ===================== -->
-<div class="bg-wvu-blue text-white py-7">
+<div class="bg-wvu-blue text-white interior-head">
    <div class="container">
       <div class="row">
          <div class="col-24 col-lg-16">
             <p class="fw-bold text-wvu-gold mb-3">People</p>
-            <h1 class="antonia-light display-3 mb-4">The lab</h1>
+            <h1 class="antonia-light interior-title mb-4">The lab</h1>
             <p class="fs-4 mb-0">
                Our group brings together engineering and astronomy in WVU's Lane Department of Computer Science and Electrical Engineering. We are also part of the <a class="text-white" href="https://gwac.wvu.edu/">Center for Gravitational Waves and Cosmology</a>. Alumni helped build many of our current systems.
             </p>
@@ -113,9 +113,9 @@ would remove the one thing the page says about joining.
    <div class="container">
       <div class="row mb-5">
          <div class="col-24 col-lg-16">
-            <p class="fw-bold text-wvu-blue mb-2">The team</p>
+            <p class="fw-bold text-wvu-blue mb-2">{% if n_researchers > 0 %}The team{% else %}Opportunities{% endif %}</p>
             <h2 class="antonia-light display-5 mb-0">
-               Researchers{% if n_researchers > 0 %} <span class="text-body-secondary">{{ n_researchers }}</span>{% endif %}
+               {% if n_researchers > 0 %}Researchers <span class="text-body-secondary">{{ n_researchers }}</span>{% else %}Join the lab{% endif %}
             </h2>
          </div>
       </div>

@@ -85,7 +85,7 @@ materials:
   # .github/workflows/lesson-count.yml checks it against the live site every
   # Monday and fails if the two disagree, so the drift gets noticed rather than
   # discovered. To update: change this line, nothing else.
-  lesson_count: 51
+  lesson_count: 49
   intro: >
     Teachers and lab contributors maintain %COUNT% public lessons covering the
     astronomy, hardware, signal processing, and labs. The discussion forum and

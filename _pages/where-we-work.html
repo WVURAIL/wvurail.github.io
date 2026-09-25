@@ -25,23 +25,41 @@ Counts in the summary band are derived from the data, never typed in.
 {%- assign regions = sites | map: "region" | uniq -%}
 
 <!-- ===================== HERO ===================== -->
-<div class="bg-wvu-blue text-white py-7">
+<div class="bg-wvu-blue text-white interior-head">
    <div class="container">
       <div class="row">
          <div class="col-24 col-lg-16">
             <p class="fw-bold text-wvu-gold mb-3">
                Research and telescopes
             </p>
-            <h1 class="antonia-light display-3 mb-4">Where we build and observe</h1>
+            <h1 class="antonia-light interior-title mb-4">Build instruments. Explore the universe.</h1>
             <p class="fs-4 mb-4">
-               Our instruments live where the sky is quiet. Some we build and run;
-               others we contribute to as part of larger collaborations.
+               Our work connects electronics, computing, and astronomy. Explore the research questions and the instruments we contribute to.
             </p>
             <a href="{{ '/who-we-work-with/' | relative_url }}" class="btn btn-wvu-gold me-2">Meet our collaborators</a>
             <a href="{{ '/publications/' | relative_url }}" class="btn btn-light">Browse publications</a>
          </div>
       </div>
    </div>
+</div>
+
+<div class="container py-5">
+  <h2 class="antonia-light display-6">Research you can contribute to</h2>
+  <div class="row g-4 mt-2">
+    <div class="col-24 col-lg-8"><h3 class="h4">Locate fast radio bursts</h3>
+      <p>Which galaxies produce these brief radio flashes? CHIME and its outriggers combine measurements from widely separated telescopes.</p>
+      <p>RAIL contributes analog front ends, timing systems, and software that turn recorded signals into sky positions.</p>
+    </div>
+    <div class="col-24 col-lg-8"><h3 class="h4">Map neutral hydrogen</h3>
+      <p>Hydrogen traces the universe's large-scale structure. Instruments such as CHIME and HIRAX measure its faint radio emission.</p>
+      <p>Our instrumentation work connects sensitive receivers with digital signal processing.</p>
+    </div>
+    <div class="col-24 col-lg-8"><h3 class="h4">Improve telescope measurements</h3>
+      <p>Calibration and interference control help distinguish astronomical signals from instrument effects and unwanted radio emission.</p>
+      <p>Projects combine electronics, testing, and data analysis.</p>
+    </div>
+  </div>
+  <p class="mt-3 mb-0">Interested in hardware, software, or analysis? <a href="{{ '/contact/' | relative_url }}">Tell us about your interests and experience</a>.</p>
 </div>
 
 <!-- ===================== AT A GLANCE ===================== -->

@@ -52,83 +52,35 @@ the real utilities instead, and index.html still needs the same correction:
 {%- assign teacher_states = roster | map: "state" | uniq -%}
 {%- assign returning_names = returning_names | uniq -%}
 
-<!-- ===================== HERO ===================== -->
-<div class="bg-wvu-blue text-white py-7">
-   <div class="container">
-      <div class="row">
-         <div class="col-24 col-lg-16">
-            <p class="fw-bold text-wvu-gold mb-3">Education</p>
-            <h1 class="antonia-light display-3 mb-4">Teachers built radio telescopes &mdash; and a community</h1>
-            <p class="fs-4 mb-4">{{ ed.summary | strip_newlines | strip }}</p>
-            <div class="border-start border-1 border-white ps-4">
-               <p class="mb-0">{{ ed.status | strip_newlines | strip }}</p>
-            </div>
-         </div>
-      </div>
-   </div>
+<div class="bg-wvu-blue text-white interior-head">
+  <div class="container"><div class="col-24 col-lg-17">
+    <p class="fw-bold text-wvu-gold">Education</p>
+    <h1 class="antonia-light interior-title">Explore radio astronomy with DSPIRA</h1>
+    <p class="fs-5">Free activities for classrooms, students, and telescope builders. Choose a lesson, prepare a class, or start a telescope project.</p>
+    <a class="btn btn-wvu-gold me-2 mb-2" href="/dspira/start/">Find a lesson</a>
+    <a class="btn btn-light me-2 mb-2" href="/dspira/teach/">Teach with DSPIRA</a>
+    <a class="btn btn-light mb-2" href="/dspira/kits/">Request a kit</a>
+    <p class="small mt-3 mb-0">The lessons remain active beyond the historical summer cohorts. <a class="text-white" href="#timeline">Read the program history</a>.</p>
+  </div></div>
 </div>
 
-<!-- ===================== LESSONS AND COMMUNITY ===================== -->
-{%- comment %}
-The id attributes below are load-bearing, not decoration: _pages/dspira-2019.html
-links to /education/#outputs, and the section ids are the only inbound anchors
-the old site published. Keep them if these bands are ever reordered.
-{% endcomment -%}
-<div class="py-6" id="lessons">
-   <div class="container">
-      <div class="row mb-5">
-         <div class="col-24 col-lg-16">
-            <p class="fw-bold text-wvu-blue mb-2">Still active</p>
-            <h2 class="antonia-light display-5 mb-3">{{ ed.materials.title }}</h2>
-            <p class="fs-5 text-body-secondary mb-0">
-               {{ ed.materials.intro | strip_newlines | strip | replace: '%COUNT%', ed.materials.lesson_count }}
-            </p>
-         </div>
-      </div>
-
-      <div class="row">
-         <div class="col-24 col-lg-14 mb-5 mb-lg-0">
-            <h3 class="h5 helvetica-neue-bold mb-3">
-               The {{ ed.materials.modules.size }} lesson modules
-            </h3>
-            <ul class="list-unstyled row mb-0">
-               {%- for m in ed.materials.modules %}
-               <li class="col-24 col-sm-12 mb-3">
-                  {% assign module_url = m | slugify | prepend: '/dspira/categories/' | append: '/' %}
-                     <a class="d-block bg-wvu-not-quite-white p-3 h-100" href="{{ module_url }}">{{ m }}</a>
-               </li>
-               {%- endfor %}
-            </ul>
-         </div>
-
-         <div class="col-24 col-lg-9 offset-lg-1">
-            <div class="card border-0 bg-wvu-not-quite-white h-100">
-               <div class="card-body p-4">
-                  <h3 class="h5 helvetica-neue-bold mb-3">Use the lessons</h3>
-                  <p class="text-body-secondary">
-                     All {{ ed.materials.lesson_count }} lessons are free, open and maintained
-                     by teachers and lab contributors.
-                  </p>
-                  <a href="{{ ed.materials.url }}" class="btn btn-wvu-blue mb-4">
-                     Open the lessons site
-                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
-                          fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"
-                          class="ms-1 align-baseline">
-                        <path d="M2 8h11M9 4l4 4-4 4"></path>
-                     </svg>
-                  </a>
-                  <ul class="list-unstyled mb-0">
-                     {%- for x in ed.materials.extras %}
-                     <li class="mb-2"><a href="{{ x.url }}">{{ x.text }}</a></li>
-                     {%- endfor %}
-                  </ul>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
+<div class="container py-5" id="lessons">
+  <h2 class="antonia-light display-6">Resources for your project</h2>
+  <p>Browse <a href="/dspira/all/">all {{ ed.materials.lesson_count }} lessons</a>, or get help with your next practical step.</p>
+  <ul>
+    <li><a href="/dspira/software/">Software setup and compatibility</a></li>
+    <li><a href="/dspira/hardware/">Hardware and amplifier designs</a></li>
+    <li><a href="/lightwork/">LightWork construction and measurement guides</a></li>
+    <li><a href="/dspira/newpost/">Contribute an activity by email</a></li>
+    <li><a href="/dspira/forum/">Community questions and support</a></li>
+  </ul>
 </div>
 
+<div class="container pb-5">
+<details class="program-history border rounded p-4">
+  <summary class="h4 helvetica-neue-bold mb-0">Program history, cohorts, and funding</summary>
+  <p class="mt-4">{{ ed.summary | strip_newlines | strip }}</p>
+  <p>{{ ed.status | strip_newlines | strip }}</p>
 <!-- ===================== FACTS ===================== -->
 <div class="bg-wvu-not-quite-white py-6">
    <div class="container">
@@ -381,20 +333,5 @@ the old site published. Keep them if these bands are ever reordered.
    </div>
 </div>
 
-<!-- ===================== CTA ===================== -->
-<div class="bg-wvu-blue text-white py-6">
-   <div class="container">
-      <div class="row align-items-center">
-         <div class="col-24 col-lg-16 mb-4 mb-lg-0">
-            <h2 class="antonia-light display-6 mb-2">Teach with DSPIRA</h2>
-            <p class="fs-5 mb-0">
-               The {{ ed.materials.lesson_count }} lessons, the build guides and the
-               discussion forum are open to any educator, student or telescope builder.
-            </p>
-         </div>
-         <div class="col-24 col-lg-8 text-lg-end">
-            <a href="{{ ed.materials.url }}" class="btn btn-wvu-gold">Open the lessons site</a>
-         </div>
-      </div>
-   </div>
+</details>
 </div>

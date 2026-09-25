@@ -119,3 +119,19 @@
       });
    }
 })();
+
+(function () {
+  function revealFragment() {
+    var id;
+    try { id = decodeURIComponent(window.location.hash.slice(1)); } catch (error) { return; }
+    var target = document.getElementById(id);
+    if (!target) return;
+    var parent = target.parentElement;
+    while (parent) {
+      if (parent.tagName === "DETAILS") parent.open = true;
+      parent = parent.parentElement;
+    }
+  }
+  window.addEventListener("hashchange", revealFragment);
+  revealFragment();
+})();
