@@ -20,3 +20,5 @@ Thumbs.db
 # Python bytecode, from running the checks in .github/scripts/ locally
 __pycache__/
 *.py[cod]
+
+node_modules/

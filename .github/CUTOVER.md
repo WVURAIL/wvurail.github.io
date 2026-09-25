@@ -15,16 +15,16 @@ once.
 
 ## Current publishing ownership
 
-The approved Design System site is deployed on `main`. The `wvu` branch remains
-the source for the preview. The earlier review and merge guidance below is
-historical; a future domain change is a separate operation.
+The approved Design System site is deployed on `main`. Approval is complete,
+and the preview is being retired. Future changes belong on `main`; a domain
+change is a separate operation.
 
 | Repository | Current ownership |
 | --- | --- |
 | `wvurail.github.io` | Lab root and old project-address redirects |
 | `dspira` | Current lessons, historical materials, and recovery packages |
 | `lightwork` | Numbered technical memos |
-| `rail-preview` | Noindex staging site |
+
 
 The lab build owns `/dspira-lessons/`, `/dspira-archive/`, `/cra/`,
 `/gr-transient/`, and `/gr-dspira/`. Retired repositories no longer need Pages.
@@ -63,31 +63,12 @@ SCM also ruled that analytics are optional (WVU's standard code on request)
 and that CSP is the host's concern, i.e. ours: GitHub Pages sends no CSP
 header, so nothing on the branch needs to change for it.
 
-## The Design System build (branch `wvu`)
+## Approved site and build tools
 
-The rail.wvu.edu presentation layer lives on the `wvu` branch: WVU Design
-System v3 via the documented CDN links, the standard masthead and footer with
-the EO/AA statement and the full contact block from `_config.yml`'s `contact:`
-key, every internal link through `relative_url`. Sibling GitHub Pages sites
-(`/dspira/`, `/lightwork/`, `/dspira/`, `/cra/`) are deliberately left
-root-absolute so the site can be served under a subpath for staging.
-
-Two things about that branch are pre-cutover state, on purpose:
-
-- The footer is already the University footer (© West Virginia University,
-  EO/AA line) — it will only ever be served from the University domain or from
-  a `noindex` staging copy, so the old "not an official University web page"
-  disclaimer is gone from the footer. The accessibility statement still carries
-  the disclaimer paragraph, marked `CUTOVER ITEM` in the source.
-- Merging `wvu` into `main` is NOT the cutover and must not happen before SCM
-  approval: `main` is what wvurail.org serves. The cutover commit below is
-  where the merge lands.
-
-Staging for the review: a project repo (e.g. `WVURAIL/rail-preview`, Pages
-source "GitHub Actions") that checks out this branch and builds it with
-`baseurl: /rail-preview` and `noindex_all: true`, published automatically at
-`wvurail.org/rail-preview/` through the domain inheritance. The workflow file
-for it is drafted; the layout honours `site.noindex_all`.
+The approved presentation is already on `main`; no design-branch merge is needed.
+The live lab site owns the shared build tools in `.github/site-tools/`.
+DSPIRA uses those tools at a pinned lab-site revision. Neither live deployment
+needs the preview repository. See [preview retirement](PREVIEW_RETIREMENT.md).
 
 ## Before the cutover (safe any time)
 
@@ -100,8 +81,7 @@ for it is drafted; the layout honours `site.noindex_all`.
       `_github-pages-challenge-wvurail` lives in Squarespace DNS — keep it) (org Settings → Pages →
       verified domains; TXT record in the lab's own DNS). Closes the takeover
       window that opens the moment the domain detaches from this repo.
-- [ ] Review approval in hand (Conceptboard + Website Approval and Launch Form;
-      three-week minimum; zero WCAG A/AA errors).
+- [x] Site approval confirmed by Dylan. The approved design is already live.
 - [ ] ITS ticket filed: CNAME `rail.wvu.edu → wvurail.github.io`, TXT
       `_github-pages-challenge-wvurail.rail.wvu.edu` (value from org
       Settings→Pages verification flow), and a request not to introduce a

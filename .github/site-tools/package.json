@@ -1,0 +1,11 @@
+{
+  "name": "rail-site-tools",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs"
+  },
+  "devDependencies": {
+    "purgecss": "7.0.2"
+  }
+}

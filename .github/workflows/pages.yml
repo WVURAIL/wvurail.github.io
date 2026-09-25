@@ -45,18 +45,13 @@ jobs:
         env:
           BUNDLE_GEMFILE: ${{ github.workspace }}/Gemfile.ci
           JEKYLL_ENV: production
-      - uses: actions/checkout@v5
-        with:
-          repository: WVURAIL/rail-preview
-          ref: 333d0da721f1fa6cc8b679e60f0f2b678c3fb3ec
-          path: checks
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
       - name: Trim unused Design System styles
         run: |
-          npm ci --prefix checks
-          node checks/scripts/trim_styles.mjs _site assets/wvu-design-system/site.min.css
+          npm ci --prefix site/.github/site-tools
+          node site/.github/site-tools/scripts/trim_styles.mjs _site assets/wvu-design-system/site.min.css
       - name: Build current lesson redirects
         working-directory: lessons
         run: bundle exec jekyll build --trace -d ../_lessons
