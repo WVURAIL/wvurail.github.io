@@ -13,26 +13,33 @@ migration plan. The one-line version: this repo is the GitHub Pages
 project site with Pages enabled. Changing the domain here moves all of them at
 once.
 
-## The inheritance family (what moves together)
+## Current publishing ownership
 
-| Repo | Serves today | After cutover |
-|---|---|---|
-| `wvurail.github.io` | wvurail.org | rail.wvu.edu |
-| `dspira` | wvurail.org/dspira/ | rail.wvu.edu/dspira/ — DS port on its `wvu` branch |
-| `lightwork` | wvurail.org/lightwork/ | rail.wvu.edu/lightwork/ |
-| `dspira` | wvurail.org/dspira/ | **must keep** — NSF-cited |
-| `cra` | wvurail.org/cra/ | **must keep** — NSF-cited |
-| `gr-transient` | wvurail.org/gr-transient/ | decide: archived 2019 prototype |
+The approved Design System site is deployed on `main`. The `wvu` branch remains
+the source for the preview. The earlier review and merge guidance below is
+historical; a future domain change is a separate operation.
 
-Do NOT disable Pages on `dspira` or `cra`. The public outcomes report for NSF
-award 1611114 cites `wvurail.org/dspira/`, `wvurail.org/dspira/` and
-`wvurail.org/cra/` by name (two of them as `http://`), and a submitted NSF
-report cannot be edited. Their README notices say the content moved to
-dspira; for `cra` that is true, for `dspira` it is not — the 14 DSP
-lecture decks in `dspira/lectures/2018/` exist nowhere else. The DSPIRA
-restructure (see the architecture plan) is what makes these URLs honest again;
-until then they stay live. `gr-transient` is not cited anywhere and is a
-genuine candidate for switching Pages off.
+| Repository | Current ownership |
+| --- | --- |
+| `wvurail.github.io` | Lab root and old project-address redirects |
+| `dspira` | Current lessons, historical materials, and recovery packages |
+| `lightwork` | Numbered technical memos |
+| `rail-preview` | Noindex staging site |
+
+The lab build owns `/dspira-lessons/`, `/dspira-archive/`, `/cra/`,
+`/gr-transient/`, and `/gr-dspira/`. Retired repositories no longer need Pages.
+Their old HTML addresses redirect; existing download addresses keep their bytes.
+Historical content lives under `/dspira/history/sites/`. See DSPIRA's
+`.github/ARCHIVE_RETIREMENT.md` for recovery and verification instructions.
+
+Keep the NSF-cited `/dspira/` and `/cra/` addresses working on both HTTP and HTTPS.
+The lab-owned redirects preserve CRA without retaining a separate publisher.
+The lecture decks and other institute material have verified recovery packages
+and an active DSPIRA home. Do not remove those packages or compatibility routes.
+
+When changing domains, also update the canonical targets in DSPIRA's
+`tools/retired_sites.py`, `tools/publish_pages.py`, public history links, and all
+three publishing workflows. Keep the original frozen recovery packages intact.
 
 SCM ruling (Adam Glenn, 2 Sep 2026): the DSPIRA discussion forum — the giscus
 rooms under `dspira/forum/` — must stay on a NON-University address
