@@ -125,8 +125,10 @@ materials:
     # on GitHub Discussions, and threads there go back to 2020.
     - text: Ask a question in the forum
       url: "/dspira/forum/"
-    - text: GNU Radio modules on GitHub
-      url: "https://github.com/WVURAIL/gr-radio_astro"
+    - text: Telescope software and downloads
+      url: "/dspira/software/"
+    - text: Hardware designs and fabrication files
+      url: "/dspira/hardware/"
 
 # Kevin Bandura's account supplies the COVID context. The public award and
 # repository records independently establish the timing and later activity.
