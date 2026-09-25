@@ -18,17 +18,17 @@ once.
 | Repo | Serves today | After cutover |
 |---|---|---|
 | `wvurail.github.io` | wvurail.org | rail.wvu.edu |
-| `dspira-lessons` | wvurail.org/dspira-lessons/ | rail.wvu.edu/dspira-lessons/ |
+| `dspira` | wvurail.org/dspira/ | rail.wvu.edu/dspira/ |
 | `lightwork` | wvurail.org/lightwork/ | rail.wvu.edu/lightwork/ |
 | `dspira` | wvurail.org/dspira/ | **must keep** — NSF-cited |
 | `cra` | wvurail.org/cra/ | **must keep** — NSF-cited |
 | `gr-transient` | wvurail.org/gr-transient/ | decide: archived 2019 prototype |
 
 Do NOT disable Pages on `dspira` or `cra`. The public outcomes report for NSF
-award 1611114 cites `wvurail.org/dspira/`, `wvurail.org/dspira-lessons/` and
+award 1611114 cites `wvurail.org/dspira/`, `wvurail.org/dspira/` and
 `wvurail.org/cra/` by name (two of them as `http://`), and a submitted NSF
 report cannot be edited. Their README notices say the content moved to
-dspira-lessons; for `cra` that is true, for `dspira` it is not — the 14 DSP
+dspira; for `cra` that is true, for `dspira` it is not — the 14 DSP
 lecture decks in `dspira/lectures/2018/` exist nowhere else. The DSPIRA
 restructure (see the architecture plan) is what makes these URLs honest again;
 until then they stay live. `gr-transient` is not cited anywhere and is a
@@ -64,7 +64,7 @@ genuine candidate for switching Pages off.
       job display name)
 - [ ] `README.md` line 3 (the site's address)
 
-## The cutover commit (dspira-lessons repo)
+## The cutover commit (dspira repo)
 
 - [ ] `_config.yml` `url:` → `https://rail.wvu.edu` (serving does not need it;
       canonicals, og:url, sitemap and feed do)
@@ -78,7 +78,7 @@ genuine candidate for switching Pages off.
 - [ ] Enforce HTTPS in Settings→Pages once the certificate issues (up to 24 h)
 - [ ] Point wvurail.org DNS (lab-controlled) at the redirect shim — real 301s:
       `/*  https://rail.wvu.edu/:splat  301` covers every legacy URL. The
-      NSF-cited ones are /dspira/, /dspira-lessons/ and /cra/ (award 1611114);
+      NSF-cited ones are /dspira/, /dspira/ and /cra/ (award 1611114);
       they need to keep resolving to the content they promise, on http AND https
 - [ ] Re-run both link checkers against the new domain
 - [ ] SiteImprove: confirm the dashboard tracks rail.wvu.edu

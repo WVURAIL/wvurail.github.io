@@ -38,7 +38,7 @@ import urllib.request
 # CUTOVER ITEM: must change in the same commit as the CNAME/domain move, or the
 # unreachable-site escape hatch (exit 0 below) turns this check silently green
 # forever. Listed in .github/CUTOVER.md.
-LESSONS = "https://wvurail.org/dspira-lessons/"
+LESSONS = "https://wvurail.org/dspira/"
 ALL_LESSONS = LESSONS + "all/"
 # The module names are read off /all/. They used to be on /lesson-modules/,
 # which now redirects there: the two pages listed exactly the same lessons.
