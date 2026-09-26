@@ -104,9 +104,13 @@ needs the preview repository. See [preview retirement](PREVIEW_RETIREMENT.md).
 - [ ] `_config.yml` `url:` → `https://rail.wvu.edu` (serving does not need it;
       canonicals, og:url, sitemap and feed do)
 - [ ] `tools/check_links.py` default base URL
-- [ ] GitHub-rendered files (`README.md`, `CONTRIBUTING.md`, `code/**` READMEs
-      and the `map_h1_hdf5_drift.py` docstring) still say wvurail.org — they
+- [ ] GitHub-rendered files (`README.md`, `CONTRIBUTING.md`, `lesson-examples/**` READMEs) still say wvurail.org — they
       keep working through the redirector, update at leisure
+
+## The cutover commit (dspira-software repo)
+
+- [ ] Update website links in `README.md` and the `data-processing/` guide.
+      Check the processing scripts for website addresses too.
 
 ## Immediately after DNS resolves
 
