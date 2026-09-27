@@ -31,7 +31,7 @@ award:
   end: December 31, 2021
   amount: "$577,815"
   url: "https://www.nsf.gov/awardsearch/show-award?AWD_ID=1611114"
-  outcome_url: "https://api.nsf.gov/services/v1/awards/1611114/projectoutcomes.json"
+  outcome_url: "https://www.nsf.gov/awardsearch/show-award/?AWD_ID=1611114#outcomes-heading"
 
 follow_on:
   stars:
