@@ -60,6 +60,9 @@ jobs:
           JEKYLL_ENV: production
       - name: Preserve retired website addresses
         run: |
+          if [ -f lessons/tools/notebook-requirements.txt ]; then
+            python3 -m pip install --quiet -r lessons/tools/notebook-requirements.txt
+          fi
           python3 lessons/tools/test_publish_pages.py
           python3 lessons/tools/test_retired_sites.py
           python3 lessons/tools/test_publish_assets.py
