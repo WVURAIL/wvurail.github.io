@@ -31,7 +31,7 @@ award:
   end: December 31, 2021
   amount: "$577,815"
   url: "https://www.nsf.gov/awardsearch/show-award?AWD_ID=1611114"
-  outcome_url: "https://api.nsf.gov/services/v1/awards/1611114/projectoutcomes.json"
+  outcome_url: "https://www.nsf.gov/awardsearch/show-award/?AWD_ID=1611114#outcomes-heading"
 
 follow_on:
   stars:
@@ -229,7 +229,7 @@ outputs:
     url: "https://www.youtube.com/watch?v=zT0RDYLnX6Y"
     note: A talk given by a DSPIRA teacher at the GNU Radio Conference.
     extra:
-      text: Slides (PDF)
+      text: View slides (PDF)
       url: "https://www.gnuradio.org/grcon/grcon18/presentations/Open_Source_Radio_Telescopes/2-John_Makous-OSRT.pdf"
 
 # The cra and dspira sites were archived in 2026 and their material migrated

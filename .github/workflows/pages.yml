@@ -45,18 +45,13 @@ jobs:
         env:
           BUNDLE_GEMFILE: ${{ github.workspace }}/Gemfile.ci
           JEKYLL_ENV: production
-      - uses: actions/checkout@v5
-        with:
-          repository: WVURAIL/rail-preview
-          ref: 333d0da721f1fa6cc8b679e60f0f2b678c3fb3ec
-          path: checks
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
       - name: Trim unused Design System styles
         run: |
-          npm ci --prefix checks
-          node checks/scripts/trim_styles.mjs _site assets/wvu-design-system/site.min.css
+          npm ci --prefix site/.github/site-tools
+          node site/.github/site-tools/scripts/trim_styles.mjs _site assets/wvu-design-system/site.min.css
       - name: Build current lesson redirects
         working-directory: lessons
         run: bundle exec jekyll build --trace -d ../_lessons
@@ -65,8 +60,13 @@ jobs:
           JEKYLL_ENV: production
       - name: Preserve retired website addresses
         run: |
+          if [ -f lessons/tools/notebook-requirements.txt ]; then
+            python3 -m pip install --quiet -r lessons/tools/notebook-requirements.txt
+          fi
           python3 lessons/tools/test_publish_pages.py
           python3 lessons/tools/test_retired_sites.py
+          python3 lessons/tools/test_publish_assets.py
+          python3 lessons/tools/publish_assets.py --site _lessons
           python3 lessons/tools/publish_pages.py --site _lessons --alias _site/dspira-lessons
           python3 lessons/tools/retired_sites.py fetch --destination _retired
           python3 lessons/tools/retired_sites.py aliases --source _retired --site _site

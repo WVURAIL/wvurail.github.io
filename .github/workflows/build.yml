@@ -26,6 +26,17 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Check shared site tools
+        run: |
+          python3 -m pip install -r .github/site-tools/requirements-checks.txt
+          python3 -m unittest discover -s .github/site-tools/tests -v
+          npm ci --prefix .github/site-tools
+          npm test --prefix .github/site-tools
+
       - name: Pin the exact gems GitHub Pages uses
         run: |
           cat > Gemfile.ci <<'GEMFILE'
