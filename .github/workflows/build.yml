@@ -79,25 +79,41 @@ jobs:
         done
         echo "All expected pages built."
     - name: The data-driven lists actually rendered
-      run: "set -euo pipefail\nfail=0\ncheck() {  # name, file, pattern, minimum\n  # `|| true` matters: grep exits 1 on zero\
-        \ matches, and with\n  # `set -euo pipefail` that killed the step before it could print the\n  # diagnostic this check\
-        \ exists to produce.\n  n=$(grep -o \"$3\" \"_site/$2\" | wc -l || true)\n  echo \"$1: $n\"\n  if [ \"$n\" -lt \"\
-        $4\" ]; then\n    echo \"::error::$1 rendered $n (expected >= $4) \u2014 data or a Liquid filter is broken\"\n   \
-        \ fail=1\n  fi\n}\n# Each pattern is the element a template emits exactly once per data\n# entry. The Design System\
-        \ markup is mostly Bootstrap utility classes,\n# so several of these are the utility string of that one element on\n\
-        # that one page \u2014 if the page gains another element with the same\n# string the count inflates, but it can never\
-        \ be satisfied by an\n# empty loop, which is what the check exists to catch.\ncheck \"publication entries\" publications/index.html\
-        \ '<li class=\"pub' 60\n# `person` is the one semantic hook on /people/: the PI row, each\n# researcher card and the\
-        \ open-position card all carry it.\ncheck \"people cards\"        people/index.html       'class=\"person '  2\ncheck\
-        \ \"alumni rows\"         people/index.html       '<li class=\"border-bottom py-4\">' 5\ncheck \"site cards\"    \
-        \      where-we-work/index.html 'class=\"card h-100 border-0 bg-wvu-not-quite-white\"' 4\n# The cohort-roster include\
-        \ looks its roster up in _data/education.yml\n# by year. If that lookup ever misses, the page still builds \u2014\
-        \ it just\n# renders with no names and a blank stats row. Assert the names are\n# there: one <li> per teacher, one\
-        \ \"returning\" badge per returner.\ncheck \"2017 roster\"         education/dspira-2017/index.html  '<li class=\"\
-        col-24 col-sm-12 col-lg-8\">' 9\ncheck \"2018 roster\"         education/dspira-2018/index.html  '<li class=\"col-24\
-        \ col-sm-12 col-lg-8\">' 6\ncheck \"2019 roster\"         education/dspira-2019/index.html  '<li class=\"col-24 col-sm-12\
-        \ col-lg-8\">' 6\ncheck \"2019 returning tags\" education/dspira-2019/index.html  'class=\"badge bg-wvu-blue text-white\
-        \ ms-2\">returning' 4\nexit $fail\n"
+      run: |
+        set -euo pipefail
+        fail=0
+        check() {  # name, file, pattern, minimum
+          # `|| true` matters: grep exits 1 on zero matches, and with
+          # `set -euo pipefail` that killed the step before it could print the
+          # diagnostic this check exists to produce.
+          n=$(grep -o "$3" "_site/$2" | wc -l || true)
+          echo "$1: $n"
+          if [ "$n" -lt "$4" ]; then
+            echo "::error::$1 rendered $n (expected >= $4) — data or a Liquid filter is broken"
+            fail=1
+          fi
+        }
+        # Each pattern is the element a template emits exactly once per data
+        # entry. The Design System markup is mostly Bootstrap utility classes,
+        # so several of these are the utility string of that one element on
+        # that one page — if the page gains another element with the same
+        # string the count inflates, but it can never be satisfied by an
+        # empty loop, which is what the check exists to catch.
+        check "publication entries" publications/index.html '<li class="pub' 60
+        # `person` is the one semantic hook on /people/: the PI row, each
+        # researcher card and the open-position card all carry it.
+        check "people cards"        people/index.html       'class="person '  2
+        check "alumni rows"         people/index.html       '<li class="border-bottom py-4">' 5
+        check "site cards"          where-we-work/index.html 'class="card h-100 border-0 bg-wvu-not-quite-white"' 4
+        # The cohort-roster include looks its roster up in _data/education.yml
+        # by year. If that lookup ever misses, the page still builds — it just
+        # renders with no names and a blank stats row. Assert the names are
+        # there: one <li> per teacher, one "returning" badge per returner.
+        check "2017 roster"         education/dspira-2017/index.html  '<li class="col-24 col-sm-12 col-lg-8">' 9
+        check "2018 roster"         education/dspira-2018/index.html  '<li class="col-24 col-sm-12 col-lg-8">' 6
+        check "2019 roster"         education/dspira-2019/index.html  '<li class="col-24 col-sm-12 col-lg-8">' 6
+        check "2019 returning tags" education/dspira-2019/index.html  'class="badge bg-wvu-blue text-white ms-2">returning' 4
+        exit $fail
     - name: No unrendered Liquid escaped into the output
       run: |
         set -euo pipefail
@@ -107,12 +123,20 @@ jobs:
         fi
         echo "No unrendered Liquid."
     - name: The lesson count placeholder was substituted
-      run: "set -euo pipefail\n# The count is written once, as materials.lesson_count, and reaches the\n# page through a `replace`\
-        \ filter on the %COUNT% placeholder. Drop that\n# filter and the build still succeeds \u2014 the page just reads\n\
-        # \"%COUNT% lessons\" to every visitor. It is not Liquid, so the check\n# above does not see it.\nif grep -rn '%COUNT%'\
-        \ _site --include='*.html'; then\n  echo \"::error::%COUNT% reached the built site \u2014 a `replace` filter is missing\"\
-        \n  exit 1\nfi\nn=$(grep -c 'Lessons published' _site/education/index.html || true)\n[ \"$n\" -ge 1 ] || { echo \"\
-        ::error::the lessons stat tile is gone from /education/\"; exit 1; }\necho \"No %COUNT% left in the output.\"\n"
+      run: |
+        set -euo pipefail
+        # The count is written once, as materials.lesson_count, and reaches the
+        # page through a `replace` filter on the %COUNT% placeholder. Drop that
+        # filter and the build still succeeds — the page just reads
+        # "%COUNT% lessons" to every visitor. It is not Liquid, so the check
+        # above does not see it.
+        if grep -rn '%COUNT%' _site --include='*.html'; then
+          echo "::error::%COUNT% reached the built site — a `replace` filter is missing"
+          exit 1
+        fi
+        n=$(grep -c 'Lessons published' _site/education/index.html || true)
+        [ "$n" -ge 1 ] || { echo "::error::the lessons stat tile is gone from /education/"; exit 1; }
+        echo "No %COUNT% left in the output."
     - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
       with:
         repository: WVURAIL/dspira
