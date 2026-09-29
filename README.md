@@ -262,3 +262,9 @@ and nothing warns you.
   pages take them from front matter (`cover_w`, `cover_h`, …) — so the page does
   not jump as the photographs load. Nothing renders wider than ~1600 px; keep
   uploads at or below that.
+
+## Build and publication
+
+Use Ruby 3.3 and the committed `Gemfile.lock` for local previews and CI.
+Run `bundle install`, then `bundle exec jekyll serve`.
+Pull requests run the full website checks. Publishing from `main` deploys the same validated artifact.
