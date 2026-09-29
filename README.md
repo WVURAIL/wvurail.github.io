@@ -13,20 +13,15 @@ bundle exec jekyll serve --config _config.yml,_config.dev.yml
 # open http://localhost:4000
 ```
 
-> **A version caveat worth knowing.** This Gemfile tracks Jekyll 4.3, but GitHub
-> Pages builds the live site with **Jekyll 3.9** (via the `github-pages` gem).
-> The two disagree in places — most painfully on filter signatures. If a build
-> ever fails on Pages but works locally, that gap is the first thing to suspect.
->
-> `.github/workflows/build.yml` builds every push and pull request with the
-> `github-pages` gem, so CI catches those differences before they reach `main`.
-> **If a change is green locally but red in CI, trust CI** — it is the one that
-> matches production.
+Use Ruby 3.3 and the committed `Gemfile.lock`, which pins Jekyll 4.4.
+Local builds, pull request checks, and publication use this same dependency set.
+The Pages workflow deploys the artifact that passed the complete website checks.
 
-To build locally the way Pages does, write the three-line `Gemfile.ci` that
-`build.yml` writes (it is gitignored, never committed) and point Bundler at it:
-`BUNDLE_GEMFILE=Gemfile.ci bundle install`, then
-`BUNDLE_GEMFILE=Gemfile.ci JEKYLL_ENV=production bundle exec jekyll build --trace`.
+To build locally with production settings:
+
+```bash
+JEKYLL_ENV=production bundle exec jekyll build --trace
+```
 
 ## Why the build can fail silently
 
