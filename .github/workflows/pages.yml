@@ -1,91 +1,22 @@
 name: Publish Pages
-on:
+'on':
   push:
-    branches: [main]
-  workflow_dispatch:
+    branches:
+    - main
+  workflow_dispatch: null
   schedule:
-    - cron: "17 * * * *"
-
+  - cron: 17 * * * *
 permissions:
   contents: read
-  pages: write
-  id-token: write
 concurrency:
   group: pages
   cancel-in-progress: true
 jobs:
   build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v5
-        with:
-          path: site
-      - uses: actions/checkout@v5
-        with:
-          repository: WVURAIL/dspira
-          ref: main
-          path: lessons
-          lfs: true
-      - name: Install the GitHub Pages gems
-        run: |
-          cat > Gemfile.ci <<'GEMFILE'
-          source "https://rubygems.org"
-          gem "github-pages", group: :jekyll_plugins
-          gem "webrick", "~> 1.8"
-          GEMFILE
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: "3.1"
-          bundler-cache: true
-        env:
-          BUNDLE_GEMFILE: ${{ github.workspace }}/Gemfile.ci
-      - name: Build the site
-        working-directory: site
-        run: bundle exec jekyll build --trace -d ../_site
-        env:
-          BUNDLE_GEMFILE: ${{ github.workspace }}/Gemfile.ci
-          JEKYLL_ENV: production
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-      - name: Trim unused Design System styles
-        run: |
-          npm ci --prefix site/.github/site-tools
-          node site/.github/site-tools/scripts/trim_styles.mjs _site assets/wvu-design-system/site.min.css
-      - name: Build current lesson redirects
-        working-directory: lessons
-        run: bundle exec jekyll build --trace -d ../_lessons
-        env:
-          BUNDLE_GEMFILE: ${{ github.workspace }}/Gemfile.ci
-          JEKYLL_ENV: production
-      - name: Preserve retired website addresses
-        run: |
-          if [ -f lessons/tools/notebook-requirements.txt ]; then
-            python3 -m pip install --quiet -r lessons/tools/notebook-requirements.txt
-          fi
-          python3 lessons/tools/test_publish_pages.py
-          python3 lessons/tools/test_retired_sites.py
-          python3 lessons/tools/test_publish_assets.py
-          python3 lessons/tools/publish_assets.py --site _lessons
-          python3 lessons/tools/publish_pages.py --site _lessons --alias _site/dspira-lessons
-          python3 lessons/tools/retired_sites.py fetch --destination _retired
-          python3 lessons/tools/retired_sites.py aliases --source _retired --site _site
-          test -s _site/cra/index.html
-          test -s _site/dspira-archive/labs/01/index.html
-          test -s _site/gr-transient/index.html
-          test -s _site/dspira-lessons/dsplab-intro/index.html
-          test $(du -sb _site | cut -f1) -lt 1000000000
-      - name: Check production settings
-        run: |
-          test -s _site/index.html
-          test -s _site/education/index.html
-          test -s _site/publications/index.html
-          grep -qx 'wvurail.org' _site/CNAME
-          if grep -q 'name="robots" content="noindex"' _site/index.html; then exit 1; fi
-          grep -q 'href="/dspira/' _site/index.html
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: _site
+    if: github.ref == 'refs/heads/main'
+    uses: ./.github/workflows/build.yml
+    with:
+      pages_artifact: true
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -93,5 +24,9 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+    - id: deployment
+      uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      pages: write
+      id-token: write
