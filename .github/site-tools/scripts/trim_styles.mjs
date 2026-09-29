@@ -22,7 +22,15 @@ export async function trimStyles(site, paths = ["assets/wvu-design-system/site.m
     const extension = extname(path).slice(1);
     const raw = await readFile(path, "utf8");
     // Embedded notebook styles are not evidence that a page uses those classes.
-    return { extension, raw: extension === "html" ? raw.replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, "") : raw };
+    let sanitized = raw;
+    if (extension === "html") {
+      let previous;
+      do {
+        previous = sanitized;
+        sanitized = sanitized.replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, "");
+      } while (sanitized !== previous);
+    }
+    return { extension, raw: sanitized };
   }));
   const css = await Promise.all(paths.map(async path => ({ raw: await readFile(join(site, path), "utf8") })));
   const results = await new PurgeCSS().purge({
