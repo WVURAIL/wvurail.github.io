@@ -78,6 +78,13 @@
       "expected_archive_sha1_base32": "KPXU2M7JWL6P7NU5UUOWQ4BRTZRX3SJG",
       "sha256": "efd0cc25a6e0b097f665634e7a37cab83b873a179226f78da44fe83fadee4356",
       "bytes": 976532
+    },
+    {
+      "old_url": "https://wvurail.org/pdf/rhys.pdf",
+      "archive_url": "https://web.archive.org/web/20240702182634id_/https://wvurail.org/pdf/rhys.pdf",
+      "sha256": "01f6656186079eaa9938defed5140697e79345acdb6704a0d325ea5aa9a7a365",
+      "bytes": 1989463,
+      "validation": "All 27 pages render; complete PDF end marker and no parser repair. Earlier 1 MiB archive captures are truncated."
     }
   ]
 }
