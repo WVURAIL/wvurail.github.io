@@ -1,0 +1,102 @@
+{
+  "date": "2026-09-30",
+  "purpose": "Original files recovered for compatibility with historical public URLs.",
+  "files": [
+    {
+      "old_url": "https://wvurail.org/images/people/andy.jpg",
+      "archive_url": "https://web.archive.org/web/20200421015751id_/https://wvurail.org/images/people/andy.jpg",
+      "expected_archive_sha1_base32": "GW3LYCXO4C6EYWEIR2HPONTVNP5KDL63",
+      "sha256": "d4131de2aa1cb63bf4d2f4ca1b61cce45fa25f32b51eaa3cdf27fdafd55789e1",
+      "bytes": 661426,
+      "current_path": "images/history/people/andy.jpg"
+    },
+    {
+      "old_url": "https://wvurail.org/images/people/dylan.jpg",
+      "archive_url": "https://web.archive.org/web/20240329224336id_/https://wvurail.org/images/people/dylan.jpg",
+      "expected_archive_sha1_base32": "KR4KVXHQVARIVXKBW6LGGAZUP7EI4VU6",
+      "sha256": "300e396b0ed731af001cf85b450de845809699647ebafbd7fe00a257b0ee8dbf",
+      "bytes": 568395,
+      "current_path": "images/history/people/dylan.jpg"
+    },
+    {
+      "old_url": "https://wvurail.org/images/people/kalyani.jpg",
+      "archive_url": "https://web.archive.org/web/20220318132138id_/https://wvurail.org/images/people/kalyani.jpg",
+      "expected_archive_sha1_base32": "3NCWGH3NKZPHBUWZFXLQEU5DCTJHWGHM",
+      "sha256": "c3ac6580a3f1b45f4363c0fa8b4fa4952ede79fea95dcfbf468e3caaa89e8b7f",
+      "bytes": 1223234,
+      "current_path": "images/history/people/kalyani.jpg"
+    },
+    {
+      "old_url": "https://wvurail.org/images/people/maddux.JPG",
+      "archive_url": "https://web.archive.org/web/20220318132142id_/https://wvurail.org/images/people/maddux.JPG",
+      "expected_archive_sha1_base32": "MAEYVV4WIS73F4IOUPCVGAOA5AJZWUIH",
+      "sha256": "c6c0d22a8bf1dcaccb23ee5374ad65daf59c1868ce3a428bfbf799cd74e258c4",
+      "bytes": 263727,
+      "current_path": "images/history/people/maddux.jpg"
+    },
+    {
+      "old_url": "https://wvurail.org/images/people/pranav.jpeg",
+      "archive_url": "https://web.archive.org/web/20200421012040id_/https://wvurail.org/images/people/pranav.jpeg",
+      "expected_archive_sha1_base32": "2SN5CSBUMBAD6ZOM26LRGOILK3S5CSSU",
+      "sha256": "bda0872ee88f0bca91e6a228e7e6259cfaa5e2bbcda45ebaa182dd91d8cc8a90",
+      "bytes": 437914,
+      "current_path": "images/history/people/pranav.jpeg"
+    },
+    {
+      "old_url": "https://wvurail.org/images/people/rhys.jpg",
+      "archive_url": "https://web.archive.org/web/20200420200137id_/https://wvurail.org/images/people/rhys.jpg",
+      "expected_archive_sha1_base32": "DBPGQAUGR45PSTEABKK3OZBWPRXMZNKA",
+      "sha256": "a5bdd2027c75deb7c07e23a6e5db266afb5d011442e1841f5489f341621f0f43",
+      "bytes": 792259,
+      "current_path": "images/history/people/rhys.jpg"
+    },
+    {
+      "old_url": "https://wvurail.org/images/projects/chime.jpeg",
+      "archive_url": "https://web.archive.org/web/20240329224346id_/https://wvurail.org/images/projects/chime.jpeg",
+      "expected_archive_sha1_base32": "HRG2Z2WLUCZBAJDNPEAACIEQZKQJB3JR",
+      "sha256": "f08f0132a2b0ff42881475483fd659177870a27e461186e67986009ec88721bc",
+      "bytes": 263294,
+      "current_path": "images/history/projects/chime.jpeg"
+    },
+    {
+      "old_url": "https://wvurail.org/images/projects/chord.jpg",
+      "archive_url": "https://web.archive.org/web/20240329224359id_/https://wvurail.org/images/projects/chord.jpg",
+      "expected_archive_sha1_base32": "LQAGNBVU5PETSTQZF6M5UVIWZ6XFQ6BW",
+      "sha256": "0e4c54990fdcd3a52b20fb6d8884624152e2500bbc05b80025387720c7653619",
+      "bytes": 297575,
+      "current_path": "images/history/projects/chord.jpg"
+    },
+    {
+      "old_url": "https://wvurail.org/images/projects/hirax.jpg",
+      "archive_url": "https://web.archive.org/web/20240329224337id_/https://wvurail.org/images/projects/hirax.jpg",
+      "expected_archive_sha1_base32": "6FJ45UDG47Z7K72K633BDP3E4FKTBQ5X",
+      "sha256": "82f7c6c15af008f055c127874f707f19999534bb1d87ecddd75ca0bbb4eba171",
+      "bytes": 406644,
+      "current_path": "images/history/projects/hirax.jpg"
+    },
+    {
+      "old_url": "https://wvurail.org/images/projects/ice.jpg",
+      "archive_url": "https://web.archive.org/web/20240329224324id_/https://wvurail.org/images/projects/ice.jpg",
+      "expected_archive_sha1_base32": "KQYYYDWWPMUTEMWT3GI7CE2D6UKYCGZM",
+      "sha256": "6758909c0e889d170ddba2cc4debe49a53938efc9de9ba7024a2afaa70d22c63",
+      "bytes": 48572,
+      "current_path": "images/history/projects/ice.jpg"
+    },
+    {
+      "old_url": "https://wvurail.org/pdf/andy.pdf",
+      "archive_url": "https://web.archive.org/web/20210622145719id_/https://wvurail.org/pdf/andy.pdf",
+      "expected_archive_sha1_base32": "KPXU2M7JWL6P7NU5UUOWQ4BRTZRX3SJG",
+      "sha256": "efd0cc25a6e0b097f665634e7a37cab83b873a179226f78da44fe83fadee4356",
+      "bytes": 976532,
+      "current_path": "assets/reports/2018/andy-dyck-interferometer.pdf"
+    },
+    {
+      "old_url": "https://wvurail.org/pdf/rhys.pdf",
+      "archive_url": "https://web.archive.org/web/20240702182634id_/https://wvurail.org/pdf/rhys.pdf",
+      "sha256": "01f6656186079eaa9938defed5140697e79345acdb6704a0d325ea5aa9a7a365",
+      "bytes": 1989463,
+      "validation": "All 27 pages render; complete PDF end marker and no parser repair. Earlier 1 MiB archive captures are truncated.",
+      "current_path": "assets/reports/2018/rhys-lockard-gnu-radio.pdf"
+    }
+  ]
+}
