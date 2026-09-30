@@ -1,6 +1,6 @@
 # Retiring the approval preview
 
-The approved site is published from `main` at https://wvurail.org/.
+The approved site is published from `main` at https://rail.wvu.edu/.
 The lab, DSPIRA, and LightWork repositories own their respective site sections.
 The `rail-preview` repository assembled an approval copy; it did not own separate lesson content.
 

@@ -23,7 +23,7 @@ node .github/site-tools/scripts/trim_styles.mjs _site assets/wvu-design-system/s
 Check an assembled lab, DSPIRA, and LightWork build:
 
 ```sh
-python3 .github/site-tools/scripts/check_links.py --site _site --url https://wvurail.org/
+python3 .github/site-tools/scripts/check_links.py --site _site --url https://rail.wvu.edu/
 ```
 
 The retained preview checks also cover subpath links, combined sitemaps, readability,

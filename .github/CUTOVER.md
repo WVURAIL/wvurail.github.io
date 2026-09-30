@@ -1,4 +1,4 @@
-# Cutover checklist: wvurail.org → rail.wvu.edu
+# Cutover checklist: rail.wvu.edu → rail.wvu.edu
 
 This file is the single list of everything that must happen when the site moves
 to the University domain, in order. It lives in `.github/` so Jekyll never
@@ -44,7 +44,7 @@ three publishing workflows. Keep the original frozen recovery packages intact.
 SCM ruling (Adam Glenn, 2 Sep 2026): the DSPIRA discussion forum — the giscus
 rooms under `dspira/forum/` — must stay on a NON-University address
 for now (an old rule against forums on WVU sites; the policy is being
-rewritten). Decision (Dylan, 2 Sep 2026): wvurail.org is to be eliminated
+rewritten). Decision (Dylan, 2 Sep 2026): rail.wvu.edu is to be eliminated
 entirely in the long run, so the lessons site comes to rail.wvu.edu with the
 lab site and gets the same Design System masthead/footer treatment, and the
 forum is no longer embedded at all — the `/forum/` pages become plain links
@@ -53,8 +53,8 @@ rooms were fronting anyway. Nothing forum-like is then served from a
 University page. The lab site's `/dspiratalk/` stub keeps pointing at
 `/dspira/forum/`, which keeps existing as that link page.
 
-On eliminating wvurail.org: the NSF public outcomes report for award 1611114
-cites three wvurail.org addresses and cannot be edited, so the domain should
+On eliminating rail.wvu.edu: the NSF public outcomes report for award 1611114
+cites three rail.wvu.edu addresses and cannot be edited, so the domain should
 stay registered as a pure redirect (no content, one 301 rule) for as long as
 those citations matter — it costs a renewal and is invisible to visitors.
 Letting it lapse breaks those links and frees the name for anyone to register.
@@ -77,7 +77,7 @@ needs the preview repository. See [preview retirement](PREVIEW_RETIREMENT.md).
       branch-built, so saving a domain in Settings→Pages *is* a deploy), try to
       save `rail.wvu.edu` as the custom domain. Saves with "DNS check
       unsuccessful" → clear. Errors as taken → stop, ask GitHub Support.
-- [x] **Verify wvurail.org for the WVURAIL org** (done 2 Sep 2026; TXT record
+- [x] **Verify rail.wvu.edu for the WVURAIL org** (done 2 Sep 2026; TXT record
       `_github-pages-challenge-wvurail` lives in Squarespace DNS — keep it) (org Settings → Pages →
       verified domains; TXT record in the lab's own DNS). Closes the takeover
       window that opens the moment the domain detaches from this repo.
@@ -89,8 +89,8 @@ needs the preview repository. See [preview retirement](PREVIEW_RETIREMENT.md).
 
 ## The cutover commit (this repo)
 
-- [ ] `CNAME` file: `wvurail.org` → `rail.wvu.edu` — **this is the cutover**;
-      wvurail.org stops being served by GitHub the moment it lands
+- [ ] `CNAME` file: `rail.wvu.edu` → `rail.wvu.edu` — **this is the cutover**;
+      rail.wvu.edu stops being served by GitHub the moment it lands
 - [ ] `_config.yml` `url:` → `https://rail.wvu.edu` (and the line-1 comment)
 - [ ] `.github/scripts/check_lesson_count.py` `LESSONS` constant → the new
       domain. Same commit, not later: the script deliberately exits 0 when the
@@ -104,7 +104,7 @@ needs the preview repository. See [preview retirement](PREVIEW_RETIREMENT.md).
 - [ ] `_config.yml` `url:` → `https://rail.wvu.edu` (serving does not need it;
       canonicals, og:url, sitemap and feed do)
 - [ ] `tools/check_links.py` default base URL
-- [ ] GitHub-rendered files (`README.md`, `CONTRIBUTING.md`, `lesson-examples/**` READMEs) still say wvurail.org — they
+- [ ] GitHub-rendered files (`README.md`, `CONTRIBUTING.md`, `lesson-examples/**` READMEs) still say rail.wvu.edu — they
       keep working through the redirector, update at leisure
 
 ## The cutover commit (dspira-software repo)
@@ -115,7 +115,7 @@ needs the preview repository. See [preview retirement](PREVIEW_RETIREMENT.md).
 ## Immediately after DNS resolves
 
 - [ ] Enforce HTTPS in Settings→Pages once the certificate issues (up to 24 h)
-- [ ] Point wvurail.org DNS (lab-controlled) at the redirect shim — real 301s:
+- [ ] Point rail.wvu.edu DNS (lab-controlled) at the redirect shim — real 301s:
       `/*  https://rail.wvu.edu/:splat  301` covers every legacy URL. The
       NSF-cited ones are /dspira/, /dspira/ and /cra/ (award 1611114);
       they need to keep resolving to the content they promise, on http AND https

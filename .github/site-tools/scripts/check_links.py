@@ -69,7 +69,7 @@ def check_site(site, base_url):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--site", default="_site")
-    parser.add_argument("--url", default="https://wvurail.org/rail-preview/")
+    parser.add_argument("--url", default="https://rail.wvu.edu/rail-preview/")
     args = parser.parse_args()
     try:
         pages, targets, broken = check_site(args.site, args.url)

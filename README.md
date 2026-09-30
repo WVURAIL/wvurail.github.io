@@ -1,6 +1,6 @@
 # WVU Radio Astronomy Instrumentation Lab — website
 
-Source for <https://wvurail.org>. Built with [Jekyll](https://jekyllrb.com/) and hosted on
+Source for <https://rail.wvu.edu>. Built with [Jekyll](https://jekyllrb.com/) and hosted on
 GitHub Pages. No build step beyond Jekyll: the JavaScript is hand-written and shipped
 as-is, and the stylesheet is the WVU Design System's, loaded from designsystem.wvu.edu.
 The site is moving to rail.wvu.edu; the checklist for that move is `.github/CUTOVER.md`.

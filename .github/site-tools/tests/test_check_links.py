@@ -21,7 +21,7 @@ class PreviewLinksTest(unittest.TestCase):
         file.write_text(text, encoding="utf-8")
 
     def check(self):
-        return module.check_site(self.site, "https://wvurail.org/rail-preview/")[2]
+        return module.check_site(self.site, "https://rail.wvu.edu/rail-preview/")[2]
 
     def test_combined_sites_and_relative_assets(self):
         self.write("index.html", '<a href="/rail-preview/dspira/">Lessons</a>')
@@ -52,7 +52,7 @@ class PreviewLinksTest(unittest.TestCase):
                    '<a href="/rail-preview-other/">Other project</a>'
                    '<a href="mailto:lab@example.com">Email</a>'
                    '<a href="/rail-preview">Preview root</a>'
-                   '<a href="https://wvurail.org/rail-preview/missing/">Missing</a>')
+                   '<a href="https://rail.wvu.edu/rail-preview/missing/">Missing</a>')
         self.assertEqual(set(self.check()), {"/rail-preview/missing/"})
 
     def test_empty_build_fails(self):
