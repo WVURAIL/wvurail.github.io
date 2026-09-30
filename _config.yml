@@ -1,4 +1,4 @@
-# Site settings for WVU RAIL (https://wvurail.org)
+# Site settings for WVU RAIL (https://rail.wvu.edu)
 # Values here are available in templates as {{ site.title }}, {{ site.email }}, etc.
 # NOTE: Jekyll does NOT reload this file on `serve` — restart the server after editing.
 
@@ -34,7 +34,7 @@ baseurl: ""                     # subpath of the site, e.g. /blog (empty for a r
 # CNAME file) is the move to the University domain. Everything else on the site
 # derives its absolute URLs from here — see .github/CUTOVER.md for the full
 # cutover checklist before touching it.
-url: "https://wvurail.org"      # base hostname & protocol, no trailing slash
+url: "https://rail.wvu.edu"      # base hostname & protocol, no trailing slash
 
 # Content & build
 markdown: kramdown

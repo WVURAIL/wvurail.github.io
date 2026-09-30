@@ -180,7 +180,7 @@ jobs:
         test -s _site/index.html
         test -s _site/education/index.html
         test -s _site/publications/index.html
-        grep -qx 'wvurail.org' _site/CNAME
+        grep -qx 'rail.wvu.edu' _site/CNAME
         if grep -q 'name="robots" content="noindex"' _site/index.html; then exit 1; fi
         grep -q 'href="/dspira/' _site/index.html
     - name: Upload the built site

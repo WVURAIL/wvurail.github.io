@@ -112,7 +112,7 @@ def urls_in(site):
 def site_url(path=CONFIG_YML):
     """The site's own address, read from _config.yml without a YAML library.
 
-    The line is `url: "https://wvurail.org"`, quoted or not, comment or not.
+    The line is `url: "https://rail.wvu.edu"`, quoted or not, comment or not.
     """
     text = open(path, encoding="utf-8").read()
     m = re.search(r"""^url:\s*["']?(https?://[^"'\s#]+)""", text, re.M)
