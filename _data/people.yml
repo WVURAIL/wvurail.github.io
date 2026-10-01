@@ -1,8 +1,91 @@
-pranav:
-    name: Pranav Sanghavi
-    twitter: pranavsanghavi
-    github: PranavSanghavi
+# All lab members. Add/remove people here — the People section renders automatically.
+# Fields: name (required), photo, roles[], bio, open (bool), email, phone,
+#         office, link{text,url}, publication{label,title,url,year}.
 
-kevin:
-  name: Kevin Bandura
-  github: kbandura
+pi:
+  - name: "Kevin M. Bandura, Ph.D."
+    photo: /images/people/kbandura.jpg
+    thumbnail: /images/people/kbandura-240.webp
+    roles:
+      - "Associate Professor, Department of Computer Science and Electrical Engineering"
+      - "Adjunct Professor, Department of Physics and Astronomy"
+    email: "kmbandura@mail.wvu.edu"
+    phone: "(304) 293-9686"
+    office: "AERB 237"
+    link:
+      text: "Faculty page and CV"
+      url: "/bandura/"
+    bio: >
+      Dr. Bandura builds analog front ends, FPGA correlators, and timing systems for wide-field radio telescopes. These systems let instruments such as CHIME survey the entire overhead sky at once. The science includes 21 cm intensity mapping, which traces neutral hydrogen to measure accelerated cosmic expansion. Outrigger stations precisely locate fast radio bursts, allowing researchers to identify their host galaxies.
+
+grad: []
+
+students:
+  - name: "This could be you"
+    open: true          # renders as the open-position card, no portrait
+    bio: >
+      We take on undergraduate and graduate researchers every year. Write to
+      Prof. Kevin Bandura to talk about joining.
+    email: "kmbandura@mail.wvu.edu"
+
+alumni:
+  # Verified against the WVU Research Repository (researchrepository.wvu.edu/etd).
+  # Newest first. `year` is the degree year. `now:` is the person's current
+  # position, shown on /people/ and on the faculty CV (filled Aug 2026).
+  # review: John Metzger's `now:` is deliberately absent — his LinkedIn showed
+  # no position since graduating when checked (Aug 2026). Revisit in a few
+  # months; everyone else's is filled.
+  - name: "Kalyani B. Bhopi"
+    now: "Postdoctoral Fellow, Academia Sinica (Taiwan)"
+    publication:
+      label: "Ph.D. Dissertation"
+      year: 2026
+      title: "A Digital Calibration Source for 21 cm Cosmology Telescopes"
+      url: "https://researchrepository.wvu.edu/etd/13349/"
+
+  - name: "John W. Metzger"
+    publication:
+      label: "M.S. Thesis"
+      year: 2026
+      title: "Enhancing CHIME Data Integrity: Utilizing an Ancillary Antenna to Detect and Mask Radio Frequency Interference"
+      url: "https://researchrepository.wvu.edu/etd/13326/"
+
+  - name: "Kholoud S. T. A. Khairy"
+    now: "System Engineer III, M.C. Dean"
+    publication:
+      label: "M.S. Thesis"
+      year: 2025
+      title: "Green Bank CHIME/FRB Outriggers Commissioning and Analog System Development"
+      url: "https://researchrepository.wvu.edu/etd/13158/"
+
+  - name: "Joseph W. Kania"
+    now: "Senior Research Platforms Engineer, University of Manchester"
+    publication:
+      label: "Ph.D. Dissertation"
+      year: 2023
+      title: "Applications of Digital Filters in Radio Astronomy"
+      url: "https://researchrepository.wvu.edu/etd/12243/"
+
+  - name: "Pranav R. Sanghavi"
+    now: "Postdoctoral Fellow, Center for Astrophysics | Harvard and Smithsonian"
+    publication:
+      label: "Ph.D. Dissertation"
+      year: 2022
+      title: "Pathfinding Fast Radio Bursts Localizations using Very Long Baseline Interferometry"
+      url: "https://researchrepository.wvu.edu/etd/11352/"
+
+  - name: "Xiaoqian He"
+    now: "Senior System Design Engineer, AMD"
+    publication:
+      label: "M.S. Thesis"
+      year: 2018
+      title: "Spatial Fourier Transform for Blind Detection of Radio Observations of Rotating Radio Transients"
+      url: "https://researchrepository.wvu.edu/etd/5787/"
+
+  - name: "Akshaya Rane"
+    now: "Senior Data Scientist, lululemon"
+    publication:
+      label: "Ph.D. Dissertation"
+      year: 2017
+      title: "A Study of the Fast Radio Burst Population"
+      url: "https://researchrepository.wvu.edu/etd/7120/"

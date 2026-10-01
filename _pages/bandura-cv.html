@@ -1,0 +1,206 @@
+---
+layout: wvu
+title: Kevin M. Bandura — CV
+permalink: /bandura/cv/
+sitemap: false
+noindex: true
+description: >
+  Curriculum vitae of Kevin M. Bandura, generated from the living faculty
+  page. Print or save as PDF — always current.
+meta_title: "Kevin M. Bandura | Curriculum Vitae | WVU RAIL"
+---
+{%- comment %}
+The printable CV, inside the compliant layout. Resolved with SCM (Adam Glenn,
+2 Sep 2026): the masthead and footer are required on the web page, not on a
+printed one, so the layout's @media print rule drops them and "Save as PDF"
+yields a clean letter-sized document. Every section renders from the same data
+as /bandura/ — _data/cv.yml, _data/publications.yml, _data/people.yml — so it
+cannot fall behind the site. Liquid stays Jekyll 3.9-safe.
+{% endcomment -%}
+{%- assign cv = site.data.cv -%}
+{%- assign mine = site.data.publications | where_exp: "p", "p.people contains 'K. Bandura'" -%}
+{%- assign my_journal = mine | where: "type", "journal" -%}
+{%- assign my_proc = mine | where: "type", "proceedings" -%}
+{%- assign my_notes = mine | where: "type", "note" -%}
+{%- assign my_preprints = mine | where: "type", "preprint" -%}
+{%- assign n_unref = my_notes.size | plus: my_preprints.size -%}
+
+<div class="container py-5">
+
+   <div class="no-print d-flex flex-wrap align-items-center gap-3 mb-5 pb-4 border-bottom">
+      <button type="button" class="btn btn-wvu-gold" data-action="print" hidden>Save as PDF</button>
+      <span class="small text-body-secondary">Choose &ldquo;Save as PDF&rdquo; as the destination in the print dialog.</span>
+      <a href="{{ '/bandura/' | relative_url }}" class="small ms-auto">&larr; Back to the faculty page</a>
+   </div>
+
+   <div class="row">
+      <div class="col-24 col-lg-18">
+
+         <header class="mb-5 pb-4 border-bottom border-2">
+            <h1 class="helvetica-neue-bold mb-2">{{ cv.profile.name }}</h1>
+            <p class="mb-2">
+               Associate Professor in WVU's Lane Department of Computer Science and Electrical Engineering.
+               Adjunct Professor of Physics and Astronomy at WVU.
+               Member of the WVU Center for Gravitational Waves and Cosmology.
+            </p>
+            <p class="small text-body-secondary mb-0">
+               {{ cv.profile.email }} &middot; {{ cv.profile.phone }} &middot; {{ cv.profile.office }}<br>
+               ORCID: 0000-0003-3772-2798 &middot; {{ site.url | remove: 'https://' }}/bandura
+            </p>
+         </header>
+
+         {%- comment %}
+         Record lists are real <ul>/<li> (WCAG 1.3.1); the two-column
+         year / entry layout is the DS grid, not custom CSS.
+         {% endcomment -%}
+
+         <h2 class="h4 helvetica-neue-bold mt-5">Education</h2>
+         <ul class="list-unstyled">
+            {%- for e in cv.education %}
+            <li class="row py-2 border-bottom">
+               <span class="col-24 col-md-4 small text-body-secondary">{{ e.year }}</span>
+               <span class="col-24 col-md-20">{{ e.degree }}, {{ e.school }}.
+                  {%- if e.thesis %} Thesis: &ldquo;{{ e.thesis }}&rdquo;{% if e.advisor %} (advisor: {{ e.advisor }}){% endif %}.{% endif %}
+               </span>
+            </li>
+            {%- endfor %}
+         </ul>
+
+         <h2 class="h4 helvetica-neue-bold mt-5">Appointments</h2>
+         <ul class="list-unstyled">
+            {%- for a in cv.appointments %}
+            <li class="row py-2 border-bottom">
+               <span class="col-24 col-md-4 small text-body-secondary">{{ a.years }}</span>
+               <span class="col-24 col-md-20">{{ a.role }}, {{ a.org }}</span>
+            </li>
+            {%- endfor %}
+         </ul>
+
+         <h2 class="h4 helvetica-neue-bold mt-5">Honors and Awards</h2>
+         <ul class="list-unstyled">
+            {%- for h in cv.honors %}
+            <li class="row py-2 border-bottom">
+               <span class="col-24 col-md-4 small text-body-secondary">{{ h.year }}</span>
+               <span class="col-24 col-md-20">{{ h.title }} &mdash; {{ h.by }}</span>
+            </li>
+            {%- endfor %}
+         </ul>
+
+         <h2 class="h4 helvetica-neue-bold mt-5">Research Funding</h2>
+         <ul class="list-unstyled">
+            {%- for g in cv.funding %}
+            <li class="row py-2 border-bottom">
+               <span class="col-24 col-md-4 small text-body-secondary">{{ g.years }}</span>
+               <span class="col-24 col-md-20">&ldquo;{{ g.title }}&rdquo; &mdash; {{ g.agency }} {{ g.id }}, {{ g.role }}{% if g.amount %}, {{ g.amount }}{% endif %}.</span>
+            </li>
+            {%- endfor %}
+         </ul>
+
+         <h2 class="h4 helvetica-neue-bold mt-5">Publications</h2>
+
+         <h3 class="h6 helvetica-neue-bold mt-4">Peer-reviewed journal articles ({{ my_journal.size }})</h3>
+         <ol class="small">
+            {%- for p in my_journal %}
+            <li class="mb-2">{{ p.authors }}, &ldquo;{{ p.title }},&rdquo; <em>{{ p.venue }}</em>{% if p.ref %}, {{ p.ref }}{% endif %} ({{ p.year }}){% if p.doi %}, doi:{{ p.doi }}{% elsif p.arxiv %}, arXiv:{{ p.arxiv }}{% endif %}.
+               {%- if p.note %} <span class="text-body-secondary">{{ p.note }}</span>{% endif %}</li>
+            {%- endfor %}
+         </ol>
+
+         <h3 class="h6 helvetica-neue-bold mt-4">Conference proceedings ({{ my_proc.size }})</h3>
+         <ol class="small">
+            {%- for p in my_proc %}
+            <li class="mb-2">{{ p.authors }}, &ldquo;{{ p.title }},&rdquo; <em>{{ p.venue }}</em>{% if p.ref %}, {{ p.ref }}{% endif %} ({{ p.year }}){% if p.doi %}, doi:{{ p.doi }}{% elsif p.arxiv %}, arXiv:{{ p.arxiv }}{% endif %}.</li>
+            {%- endfor %}
+         </ol>
+
+         {%- if n_unref > 0 %}
+         <h3 class="h6 helvetica-neue-bold mt-4">Research notes and preprints ({{ n_unref }})</h3>
+         <ol class="small">
+            {%- for p in my_notes %}
+            <li class="mb-2">{{ p.authors }}, &ldquo;{{ p.title }},&rdquo; <em>{{ p.venue }}</em>{% if p.ref %}, {{ p.ref }}{% endif %} ({{ p.year }}){% if p.doi %}, doi:{{ p.doi }}{% elsif p.arxiv %}, arXiv:{{ p.arxiv }}{% endif %}.</li>
+            {%- endfor %}
+            {%- for p in my_preprints %}
+            <li class="mb-2">{{ p.authors }}, &ldquo;{{ p.title }},&rdquo; <em>{{ p.venue }}</em> ({{ p.year }}){% if p.arxiv %}, arXiv:{{ p.arxiv }}{% endif %}. <span class="text-body-secondary">Preprint.</span></li>
+            {%- endfor %}
+         </ol>
+         {%- endif %}
+
+         <h3 class="h6 helvetica-neue-bold mt-4">Earlier work, before WVU ({{ cv.pre_wvu_publications.size }})</h3>
+         <ol class="small">
+            {%- for p in cv.pre_wvu_publications %}
+            <li class="mb-2">{{ p.authors }}, &ldquo;{{ p.title }},&rdquo; <em>{{ p.venue }}</em>{% if p.ref %}, {{ p.ref }}{% endif %} ({{ p.year }}){% if p.doi %}, doi:{{ p.doi }}{% elsif p.arxiv %}, arXiv:{{ p.arxiv }}{% endif %}.</li>
+            {%- endfor %}
+         </ol>
+
+         {%- if cv.retracted and cv.retracted.size > 0 %}
+         <h3 class="h6 helvetica-neue-bold mt-4">Retracted ({{ cv.retracted.size }})</h3>
+         <ol class="small">
+            {%- for p in cv.retracted %}
+            <li class="mb-2">{{ p.authors }}, &ldquo;{{ p.title }},&rdquo; <em>{{ p.venue }}</em>{% if p.ref %}, {{ p.ref }}{% endif %} ({{ p.year }}){% if p.doi %}, doi:{{ p.doi }}{% endif %}.
+               {%- if p.note %} <span class="text-body-secondary">{{ p.note }}</span>{% endif %}</li>
+            {%- endfor %}
+         </ol>
+         {%- endif %}
+
+         <h3 class="h6 helvetica-neue-bold mt-4">White papers and community reports ({{ cv.white_papers.size }})</h3>
+         <ol class="small">
+            {%- for p in cv.white_papers %}
+            <li class="mb-2">{{ p.authors }}, &ldquo;{{ p.title }},&rdquo; <em>{{ p.venue }}</em> ({{ p.year }}){% if p.arxiv %}, arXiv:{{ p.arxiv }}{% endif %}.</li>
+            {%- endfor %}
+         </ol>
+
+         <h2 class="h4 helvetica-neue-bold mt-5">Teaching</h2>
+         <ul class="list-unstyled">
+            {%- for course in cv.teaching %}
+            <li class="py-1">{{ course }} &mdash; West Virginia University</li>
+            {%- endfor %}
+         </ul>
+
+         <h2 class="h4 helvetica-neue-bold mt-5">Advising</h2>
+         {%- if site.data.people.grad and site.data.people.grad.size > 0 %}
+         <h3 class="h6 helvetica-neue-bold mt-4">Current graduate students</h3>
+         <ul class="list-unstyled">
+            {%- for person in site.data.people.grad %}
+            <li class="py-1">{{ person.name }} &mdash; {{ person.roles | first }}</li>
+            {%- endfor %}
+         </ul>
+         {%- endif %}
+         <h3 class="h6 helvetica-neue-bold mt-4">Graduated ({{ site.data.people.alumni.size }})</h3>
+         <ul class="list-unstyled">
+            {%- for person in site.data.people.alumni %}
+            <li class="py-1">{{ person.name }} &mdash; {{ person.publication.label }}, {{ person.publication.year }}:
+                &ldquo;{{ person.publication.title }}&rdquo;.{% if person.now %} <span class="text-body-secondary small">(now: {{ person.now }})</span>{% endif %}</li>
+            {%- endfor %}
+         </ul>
+         {%- if cv.committees and cv.committees.size > 0 %}
+         <h3 class="h6 helvetica-neue-bold mt-4">Thesis and dissertation committees (member)</h3>
+         <ul class="list-unstyled">
+            {%- for c in cv.committees %}
+            <li class="py-1">{{ c.name }} &mdash; {{ c.degree }}, {{ c.year }}: &ldquo;{{ c.title }}&rdquo;.{% if c.chair %} (chair: {{ c.chair }}){% endif %}</li>
+            {%- endfor %}
+         </ul>
+         {%- endif %}
+
+         <h2 class="h4 helvetica-neue-bold mt-5">Professional Memberships</h2>
+         <ul class="list-unstyled">
+            {%- for m in cv.memberships.items %}
+            <li class="py-1">{{ m }}</li>
+            {%- endfor %}
+         </ul>
+
+         <h2 class="h4 helvetica-neue-bold mt-5">Selected Talks and Posters</h2>
+         <ul class="list-unstyled">
+            {%- for t in cv.presentations %}
+            <li class="py-1">{{ t }}</li>
+            {%- endfor %}
+         </ul>
+
+         <p class="small text-body-secondary mt-5 pt-3 border-top">
+            Generated from the faculty page at {{ site.url | remove: 'https://' }}/bandura.
+            Site last built {{ site.time | date: "%B %-d, %Y" }}.
+            The current CV is at {{ site.url | remove: 'https://' }}/bandura/cv/.
+         </p>
+
+      </div>
+   </div>
+</div>

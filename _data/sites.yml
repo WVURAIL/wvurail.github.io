@@ -1,0 +1,54 @@
+# Where the lab has instruments or observing partners.
+# Rendered as the "Where we work" band on the home page.
+#
+# Fields:
+#   place        — short place name (the big line)
+#   region       — country/state, shown as the small mono label above it
+#   instruments  — what we run or contribute to there. Each entry is
+#                  { name, note, url }; `note` and `url` are optional.
+#                  If `url` is set the name becomes a link.
+#
+# Note on GBO: the acronym is genuinely overloaded — Green Bank Observatory and
+# Green Bank Outrigger are both in use. The notes below state what each thing
+# IS rather than expanding the acronym, so they read correctly either way.
+# Please keep it that way.
+
+- region: United States
+  place: West Virginia
+  instruments:
+    - name: GBO
+      note: CHIME/FRB outrigger station at Green Bank Observatory, West Virginia
+      url: "https://www.chime-frb.ca"
+    - name: TONE
+      note: Outrigger pathfinder array at Green Bank
+      url: "https://doi.org/10.1142/S2251171724500107"
+    - name: GBT and other Green Bank telescopes
+      note: With the WVU Center for Gravitational Waves and Cosmology
+      url: "https://greenbankobservatory.org/science/telescopes/gbt/"
+
+- region: United States
+  place: California
+  instruments:
+    - name: HCO
+      note: CHIME/FRB outrigger station at Hat Creek Radio Observatory, California
+      url: "https://www.chime-frb.ca"
+
+- region: Canada
+  place: British Columbia
+  instruments:
+    - name: CHIME
+      note: Canadian Hydrogen Intensity Mapping Experiment, at DRAO near Penticton
+      url: "https://chime-experiment.ca"
+    - name: CHORD
+      note: Canadian Hydrogen Observatory and Radio-transient Detector
+      url: "https://www.chord-observatory.ca"
+    - name: KKO
+      note: CHIME/FRB outrigger station in British Columbia
+      url: "https://doi.org/10.3847/1538-3881/ad5838"
+
+- region: South Africa
+  place: The Karoo
+  instruments:
+    - name: HIRAX
+      note: Hydrogen Intensity and Real-time Analysis eXperiment — 1024 dishes, in development
+      url: "https://hirax.ukzn.ac.za"

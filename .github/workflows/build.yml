@@ -1,0 +1,202 @@
+name: Build
+'on':
+  push:
+    branches-ignore:
+    - main
+  pull_request: null
+  workflow_dispatch: null
+  workflow_call:
+    inputs:
+      pages_artifact:
+        type: boolean
+        default: false
+permissions:
+  contents: read
+jobs:
+  jekyll:
+    name: Validate website
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        persist-credentials: false
+    - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+      with:
+        node-version: '22'
+    - name: Check shared site tools
+      run: |
+        python3 -m pip install -r .github/site-tools/requirements-checks.txt
+        python3 -m unittest discover -s .github/site-tools/tests -v
+        npm ci --prefix .github/site-tools
+        npm test --prefix .github/site-tools
+        node --test .github/tests/tools.test.cjs
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@14594264cd68ce8a2345dd349bc3d138a4ef85c8 # v1
+      with:
+        ruby-version: '3.3'
+        bundler-cache: true
+      env:
+        BUNDLE_GEMFILE: ${{ github.workspace }}/Gemfile
+    - name: Build
+      run: bundle exec jekyll build --trace
+      env:
+        BUNDLE_GEMFILE: ${{ github.workspace }}/Gemfile
+        JEKYLL_ENV: production
+    - name: Trim unused Design System styles
+      run: |
+        node .github/site-tools/scripts/trim_styles.mjs _site assets/wvu-design-system/site.min.css
+    - name: Every expected page exists and is non-empty
+      run: |
+        set -euo pipefail
+        for page in \
+          index.html \
+          people/index.html \
+          publications/index.html \
+          bandura/index.html \
+          bandura/cv/index.html \
+          accessibility/index.html \
+          where-we-work/index.html \
+          who-we-work-with/index.html \
+          dspiratalk/index.html \
+          contact/index.html \
+          projects/index.html \
+          tools/index.html \
+          tools/lst/index.html \
+          tools/coord/index.html \
+          education/index.html \
+          ret-dspira/index.html \
+          apps/index.html \
+          education/dspira-2017/index.html \
+          education/dspira-2018/index.html \
+          education/dspira-2019/index.html \
+          dspira-2017/index.html \
+          dspira-2018/index.html \
+          dspira-2019/index.html
+        do
+          if [ ! -s "_site/$page" ]; then
+            echo "::error::_site/$page is missing or empty"
+            exit 1
+          fi
+        done
+        echo "All expected pages built."
+    - name: The data-driven lists actually rendered
+      run: |
+        set -euo pipefail
+        fail=0
+        check() {  # name, file, pattern, minimum
+          # `|| true` matters: grep exits 1 on zero matches, and with
+          # `set -euo pipefail` that killed the step before it could print the
+          # diagnostic this check exists to produce.
+          n=$(grep -o "$3" "_site/$2" | wc -l || true)
+          echo "$1: $n"
+          if [ "$n" -lt "$4" ]; then
+            echo "::error::$1 rendered $n (expected >= $4) — data or a Liquid filter is broken"
+            fail=1
+          fi
+        }
+        # Each pattern is the element a template emits exactly once per data
+        # entry. The Design System markup is mostly Bootstrap utility classes,
+        # so several of these are the utility string of that one element on
+        # that one page — if the page gains another element with the same
+        # string the count inflates, but it can never be satisfied by an
+        # empty loop, which is what the check exists to catch.
+        check "publication entries" publications/index.html '<li class="pub' 60
+        # `person` is the one semantic hook on /people/: the PI row, each
+        # researcher card and the open-position card all carry it.
+        check "people cards"        people/index.html       'class="person '  2
+        check "alumni rows"         people/index.html       '<li class="border-bottom py-4">' 5
+        check "site cards"          where-we-work/index.html 'class="card h-100 border-0 bg-wvu-not-quite-white"' 4
+        # The cohort-roster include looks its roster up in _data/education.yml
+        # by year. If that lookup ever misses, the page still builds — it just
+        # renders with no names and a blank stats row. Assert the names are
+        # there: one <li> per teacher, one "returning" badge per returner.
+        check "2017 roster"         education/dspira-2017/index.html  '<li class="col-24 col-sm-12 col-lg-8">' 9
+        check "2018 roster"         education/dspira-2018/index.html  '<li class="col-24 col-sm-12 col-lg-8">' 6
+        check "2019 roster"         education/dspira-2019/index.html  '<li class="col-24 col-sm-12 col-lg-8">' 6
+        check "2019 returning tags" education/dspira-2019/index.html  'class="badge bg-wvu-blue text-white ms-2">returning' 4
+        exit $fail
+    - name: No unrendered Liquid escaped into the output
+      run: |
+        set -euo pipefail
+        if grep -rn '{%\|{{' _site --include='*.html'; then
+          echo "::error::Found unrendered Liquid tags in the built site"
+          exit 1
+        fi
+        echo "No unrendered Liquid."
+    - name: The lesson count placeholder was substituted
+      run: |
+        set -euo pipefail
+        # The count is written once, as materials.lesson_count, and reaches the
+        # page through a `replace` filter on the %COUNT% placeholder. Drop that
+        # filter and the build still succeeds — the page just reads
+        # "%COUNT% lessons" to every visitor. It is not Liquid, so the check
+        # above does not see it.
+        if grep -rn '%COUNT%' _site --include='*.html'; then
+          echo "::error::%COUNT% reached the built site — a `replace` filter is missing"
+          exit 1
+        fi
+        n=$(grep -c 'Lessons published' _site/education/index.html || true)
+        [ "$n" -ge 1 ] || { echo "::error::the lessons stat tile is gone from /education/"; exit 1; }
+        echo "No %COUNT% left in the output."
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        repository: WVURAIL/dspira
+        ref: main
+        path: .dependencies/dspira
+        lfs: true
+        persist-credentials: false
+    - name: Install locked lesson dependencies
+      uses: ruby/setup-ruby@14594264cd68ce8a2345dd349bc3d138a4ef85c8 # v1
+      with:
+        ruby-version: '3.3'
+        bundler-cache: true
+      env:
+        BUNDLE_GEMFILE: ${{ github.workspace }}/.dependencies/dspira/Gemfile
+    - name: Build current lesson redirects
+      run: |
+        bundle exec jekyll build --trace -d ../../_lessons
+      working-directory: .dependencies/dspira
+      env:
+        BUNDLE_GEMFILE: ${{ github.workspace }}/.dependencies/dspira/Gemfile
+        JEKYLL_ENV: production
+    - name: Preserve current lesson addresses
+      run: |
+        if [ -f .dependencies/dspira/tools/notebook-requirements.txt ]; then
+          python3 -m pip install --quiet -r .dependencies/dspira/tools/notebook-requirements.txt
+        fi
+        python3 .dependencies/dspira/tools/test_publish_pages.py
+        python3 .dependencies/dspira/tools/test_publish_assets.py
+        python3 .dependencies/dspira/tools/publish_assets.py --site _lessons
+        python3 .dependencies/dspira/tools/publish_pages.py --site _lessons --alias _site/dspira-lessons --exclude assets/history
+        test -s _site/gr-dspira/index.html
+        test -s _site/dspira-lessons/dsplab-intro/index.html
+        site_bytes=$(du -sb _site | cut -f1)
+        echo "Published site size: $site_bytes bytes (limit: 1000000000 bytes)"
+        if [ "$site_bytes" -ge 1000000000 ]; then
+          echo "::error::Published site is $site_bytes bytes; keep compatibility copies below the 1000000000-byte limit."
+          du -sb _site/* | sort -nr | head -n 10
+          exit 1
+        fi
+    - name: Check production settings
+      run: |
+        test -s _site/index.html
+        test -s _site/education/index.html
+        test -s _site/publications/index.html
+        grep -qx 'rail.wvu.edu' _site/CNAME
+        if grep -q 'name="robots" content="noindex"' _site/index.html; then exit 1; fi
+        grep -q 'href="/dspira/' _site/index.html
+    - name: Upload the built site
+      if: always()
+      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      with:
+        name: site
+        path: _site
+        retention-days: 7
+    - name: Package the validated site
+      if: ${{ inputs.pages_artifact }}
+      uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+      with:
+        path: _site
+    timeout-minutes: 30
+    env:
+      GITHUB_TOKEN: ${{ github.token }}

@@ -1,2 +1,0 @@
-# GitHub Pages needs the PDF bytes in Git, not an LFS pointer.
-current.pdf -filter -diff -merge -text

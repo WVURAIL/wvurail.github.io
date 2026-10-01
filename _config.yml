@@ -1,35 +1,65 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+# Site settings for WVU RAIL (https://rail.wvu.edu)
+# Values here are available in templates as {{ site.title }}, {{ site.email }}, etc.
+# NOTE: Jekyll does NOT reload this file on `serve` — restart the server after editing.
 
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-email: wvurail@gmail.com
-description: > # this means to ignore newlines until "baseurl:"
-  RAIL is a multidisciplinary group within the Lane Department of Computer Science and Electrical Engineering at West Virgnia University that focuses on Engineering and Science solutions in Radio Astronomy.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://wvurail.org/" # the base hostname & protocol for your site, e.g. http://example.com
+title: WVU RAIL
+tagline: Radio Astronomy Instrumentation Laboratory
+email: rail@wvu.edu
 
-#twitter_username: jekyllrb
-#github_username:  jekyll
+# The lab's contact block. Rendered in the footer of every page and on
+# /contact/, from this one place so the two cannot disagree. WVU's Common
+# Elements rule wants physical address, mailing address, email, phone and fax
+# on every page. Street and mailing address are the Lane Department's, as
+# published at lcsee.statler.wvu.edu (the AERB is 1220 Evansdale Drive per WVU
+# Facilities Planning — not 1306, which is the Engineering Sciences Building).
+# The phone is the PI's office line, as the old contact page listed it; the
+# fax is the department's, since the lab has none of its own.
+contact:
+  building: Advanced Engineering Research Building, Room 304
+  street: 1220 Evansdale Drive
+  mailing: PO Box 6109
+  city: Morgantown
+  state: WV
+  zip: "26506-6109"
+  phone: "(304) 293-9686"
+  phone_tel: "+13042939686"
+  fax: "(304) 293-8602"
+  fax_note: Lane Department
 
-include: ['_pages']
-# Build settings
+description: >
+  RAIL develops engineering and science solutions for radio astronomy. The group belongs to West Virginia University's Lane Department of Computer Science and Electrical Engineering. It is also part of the WVU Center for Gravitational Waves and Cosmology.
+
+baseurl: ""                     # subpath of the site, e.g. /blog (empty for a root domain)
+# Canonical production origin, aligned with the CNAME file. Absolute page URLs
+# are derived from this value. See .github/CUTOVER.md for domain ownership and
+# compatibility requirements before changing the production address.
+url: "https://rail.wvu.edu"      # base hostname & protocol, no trailing slash
+
+# Content & build
 markdown: kramdown
-#theme: minima
-gems:
+include: ['_pages']
+
+plugins:                        # `plugins:` is the modern key (old `gems:` is deprecated)
   - jekyll-feed
   - jekyll-sitemap
+
 exclude:
+  - assets/wvu-design-system/README.md
+  - assets/wvu-design-system/LICENSE
+  # Windows writes an NTFS "downloaded from the internet" stream beside any
+  # downloaded file; through WSL it lands as "logo.svg:Zone.Identifier". A
+  # colon is illegal in a GitHub Actions artifact path, so one of these
+  # reaching _site turns the build red at the upload step.
+  - "*:Zone.Identifier"
   - Gemfile
   - Gemfile.lock
-theme: jekyll-theme-minimal
+  - Gemfile.ci          # written by CI only
+  - Gemfile.ci.lock
+  - README.md
+  - vendor
+  # Add internal working notes to this list. Markdown without front matter is
+  # copied verbatim to the site root, so a working note is otherwise public at
+  # /<name>.md with nothing to warn you. Give it a leading underscore, which
+  # Jekyll ignores structurally, AND list it here — belt and braces.
+  # _PUBLICATIONS-REVIEW.md was the last one. It did its job and was deleted, so
+  # there is nothing to exclude right now.
