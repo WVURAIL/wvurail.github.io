@@ -69,10 +69,11 @@ offered a control that cannot work.
             {% endcomment -%}
             <div class="bg-wvu-not-quite-white border rounded p-4 overflow-auto" tabindex="0"
                  role="region" aria-labelledby="lst-reading-heading">
-               <p class="mb-0">
+               <p id="lst-readings" class="mb-0">
                   <span id="lst-time" class="d-block display-5 font-monospace text-wvu-blue lh-1 mb-2">--:--:--</span>
                   <span id="lst-for" class="d-block text-body-secondary"></span>
                </p>
+               <p id="lst-error" class="mb-0" hidden></p>
                <p id="lst-nojs" class="small text-body-secondary mt-3 mb-0">
                   This tool runs in your browser and needs JavaScript.
                </p>

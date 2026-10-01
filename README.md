@@ -1,9 +1,11 @@
 # WVU Radio Astronomy Instrumentation Lab — website
 
 Source for <https://rail.wvu.edu>. Built with [Jekyll](https://jekyllrb.com/) and hosted on
-GitHub Pages. No build step beyond Jekyll: the JavaScript is hand-written and shipped
-as-is, and the stylesheet is the WVU Design System's, loaded from designsystem.wvu.edu.
-The site is moving to rail.wvu.edu; the checklist for that move is `.github/CUTOVER.md`.
+GitHub Pages. Jekyll renders the pages, shared build tools trim unused styles, and
+compatibility helpers generate redirects and preserved downloads. JavaScript is
+shipped directly, and the WVU Design System stylesheet is pinned in
+`assets/wvu-design-system/`. The completed domain move and current publishing
+ownership are documented in [.github/CUTOVER.md](.github/CUTOVER.md).
 
 ## Run locally
 
@@ -23,13 +25,12 @@ To build locally with production settings:
 JEKYLL_ENV=production bundle exec jekyll build --trace
 ```
 
-## Why the build can fail silently
+## Build validation
 
-GitHub Pages reports build failures by email only, and keeps serving the previous
-good build. A broken Liquid tag therefore looks like "the site didn't update"
-rather than an error. The CI workflow exists to make that loud, and it checks the
-rendered output too — that every page exists, that the publication and people
-lists actually have entries, and that no raw Liquid leaked into the HTML.
+The Publish Pages workflow runs the reusable Build workflow before deployment.
+Failures are visible in GitHub Actions and leave the previously deployed site in
+place. The checks cover the rendered output: expected pages, populated publication
+and people lists, compatibility routes, and unrendered Liquid tags.
 
 A filter that quietly returns nothing will still produce a *successful* build with
 an empty section, which is why the counts are asserted rather than just the exit
@@ -46,22 +47,23 @@ code.
 | `_data/education.yml` | **DSPIRA** — everything on `/education/`, plus the roster, counts and year navigation of the three cohort pages. The lesson count is written here, once. |
 | `_data/cv.yml` | **Kevin Bandura's CV of record.** Everything on `/bandura/` and `/bandura/cv/` that is not already in `publications.yml` or `people.yml`. The header comment explains what belongs there. |
 | `_data/institutions.yml` | **Who we work with** — collaborating institutions, rendered at `/who-we-work-with/`. |
-| `_layouts/wvu.html` | **The only layout.** The `<head>` (title, description, canonical and social metadata), the two `<link>`s that load the Design System stylesheet and the Adobe Fonts faces, the masthead and primary navigation, the Common Elements footer, and the site's only custom CSS: the rule that hides the publications filter until JavaScript runs, and the print rule. |
+| `_layouts/wvu.html` | **The only layout.** The `<head>` (title, description, canonical and social metadata), pinned Design System stylesheet and Adobe Fonts links, masthead and primary navigation, Common Elements footer, and shared presentation rules. |
 | `_includes/cohort-roster.html`, `_includes/cohort-footer.html` | The shared head and tail of the three DSPIRA cohort pages. The roster is looked up in `education.yml` by the page's `year`. |
 | `index.html`, `404.html` | The home page and the not-found page, at the repo root. Both use the `wvu` layout. |
 | `_pages/` | Every other page, one file each, all `layout: wvu`. `redirect-*.html`, `talk.html` and `projects.html` are layout-less meta-refresh stubs that keep old URLs working (`/apps/`, `/dspira-2017/`, `/ret-dspira/`, `/dspiratalk/`, `/projects/`, …). Do not give them a layout. |
 | `assets/js/site.js` | Loaded by the layout on every page. Adds the `js` class to `<html>` (the progressive-enhancement flag), reveals and wires the print buttons, and runs the publications filter. |
 | `assets/js/gif-player.js` | Click-to-play GIF for the 2017 cohort page. An animated GIF cannot be paused, so it stays behind a button (WCAG 2.2.2) and the file is not fetched until asked for. |
-| `assets/js/tools.js`, `assets/js/astro.js` | The `/tools/` pages. `astro.js` is the sidereal-time and coordinate maths (Node can `require` it for testing); `tools.js` wires it to the three pages by element id. `/apps/` still redirects here. |
-| `images/` | Media. PDFs are not hosted here: link the canonical record (DOI, ADS, or the WVU Research Repository) instead — an untagged PDF will not pass an accessibility review. |
-| `.github/workflows/build.yml` | Builds with the `github-pages` gem on every push and pull request and asserts on the rendered output (see above). |
+| `assets/js/tools.js`, `assets/js/astro.js` | The `/tools/` pages. `astro.js` is the sidereal-time and coordinate math (Node can `require` it for testing); `tools.js` wires it to the three pages by element id. `/apps/` still redirects here. |
+| `images/` | Photographs, diagrams, and branding, including recovered historical images. |
+| `assets/reports/` | Preserved student reports. For published research, use the canonical DOI, ADS, or WVU Research Repository record. |
+| `.github/workflows/build.yml` | Builds with locked Jekyll 4.4 dependencies, runs shared tool checks, trims CSS, generates compatibility routes, and validates the rendered output. The publication workflow reuses this build. |
 | `.github/workflows/links.yml`, `lesson-count.yml`, `.github/scripts/` | Weekly checks: that every link on the built site is still alive, and that the lesson count and module list in `education.yml` still match the lessons site. |
-| `.github/CUTOVER.md` | The checklist for moving to rail.wvu.edu. |
+| `.github/CUTOVER.md` | Current domain migration record, publishing ownership, and compatibility limits. |
 
-There is no CSS file and no fonts directory. The WVU Design System stylesheet and
-the Adobe Fonts (Typekit) faces load from designsystem.wvu.edu and use.typekit.net,
-exactly as <https://designsystem.wvu.edu/getting-started> documents; the layout
-carries the two `<link>` lines and nothing is vendored.
+The WVU Design System stylesheet is stored in `assets/wvu-design-system/`; its
+README records the upstream version and update procedure. Publication trims unused
+rules from the built copy. Adobe Fonts (Typekit) faces still load from
+`use.typekit.net`. Shared build and validation tools live in `.github/site-tools/`.
 
 ## Common edits
 
@@ -155,7 +157,7 @@ recorded once and shown in one place.
 ### Change the DSPIRA page
 
 Edit `_data/education.yml`. It holds everything `/education/` prints — the summary
-and status paragraphs, the facts tiles, the lessons block, the programme phases,
+and status paragraphs, the facts tiles, the lessons block, the program phases,
 the summer arc, the cohort rosters and the published outputs — and the three cohort
 pages read their roster, counts and year navigation from the same `cohorts:` list,
 so a teacher is only ever listed once.
@@ -225,10 +227,9 @@ and nothing warns you.
 
 - **The Design System.** WVU Design System v3, a Bootstrap 5.3 fork on a
   24-column grid (`col-24` is full width, `col-lg-16` two thirds). The stylesheet
-  and the Adobe Fonts faces load from designsystem.wvu.edu and use.typekit.net,
-  exactly as designsystem.wvu.edu/getting-started documents. The stylesheet is
-  served unpinned; the layout's comment records the case for vendoring a pinned
-  copy before launch.
+  is pinned in `assets/wvu-design-system/` and trimmed during publication.
+  Adobe Fonts faces load from `use.typekit.net`. Follow the vendored stylesheet
+  README when updating the upstream version.
 - **Two class names to know**, because the obvious ones are not in the DS
   stylesheet and silently do nothing: the off-white band is
   `bg-wvu-not-quite-white` (there is no `bg-wvu-neutral-subtle`), and the display
@@ -245,14 +246,14 @@ and nothing warns you.
   `src="{{ pi.photo | relative_url }}"` — so the whole site can be served under
   a subpath such as `/rail-preview/` for staging by setting `baseurl`, while
   production keeps `baseurl: ""`. Sibling GitHub Pages projects on the same host
-  (`/dspira/`, `/lightwork/`, `/dspira/`, `/cra/`) are separate sites,
-  not this one, and stay root-absolute on purpose: do not add the filter to
-  those.
-- **JavaScript.** Vanilla, no dependencies, no inline handlers and no inline
-  `<script>`; everything attaches with `addEventListener`, so the pages survive a
-  Content-Security-Policy that forbids inline script. Controls that need
-  JavaScript ship hidden or disabled and are enabled by the script, so a visitor
-  without it is never offered a control that cannot work.
+  (`/dspira/` and `/lightwork/`) stay root-absolute on purpose. Legacy paths
+  such as `/cra/` are generated compatibility routes owned by the lab build.
+  Link current content at its current address rather than through an old alias.
+- **JavaScript.** Site interactions use local vanilla JavaScript and attach
+  with `addEventListener`. Controls that need JavaScript ship hidden or disabled
+  and are enabled by the script, so a visitor without it is never offered a
+  control that cannot work. The font stylesheet also uses an inline load handler;
+  test font loading as well as interactions before changing a Content Security Policy.
 - **Images.** Give every `<img>` its real pixel `width`/`height` — the cohort
   pages take them from front matter (`cover_w`, `cover_h`, …) — so the page does
   not jump as the photographs load. Nothing renders wider than ~1600 px; keep

@@ -29,6 +29,7 @@ jobs:
         python3 -m unittest discover -s .github/site-tools/tests -v
         npm ci --prefix .github/site-tools
         npm test --prefix .github/site-tools
+        node --test .github/tests/tools.test.cjs
     - name: Set up Ruby
       uses: ruby/setup-ruby@14594264cd68ce8a2345dd349bc3d138a4ef85c8 # v1
       with:

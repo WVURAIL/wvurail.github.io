@@ -30,10 +30,9 @@ description: >
   RAIL develops engineering and science solutions for radio astronomy. The group belongs to West Virginia University's Lane Department of Computer Science and Electrical Engineering. It is also part of the WVU Center for Gravitational Waves and Cosmology.
 
 baseurl: ""                     # subpath of the site, e.g. /blog (empty for a root domain)
-# THE CUTOVER SWITCH. Changing this to https://rail.wvu.edu (together with the
-# CNAME file) is the move to the University domain. Everything else on the site
-# derives its absolute URLs from here — see .github/CUTOVER.md for the full
-# cutover checklist before touching it.
+# Canonical production origin, aligned with the CNAME file. Absolute page URLs
+# are derived from this value. See .github/CUTOVER.md for domain ownership and
+# compatibility requirements before changing the production address.
 url: "https://rail.wvu.edu"      # base hostname & protocol, no trailing slash
 
 # Content & build
