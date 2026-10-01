@@ -159,21 +159,16 @@ jobs:
       env:
         BUNDLE_GEMFILE: ${{ github.workspace }}/.dependencies/dspira/Gemfile
         JEKYLL_ENV: production
-    - name: Preserve retired website addresses
+    - name: Preserve current lesson addresses
       run: |
         if [ -f .dependencies/dspira/tools/notebook-requirements.txt ]; then
           python3 -m pip install --quiet -r .dependencies/dspira/tools/notebook-requirements.txt
         fi
         python3 .dependencies/dspira/tools/test_publish_pages.py
-        python3 .dependencies/dspira/tools/test_retired_sites.py
         python3 .dependencies/dspira/tools/test_publish_assets.py
         python3 .dependencies/dspira/tools/publish_assets.py --site _lessons
         python3 .dependencies/dspira/tools/publish_pages.py --site _lessons --alias _site/dspira-lessons --exclude assets/history
-        python3 .dependencies/dspira/tools/retired_sites.py fetch --destination _retired
-        python3 .dependencies/dspira/tools/retired_sites.py aliases --source _retired --site _site
-        test -s _site/cra/index.html
-        test -s _site/dspira-archive/labs/01/index.html
-        test -s _site/gr-transient/index.html
+        test -s _site/gr-dspira/index.html
         test -s _site/dspira-lessons/dsplab-intro/index.html
         site_bytes=$(du -sb _site | cut -f1)
         echo "Published site size: $site_bytes bytes (limit: 1000000000 bytes)"

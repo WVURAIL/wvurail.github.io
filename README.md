@@ -246,8 +246,8 @@ and nothing warns you.
   `src="{{ pi.photo | relative_url }}"` — so the whole site can be served under
   a subpath such as `/rail-preview/` for staging by setting `baseurl`, while
   production keeps `baseurl: ""`. Sibling GitHub Pages projects on the same host
-  (`/dspira/` and `/lightwork/`) stay root-absolute on purpose. Legacy paths
-  such as `/cra/` are generated compatibility routes owned by the lab build.
+  (`/dspira/` and `/lightwork/`) stay root-absolute on purpose. The lab build
+  generates `/dspira-lessons/` compatibility routes from current lesson content.
   Link current content at its current address rather than through an old alias.
 - **JavaScript.** Site interactions use local vanilla JavaScript and attach
   with `addEventListener`. Controls that need JavaScript ship hidden or disabled

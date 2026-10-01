@@ -27,17 +27,20 @@ old address successfully.
 | Repository | Current ownership |
 | --- | --- |
 | `wvurail.github.io` | Lab root, shared build tools, and old project-address compatibility routes |
-| `dspira` | Current lessons, historical materials, resource catalogs, and recovery packages |
+| `dspira` | Current lessons, retained historical files, and resource catalogs |
 | `lightwork` | Numbered technical memos and related resources |
 | `dspira-software` | Maintained telescope applications and observation-processing tools |
 | `dspira-hardware` | Maintained amplifier designs and assembly references imported by DSPIRA |
 | `radio-research-software` | Research acquisition, detection, and transient experiments |
 
-The lab build owns `/dspira-lessons/`, `/dspira-archive/`, `/cra/`,
-`/gr-transient/`, and `/gr-dspira/`. Retired repositories no longer need separate
-Pages deployments. Compatibility pages direct old HTML addresses to current
-content; generated file aliases retain original download bytes where supported.
-See DSPIRA's [archive retirement record](https://github.com/WVURAIL/dspira/blob/main/.github/ARCHIVE_RETIREMENT.md) for recovery and verification details.
+The lab build owns `/dspira-lessons/` compatibility paths for current lessons.
+The `/gr-dspira/` page points to the current software guide. Generated file aliases
+retain existing lesson downloads where supported.
+
+The recovery releases were intentionally deleted on September 30, 2026. Their
+archive-dependent `/dspira-archive/`, `/cra/`, `/gr-transient/`, and
+`/dspira/history/sites/` publications are retired.
+See DSPIRA's [archive retirement record](https://github.com/WVURAIL/dspira/blob/main/.github/ARCHIVE_RETIREMENT.md) for current ownership and retained material.
 
 ## Preserved material and current paths
 
@@ -48,10 +51,9 @@ from the website. Do not recreate obsolete source trees or overwrite maintained
 software with older versions.
 
 The DSPIRA history page at `/dspira/history/` provides individual resources and
-historical context, with recovery packages available as an additional backup.
-Keep original author credits, licenses, and historical bytes intact. The original
-NSF-cited DSPIRA and CRA addresses still need compatibility routes even though
-current material has a different home.
+historical context. These retained files live in the active repositories and do
+not require the deleted recovery releases. Keep original author credits,
+licenses, and historical bytes intact.
 
 Two input recordings referenced by historical notebooks were not found in the
 reachable repository histories. Recovery requests remain open in
@@ -79,11 +81,11 @@ Before changing publishing or domain settings, verify:
 1. `CNAME`, `_config.yml`, canonical links, and sitemaps agree on the live domain.
 2. Lab, DSPIRA, and LightWork builds pass with their committed dependency locks.
 3. Current pages, downloadable files, and compatibility routes still resolve.
-4. Recovery packages and individual historical resources remain available.
+4. Retained historical resources and their direct downloads remain available.
 5. GitHub Actions deployment succeeds, followed by checks against the live site.
 
 A future domain change would also require University DNS coordination, changes to
 Squarespace forwarding, and updates to the canonical targets in DSPIRA's
-`tools/retired_sites.py`, `tools/publish_pages.py`, public history links, and
+`tools/publish_pages.py`, public resource links, and
 publishing workflows. Changing repository content alone does not change external
 DNS or forwarding settings.
