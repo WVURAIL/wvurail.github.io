@@ -1,10 +1,9 @@
-/* WVU RAIL — behaviour for the small astronomy web apps under /tools/.
+/* WVU RAIL — behavior for the small astronomy web apps under /tools/.
 
    Depends on astro.js (pure computation; loaded first). One file serves all
    three pages: each block wires itself up only when its page's elements are
    present, keyed off element ids, so no page carries an inline handler or an
-   inline <script>. That keeps the tools working under any plausible
-   Content-Security-Policy on *.wvu.edu.
+   inline <script>. The interaction code needs no inline event handlers.
 
    Accessibility notes, carried over from the previous site:
 
@@ -25,6 +24,16 @@
 
    function byId(id) { return document.getElementById(id); }
    function hide(el) { if (el) { el.hidden = true; } }
+
+   // Accept a complete decimal number; empty fields and partial numbers must
+   // not quietly become a plausible observing position.
+   function decimalValue(input) {
+      var text = input.value.trim();
+      if (!/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?$/.test(text)) {
+         return NaN;
+      }
+      return Number(text);
+   }
 
    /* Start the once-a-second tick and wire the Pause/Resume toggle to it. */
    function startTicking(update, pauseBtn) {
@@ -87,15 +96,24 @@
       var lonIn    = byId("lst-long");
       var hemi     = byId("lst-hemi");
       var announce = byId("lst-announce");
+      var readings = byId("lst-readings");
+      var err      = byId("lst-error");
 
       function currentLongitude() {
-         var v = Math.abs(parseFloat(lonIn.value) || 0);
-         if (v > 180) { v = 180; }
+         var v = Math.abs(decimalValue(lonIn));
          var sign = hemi.value === "W" ? -1 : 1;
          return sign * v;
       }
       function update() {
          var lon = currentLongitude();
+         if (!Number.isFinite(lon) || Math.abs(lon) > 180) {
+            err.textContent = "Enter a numeric longitude from 0 to 180 degrees and select east or west.";
+            err.hidden = false;
+            readings.hidden = true;
+            return;
+         }
+         err.hidden = true;
+         readings.hidden = false;
          time.textContent  = hmsFromHours(lstNow(new Date(), lon));
          forEl.textContent = "for longitude " + lon.toFixed(4) + "°";
       }
@@ -103,7 +121,9 @@
       // are joined with a comma so the reading is spoken as two phrases.
       function announceLst() {
          update();
-         announce.textContent = "Local sidereal time " + time.textContent + ", " + forEl.textContent;
+         announce.textContent = err.hidden
+            ? "Local sidereal time " + time.textContent + ", " + forEl.textContent
+            : err.textContent;
       }
 
       hide(byId("lst-nojs"));
@@ -129,18 +149,26 @@
       var announce = byId("coord-announce");
 
       function signedVal(input, sel, posCode) {
-         var v = Math.abs(parseFloat(input.value) || 0);
+         var v = Math.abs(decimalValue(input));
          var sign = sel.value === posCode ? 1 : -1;
          return sign * v;
       }
       function update() {
          var lon = signedVal(lonIn, lonHemi, "E");
          var lat = signedVal(latIn, latHemi, "N");
-         var az  = parseFloat(azIn.value)  || 0;
-         var alt = parseFloat(altIn.value) || 0;
+         var az  = decimalValue(azIn);
+         var alt = decimalValue(altIn);
+         var message = "";
 
-         if (Math.abs(lon) > 180 || Math.abs(lat) > 90) {
-            err.textContent = "Longitude must be 0–180 and latitude 0–90.";
+         if (![lon, lat, az, alt].every(Number.isFinite)) {
+            message = "Enter a numeric value in every coordinate field.";
+         } else if (Math.abs(lon) > 180 || Math.abs(lat) > 90) {
+            message = "Longitude must be 0–180 and latitude 0–90 degrees; select the hemisphere separately.";
+         } else if (az < 0 || az > 360 || alt < -90 || alt > 90) {
+            message = "Azimuth must be 0–360 and altitude −90–90 degrees.";
+         }
+         if (message) {
+            err.textContent = message;
             err.hidden = false;
             readings.hidden = true;
             return;
@@ -170,7 +198,7 @@
    }
 
    function init() {
-      // astro.js supplies the maths. If it did not load, leave the pages in
+      // astro.js supplies the math. If it did not load, leave the pages in
       // their no-JavaScript state rather than throwing on the first tick.
       if (typeof lstNow !== "function") { return; }
       initClock();

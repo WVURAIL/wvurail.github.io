@@ -29,6 +29,7 @@ jobs:
         python3 -m unittest discover -s .github/site-tools/tests -v
         npm ci --prefix .github/site-tools
         npm test --prefix .github/site-tools
+        node --test .github/tests/tools.test.cjs
     - name: Set up Ruby
       uses: ruby/setup-ruby@14594264cd68ce8a2345dd349bc3d138a4ef85c8 # v1
       with:
@@ -167,14 +168,20 @@ jobs:
         python3 .dependencies/dspira/tools/test_retired_sites.py
         python3 .dependencies/dspira/tools/test_publish_assets.py
         python3 .dependencies/dspira/tools/publish_assets.py --site _lessons
-        python3 .dependencies/dspira/tools/publish_pages.py --site _lessons --alias _site/dspira-lessons
+        python3 .dependencies/dspira/tools/publish_pages.py --site _lessons --alias _site/dspira-lessons --exclude assets/history
         python3 .dependencies/dspira/tools/retired_sites.py fetch --destination _retired
         python3 .dependencies/dspira/tools/retired_sites.py aliases --source _retired --site _site
         test -s _site/cra/index.html
         test -s _site/dspira-archive/labs/01/index.html
         test -s _site/gr-transient/index.html
         test -s _site/dspira-lessons/dsplab-intro/index.html
-        test $(du -sb _site | cut -f1) -lt 1000000000
+        site_bytes=$(du -sb _site | cut -f1)
+        echo "Published site size: $site_bytes bytes (limit: 1000000000 bytes)"
+        if [ "$site_bytes" -ge 1000000000 ]; then
+          echo "::error::Published site is $site_bytes bytes; keep compatibility copies below the 1000000000-byte limit."
+          du -sb _site/* | sort -nr | head -n 10
+          exit 1
+        fi
     - name: Check production settings
       run: |
         test -s _site/index.html
