@@ -1,7 +1,7 @@
 This website was created with bits and pieces of the following libraries and packages. 
 
 #### Template
-- The website has been heavily customized upon the template Story by [HTML5 UP](html5up.net) by @ajlkn
+- The website has been heavily customized upon the template Story by [HTML5 UP](https://html5up.net/) by @ajlkn
           Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 - Icons:	Font Awesome (fortawesome.github.com/Font-Awesome)
 
